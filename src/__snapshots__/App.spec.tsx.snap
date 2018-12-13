@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App Entry render while loaded 1`] = `
+<div
+  className="App"
+>
+  <header
+    className="App-header"
+  >
+    <p>
+      openfin-react-doc Loaded~
+    </p>
+    <img
+      alt="logo"
+      className="animated slow infinite App-logo App-logo-spin"
+      src="logo.svg"
+    />
+    <p>
+      Edit 
+      <code>
+        src/App.tsx
+      </code>
+       and save to reload.
+    </p>
+    <a
+      className="App-link"
+      href="https://reactjs.org"
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      Learn React
+    </a>
+  </header>
+</div>
+`;
+
+exports[`App Entry render while loading 1`] = `
+<div
+  className="App"
+>
+  <header
+    className="App-header"
+  >
+    <p>
+      openfin-react-doc Loading...
+    </p>
+    <img
+      alt="logo"
+      className="animated slow infinite App-logo flash"
+      src="logo.svg"
+    />
+    <p>
+      Edit 
+      <code>
+        src/App.tsx
+      </code>
+       and save to reload.
+    </p>
+    <a
+      className="App-link"
+      href="https://reactjs.org"
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      Learn React
+    </a>
+  </header>
+</div>
+`;
