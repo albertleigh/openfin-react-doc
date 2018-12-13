@@ -1,11 +1,12 @@
 import * as React from 'react';
 import cx from 'classnames';
 import { connect } from 'react-redux';
+import { withNamespaces, WithNamespaces } from 'react-i18next';
 import logo from './logo.svg';
 import { IRootState }from './reduxs';
 import './App.css';
 
-interface IProps {
+interface IProps extends WithNamespaces{
   loading:boolean,
   [key:number]:any,
   [key:string]:any,
@@ -19,7 +20,7 @@ interface IState {
 class App extends React.Component<IProps,IState> {
   render() {
 
-    const { loading } = this.props;
+    const { loading, t } = this.props;
 
     return (
       <div className="App">
@@ -43,7 +44,7 @@ class App extends React.Component<IProps,IState> {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Learn React
+              {t('Welcome React TS')}
           </a>
         </header>
       </div>
@@ -61,4 +62,4 @@ export default connect(
         }
     })
 
-)(App);
+)(withNamespaces()(App));
