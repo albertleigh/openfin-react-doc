@@ -5,6 +5,7 @@ import { Router, Route, Switch, Redirect } from 'react-router-dom';
 
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import red from '@material-ui/core/colors/red';
 
 import indexRoutes from './routes/index';
 
@@ -39,6 +40,10 @@ class App extends React.Component<IProps,IState> {
             direction,
             palette:{
                 type: theme,
+                primary: {
+                    main:'#504cff',
+                },
+                secondary: red
             },
             typography:{
                 useNextVariants:true,

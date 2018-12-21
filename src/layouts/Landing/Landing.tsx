@@ -10,6 +10,10 @@ import Typography from '@material-ui/core/Typography';
 
 import { landingStyle as style } from '../../assets/jss/openfin-react-doc';
 
+import {
+    LandingHeader,
+} from '../../components';
+
 interface IProps extends WithStyles<typeof style>, WithNamespaces {
 
     actions:{
@@ -31,6 +35,10 @@ import i18n from "../../i18n";
 
 class LandingLayout extends React.Component<IProps,{}>{
 
+    handleSwitchLanguage = (languageName:string) => {
+        i18n.changeLanguage(languageName);
+    }
+
     handleSwitchToEn = () => {
         i18n.changeLanguage('en');
     }
@@ -43,7 +51,7 @@ class LandingLayout extends React.Component<IProps,{}>{
     render(){
 
         const {
-            t,
+            classes, t,
             actions:{
                 onToggleTheme,onToggleDirection,
             }
@@ -51,8 +59,13 @@ class LandingLayout extends React.Component<IProps,{}>{
 
         return (
             <div className={cx(
-                'landingContainer'
+                'landingContainer',
+                classes.container,
             )}>
+                <LandingHeader
+                    onSwitchLanguage={this.handleSwitchLanguage}
+                    onToggleTheme = {onToggleTheme}
+                />
                 <Paper>
                     <Typography variant='h6' gutterBottom>
                         Landing layout works ~
