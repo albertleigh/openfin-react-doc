@@ -8,10 +8,11 @@ i18n
     .use(backend)
     .use(reactI18nextModule)
     .init({
+        ns: ['landing',],
+        defaultNS: 'landing',
         lng:'en',
         fallbackLng:'en',
 
-        keySeparator:false,
         interpolation:{
             escapeValue:false,
         }

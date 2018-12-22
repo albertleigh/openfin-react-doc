@@ -101,7 +101,7 @@ export default connect(
 
 )(
     withStyles(style)(
-        withNamespaces()(LandingLayout)
+        withNamespaces('landing')(LandingLayout)
     )
 );
 

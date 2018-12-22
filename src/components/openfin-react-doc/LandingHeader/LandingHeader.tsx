@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as cx from 'classnames';
+import { withNamespaces, WithNamespaces } from 'react-i18next';
 
 import i18n from '../../../i18n';
 
@@ -23,7 +24,7 @@ import gitHubSvg from '../../../assets/svg/developer/github-logo-dark.svg';
 import chinaSvg from '../../../assets/svg/language/china.svg';
 import usSvg from '../../../assets/svg/language/united-states.svg';
 
-interface IProps extends WithStyles<typeof style>{
+interface IProps extends WithStyles<typeof style>, WithNamespaces{
     onSwitchLanguage:(languageName:string)=> void,
     onToggleTheme:()=> void,
 }
@@ -71,7 +72,7 @@ class LandingHeaderComp extends React.Component<IProps, IState>{
 
     render(){
 
-        const { classes } = this.props;
+        const { classes, t } = this.props;
 
         const { anchorEl, mobileMoreAnchorEl } = this.state;
         const isMenuOpen = Boolean(anchorEl);
@@ -141,17 +142,17 @@ class LandingHeaderComp extends React.Component<IProps, IState>{
                         </Typography>
                         <div className={classes.grow} />
                         <div className={classes.sectionDesktop}>
-                            <Tooltip title="Toggle light/drak theme" enterDelay={300}>
+                            <Tooltip title={t('header.toolTip.toggleTheme')} enterDelay={300}>
                                 <IconButton color="inherit" onClick={this.props.onToggleTheme} >
                                     <Icon>lightbulb_outline</Icon>
                                 </IconButton>
                             </Tooltip>
-                            <Tooltip title="Github" enterDelay={300}>
+                            <Tooltip title={t('header.toolTip.github')} enterDelay={300}>
                                 <IconButton color="inherit">
                                     <img className={classes.menuSvg} src={gitHubSvg}/>
                                 </IconButton>
                             </Tooltip>
-                            <Tooltip title="Change language" enterDelay={300}>
+                            <Tooltip title={t('header.toolTip.changeLanguage')} enterDelay={300}>
                                 <IconButton
                                     aria-owns={isMenuOpen ? 'material-appbar' : undefined}
                                     aria-haspopup="true"
@@ -176,4 +177,6 @@ class LandingHeaderComp extends React.Component<IProps, IState>{
     }
 }
 
-export default withStyles(style)(LandingHeaderComp);
+export default withStyles(style)(
+    withNamespaces("landing")(LandingHeaderComp)
+);

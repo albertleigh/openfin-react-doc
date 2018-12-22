@@ -1,0 +1,10 @@
+{
+  "Welcome React TS":"Welcome to React Ts in en",
+  "header":{
+    "toolTip":{
+      "toggleTheme":"Toggle light/drak theme",
+      "github":"Github",
+      "changeLanguage":"Change language"
+    }
+  }
+}
