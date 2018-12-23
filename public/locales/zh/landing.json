@@ -6,5 +6,10 @@
       "github":"Github",
       "changeLanguage":"改变语言"
     }
+  },
+  "welcomeSec":{
+    "title":"Openfin React 解决方案",
+    "subtitle":"Openfin 桌面 App React 模板",
+    "startBtn":"开始"
   }
 }
