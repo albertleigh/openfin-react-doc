@@ -7,6 +7,9 @@ const landingStyle = (theme:Theme)=> createStyles({
         // [theme.breakpoints.up('sm')]:{
         //     paddingTop: 64,
         // },
+        width:'100%',
+        height:'100vh',
+        overflow:'auto',
     },
     sectionContainer:{
         width:'100%',
