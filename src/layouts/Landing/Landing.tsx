@@ -13,6 +13,7 @@ import { landingStyle as style } from '../../assets/jss/openfin-react-doc';
 import {
     LandingHeader,
     LandingWelcomeSection,
+    LandingSnapDockSection,
 } from '../../components';
 
 interface IProps extends WithStyles<typeof style>, WithNamespaces {
@@ -69,6 +70,9 @@ class LandingLayout extends React.Component<IProps,{}>{
                 />
                 <div className={classes.sectionContainer}>
                     <LandingWelcomeSection/>
+                </div>
+                <div className={classes.sectionContainer}>
+                    <LandingSnapDockSection/>
                 </div>
                 <Paper>
                     <Typography variant='h6' gutterBottom>
