@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as cx from 'classnames';
+import cx from 'classnames';
 import Particles from 'react-particles-js';
 import { withNamespaces, WithNamespaces } from 'react-i18next';
 
@@ -13,7 +13,7 @@ import AbstractLandingSection from './AbstractLandingSection';
 import { landingWelcomeSectionCompStyle as style } from '../../../assets/jss/openfin-react-doc';
 
 interface IProps extends WithStyles<typeof style>, WithNamespaces{
-
+    onIntersectionChanged: (intersectionObserverEntry:IntersectionObserverEntry) =>void,
 }
 
 interface IState{
@@ -38,7 +38,9 @@ class WelcomeSectionComp extends AbstractLandingSection<IProps, IState>{
     }
 
     onIntersectionChanged =(intersectionObserverEntry:IntersectionObserverEntry)=>{
-        console.log("WelcomeSectionComp::onIntersectionChanged",intersectionObserverEntry.intersectionRatio ,intersectionObserverEntry);
+        if (this.props.onIntersectionChanged){
+            this.props.onIntersectionChanged(intersectionObserverEntry);
+        }
     }
 
     render(){

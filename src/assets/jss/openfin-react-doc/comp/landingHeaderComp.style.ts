@@ -6,6 +6,13 @@ const landingHeaderCompStyle = (theme:Theme)=> createStyles({
     root: {
         width: '100%',
     },
+    appbar:{
+        transition:'background-color 0.5s ease',
+    },
+    appbarTransparent:{
+        backgroundColor:'transparent',
+        boxShadow:'none',
+    },
     grow: {
         flexGrow: 1,
     },

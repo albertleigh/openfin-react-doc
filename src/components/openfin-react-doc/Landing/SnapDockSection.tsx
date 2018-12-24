@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as cx from 'classnames';
+import cx from 'classnames';
 import { WithStyles, withStyles } from '@material-ui/core/styles';
 
 import { landingSnapDockSectionCompStyle as style } from '../../../assets/jss/openfin-react-doc';
@@ -7,7 +7,7 @@ import { landingSnapDockSectionCompStyle as style } from '../../../assets/jss/op
 import AbstractLandingSection from './AbstractLandingSection';
 
 interface IProps extends WithStyles<typeof style>{
-
+    onIntersectionChanged: (intersectionObserverEntry:IntersectionObserverEntry) =>void,
 }
 
 interface IState{
@@ -33,7 +33,9 @@ class SnapDockSectionComp extends AbstractLandingSection<IProps, IState>{
     }
 
     onIntersectionChanged =(intersectionObserverEntry:IntersectionObserverEntry)=>{
-        console.log("SnapDockSectionComp::onIntersectionChanged",intersectionObserverEntry.intersectionRatio ,intersectionObserverEntry);
+        if (this.props.onIntersectionChanged){
+            this.props.onIntersectionChanged(intersectionObserverEntry);
+        }
     }
 
     render(){

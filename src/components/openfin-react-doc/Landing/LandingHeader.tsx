@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as cx from 'classnames';
+import cx from 'classnames';
 import { withNamespaces, WithNamespaces } from 'react-i18next';
 
 import i18n from '../../../i18n';
@@ -25,6 +25,7 @@ import chinaSvg from '../../../assets/svg/language/china.svg';
 import usSvg from '../../../assets/svg/language/united-states.svg';
 
 interface IProps extends WithStyles<typeof style>, WithNamespaces{
+    activeChildSectionName:string,
     onSwitchLanguage:(languageName:string)=> void,
     onToggleTheme:()=> void,
 }
@@ -72,7 +73,10 @@ class LandingHeaderComp extends React.Component<IProps, IState>{
 
     render(){
 
-        const { classes, t } = this.props;
+        const {
+            classes, t,
+            activeChildSectionName,
+        } = this.props;
 
         const { anchorEl, mobileMoreAnchorEl } = this.state;
         const isMenuOpen = Boolean(anchorEl);
@@ -132,13 +136,19 @@ class LandingHeaderComp extends React.Component<IProps, IState>{
 
         return(
             <React.Fragment>
-                <AppBar position="fixed">
+                <AppBar
+                    className={cx(
+                        classes.appbar,
+                        {[classes.appbarTransparent]:activeChildSectionName==='welcome'}
+                    )}
+                    position="fixed"
+                >
                     <Toolbar>
                         <IconButton className={classes.menuButton} color="inherit" aria-label="Open drawer">
                             <MenuIcon />
                         </IconButton>
                         <Typography className={classes.title} variant="h6" color="inherit" noWrap>
-                            Material-UI
+                            {activeChildSectionName}
                         </Typography>
                         <div className={classes.grow} />
                         <div className={classes.sectionDesktop}>

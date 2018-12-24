@@ -16,15 +16,6 @@ import {
     LandingSnapDockSection,
 } from '../../components';
 
-interface IProps extends WithStyles<typeof style>, WithNamespaces {
-
-    actions:{
-        onToggleTheme:()=>void,
-        onToggleDirection:()=>void,
-    }
-
-}
-
 import {
     // actions
     applicationToggleTheme,
@@ -35,10 +26,44 @@ import {
 } from '../../reduxs';
 import i18n from "../../i18n";
 
-class LandingLayout extends React.Component<IProps,{}>{
+interface IProps extends WithStyles<typeof style>, WithNamespaces {
+
+    actions:{
+        onToggleTheme:()=>void,
+        onToggleDirection:()=>void,
+    }
+
+}
+
+interface IState {
+    activeChildSectionName:string,
+}
+
+class LandingLayout extends React.Component<IProps,IState>{
+
+    state = {
+        activeChildSectionName: 'welcome',
+    }
+
+    childSectionNames=['welcome','snapDock',];
+    childIntersectionRatios:number[]=[0,0];
 
     handleSwitchLanguage = (languageName:string) => {
         i18n.changeLanguage(languageName);
+    }
+
+    handleIntersectionChanged = (index:number)=> (intersectionObserverEntry:IntersectionObserverEntry) => {
+        this.childIntersectionRatios[index] = intersectionObserverEntry.intersectionRatio;
+
+        let maxIndex = 0;
+        let max = this.childIntersectionRatios[0];
+        for (let i= 0; i < this.childIntersectionRatios.length; i++){
+            if (this.childIntersectionRatios[i]> max){
+                max = this.childIntersectionRatios[i];
+                maxIndex = i;
+            }
+        }
+        this.setState({activeChildSectionName:this.childSectionNames[maxIndex]});
     }
 
     handleSwitchToEn = () => {
@@ -59,20 +84,27 @@ class LandingLayout extends React.Component<IProps,{}>{
             }
         } = this.props;
 
+        const {activeChildSectionName} = this.state;
+
         return (
             <div className={cx(
                 'landingContainer',
                 classes.container,
             )}>
                 <LandingHeader
+                    activeChildSectionName={activeChildSectionName}
                     onSwitchLanguage={this.handleSwitchLanguage}
                     onToggleTheme = {onToggleTheme}
                 />
                 <div className={classes.sectionContainer}>
-                    <LandingWelcomeSection/>
+                    <LandingWelcomeSection
+                        onIntersectionChanged = {this.handleIntersectionChanged(0)}
+                    />
                 </div>
                 <div className={classes.sectionContainer}>
-                    <LandingSnapDockSection/>
+                    <LandingSnapDockSection
+                        onIntersectionChanged = {this.handleIntersectionChanged(1)}
+                    />
                 </div>
                 <Paper>
                     <Typography variant='h6' gutterBottom>
