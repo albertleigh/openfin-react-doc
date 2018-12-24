@@ -33,7 +33,7 @@ class SnapDockSectionComp extends AbstractLandingSection<IProps, IState>{
     }
 
     onIntersectionChanged =(intersectionObserverEntry:IntersectionObserverEntry)=>{
-        console.log("SnapDockSectionComp::onIntersectionChanged",intersectionObserverEntry);
+        console.log("SnapDockSectionComp::onIntersectionChanged",intersectionObserverEntry.intersectionRatio ,intersectionObserverEntry);
     }
 
     render(){

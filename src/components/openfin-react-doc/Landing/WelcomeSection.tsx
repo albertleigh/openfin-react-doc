@@ -8,6 +8,8 @@ import { WithStyles, withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
+import AbstractLandingSection from './AbstractLandingSection';
+
 import { landingWelcomeSectionCompStyle as style } from '../../../assets/jss/openfin-react-doc';
 
 interface IProps extends WithStyles<typeof style>, WithNamespaces{
@@ -19,13 +21,32 @@ interface IState{
     [key:string]:any,
 }
 
-class WelcomeSectionComp extends React.Component<IProps, IState>{
+class WelcomeSectionComp extends AbstractLandingSection<IProps, IState>{
+
+    element:any;
+
+    state={
+        visiblePct: 0,
+    }
+
+    componentDidMount(): void {
+        super.componentDidMount();
+    }
+
+    componentWillUnmount(): void {
+        super.componentWillUnmount();
+    }
+
+    onIntersectionChanged =(intersectionObserverEntry:IntersectionObserverEntry)=>{
+        console.log("WelcomeSectionComp::onIntersectionChanged",intersectionObserverEntry.intersectionRatio ,intersectionObserverEntry);
+    }
+
     render(){
 
         const { classes, t } = this.props;
 
         return(
-            <div className={classes.container}>
+            <div ref = {el => this.element = el} className={classes.container}>
                 <Particles
                     className={classes.backgroundContainer}
                     params={{
