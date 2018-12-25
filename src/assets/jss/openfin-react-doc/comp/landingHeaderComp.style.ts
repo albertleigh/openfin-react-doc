@@ -25,7 +25,7 @@ const landingHeaderCompStyle = (theme:Theme)=> createStyles({
         height:24,
 
     },
-    title: {
+    titleTab: {
         display: 'none',
         [theme.breakpoints.up('sm')]: {
             display: 'block',

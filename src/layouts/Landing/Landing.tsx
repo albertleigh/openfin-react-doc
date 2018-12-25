@@ -25,6 +25,7 @@ import {
     IRootState,
 } from '../../reduxs';
 import i18n from "../../i18n";
+import { scrollTo } from '../../utils/scrollIng';
 
 interface IProps extends WithStyles<typeof style>, WithNamespaces {
 
@@ -36,16 +37,20 @@ interface IProps extends WithStyles<typeof style>, WithNamespaces {
 }
 
 interface IState {
-    activeChildSectionName:string,
+    activeChildSectionIndex:number,
 }
 
 class LandingLayout extends React.Component<IProps,IState>{
 
     state = {
-        activeChildSectionName: 'welcome',
+        activeChildSectionIndex: 0,
     }
 
     childSectionNames=['welcome','snapDock',];
+    childSectionRefs = {
+        welcome: null,
+        snapDock: null,
+    };
     childIntersectionRatios:number[]=[0,0];
 
     handleSwitchLanguage = (languageName:string) => {
@@ -55,7 +60,7 @@ class LandingLayout extends React.Component<IProps,IState>{
     handleIntersectionChanged = (index:number)=> (intersectionObserverEntry:IntersectionObserverEntry) => {
         this.childIntersectionRatios[index] = intersectionObserverEntry.intersectionRatio;
 
-        let maxIndex = 0;
+        let maxIndex:number = 0;
         let max = this.childIntersectionRatios[0];
         for (let i= 0; i < this.childIntersectionRatios.length; i++){
             if (this.childIntersectionRatios[i]> max){
@@ -63,7 +68,20 @@ class LandingLayout extends React.Component<IProps,IState>{
                 maxIndex = i;
             }
         }
-        this.setState({activeChildSectionName:this.childSectionNames[maxIndex]});
+        this.setState({activeChildSectionIndex:maxIndex});
+    }
+
+    handleActiveChildSectionChanged = (activeChildSectionName:string)=>{
+        // console.log('LandingLayout::handleActiveChildSectionChanged',
+        //     activeChildSectionName,
+        //     this.childSectionRefs[activeChildSectionName].offsetTop,
+        //     this.childSectionRefs[activeChildSectionName],
+        // );
+        scrollTo(
+            document.querySelector('.landingContainer'),
+            this.childSectionRefs[activeChildSectionName].offsetTop,
+            600,
+        )
     }
 
     handleSwitchToEn = () => {
@@ -84,7 +102,7 @@ class LandingLayout extends React.Component<IProps,IState>{
             }
         } = this.props;
 
-        const {activeChildSectionName} = this.state;
+        const {activeChildSectionIndex} = this.state;
 
         return (
             <div className={cx(
@@ -92,16 +110,18 @@ class LandingLayout extends React.Component<IProps,IState>{
                 classes.container,
             )}>
                 <LandingHeader
-                    activeChildSectionName={activeChildSectionName}
+                    activeChildSectionIndex={activeChildSectionIndex}
+                    childrenSectionNames={this.childSectionNames}
                     onSwitchLanguage={this.handleSwitchLanguage}
+                    onActiveChildSectionChange={this.handleActiveChildSectionChanged}
                     onToggleTheme = {onToggleTheme}
                 />
-                <div className={classes.sectionContainer}>
+                <div className={classes.sectionContainer} ref={el => this.childSectionRefs.welcome = el}>
                     <LandingWelcomeSection
                         onIntersectionChanged = {this.handleIntersectionChanged(0)}
                     />
                 </div>
-                <div className={classes.sectionContainer}>
+                <div className={classes.sectionContainer} ref={el => this.childSectionRefs.snapDock = el}>
                     <LandingSnapDockSection
                         onIntersectionChanged = {this.handleIntersectionChanged(1)}
                     />

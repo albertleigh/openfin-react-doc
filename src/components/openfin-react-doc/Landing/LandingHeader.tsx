@@ -11,7 +11,8 @@ import { landingHeaderCompStyle as style } from '../../../assets/jss/openfin-rea
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
 import Tooltip from '@material-ui/core/Tooltip';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
@@ -25,8 +26,10 @@ import chinaSvg from '../../../assets/svg/language/china.svg';
 import usSvg from '../../../assets/svg/language/united-states.svg';
 
 interface IProps extends WithStyles<typeof style>, WithNamespaces{
-    activeChildSectionName:string,
+    activeChildSectionIndex:number,
+    childrenSectionNames:string[],
     onSwitchLanguage:(languageName:string)=> void,
+    onActiveChildSectionChange: (activeChildSectionName:string) => void,
     onToggleTheme:()=> void,
 }
 
@@ -71,11 +74,15 @@ class LandingHeaderComp extends React.Component<IProps, IState>{
         this.setState({ mobileMoreAnchorEl: null });
     };
 
+    handleActiveChildSectionChange = (event, value) => {
+        this.props.onActiveChildSectionChange(this.props.childrenSectionNames[value]);
+    }
+
     render(){
 
         const {
             classes, t,
-            activeChildSectionName,
+            activeChildSectionIndex, childrenSectionNames,
         } = this.props;
 
         const { anchorEl, mobileMoreAnchorEl } = this.state;
@@ -139,7 +146,7 @@ class LandingHeaderComp extends React.Component<IProps, IState>{
                 <AppBar
                     className={cx(
                         classes.appbar,
-                        {[classes.appbarTransparent]:activeChildSectionName==='welcome'}
+                        {[classes.appbarTransparent]:activeChildSectionIndex===0}
                     )}
                     position="fixed"
                 >
@@ -147,9 +154,13 @@ class LandingHeaderComp extends React.Component<IProps, IState>{
                         <IconButton className={classes.menuButton} color="inherit" aria-label="Open drawer">
                             <MenuIcon />
                         </IconButton>
-                        <Typography className={classes.title} variant="h6" color="inherit" noWrap>
-                            {activeChildSectionName}
-                        </Typography>
+                        <Tabs className={classes.titleTab} value={activeChildSectionIndex} onChange={this.handleActiveChildSectionChange}>
+                            {
+                                childrenSectionNames.map((name,index,arr)=>(
+                                    <Tab label={name} key={index} />
+                                ))
+                            }
+                        </Tabs>
                         <div className={classes.grow} />
                         <div className={classes.sectionDesktop}>
                             <Tooltip title={t('header.toolTip.toggleTheme')} enterDelay={300}>
