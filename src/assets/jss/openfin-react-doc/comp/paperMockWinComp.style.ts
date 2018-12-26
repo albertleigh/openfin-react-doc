@@ -25,7 +25,7 @@ const paperMockWinCompStyle = (theme:Theme)=> createStyles({
         alignItems: 'baseline',
     },
     infoBtn:{
-        color: theme.palette.text.primary,
+        color: 'white',
         backgroundColor: cyan[500],
         height:20,
         width:20,
@@ -37,7 +37,7 @@ const paperMockWinCompStyle = (theme:Theme)=> createStyles({
         }
     },
     greenBtn:{
-        color: theme.palette.text.primary,
+        color: 'white',
         backgroundColor: green[500],
         height:20,
         width:20,
@@ -49,7 +49,7 @@ const paperMockWinCompStyle = (theme:Theme)=> createStyles({
         }
     },
     yellowBtn:{
-        color: theme.palette.text.primary,
+        color: 'white',
         backgroundColor: yellow[700],
         height:20,
         width:20,
@@ -61,7 +61,7 @@ const paperMockWinCompStyle = (theme:Theme)=> createStyles({
         }
     },
     redBtn:{
-        color: theme.palette.text.primary,
+        color: 'white',
         backgroundColor: red[500],
         height:20,
         width:20,

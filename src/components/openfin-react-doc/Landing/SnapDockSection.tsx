@@ -2,6 +2,7 @@ import * as React from 'react';
 import cx from 'classnames';
 import Typography from '@material-ui/core/Typography';
 import { WithStyles, withStyles } from '@material-ui/core/styles';
+import { withNamespaces, WithNamespaces } from 'react-i18next';
 
 import { landingSnapDockSectionCompStyle as style } from '../../../assets/jss/openfin-react-doc';
 
@@ -9,7 +10,7 @@ import PaperMockWin  from '../PaperMockWin/PaperMockWin';
 
 import AbstractLandingSection from './AbstractLandingSection';
 
-interface IProps extends WithStyles<typeof style>{
+interface IProps extends WithStyles<typeof style>, WithNamespaces {
     onIntersectionChanged: (intersectionObserverEntry:IntersectionObserverEntry) =>void,
 }
 
@@ -59,7 +60,7 @@ class SnapDockSectionComp extends AbstractLandingSection<IProps, IState>{
 
     render(){
 
-        const { classes } = this.props;
+        const { classes, t } = this.props;
         const { visiblePct, windowsShown, rightWindowDocked } = this.state;
 
         return(
@@ -68,7 +69,7 @@ class SnapDockSectionComp extends AbstractLandingSection<IProps, IState>{
                 ref = {el => this.element = el}
             >
                 <Typography variant="h4" color="inherit" gutterBottom>
-                    Out of box snap&dock
+                    {t('snapDockSec.title')}
                 </Typography>
                 <div
                     className = {classes.windowsContainer}
@@ -83,7 +84,9 @@ class SnapDockSectionComp extends AbstractLandingSection<IProps, IState>{
                         )}
                     >
                         <PaperMockWin>
-                            <span>Windows 1</span>
+                            <Typography variant="h2" color="inherit" gutterBottom>
+                                {t('snapDockSec.win1')}
+                            </Typography>
                         </PaperMockWin>
                     </div>
                     <div
@@ -100,18 +103,20 @@ class SnapDockSectionComp extends AbstractLandingSection<IProps, IState>{
                             docked={true}
                             onUndock={this.handleRightWindowUndock}
                         >
-                            <span>Windows 2</span>
+                            <Typography variant="h2" color="inherit" gutterBottom>
+                                {t('snapDockSec.win2')}
+                            </Typography>
                         </PaperMockWin>
                     </div>
                 </div>
                 <Typography variant="body1" color="inherit" gutterBottom>
-                    Openfin Snap & Dock features is provided out of box and it could be transparent to developers.
-                    Snapped windows will move together when dragged and will resize themselves when user try to resize one.
-                    An undock button will be provided out of box to let user undock out of the groups.
+                    {t('snapDockSec.desc')}
                 </Typography>
             </div>
         )
     }
 }
 
-export default withStyles(style)(SnapDockSectionComp);
+export default withStyles(style)(
+    withNamespaces('landing')(SnapDockSectionComp)
+);

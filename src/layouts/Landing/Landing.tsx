@@ -132,7 +132,10 @@ class LandingLayout extends React.Component<IProps,IState>{
                     />
                 </div>
                 <div
-                    className={cx(classes.sectionContainer, classes.sectionPaddingContainer)}
+                    className={cx(
+                        classes.sectionContainer, classes.sectionPaddingContainer,
+                        classes.snapDockSectionContainer,
+                    )}
                     ref={el => this.childSectionRefs.snapDock = el}
                 >
                     <LandingSnapDockSection

@@ -11,5 +11,11 @@
     "title":"Openfin React Starter",
     "subtitle":"Desktop app template in React via Openfin",
     "startBtn":"Get Started"
+  },
+  "snapDockSec":{
+    "title":"Out of box snap&dock",
+    "win1":"Window 1",
+    "win2":"Window 2",
+    "desc":"Openfin Snap & Dock feature is provided out of box, which could be transparent to developers. An undock button will be provided to let user undock out of the groups if the window is docked. Snapped windows will move together when dragged and will resize between themselves when user try to resize anyone."
   }
 }

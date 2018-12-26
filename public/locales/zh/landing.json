@@ -11,5 +11,11 @@
     "title":"Openfin React 解决方案",
     "subtitle":"Openfin 桌面 App React 模板",
     "startBtn":"开始"
+  },
+  "snapDockSec":{
+    "title":"自带Snap&Dock功能",
+    "win1":"窗口 1",
+    "win2":"窗口 2",
+    "desc":"模板自带Openfin Snap & Dock功能，开发人员无需多加处理。可以通过Undock按钮来脱离窗口群组。窗口群组内的窗口在拖拽时会同时移动，也会自行调整大小。"
   }
 }

@@ -1,4 +1,5 @@
 import { Theme, createStyles } from '@material-ui/core/styles';
+import { lighten, darken } from '@material-ui/core/styles/colorManipulator';
 
 const landingStyle = (theme:Theme)=> createStyles({
 
@@ -20,8 +21,11 @@ const landingStyle = (theme:Theme)=> createStyles({
         [theme.breakpoints.up('sm')]:{
             paddingTop: 64,
         },
-    }
-
+    },
+    snapDockSectionContainer:{
+        backgroundColor: theme.palette.background.default,
+        color: theme.palette.text.primary,
+    },
 });
 
 export default landingStyle;
