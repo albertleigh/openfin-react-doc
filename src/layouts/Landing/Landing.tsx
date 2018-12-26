@@ -13,6 +13,7 @@ import { landingStyle as style } from '../../assets/jss/openfin-react-doc';
 import {
     LandingHeader,
     LandingWelcomeSection,
+    LandingScaffoldingToolSection,
     LandingSnapDockSection,
 } from '../../components';
 
@@ -46,12 +47,13 @@ class LandingLayout extends React.Component<IProps,IState>{
         activeChildSectionIndex: 0,
     }
 
-    childSectionNames=['welcome','snapDock',];
+    childSectionNames=['welcome','scaffolding','snapDock',];
     childSectionRefs = {
         welcome: null,
+        scaffolding: null,
         snapDock: null,
     };
-    childIntersectionRatios:number[]=[0,0];
+    childIntersectionRatios:number[]=[0,0,0,];
 
     handleSwitchLanguage = (languageName:string) => {
         i18n.changeLanguage(languageName);
@@ -121,9 +123,20 @@ class LandingLayout extends React.Component<IProps,IState>{
                         onIntersectionChanged = {this.handleIntersectionChanged(0)}
                     />
                 </div>
-                <div className={classes.sectionContainer} ref={el => this.childSectionRefs.snapDock = el}>
-                    <LandingSnapDockSection
+                <div
+                    className={cx(classes.sectionContainer, classes.sectionPaddingContainer)}
+                    ref={el => this.childSectionRefs.scaffolding = el}
+                >
+                    <LandingScaffoldingToolSection
                         onIntersectionChanged = {this.handleIntersectionChanged(1)}
+                    />
+                </div>
+                <div
+                    className={cx(classes.sectionContainer, classes.sectionPaddingContainer)}
+                    ref={el => this.childSectionRefs.snapDock = el}
+                >
+                    <LandingSnapDockSection
+                        onIntersectionChanged = {this.handleIntersectionChanged(2)}
                     />
                 </div>
                 <Paper>

@@ -14,6 +14,12 @@ const landingStyle = (theme:Theme)=> createStyles({
     sectionContainer:{
         width:'100%',
         height:'100vh',
+    },
+    sectionPaddingContainer:{
+        paddingTop: 56,
+        [theme.breakpoints.up('sm')]:{
+            paddingTop: 64,
+        },
     }
 
 });
