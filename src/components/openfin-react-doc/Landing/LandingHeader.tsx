@@ -154,7 +154,10 @@ class LandingHeaderComp extends React.Component<IProps, IState>{
                         <IconButton className={classes.menuButton} color="inherit" aria-label="Open drawer">
                             <MenuIcon />
                         </IconButton>
-                        <Tabs className={classes.titleTab} value={activeChildSectionIndex} onChange={this.handleActiveChildSectionChange}>
+                        <Tabs
+                            className={classes.titleTab} value={activeChildSectionIndex}
+                            onChange={this.handleActiveChildSectionChange}
+                        >
                             {
                                 childrenSectionNames.map((name,index,arr)=>(
                                     <Tab label={name} key={index} />

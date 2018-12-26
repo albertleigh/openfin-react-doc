@@ -15,12 +15,37 @@ const landingWelcomeSectionCompStyleStyle = (theme:Theme)=> createStyles({
         justifyContent:'center',
         color: 'white'
     },
+    mainIconContainer:{
+        display:'flex',
+        justifyContent:'center',
+        alignItems:'center',
+        width:'30vmin',
+        height:'30vmin',
+        marginBottom:'5vmin',
+        zIndex:theme.zIndex.appBar - 5,
+        backgroundColor:theme.palette.primary.main,
+        borderStyle:"solid",
+        borderColor:'white',
+        borderWidth:'10px',
+        borderRadius:'50%'
+    },
+    mainIcon:{
+        color:'white',
+        width:'75%',
+        height:'75%',
+    },
+    text:{
+        zIndex:theme.zIndex.appBar -5,
+        marginBottom:'2vmin',
+    },
     backgroundContainer:{
         position: 'absolute',
         top: 0,
         left: 0,
         bottom: 0,
         right: 0,
+        background:'url(https://media.giphy.com/media/10zxDv7Hv5RF9C/giphy.gif) no-repeat center center fixed',
+        backgroundSize: 'cover',
     }
 });
 

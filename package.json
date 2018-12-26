@@ -89,7 +89,6 @@
     "react-dom": "^16.6.3",
     "react-i18next": "^8.3.8",
     "react-json-view": "^1.19.1",
-    "react-particles-js": "^2.4.2",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
     "redux": "^4.0.0",

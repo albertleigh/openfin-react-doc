@@ -1,12 +1,13 @@
 import * as React from 'react';
 import cx from 'classnames';
-import Particles from 'react-particles-js';
 import { withNamespaces, WithNamespaces } from 'react-i18next';
 
 import { WithStyles, withStyles } from '@material-ui/core/styles';
 
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+
+import DesktopWindowsIcon from '@material-ui/icons/DesktopWindows';
 
 import AbstractLandingSection from './AbstractLandingSection';
 
@@ -49,64 +50,34 @@ class WelcomeSectionComp extends AbstractLandingSection<IProps, IState>{
 
         return(
             <div ref = {el => this.element = el} className={classes.container}>
-                <Particles
+                <div
                     className={classes.backgroundContainer}
-                    params={{
-                        "particles": {
-                            "number": {
-                                "value": 120,
-                                "density": {
-                                    "enable": true,
-                                    "value_area": 1500
-                                }
-                            },
-                            "line_linked": {
-                                "enable": true,
-                                "opacity": 0.02
-                            },
-                            "move": {
-                                "direction": "right",
-                                "speed": 0.05
-                            },
-                            "size": {
-                                "value": 2
-                            },
-                            "opacity": {
-                                "anim": {
-                                    "enable": true,
-                                    "speed": 1,
-                                    "opacity_min": 0.05
-                                }
-                            }
-                        },
-                        "interactivity": {
-                            "events": {
-                                "onclick": {
-                                    "enable": true,
-                                    "mode": "push"
-                                }
-                            },
-                            "modes": {
-                                "push": {
-                                    "particles_nb": 1
-                                }
-                            }
-                        },
-                        "retina_detect": true
-                    }}
                 />
 
-                <Typography variant='h4' color="inherit" gutterBottom>
+                <div className={classes.mainIconContainer}>
+                    <DesktopWindowsIcon
+                        className={classes.mainIcon}
+                    />
+                </div>
+
+                <Typography
+                    className={classes.text}
+                    variant='h4' color="inherit" gutterBottom
+                >
                     {t('welcomeSec.title')}
                 </Typography>
 
 
-                <Typography variant='h5' color="inherit" gutterBottom>
+                <Typography
+                    className={classes.text}
+                    variant='h5' color="inherit" gutterBottom
+                >
                     {t('welcomeSec.subtitle')}
                 </Typography>
 
                 <Button
                     variant="contained"
+                    color='secondary'
                 >{t('welcomeSec.startBtn')}</Button>
 
 
