@@ -4,9 +4,9 @@ interface IState{
     visiblePct:number,
 }
 
-export default abstract class AbstractLandingSection<Props, State> extends React.Component<Props, State | IState>{
+export default abstract class AbstractLandingSection<Props, State> extends React.Component<Props, Partial<IState | State>>{
 
-    abstract state:IState | State;
+    abstract state:Partial<IState | State>;
     abstract element:any;
 
     observer:IntersectionObserver;
