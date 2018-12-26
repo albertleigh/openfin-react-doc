@@ -14,8 +14,8 @@ const landingSnapDockSectionCompStyle = (theme:Theme)=> createStyles({
     windowsContainer:{
         display:'flex',
         flexWrap:'nowrap',
-        "& div:first-child":{
-            marginRight:10,
+        "& >div:first-child":{
+            marginRight:2,
         }
     },
     window:{

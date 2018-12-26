@@ -1,10 +1,11 @@
 import * as React from 'react';
 import cx from 'classnames';
-import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import { WithStyles, withStyles } from '@material-ui/core/styles';
 
 import { landingSnapDockSectionCompStyle as style } from '../../../assets/jss/openfin-react-doc';
+
+import PaperMockWin  from '../PaperMockWin/PaperMockWin';
 
 import AbstractLandingSection from './AbstractLandingSection';
 
@@ -15,6 +16,7 @@ interface IProps extends WithStyles<typeof style>{
 interface IState{
     visiblePct:number,
     windowsShown:boolean,
+    rightWindowDocked:boolean,
     // [key:number]:any,
     // [key:string]:any,
 }
@@ -26,6 +28,7 @@ class SnapDockSectionComp extends AbstractLandingSection<IProps, IState>{
     state={
         visiblePct: 0,
         windowsShown: false,
+        rightWindowDocked: true,
     }
 
     componentDidMount(): void {
@@ -42,15 +45,22 @@ class SnapDockSectionComp extends AbstractLandingSection<IProps, IState>{
             if (intersectionObserverEntry.intersectionRatio >0.75){
                 this.setState({windowsShown: true});
             }else{
-                this.setState({windowsShown: false})
+                this.setState({
+                    windowsShown: false,
+                    rightWindowDocked: true,
+                })
             }
         }
+    }
+
+    handleRightWindowUndock = ()=>{
+        this.setState({rightWindowDocked: false,})
     }
 
     render(){
 
         const { classes } = this.props;
-        const { visiblePct, windowsShown } = this.state;
+        const { visiblePct, windowsShown, rightWindowDocked } = this.state;
 
         return(
             <div
@@ -63,26 +73,36 @@ class SnapDockSectionComp extends AbstractLandingSection<IProps, IState>{
                 <div
                     className = {classes.windowsContainer}
                 >
-                    <Paper
+                    <div
                         className = {cx(
-                            classes.window,
                             'animated',
                             {
                                 [classes.windowHidden]:!windowsShown,
                                 'bounceInLeft':windowsShown
                             }
                         )}
-                    >Window 1</Paper>
-                    <Paper
+                    >
+                        <PaperMockWin>
+                            <span>Windows 1</span>
+                        </PaperMockWin>
+                    </div>
+                    <div
                         className = {cx(
-                            classes.window,
                             'animated',
                             {
-                                [classes.windowHidden]:!windowsShown,
-                                'bounceInRight':windowsShown
+                                [classes.windowHidden]:!windowsShown && rightWindowDocked,
+                                'bounceInRight':windowsShown && rightWindowDocked,
+                                'bounceOutDown':windowsShown && !rightWindowDocked,
                             }
                         )}
-                    >Window 2</Paper>
+                    >
+                        <PaperMockWin
+                            docked={true}
+                            onUndock={this.handleRightWindowUndock}
+                        >
+                            <span>Windows 2</span>
+                        </PaperMockWin>
+                    </div>
                 </div>
                 <Typography variant="body1" color="inherit" gutterBottom>
                     Openfin Snap & Dock features is provided out of box and it could be transparent to developers.
