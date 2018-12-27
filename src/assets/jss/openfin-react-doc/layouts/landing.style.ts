@@ -22,6 +22,10 @@ const landingStyle = (theme:Theme)=> createStyles({
             paddingTop: 64,
         },
     },
+    scaffoldingSectionContainer:{
+        backgroundColor: theme.palette.background.paper,
+        color: theme.palette.text.primary,
+    },
     snapDockSectionContainer:{
         backgroundColor: theme.palette.background.default,
         color: theme.palette.text.primary,

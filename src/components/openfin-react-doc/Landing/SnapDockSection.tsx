@@ -41,16 +41,18 @@ class SnapDockSectionComp extends AbstractLandingSection<IProps, IState>{
     }
 
     onIntersectionChanged =(intersectionObserverEntry:IntersectionObserverEntry)=>{
+
         if (this.props.onIntersectionChanged){
             this.props.onIntersectionChanged(intersectionObserverEntry);
-            if (intersectionObserverEntry.intersectionRatio >0.75){
-                this.setState({windowsShown: true});
-            }else{
-                this.setState({
-                    windowsShown: false,
-                    rightWindowDocked: true,
-                })
-            }
+        }
+
+        if (intersectionObserverEntry.intersectionRatio >0.75){
+            this.setState({windowsShown: true});
+        }else{
+            this.setState({
+                windowsShown: false,
+                rightWindowDocked: true,
+            })
         }
     }
 
