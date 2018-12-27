@@ -4,10 +4,6 @@ import cx from "classnames";
 import { connect } from 'react-redux';
 import { withNamespaces, WithNamespaces } from 'react-i18next';
 
-import Button from '@material-ui/core/Button';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
-
 import { landingStyle as style } from '../../assets/jss/openfin-react-doc';
 
 import {
@@ -18,6 +14,7 @@ import {
     LandingCrossWinCommSection,
     LandingGenConfSection,
     LandingAllCustomizableSection,
+    LandingSupportSection,
 } from '../../components';
 
 import {
@@ -182,18 +179,16 @@ class LandingLayout extends React.Component<IProps,IState>{
                         onIntersectionChanged = {this.handleIntersectionChanged(5)}
                     />
                 </div>
-                <Paper>
-                    <Typography variant='h6' gutterBottom>
-                        Landing layout works ~
-                    </Typography>
-                    <Typography variant='subtitle1' gutterBottom>
-                        {t('Welcome React TS')}
-                    </Typography>
-                </Paper>
-                <Button variant="outlined" color="primary" onClick={this.handleSwitchToEn} >Eng</Button>
-                <Button variant="outlined" color="secondary" onClick={this.handleSwitchToZh} >Zhn</Button>
-                <Button variant="contained" color="primary" onClick={onToggleTheme} >Toggle theme</Button>
-                <Button variant="contained" color="secondary" onClick={onToggleDirection} >Toggle Direction</Button>
+                <div
+                    className={cx(
+                        classes.sectionContainer, classes.sectionPaddingContainer,
+                    )}
+                    ref={el => this.childSectionRefs.support = el}
+                >
+                    <LandingSupportSection
+                        onIntersectionChanged = {this.handleIntersectionChanged(6)}
+                    />
+                </div>
             </div>
         )
     }

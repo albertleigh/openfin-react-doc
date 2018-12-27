@@ -9,6 +9,7 @@ export {default as landingSnapDockSectionCompStyle } from './comp/landingSnapDoc
 export {default as landingCrossWinCommSectionCompStyle } from './comp/landingCrossWinCommSectionComp.style'
 export {default as landingGenConfSectionCompStyle } from './comp/landingGenConfSectionComp.style'
 export {default as landingAllCustomizableSectionCompStyle } from './comp/landingAllCustomizableSectionComp.style'
+export {default as landingSupportSectionCompStyle } from './comp/landingSupportSectionComp.style'
 export {default as paperMockWinCompStyle } from './comp/paperMockWinComp.style'
 export {default as codeCompStyle } from './comp/codeComp.style'
 // END_OF_AL_CLI_COMP
