@@ -9,4 +9,5 @@ export {default as LandingAllCustomizableSection } from './openfin-react-doc/Lan
 export {default as LandingSupportSection } from './openfin-react-doc/Landing/SupportSection'
 export {default as PaperMockWin } from './openfin-react-doc/PaperMockWin/PaperMockWin'
 export {default as Code } from './openfin-react-doc/Code/Code'
+export {default as AniDashedLine } from './openfin-react-doc/AniDashedLine/AniDashedLine'
 // END_OF_AL_CLI_COMPONENTS

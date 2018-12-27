@@ -11,6 +11,8 @@ import PaperMockWin  from '../PaperMockWin/PaperMockWin';
 
 import AbstractLandingSection from './AbstractLandingSection';
 
+import AniDashedLine from '../AniDashedLine/AniDashedLine';
+
 interface IProps extends WithStyles<typeof style>, WithNamespaces {
     onIntersectionChanged: (intersectionObserverEntry:IntersectionObserverEntry) =>void,
 }
@@ -57,22 +59,7 @@ class CrossWinCommSectionComp extends AbstractLandingSection<IProps, IState>{
                     title
                 </Typography>
                 <div className={classes.commWinsContainer}>
-                    <div className={classes.commWin}>
-                        <PaperMockWin>
-                            <Typography variant="h2" color="inherit" gutterBottom>
-                                Win A
-                            </Typography>
-                        </PaperMockWin>
-                    </div>
-                    <Typography variant='h5' color='inherit' gutterBottom>2</Typography>
-                    <div className={classes.commWin}>
-                        <PaperMockWin>
-                            <Typography variant="h2" color="inherit" gutterBottom>
-                                Win B
-                            </Typography>
-                        </PaperMockWin>
-                    </div>
-                    <Typography variant='h5' color='inherit' gutterBottom>4</Typography>
+
                     <div className={classes.commWin}>
                         <PaperMockWin>
                             <Typography variant="h2" color="inherit" gutterBottom>
@@ -80,7 +67,43 @@ class CrossWinCommSectionComp extends AbstractLandingSection<IProps, IState>{
                             </Typography>
                         </PaperMockWin>
                     </div>
-                    <Typography variant='h5' color='inherit' gutterBottom>6</Typography>
+
+                    <div className={classes.dashedLine2}>
+                        <AniDashedLine
+                            viewBox='0 0 20 4'
+                            pathD='M0 0 c 3 5.1, 17 5.1, 20 0'
+                        />
+                    </div>
+
+                    <div className={classes.commWin}>
+                        <PaperMockWin>
+                            <Typography variant="h2" color="inherit" gutterBottom>
+                                Win B
+                            </Typography>
+                        </PaperMockWin>
+                    </div>
+
+                    <div className={classes.dashedLine4}>
+                        <AniDashedLine
+                            viewBox='0 0 20 4'
+                            pathD='M0 0 c 3 5.1, 17 5.1, 20 0'
+                        />
+                    </div>
+
+                    <div className={classes.commWin}>
+                        <PaperMockWin>
+                            <Typography variant="h2" color="inherit" gutterBottom>
+                                Win A
+                            </Typography>
+                        </PaperMockWin>
+                    </div>
+
+                    <div className={classes.dashedLine6}>
+                        <AniDashedLine
+                            viewBox='0 0 20 4'
+                            pathD='M0 0 c 3 5.1, 17 5.1, 20 0'
+                        />
+                    </div>
                 </div>
                 <Typography variant="body1" color="inherit" gutterBottom>
                     description

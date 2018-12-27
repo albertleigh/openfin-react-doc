@@ -27,3 +27,9 @@ code {
   from, to { border-color: transparent }
   50% { border-color: #8BC34A }
 }
+
+/* Dashed line */
+@keyframes dashed-line {
+  from { stroke-dashoffset: 0}
+  to  { stroke-dashoffset: -1 }
+}

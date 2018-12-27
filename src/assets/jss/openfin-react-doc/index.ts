@@ -12,4 +12,5 @@ export {default as landingAllCustomizableSectionCompStyle } from './comp/landing
 export {default as landingSupportSectionCompStyle } from './comp/landingSupportSectionComp.style'
 export {default as paperMockWinCompStyle } from './comp/paperMockWinComp.style'
 export {default as codeCompStyle } from './comp/codeComp.style'
+export {default as aniDashedLineCompStyle } from './comp/aniDashedLineComp.style'
 // END_OF_AL_CLI_COMP

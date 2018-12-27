@@ -14,14 +14,27 @@ const landingCrossWinCommSectionCompStyle = (theme:Theme)=> createStyles({
         // alignContent:'center',
     },
     commWinsContainer:{
-        ...onCircle(6,500, 210),
+        ...onCircle(6,400, 310),
 
     },
     commWin:{
+        zIndex:theme.zIndex.appBar-10
+    },
+    dashedLine2:{
         "& >div":{
-            transform:'scale(0.7)',
+            transform:'rotate(-60deg)'
         }
-    }
+    },
+    dashedLine4:{
+        "& >div":{
+            transform:'translate(0, 30px) rotate(180deg)'
+        }
+    },
+    dashedLine6:{
+        "& >div":{
+            transform:'rotate(60deg)'
+        }
+    },
 });
 
 export default landingCrossWinCommSectionCompStyle;
