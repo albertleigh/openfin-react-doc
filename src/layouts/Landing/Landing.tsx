@@ -15,6 +15,7 @@ import {
     LandingWelcomeSection,
     LandingScaffoldingToolSection,
     LandingSnapDockSection,
+    LandingCrossWinCommSection,
 } from '../../components';
 
 import {
@@ -47,11 +48,12 @@ class LandingLayout extends React.Component<IProps,IState>{
         activeChildSectionIndex: 0,
     }
 
-    childSectionNames=['welcome','scaffolding','snapDock',];
+    childSectionNames=['welcome','scaffolding','snapDock', 'crossWin', ];
     childSectionRefs = {
         welcome: null,
         scaffolding: null,
         snapDock: null,
+        crossWin: null,
     };
     childIntersectionRatios:number[]=[0,0,0,];
 
@@ -143,6 +145,16 @@ class LandingLayout extends React.Component<IProps,IState>{
                 >
                     <LandingSnapDockSection
                         onIntersectionChanged = {this.handleIntersectionChanged(2)}
+                    />
+                </div>
+                <div
+                    className={cx(
+                        classes.sectionContainer, classes.sectionPaddingContainer,
+                    )}
+                    ref={el => this.childSectionRefs.crossWin = el}
+                >
+                    <LandingCrossWinCommSection
+                        onIntersectionChanged = {this.handleIntersectionChanged(3)}
                     />
                 </div>
                 <Paper>
