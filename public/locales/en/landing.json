@@ -12,6 +12,10 @@
     "subtitle":"Desktop app template in React via Openfin",
     "startBtn":"Get Started"
   },
+  "scaffoldingSec":{
+    "title":"Scaffolding tool: al-cli",
+    "desc":"A scaffolding tool is provided to help to generate template project or boilerplate codes, making developers life easier. Even thought developers donot have to follow, a component design pattern is also suggested alone with the scaffolding tool."
+  },
   "snapDockSec":{
     "title":"Out of box Snap&Dock",
     "win1":"Window 1",

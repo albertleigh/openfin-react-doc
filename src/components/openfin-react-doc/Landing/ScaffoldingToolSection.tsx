@@ -3,6 +3,7 @@ import cx from 'classnames';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import { WithStyles, withStyles } from '@material-ui/core/styles';
+import { withNamespaces, WithNamespaces } from 'react-i18next';
 
 import { landingScaffoldingToolSectionCompStyle as style } from '../../../assets/jss/openfin-react-doc';
 
@@ -12,7 +13,7 @@ import AbstractLandingSection from './AbstractLandingSection';
 
 import newCompCode from '!raw-loader!./samples/NewComp_tsx';
 
-interface IProps extends WithStyles<typeof style>{
+interface IProps extends WithStyles<typeof style>,WithNamespaces {
     onIntersectionChanged: (intersectionObserverEntry:IntersectionObserverEntry) =>void,
 
 }
@@ -56,7 +57,7 @@ class ScaffoldingToolSectionComp extends AbstractLandingSection<IProps, IState>{
 
     render(){
 
-        const { classes } = this.props;
+        const { classes, t } = this.props;
         const {
             visiblePct, animated,
         } = this.state;
@@ -68,7 +69,7 @@ class ScaffoldingToolSectionComp extends AbstractLandingSection<IProps, IState>{
             >
 
                 <Typography variant="h4" color="inherit" gutterBottom>
-                    The scaffolding tool
+                    {t('scaffoldingSec.title')}
                 </Typography>
 
                 <div className={
@@ -107,12 +108,13 @@ class ScaffoldingToolSectionComp extends AbstractLandingSection<IProps, IState>{
                 </div>
 
                 <Typography variant="body1" color="inherit" gutterBottom>
-                    A scaffolding tool is provided to help to generate sample template and boilerplate codes,
-                    making developers life easier.
+                    {t('scaffoldingSec.desc')}
                 </Typography>
             </div>
         )
     }
 }
 
-export default withStyles(style)(ScaffoldingToolSectionComp);
+export default withStyles(style)(
+    withNamespaces('landing')(ScaffoldingToolSectionComp)
+);

@@ -12,6 +12,10 @@
     "subtitle":"Openfin 桌面 App React 模板",
     "startBtn":"开始"
   },
+  "scaffoldingSec":{
+    "title":"代码生成工具: al-cli",
+    "desc":"提供一个代码生成工具，并同时可以生成样本项目，减轻开发人员负担。同时也提供一建议的设计模式，开发人员可灵活选择采用与否。"
+  },
   "snapDockSec":{
     "title":"自带Snap&Dock功能",
     "win1":"窗口 1",
