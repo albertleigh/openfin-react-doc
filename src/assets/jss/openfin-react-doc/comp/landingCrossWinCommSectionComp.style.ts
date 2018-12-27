@@ -9,12 +9,16 @@ const landingCrossWinCommSectionCompStyle = (theme:Theme)=> createStyles({
         width: '100%',
         height: '100%',
         padding:'0 10% 0 10%',
-        justifyContent:'space-around',
+        justifyContent:'center',
         alignItems:'center',
         // alignContent:'center',
     },
+    title:{
+        marginBottom:20,
+    },
     commWinsContainer:{
         ...onCircle(6,400, 310),
+        margin:120,
 
     },
     commWin:{

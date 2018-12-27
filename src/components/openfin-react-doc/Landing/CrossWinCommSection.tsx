@@ -55,15 +55,16 @@ class CrossWinCommSectionComp extends AbstractLandingSection<IProps, IState>{
                 className={classes.container}
                 ref = {el => this.element = el}
             >
-                <Typography variant="h4" color="inherit" gutterBottom>
-                    title
+                <Typography className={classes.title} variant="h4" color="inherit" gutterBottom>
+                    {t('crossWin.title')}
                 </Typography>
+
                 <div className={classes.commWinsContainer}>
 
                     <div className={classes.commWin}>
                         <PaperMockWin>
-                            <Typography variant="h2" color="inherit" gutterBottom>
-                                Win C
+                            <Typography variant="h4" color="inherit" gutterBottom>
+                                {t('crossWin.win')} C
                             </Typography>
                         </PaperMockWin>
                     </div>
@@ -77,8 +78,8 @@ class CrossWinCommSectionComp extends AbstractLandingSection<IProps, IState>{
 
                     <div className={classes.commWin}>
                         <PaperMockWin>
-                            <Typography variant="h2" color="inherit" gutterBottom>
-                                Win B
+                            <Typography variant="h4" color="inherit" gutterBottom>
+                                {t('crossWin.win')} B
                             </Typography>
                         </PaperMockWin>
                     </div>
@@ -92,8 +93,8 @@ class CrossWinCommSectionComp extends AbstractLandingSection<IProps, IState>{
 
                     <div className={classes.commWin}>
                         <PaperMockWin>
-                            <Typography variant="h2" color="inherit" gutterBottom>
-                                Win A
+                            <Typography variant="h4" color="inherit" gutterBottom>
+                                {t('crossWin.win')} A
                             </Typography>
                         </PaperMockWin>
                     </div>
@@ -106,7 +107,7 @@ class CrossWinCommSectionComp extends AbstractLandingSection<IProps, IState>{
                     </div>
                 </div>
                 <Typography variant="body1" color="inherit" gutterBottom>
-                    description
+                    {t('crossWin.desc')}
                 </Typography>
             </div>
         )
