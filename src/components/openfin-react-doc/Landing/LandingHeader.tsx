@@ -160,7 +160,7 @@ class LandingHeaderComp extends React.Component<IProps, IState>{
                         >
                             {
                                 childrenSectionNames.map((name,index,arr)=>(
-                                    <Tab label={name} key={index} />
+                                    <Tab label={t(`header.tabsName.${name}`)} key={index} />
                                 ))
                             }
                         </Tabs>

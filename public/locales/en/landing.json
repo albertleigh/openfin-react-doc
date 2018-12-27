@@ -1,6 +1,12 @@
 {
   "Welcome React TS":"Welcome to React Ts in en",
   "header":{
+    "tabsName":{
+      "welcome":"Welcome",
+      "scaffolding":"al-cli",
+      "snapDock":"Snap&Dock",
+      "crossWin":"Cross-Win Comm"
+    },
     "toolTip":{
       "toggleTheme":"Toggle light/dark theme",
       "github":"Github",

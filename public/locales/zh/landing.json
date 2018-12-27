@@ -1,6 +1,12 @@
 {
   "Welcome React TS":"欢迎 react in TS zh",
   "header":{
+    "tabsName":{
+      "welcome":"欢迎",
+      "scaffolding":"al-cli",
+      "snapDock":"窗口合并",
+      "crossWin":"窗口通信"
+    },
     "toolTip":{
       "toggleTheme":"更改主题",
       "github":"Github",
