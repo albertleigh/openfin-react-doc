@@ -152,6 +152,7 @@ class LandingLayout extends React.Component<IProps,IState>{
                 <div
                     className={cx(
                         classes.sectionContainer, classes.sectionPaddingContainer,
+                        classes.crossWinSectionContainer,
                     )}
                     ref={el => this.childSectionRefs.crossWin = el}
                 >

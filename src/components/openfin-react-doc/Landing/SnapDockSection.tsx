@@ -1,6 +1,7 @@
 import * as React from 'react';
 import cx from 'classnames';
 import Typography from '@material-ui/core/Typography';
+
 import { WithStyles, withStyles } from '@material-ui/core/styles';
 import { withNamespaces, WithNamespaces } from 'react-i18next';
 
