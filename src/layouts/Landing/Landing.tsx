@@ -17,6 +17,7 @@ import {
     LandingSnapDockSection,
     LandingCrossWinCommSection,
     LandingGenConfSection,
+    LandingAllCustomizableSection,
 } from '../../components';
 
 import {
@@ -169,6 +170,16 @@ class LandingLayout extends React.Component<IProps,IState>{
                 >
                     <LandingGenConfSection
                         onIntersectionChanged = {this.handleIntersectionChanged(4)}
+                    />
+                </div>
+                <div
+                    className={cx(
+                        classes.sectionContainer, classes.sectionPaddingContainer,
+                    )}
+                    ref={el => this.childSectionRefs.allCust = el}
+                >
+                    <LandingAllCustomizableSection
+                        onIntersectionChanged = {this.handleIntersectionChanged(5)}
                     />
                 </div>
                 <Paper>

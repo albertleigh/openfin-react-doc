@@ -5,6 +5,7 @@ export {default as LandingScaffoldingToolSection } from './openfin-react-doc/Lan
 export {default as LandingSnapDockSection } from './openfin-react-doc/Landing/SnapDockSection'
 export {default as LandingCrossWinCommSection } from './openfin-react-doc/Landing/CrossWinCommSection'
 export {default as LandingGenConfSection } from './openfin-react-doc/Landing/GenConfSection'
+export {default as LandingAllCustomizableSection } from './openfin-react-doc/Landing/AllCustomizableSection'
 export {default as PaperMockWin } from './openfin-react-doc/PaperMockWin/PaperMockWin'
 export {default as Code } from './openfin-react-doc/Code/Code'
 // END_OF_AL_CLI_COMPONENTS
