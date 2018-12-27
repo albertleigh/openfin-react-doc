@@ -5,7 +5,10 @@
       "welcome":"Welcome",
       "scaffolding":"al-cli",
       "snapDock":"Snap&Dock",
-      "crossWin":"Cross-Win Comm"
+      "crossWin":"Cross-Win Comm",
+      "genConf":"General Configuration",
+      "allCust":"All React",
+      "support":"Support"
     },
     "toolTip":{
       "toggleTheme":"Toggle light/dark theme",

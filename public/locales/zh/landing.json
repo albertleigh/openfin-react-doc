@@ -5,7 +5,10 @@
       "welcome":"欢迎",
       "scaffolding":"al-cli",
       "snapDock":"窗口合并",
-      "crossWin":"窗口通信"
+      "crossWin":"窗口通信",
+      "genConf":"通用设置",
+      "allCust":"All React",
+      "support":"开发支持"
     },
     "toolTip":{
       "toggleTheme":"更改主题",

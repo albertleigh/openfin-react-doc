@@ -16,6 +16,7 @@ import {
     LandingScaffoldingToolSection,
     LandingSnapDockSection,
     LandingCrossWinCommSection,
+    LandingGenConfSection,
 } from '../../components';
 
 import {
@@ -48,14 +49,17 @@ class LandingLayout extends React.Component<IProps,IState>{
         activeChildSectionIndex: 0,
     }
 
-    childSectionNames=['welcome','scaffolding','snapDock', 'crossWin', ];
+    childSectionNames=['welcome','scaffolding','snapDock', 'crossWin', 'genConf', 'allCust', 'support', ];
     childSectionRefs = {
         welcome: null,
         scaffolding: null,
         snapDock: null,
         crossWin: null,
+        genConf: null,
+        allCust: null,
+        support: null,
     };
-    childIntersectionRatios:number[]=[0,0,0,];
+    childIntersectionRatios:number[]=[0,0,0,0,0,0,0,];
 
     handleSwitchLanguage = (languageName:string) => {
         i18n.changeLanguage(languageName);
@@ -155,6 +159,16 @@ class LandingLayout extends React.Component<IProps,IState>{
                 >
                     <LandingCrossWinCommSection
                         onIntersectionChanged = {this.handleIntersectionChanged(3)}
+                    />
+                </div>
+                <div
+                    className={cx(
+                        classes.sectionContainer, classes.sectionPaddingContainer,
+                    )}
+                    ref={el => this.childSectionRefs.genConf = el}
+                >
+                    <LandingGenConfSection
+                        onIntersectionChanged = {this.handleIntersectionChanged(4)}
                     />
                 </div>
                 <Paper>
