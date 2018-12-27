@@ -24,6 +24,9 @@
         "*"
       ]
     },
+    "include":[
+      "src/raw-loader.d.ts"
+    ],
     "allowSyntheticDefaultImports": true,
     "esModuleInterop":true,
     "experimentalDecorators": true,

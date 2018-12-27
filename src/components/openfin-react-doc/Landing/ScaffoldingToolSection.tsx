@@ -6,7 +6,11 @@ import { WithStyles, withStyles } from '@material-ui/core/styles';
 
 import { landingScaffoldingToolSectionCompStyle as style } from '../../../assets/jss/openfin-react-doc';
 
+import Code from '../Code/Code';
+
 import AbstractLandingSection from './AbstractLandingSection';
+
+import newCompCode from '!raw-loader!./samples/NewComp_tsx';
 
 interface IProps extends WithStyles<typeof style>{
     onIntersectionChanged: (intersectionObserverEntry:IntersectionObserverEntry) =>void,
@@ -66,6 +70,15 @@ class ScaffoldingToolSectionComp extends AbstractLandingSection<IProps, IState>{
                 <Typography variant="h4" color="inherit" gutterBottom>
                     The scaffolding tool
                 </Typography>
+
+                <div className={
+                    cx(
+                        classes.sampleCodeContainer,
+                        'animated', 'infinite', 'fadeIn', 'slow',
+                    )
+                }>
+                    <Code withMargin text={newCompCode} />
+                </div>
 
                 <div
                     className={cx(

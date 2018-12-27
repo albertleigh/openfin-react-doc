@@ -17,6 +17,9 @@ const landingScaffoldingToolSectionCompStyle = (theme:Theme)=> createStyles({
     green:{
         color: '#8BC34A',
     },
+    sampleCodeContainer:{
+        transform:'scale(0.8)',
+    },
     cmdInputContainer:{
         display:'flex',
         justifyContent:'flex-start',
