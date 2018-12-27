@@ -100,8 +100,8 @@ class CrossWinCommSectionComp extends AbstractLandingSection<IProps, IState>{
 
                     <div className={classes.dashedLine6}>
                         <AniDashedLine
-                            viewBox='0 0 20 4'
-                            pathD='M0 0 c 3 5.1, 17 5.1, 20 0'
+                            viewBox='0 0 20 6'
+                            pathD='M0 0 c 4 6.9, 16 6.9, 20 0'
                         />
                     </div>
                 </div>
