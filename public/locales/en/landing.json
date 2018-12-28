@@ -6,9 +6,9 @@
       "scaffolding":"al-cli",
       "snapDock":"Snap&Dock",
       "crossWin":"Cross-Win Comm",
-      "genConf":"General Configuration",
+      "genConf":"Configuration",
       "allCust":"All React",
-      "support":"Support"
+      "support":"Contrib&Supt"
     },
     "toolTip":{
       "toggleTheme":"Toggle light/dark theme",
@@ -40,5 +40,9 @@
     "title":"General configuration service",
     "application":"Application",
     "desc":"A general client side configuration service is provided. User could input or modify as they expected. Basing on it, developers could configure the application to response accordingly."
+  },
+  "allCust":{
+    "title":"All Customizable, All in React",
+    "desc":"All components, styles and structure are flexible and customizable, all in react. Easy to change, make developers life easier."
   }
 }

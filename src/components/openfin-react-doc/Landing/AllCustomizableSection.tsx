@@ -1,11 +1,16 @@
 import * as React from 'react';
 import cx from 'classnames';
+import Typography from '@material-ui/core/Typography';
 import { WithStyles, withStyles } from '@material-ui/core/styles';
 import { withNamespaces, WithNamespaces } from 'react-i18next';
 
 import { landingAllCustomizableSectionCompStyle as style } from '../../../assets/jss/openfin-react-doc';
 
+import PaperMockWin  from '../PaperMockWin/PaperMockWin';
+
 import AbstractLandingSection from "./AbstractLandingSection";
+
+import ReactSvg from '../../../assets/svg/developer/react.svg';
 
 interface IProps extends WithStyles<typeof style>, WithNamespaces {
     onIntersectionChanged: (intersectionObserverEntry:IntersectionObserverEntry) =>void,
@@ -49,7 +54,19 @@ class AllCustomizableSectionComp extends AbstractLandingSection<IProps, IState>{
                 className={classes.container}
                 ref = {el => this.element = el}
             >
-                AllCustomizableSection component works ~
+                <Typography variant="h4" color="inherit" gutterBottom>
+                    {t('allCust.title')}
+                </Typography>
+
+                <div>
+                    <PaperMockWin>
+                        <img className={classes.mockAppImg} src={ReactSvg}/>
+                    </PaperMockWin>
+                </div>
+
+                <Typography variant="body1" color="inherit" gutterBottom>
+                    {t('allCust.desc')}
+                </Typography>
             </div>
         )
     }

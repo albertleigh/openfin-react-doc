@@ -38,6 +38,9 @@ const landingStyle = (theme:Theme)=> createStyles({
         backgroundColor: theme.palette.background.default,
         color: theme.palette.text.primary,
     },
+    allCustSectionContainer:{
+        color: 'white',
+    },
 });
 
 export default landingStyle;
