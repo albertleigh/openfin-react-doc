@@ -34,6 +34,10 @@ const landingStyle = (theme:Theme)=> createStyles({
         backgroundColor: theme.palette.background.paper,
         color: theme.palette.text.primary,
     },
+    genConfSectionContainer:{
+        backgroundColor: theme.palette.background.default,
+        color: theme.palette.text.primary,
+    },
 });
 
 export default landingStyle;

@@ -8,10 +8,10 @@ import { withNamespaces, WithNamespaces } from 'react-i18next';
 import { landingCrossWinCommSectionCompStyle as style } from '../../../assets/jss/openfin-react-doc';
 
 import PaperMockWin  from '../PaperMockWin/PaperMockWin';
+import AniDashedLine from '../AniDashedLine/AniDashedLine';
 
 import AbstractLandingSection from './AbstractLandingSection';
 
-import AniDashedLine from '../AniDashedLine/AniDashedLine';
 
 interface IProps extends WithStyles<typeof style>, WithNamespaces {
     onIntersectionChanged: (intersectionObserverEntry:IntersectionObserverEntry) =>void,
