@@ -185,6 +185,7 @@ class LandingLayout extends React.Component<IProps,IState>{
                 <div
                     className={cx(
                         classes.sectionContainer, classes.sectionPaddingContainer,
+                        classes.supportContainer,
                     )}
                     ref={el => this.childSectionRefs.support = el}
                 >

@@ -6,6 +6,10 @@ const landingSupportSectionCompStyle = (theme:Theme)=> createStyles({
         height: '100%',
         padding:'0 10% 0 10%',
     },
+
+    header:{
+        marginTop:10,
+    }
 });
 
 export default landingSupportSectionCompStyle;
