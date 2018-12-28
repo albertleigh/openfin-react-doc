@@ -59,7 +59,7 @@ class GenConfSectionComp extends AbstractLandingSection<IProps, IState>{
                 ref = {el => this.element = el}
             >
                 <Typography variant="h4" color="inherit" gutterBottom>
-                    General configuration service
+                    {t('genConf.title')}
                 </Typography>
 
                 <div className={classes.centerContainer}>
@@ -81,7 +81,7 @@ class GenConfSectionComp extends AbstractLandingSection<IProps, IState>{
                     <div className={classes.centerMockWinContainer}>
                         <PaperMockWin>
                             <Typography variant="h4" color="inherit" gutterBottom>
-                                Application
+                                {t('genConf.application')}
                             </Typography>
                         </PaperMockWin>
                         <img className={classes.centerMockWinGears}
@@ -91,9 +91,7 @@ class GenConfSectionComp extends AbstractLandingSection<IProps, IState>{
                 </div>
 
                 <Typography variant="body1" color="inherit" gutterBottom>
-                    A general client side configuration service is provided.
-                    User could input or modify as they expected.
-                    Basing on it, developers could configure the application to response accordingly.
+                    {t('genConf.desc')}
                 </Typography>
             </div>
         )

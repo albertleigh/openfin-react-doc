@@ -35,5 +35,10 @@
     "title":"Windows communicate in Redux actions",
     "win":"Win",
     "desc":"Provide the mechanism to support cross-window communication in Redux actions, which make multi-windows developing much easier."
+  },
+  "genConf":{
+    "title":"General configuration service",
+    "application":"Application",
+    "desc":"A general client side configuration service is provided. User could input or modify as they expected. Basing on it, developers could configure the application to response accordingly."
   }
 }
