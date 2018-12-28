@@ -156,6 +156,8 @@ class LandingHeaderComp extends React.Component<IProps, IState>{
                         </IconButton>
                         <Tabs
                             className={classes.titleTab} value={activeChildSectionIndex}
+                            scrollable
+                            scrollButtons="auto"
                             onChange={this.handleActiveChildSectionChange}
                         >
                             {
