@@ -59,34 +59,41 @@ class GenConfSectionComp extends AbstractLandingSection<IProps, IState>{
                 ref = {el => this.element = el}
             >
                 <Typography variant="h4" color="inherit" gutterBottom>
-                    General client side config service
+                    General configuration service
                 </Typography>
 
                 <div className={classes.centerContainer}>
-                    <img src={databaseGearsSvg}/>
+                    <img className={classes.centerDbImgContainer}
+                         src={databaseGearsSvg}/>
 
                     <div className={classes.centerDashedLinesContainer} >
                         <AniDashedLine
-                            viewBox='0 0 20 4'
-                            pathD='M0 0 c 3 5.1, 17 5.1, 20 0'
+                            viewBox='0 0 10 1'
+                            pathD='M0 0 l10,0'
                         />
 
                         <AniDashedLine
-                            viewBox='0 0 20 4'
-                            pathD='M0 0 c 3 5.1, 17 5.1, 20 0'
+                            viewBox='0 0 10 1'
+                            pathD='M0 0 l10,0'
                         />
                     </div>
 
-                    <PaperMockWin>
-                        <Typography variant="h4" color="inherit" gutterBottom>
-                            Application
-                        </Typography>
-                    </PaperMockWin>
+                    <div className={classes.centerMockWinContainer}>
+                        <PaperMockWin>
+                            <Typography variant="h4" color="inherit" gutterBottom>
+                                Application
+                            </Typography>
+                        </PaperMockWin>
+                        <img className={classes.centerMockWinGears}
+                            src={settingSvg}/>
+                    </div>
 
                 </div>
 
                 <Typography variant="body1" color="inherit" gutterBottom>
-                    A general client side config service is provided.
+                    A general client side configuration service is provided.
+                    User could input or modify as they expected.
+                    Basing on it, developers could configure the application to response accordingly.
                 </Typography>
             </div>
         )
