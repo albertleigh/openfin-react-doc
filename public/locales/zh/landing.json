@@ -44,5 +44,15 @@
   "allCust":{
     "title":"全React组建，可以全定制",
     "desc":"所有组件样式结构都可灵活更改，全React组建。使开发简易。"
+  },
+  "support":{
+    "contributors":"开发人员: ",
+    "contributorNames":{
+      "albertleigh":"李文涛"
+    },
+    "credits":"感谢: ",
+    "support":"技术支持: ",
+    "flatIconPhase1":"图标提供者",
+    "flatIconPhase2":"来自"
   }
 }

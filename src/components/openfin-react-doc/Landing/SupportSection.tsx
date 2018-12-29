@@ -62,7 +62,7 @@ class SupportSectionComp extends AbstractLandingSection<IProps, IState>{
         visiblePct: 0,
         contributors:[
             {
-                name:'Albert Leigh',
+                name:'albertleigh',
                 avatar:'https://github.com/albertleigh.png',
                 email:'liwentao90@yahoo.com',
             }
@@ -140,14 +140,14 @@ class SupportSectionComp extends AbstractLandingSection<IProps, IState>{
             >
                 <div className={classes.oneSubSec}>
                     <Typography className={classes.header} variant="h5" gutterBottom>
-                        Contributor:
+                        {t('support.contributors')}
                     </Typography>
                     {
                         contributors.map(((contributor:IContributor,index,arr)=>(
                             <Chip
                                 key={index}
                                 avatar={<Avatar alt={contributor.name} src={contributor.avatar} />}
-                                label={contributor.name}
+                                label={t(`support.contributorNames.${contributor.name}`)}
                                 onClick={this.handleEmailBtnClick(contributor.email)}
                             />
                         )))
@@ -157,7 +157,7 @@ class SupportSectionComp extends AbstractLandingSection<IProps, IState>{
 
                 <div className={classes.oneSubSec}>
                     <Typography className={classes.header} variant="h5" gutterBottom>
-                        Credits:
+                        {t('support.credits')}
                     </Typography>
                     {
                         flatIconCredits.map((oneFlatIconCredit:IFlatIconCredit, flatIconIndex, flatIconArr)=>(
@@ -168,7 +168,7 @@ class SupportSectionComp extends AbstractLandingSection<IProps, IState>{
                                         key={iconIndex} src={icon} />
                                 ))}
                                 <Typography variant="body1" gutterBottom>
-                                    Icon made by <a href={oneFlatIconCredit.authorLink}>{oneFlatIconCredit.authorName}</a> from <a href="http://www.flaticon.com">www.flaticon.com</a>
+                                    {t('support.flatIconPhase1')}<a href={oneFlatIconCredit.authorLink}>{oneFlatIconCredit.authorName}</a>{t('support.flatIconPhase2')}<a href="http://www.flaticon.com">www.flaticon.com</a>
                                 </Typography>
                             </div>
                         ))
@@ -178,7 +178,7 @@ class SupportSectionComp extends AbstractLandingSection<IProps, IState>{
 
                 <div className={classes.oneSubSec}>
                     <Typography className={classes.header} variant="h5" gutterBottom>
-                        Support:
+                        {t('support.support')}
                     </Typography>
                     <div>
                         {

@@ -44,5 +44,15 @@
   "allCust":{
     "title":"All Customizable, All in React",
     "desc":"All components, styles and structure are flexible and customizable, all in react. Easy to change, make developers life easier."
+  },
+  "support":{
+    "contributors":"Contributors: ",
+    "contributorNames":{
+      "albertleigh":"Albert Leigh"
+    },
+    "credits":"Credits: ",
+    "support":"Support: ",
+    "flatIconPhase1":"Icon made by ",
+    "flatIconPhase2":" from "
   }
 }
