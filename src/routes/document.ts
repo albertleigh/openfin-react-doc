@@ -2,6 +2,7 @@ import {IDocRouteCompItems, RouteItem} from "./types";
 
 // start
 import StartInstallation from '../views/Start/StartInstallation';
+import StartDevelopers from '../views/Start/StartDevelopers';
 // scaffolding
 // browserAdaptor
 // reduxOpenfin
@@ -16,7 +17,12 @@ const docRouteItems:IDocRouteCompItems[] = [
                 path:'/doc/startInstallation',
                 name:'startInstallation',
                 component:StartInstallation,
-            }
+            },
+            {
+                path:'/doc/startDevelopers',
+                name:'startDevelopers',
+                component:StartDevelopers,
+            },
         ],
     },
     {

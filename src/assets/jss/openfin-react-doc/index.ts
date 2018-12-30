@@ -16,4 +16,5 @@ export {default as aniDashedLineCompStyle } from './comp/aniDashedLineComp.style
 // END_OF_AL_CLI_COMP
 // BEGIN_OF_AL_CLI_VIEW
 export {default as startInstallationViewStyle } from './view/startInstallationView.style'
+export {default as startDevelopersViewStyle } from './view/startDevelopersView.style'
 // END_OF_AL_CLI_VIEW
