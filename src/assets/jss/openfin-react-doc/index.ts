@@ -14,3 +14,6 @@ export {default as paperMockWinCompStyle } from './comp/paperMockWinComp.style'
 export {default as codeCompStyle } from './comp/codeComp.style'
 export {default as aniDashedLineCompStyle } from './comp/aniDashedLineComp.style'
 // END_OF_AL_CLI_COMP
+// BEGIN_OF_AL_CLI_VIEW
+export {default as startInstallationViewStyle } from './view/startInstallationView.style'
+// END_OF_AL_CLI_VIEW
