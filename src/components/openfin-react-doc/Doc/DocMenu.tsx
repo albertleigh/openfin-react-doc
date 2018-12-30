@@ -1,5 +1,8 @@
 import * as React from 'react';
 import cx from 'classnames';
+
+import Divider from '@material-ui/core/Divider';
+
 import { WithStyles, withStyles } from '@material-ui/core/styles';
 
 import { docMenuCompStyle as style } from '../../../assets/jss/openfin-react-doc';
@@ -15,10 +18,13 @@ interface IState{
 
 class DocMenuComp extends React.Component<IProps, IState>{
     render(){
+        const { classes } = this.props;
         return(
-            <React.Fragment>
+            <div>
+                <div className={classes.toolbar} />
+                <Divider />
                 DocMenu component works ~
-            </React.Fragment>
+            </div>
         )
     }
 }

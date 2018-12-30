@@ -198,7 +198,6 @@ class LandingLayout extends React.Component<IProps,IState>{
                     onClose={onToggleDrawer}
                     onClick={onToggleDrawer}
                 >
-                    drawer 3
                     <DocMenu/>
                 </Drawer>
             </div>

@@ -83,7 +83,6 @@ class DocumentLayout extends React.Component<IProps,{}>{
                             onClose={onToggleDrawer}
                             onClick={onToggleDrawer}
                         >
-                            drawer 1
                             <DocMenu/>
                         </Drawer>
                     </Hidden>
@@ -95,7 +94,6 @@ class DocumentLayout extends React.Component<IProps,{}>{
                             variant='permanent'
                             open
                         >
-                            drawer 2
                             <DocMenu/>
                         </Drawer>
                     </Hidden>
