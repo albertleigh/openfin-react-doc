@@ -1,18 +1,14 @@
 import * as React from 'react';
 import cx from 'classnames';
+import { WithStyles, withStyles } from '@material-ui/core/styles';
 import { withNamespaces, WithNamespaces } from 'react-i18next';
 
-import i18n from '../../../i18n';
-
-import { WithStyles, withStyles } from '@material-ui/core/styles';
-
-import { landingHeaderCompStyle as style } from '../../../assets/jss/openfin-react-doc';
+import { docHeaderCompStyle as style } from '../../../assets/jss/openfin-react-doc';
 
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
+import Typography from '@material-ui/core/Typography';
 import Tooltip from '@material-ui/core/Tooltip';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
@@ -24,12 +20,11 @@ import MoreIcon from '@material-ui/icons/MoreVert';
 import gitHubSvg from '../../../assets/svg/developer/github-logo-dark.svg';
 import chinaSvg from '../../../assets/svg/language/china.svg';
 import usSvg from '../../../assets/svg/language/united-states.svg';
+import i18n from "../../../i18n";
 
-interface IProps extends WithStyles<typeof style>, WithNamespaces{
-    activeChildSectionIndex:number,
-    childrenSectionNames:string[],
+interface IProps extends WithStyles<typeof style>, WithNamespaces {
+    navbarName:string,
     onSwitchLanguage:(languageName:string)=> void,
-    onActiveChildSectionChange: (activeChildSectionName:string) => void,
     onToggleTheme:()=> void,
 }
 
@@ -38,7 +33,7 @@ interface IState{
     mobileMoreAnchorEl:any,
 }
 
-class LandingHeaderComp extends React.Component<IProps, IState>{
+class DocHeaderComp extends React.Component<IProps, IState>{
 
     state = {
         anchorEl: null,
@@ -72,17 +67,12 @@ class LandingHeaderComp extends React.Component<IProps, IState>{
         this.setState({ mobileMoreAnchorEl: null });
     };
 
-    handleActiveChildSectionChange = (event, value) => {
-        this.props.onActiveChildSectionChange(this.props.childrenSectionNames[value]);
-    }
-
     render(){
 
         const {
             classes, t,
-            activeChildSectionIndex, childrenSectionNames,
+            navbarName,
         } = this.props;
-
         const { anchorEl, mobileMoreAnchorEl } = this.state;
         const isMenuOpen = Boolean(anchorEl);
         const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -110,6 +100,12 @@ class LandingHeaderComp extends React.Component<IProps, IState>{
             </Menu>
         );
 
+        const currentLanguageSvg = (
+            i18n.language === "zh"?
+                <img className={classes.menuSvg} src={chinaSvg}/>:
+                <img className={classes.menuSvg} src={usSvg}/>
+        )
+
         const renderMobileMenu = (
             <Menu
                 anchorEl={mobileMoreAnchorEl}
@@ -135,35 +131,18 @@ class LandingHeaderComp extends React.Component<IProps, IState>{
             </Menu>
         );
 
-        const currentLanguageSvg = (
-            i18n.language === "zh"?
-                <img className={classes.menuSvg} src={chinaSvg}/>:
-                <img className={classes.menuSvg} src={usSvg}/>
-        )
-
         return(
             <React.Fragment>
                 <AppBar
-                    className={cx(
-                        classes.appbar,
-                        {[classes.appbarTransparent]:activeChildSectionIndex===0}
-                    )}
                     position="fixed"
                 >
                     <Toolbar>
                         <IconButton className={classes.menuButton} color="inherit" aria-label="Open drawer">
                             <MenuIcon />
                         </IconButton>
-                        <Tabs
-                            className={classes.titleTab} value={activeChildSectionIndex}
-                            onChange={this.handleActiveChildSectionChange}
-                        >
-                            {
-                                childrenSectionNames.map((name,index,arr)=>(
-                                    <Tab label={t(`header.tabsName.${name}`)} key={index} />
-                                ))
-                            }
-                        </Tabs>
+                        <Typography variant="h6" gutterBottom>
+                            {navbarName}
+                        </Typography>
                         <div className={classes.grow} />
                         <div className={classes.sectionDesktop}>
                             <Tooltip title={t('header.toolTip.toggleTheme')} enterDelay={300}>
@@ -204,5 +183,5 @@ class LandingHeaderComp extends React.Component<IProps, IState>{
 }
 
 export default withStyles(style)(
-    withNamespaces("landing")(LandingHeaderComp)
+    withNamespaces("landing")(DocHeaderComp)
 );

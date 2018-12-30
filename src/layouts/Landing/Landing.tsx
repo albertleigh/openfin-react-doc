@@ -90,15 +90,6 @@ class LandingLayout extends React.Component<IProps,IState>{
         )
     }
 
-    handleSwitchToEn = () => {
-        i18n.changeLanguage('en');
-    }
-
-    handleSwitchToZh = () => {
-        i18n.changeLanguage('zh');
-    }
-
-
     render(){
 
         const {
