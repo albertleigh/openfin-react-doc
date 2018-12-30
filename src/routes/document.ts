@@ -5,6 +5,7 @@ import StartInstallation from '../views/Start/StartInstallation';
 import StartDevelopers from '../views/Start/StartDevelopers';
 import StartFaq from '../views/Start/StartFaq';
 // scaffolding
+import ScaffoldingInstall from '../views/Scaffolding/ScaffoldingInstall';
 // browserAdaptor
 // reduxOpenfin
 // starterBase
@@ -33,7 +34,13 @@ const docRouteItems:IDocRouteCompItems[] = [
     },
     {
         name:'scaffolding',
-        routeItems:[],
+        routeItems:[
+            {
+                path:'/doc/scaffoldingInstall',
+                name:'scaffoldingInstall',
+                component:ScaffoldingInstall,
+            },
+        ],
     },
     {
         name:'browserAdaptor',
