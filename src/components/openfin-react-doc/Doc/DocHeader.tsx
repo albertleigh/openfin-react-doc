@@ -25,6 +25,7 @@ import i18n from "../../../i18n";
 interface IProps extends WithStyles<typeof style>, WithNamespaces {
     navbarName:string,
     onSwitchLanguage:(languageName:string)=> void,
+    onToggleDrawer:()=> void,
     onToggleTheme:()=> void,
 }
 
@@ -72,6 +73,7 @@ class DocHeaderComp extends React.Component<IProps, IState>{
         const {
             classes, t,
             navbarName,
+            onToggleDrawer,
         } = this.props;
         const { anchorEl, mobileMoreAnchorEl } = this.state;
         const isMenuOpen = Boolean(anchorEl);
@@ -134,13 +136,16 @@ class DocHeaderComp extends React.Component<IProps, IState>{
         return(
             <React.Fragment>
                 <AppBar
+                    className={classes.appBar}
                     position="fixed"
                 >
                     <Toolbar>
-                        <IconButton className={classes.menuButton} color="inherit" aria-label="Open drawer">
+                        <IconButton className={classes.menuButton} color="inherit" aria-label="Open drawer"
+                                    onClick={onToggleDrawer}
+                        >
                             <MenuIcon />
                         </IconButton>
-                        <Typography variant="h6" gutterBottom>
+                        <Typography variant="h6" gutterBottom color='inherit'>
                             {navbarName}
                         </Typography>
                         <div className={classes.grow} />

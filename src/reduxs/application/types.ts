@@ -10,6 +10,7 @@ export enum MuiDirection{
 
 export interface IApplicationState {
     loading:boolean,
+    drawerOpen:boolean,
     theme:MuiTheme,
     direction:MuiDirection,
 

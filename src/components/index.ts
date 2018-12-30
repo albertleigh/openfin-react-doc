@@ -11,4 +11,5 @@ export {default as LandingGenConfSection } from './openfin-react-doc/Landing/Gen
 export {default as LandingAllCustomizableSection } from './openfin-react-doc/Landing/AllCustomizableSection'
 export {default as LandingSupportSection } from './openfin-react-doc/Landing/SupportSection'
 export {default as DocHeader } from './openfin-react-doc/Doc/DocHeader'
+export {default as DocMenu } from './openfin-react-doc/Doc/DocMenu'
 // END_OF_AL_CLI_COMPONENTS

@@ -30,6 +30,7 @@ interface IProps extends WithStyles<typeof style>, WithNamespaces{
     childrenSectionNames:string[],
     onSwitchLanguage:(languageName:string)=> void,
     onActiveChildSectionChange: (activeChildSectionName:string) => void,
+    onToggleDrawer:()=> void,
     onToggleTheme:()=> void,
 }
 
@@ -81,6 +82,7 @@ class LandingHeaderComp extends React.Component<IProps, IState>{
         const {
             classes, t,
             activeChildSectionIndex, childrenSectionNames,
+            onToggleDrawer,
         } = this.props;
 
         const { anchorEl, mobileMoreAnchorEl } = this.state;
@@ -151,7 +153,9 @@ class LandingHeaderComp extends React.Component<IProps, IState>{
                     position="fixed"
                 >
                     <Toolbar>
-                        <IconButton className={classes.menuButton} color="inherit" aria-label="Open drawer">
+                        <IconButton className={classes.menuButton} color="inherit" aria-label="Open drawer"
+                                    onClick={onToggleDrawer}
+                        >
                             <MenuIcon />
                         </IconButton>
                         <Tabs

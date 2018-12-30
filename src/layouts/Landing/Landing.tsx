@@ -1,4 +1,7 @@
 import * as React from 'react';
+
+import Drawer from '@material-ui/core/Drawer';
+
 import { WithStyles, withStyles } from '@material-ui/core/styles';
 import cx from "classnames";
 import { connect } from 'react-redux';
@@ -15,10 +18,12 @@ import {
     LandingGenConfSection,
     LandingAllCustomizableSection,
     LandingSupportSection,
+    DocMenu,
 } from '../../components';
 
 import {
     // actions
+    applicationToggleDrawer,
     applicationToggleTheme,
     applicationToggleDirection,
 
@@ -29,8 +34,9 @@ import i18n from "../../i18n";
 import { scrollTo } from '../../utils/scrollIng';
 
 interface IProps extends WithStyles<typeof style>, WithNamespaces {
-
+    drawerOpen:boolean,
     actions:{
+        onToggleDrawer:()=>void,
         onToggleTheme:()=>void,
         onToggleDirection:()=>void,
     }
@@ -94,14 +100,15 @@ class LandingLayout extends React.Component<IProps,IState>{
 
         const {
             classes, t,
+            drawerOpen,
             actions:{
-                onToggleTheme,onToggleDirection,
+                onToggleDrawer,onToggleTheme,onToggleDirection,
             }
         } = this.props;
 
         const {activeChildSectionIndex} = this.state;
 
-        return (
+        return (<React.Fragment>
             <div className={cx(
                 'landingContainer',
                 classes.container,
@@ -111,6 +118,7 @@ class LandingLayout extends React.Component<IProps,IState>{
                     childrenSectionNames={this.childSectionNames}
                     onSwitchLanguage={this.handleSwitchLanguage}
                     onActiveChildSectionChange={this.handleActiveChildSectionChanged}
+                    onToggleDrawer = {onToggleDrawer}
                     onToggleTheme = {onToggleTheme}
                 />
                 <div className={classes.sectionContainer} ref={el => this.childSectionRefs.welcome = el}>
@@ -184,17 +192,30 @@ class LandingLayout extends React.Component<IProps,IState>{
                         onIntersectionChanged = {this.handleIntersectionChanged(6)}
                     />
                 </div>
+                <Drawer
+                    variant='temporary'
+                    open={drawerOpen}
+                    onClose={onToggleDrawer}
+                    onClick={onToggleDrawer}
+                >
+                    drawer 3
+                    <DocMenu/>
+                </Drawer>
             </div>
-        )
+
+        </React.Fragment>)
     }
 }
 
 export default connect(
     (state:IRootState)=>({
-
+        drawerOpen: state.application.drawerOpen,
     }),
     dispatch => ({
         actions:{
+            onToggleDrawer: ()=>{
+                dispatch(applicationToggleDrawer());
+            },
             onToggleTheme : ()=>{
                 dispatch(applicationToggleTheme());
             },

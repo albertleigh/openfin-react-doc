@@ -1,18 +1,24 @@
 import * as React from 'react';
-import { WithStyles, withStyles } from '@material-ui/core/styles';
 import cx from "classnames";
 import { connect } from 'react-redux';
 import { Switch, Route, Redirect } from 'react-router-dom';
+
+import Hidden from '@material-ui/core/Hidden';
+import Drawer from '@material-ui/core/Drawer';
+
+import { WithStyles, withStyles } from '@material-ui/core/styles';
 import { withNamespaces, WithNamespaces } from 'react-i18next';
 
 import { documentStyle as style } from '../../assets/jss/openfin-react-doc';
 
 import {
     DocHeader,
+    DocMenu,
 } from '../../components';
 
 import {
     // actions
+    applicationToggleDrawer,
     applicationToggleTheme,
     applicationToggleDirection,
 
@@ -24,7 +30,9 @@ import i18n from "../../i18n";
 import documentRoutes from '../../routes/document';
 
 interface IProps extends WithStyles<typeof style>, WithNamespaces {
+    drawerOpen:boolean,
     actions:{
+        onToggleDrawer:()=>void,
         onToggleTheme:()=>void,
         onToggleDirection:()=>void,
     }
@@ -52,24 +60,50 @@ class DocumentLayout extends React.Component<IProps,{}>{
 
         const {
             classes, t,
+            drawerOpen,
             actions:{
-                onToggleTheme,onToggleDirection,
+                onToggleDrawer,onToggleTheme,onToggleDirection,
             }
         } = this.props;
 
         return (
             <React.Fragment>
-                <div>
-                    <DocHeader
-                        navbarName={'navbarName from Doc'}
-                        onSwitchLanguage={this.handleSwitchLanguage}
-                        onToggleTheme = {onToggleTheme}
-                    />
+                <DocHeader
+                    navbarName={'navbarName from Doc'}
+                    onSwitchLanguage={this.handleSwitchLanguage}
+                    onToggleDrawer = {onToggleDrawer}
+                    onToggleTheme = {onToggleTheme}
+                />
 
+                <div className={classes.drawer}>
+                    <Hidden mdUp>
+                        <Drawer
+                            variant='temporary'
+                            open={drawerOpen}
+                            onClose={onToggleDrawer}
+                            onClick={onToggleDrawer}
+                        >
+                            drawer 1
+                            <DocMenu/>
+                        </Drawer>
+                    </Hidden>
+                    <Hidden smDown implementation='css'>
+                        <Drawer
+                            classes={{
+                                paper: classes.drawerPaper,
+                            }}
+                            variant='permanent'
+                            open
+                        >
+                            drawer 2
+                            <DocMenu/>
+                        </Drawer>
+                    </Hidden>
+                </div>
+
+                <div className={classes.content}>
                     Documents layout works ~
-                    <div>
-                        {switchRoutes}
-                    </div>
+                    {switchRoutes}
                 </div>
             </React.Fragment>
         )
@@ -78,10 +112,13 @@ class DocumentLayout extends React.Component<IProps,{}>{
 
 export default connect(
     (state:IRootState)=>({
-
+        drawerOpen: state.application.drawerOpen,
     }),
     dispatch => ({
         actions:{
+            onToggleDrawer: ()=>{
+                dispatch(applicationToggleDrawer());
+            },
             onToggleTheme : ()=>{
                 dispatch(applicationToggleTheme());
             },
