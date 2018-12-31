@@ -1,0 +1,16 @@
+{
+  "start":"开始",
+  "startInstallation":"安装",
+  "startDevelopers":"给开发者",
+  "startFaq":"FAQ",
+
+  "scaffolding":"代码生成工具 AL-CLI",
+  "scaffoldingInstall":"安装代码生成工具",
+
+  "browserAdaptor":"浏览器适配器",
+
+  "reduxOpenfin":"Redux Openfin",
+
+  "about":"关于"
+
+}

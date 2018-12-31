@@ -5,7 +5,6 @@ import { NavLink } from 'react-router-dom';
 
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Collapse from '@material-ui/core/Collapse';
 
@@ -13,13 +12,14 @@ import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 import { WithStyles, withStyles } from '@material-ui/core/styles';
+import { withNamespaces, WithNamespaces } from 'react-i18next';
 
 import { docMenuItemCompStyle as style } from '../../../assets/jss/openfin-react-doc';
 import {
     IDocRouteCompItems,IRouteCompItem,RouteItem,
 } from "../../../routes";
 
-interface IProps extends WithStyles<typeof style>{
+interface IProps extends WithStyles<typeof style>, WithNamespaces {
     docRouteCompItem:IDocRouteCompItems,
 }
 
@@ -39,7 +39,8 @@ class DocMenuItemComp extends React.Component<IProps, IState>{
 
     renderParentAndChild = () => {
         const {
-            classes, docRouteCompItem,
+            classes, t,
+            docRouteCompItem,
         } = this.props;
 
         const { open } = this.state;
@@ -47,7 +48,7 @@ class DocMenuItemComp extends React.Component<IProps, IState>{
         return (
             <React.Fragment>
                 <ListItem button onClick={this.handleClick}>
-                    <ListItemText primary={docRouteCompItem.name} />
+                    <ListItemText primary={t(docRouteCompItem.name)} />
                     {open ? <ExpandLessIcon color="inherit" /> : <ExpandMoreIcon color="inherit" />}
                 </ListItem>
                 <Collapse in={open} timeout="auto" unmountOnExit>
@@ -64,7 +65,7 @@ class DocMenuItemComp extends React.Component<IProps, IState>{
                                         activeClassName={"active"}
                                     >
                                         <ListItem button className={classes.nested}>
-                                            <ListItemText primary={one.name} />
+                                            <ListItemText primary={t(one.name)} />
                                         </ListItem>
                                     </NavLink>
                                 )
@@ -91,4 +92,6 @@ class DocMenuItemComp extends React.Component<IProps, IState>{
     }
 }
 
-export default withStyles(style)(DocMenuItemComp);
+export default withStyles(style)(
+    withNamespaces('docMenu')(DocMenuItemComp)
+);

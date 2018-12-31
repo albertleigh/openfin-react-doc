@@ -8,7 +8,7 @@ i18n
     .use(backend)
     .use(reactI18nextModule)
     .init({
-        ns: ['landing',],
+        ns: ['landing','docMenu',],
         defaultNS: 'landing',
         lng:'en',
         fallbackLng:'en',

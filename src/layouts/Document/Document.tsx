@@ -78,10 +78,12 @@ class DocumentLayout extends React.Component<IProps,{}>{
                 <div className={classes.drawer}>
                     <Hidden mdUp>
                         <Drawer
+                            classes={{
+                                paper: classes.drawerPaper,
+                            }}
                             variant='temporary'
                             open={drawerOpen}
                             onClose={onToggleDrawer}
-                            onClick={onToggleDrawer}
                         >
                             <DocMenu/>
                         </Drawer>

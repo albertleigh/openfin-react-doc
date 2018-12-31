@@ -193,10 +193,12 @@ class LandingLayout extends React.Component<IProps,IState>{
                     />
                 </div>
                 <Drawer
+                    classes={{
+                        paper: classes.drawerPaper,
+                    }}
                     variant='temporary'
                     open={drawerOpen}
                     onClose={onToggleDrawer}
-                    onClick={onToggleDrawer}
                 >
                     <DocMenu/>
                 </Drawer>

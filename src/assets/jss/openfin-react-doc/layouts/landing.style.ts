@@ -1,8 +1,12 @@
 import { Theme, createStyles } from '@material-ui/core/styles';
 import { lighten, darken } from '@material-ui/core/styles/colorManipulator';
 
-const landingStyle = (theme:Theme)=> createStyles({
+import { drawerWidth } from '../constants';
 
+const landingStyle = (theme:Theme)=> createStyles({
+    drawerPaper: {
+        width: drawerWidth,
+    },
     container:{
         // paddingTop: 56,
         // [theme.breakpoints.up('sm')]:{

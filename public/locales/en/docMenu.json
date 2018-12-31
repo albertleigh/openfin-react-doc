@@ -1,0 +1,16 @@
+{
+  "start":"Get started",
+  "startInstallation":"Installation",
+  "startDevelopers":"For developers",
+  "startFaq":"FAQ",
+
+  "scaffolding":"AL-CLI",
+  "scaffoldingInstall":"Installation",
+
+  "browserAdaptor":"Browser Adaptor",
+
+  "reduxOpenfin":"Redux Openfin",
+
+  "about":"About"
+
+}
