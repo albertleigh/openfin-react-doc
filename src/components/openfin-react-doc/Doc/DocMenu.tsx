@@ -3,11 +3,17 @@ import { Link } from 'react-router-dom';
 import cx from 'classnames';
 
 import Divider from '@material-ui/core/Divider';
+import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
 
 import { WithStyles, withStyles } from '@material-ui/core/styles';
 
 import { docMenuCompStyle as style } from '../../../assets/jss/openfin-react-doc';
+
+import DocMenuItem from './DocMenuItem';
+
+import {IDocRouteCompItems} from "../../../routes";
+import { docRouteItems } from '../../../routes/document';
 
 interface IProps extends WithStyles<typeof style>{
 
@@ -40,7 +46,19 @@ class DocMenuComp extends React.Component<IProps, IState>{
                     </a>
                 </div>
                 <Divider />
-                DocMenu component works ~
+                <List
+                    component="nav"
+                    className={classes.menuListContainer}
+                >
+                    {
+                        docRouteItems.map((docRouteItem:IDocRouteCompItems,index,arr)=>(
+                            <DocMenuItem
+                                key={index}
+                                docRouteCompItem={docRouteItem}
+                            />
+                        ))
+                    }
+                </List>
             </div>
         )
     }

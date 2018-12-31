@@ -23,6 +23,10 @@ const docMenuCompStyle = (theme:Theme)=> createStyles({
             textDecoration: 'underline',
         },
     },
+    menuListContainer:{
+        color: theme.palette.text.primary,
+        backgroundColor: theme.palette.background.paper,
+    }
 });
 
 export default docMenuCompStyle;

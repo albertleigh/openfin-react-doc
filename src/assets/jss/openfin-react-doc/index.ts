@@ -15,6 +15,7 @@ export {default as landingAllCustomizableSectionCompStyle } from './comp/landing
 export {default as landingSupportSectionCompStyle } from './comp/landingSupportSectionComp.style'
 export {default as docHeaderCompStyle } from './comp/docHeaderComp.style'
 export {default as docMenuCompStyle } from './comp/docMenuComp.style'
+export {default as docMenuItemCompStyle } from './comp/docMenuItemComp.style'
 // END_OF_AL_CLI_COMP
 // BEGIN_OF_AL_CLI_VIEW
 export {default as startInstallationViewStyle } from './view/startInstallationView.style'

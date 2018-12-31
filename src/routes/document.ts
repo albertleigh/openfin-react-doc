@@ -11,7 +11,7 @@ import ScaffoldingInstall from '../views/Scaffolding/ScaffoldingInstall';
 // starterBase
 // about
 
-const docRouteItems:IDocRouteCompItems[] = [
+export const docRouteItems:IDocRouteCompItems[] = [
     {
         name:'start',
         routeItems:[
