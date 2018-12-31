@@ -1,5 +1,7 @@
 import * as React from 'react';
 import cx from 'classnames';
+import { NavLink } from 'react-router-dom';
+
 
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -55,9 +57,17 @@ class DocMenuItemComp extends React.Component<IProps, IState>{
 
                                 const one:IRouteCompItem  = routeItem as IRouteCompItem;
 
-                                return(<ListItem key={index} button className={classes.nested}>
-                                    <ListItemText primary={one.name} />
-                                </ListItem>)
+                                return(
+                                    <NavLink
+                                        to={one.path} key={index}
+                                        className={classes.item}
+                                        activeClassName={"active"}
+                                    >
+                                        <ListItem button className={classes.nested}>
+                                            <ListItemText primary={one.name} />
+                                        </ListItem>
+                                    </NavLink>
+                                )
                             })
                         }
                     </List>
