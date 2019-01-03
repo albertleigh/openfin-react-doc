@@ -40,9 +40,10 @@ interface IProps extends WithStyles<typeof style>, WithNamespaces {
 }
 
 const getBrand = ()=>{
-    for(const docRoute of documentRoutes){
+    for(let i=0; i < documentRoutes.length; i++){
+        const docRoute = documentRoutes[i] as IRouteCompItem;
         if (docRoute.path === location.pathname){
-            return (docRoute as IRouteCompItem).name;
+            return docRoute.name;
         }
     }
     return null;
