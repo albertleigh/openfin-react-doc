@@ -7,7 +7,7 @@ const landingAllCustomizableSectionCompStyle = (theme:Theme)=> createStyles({
         width: '100%',
         height: '100%',
         padding:'0 10% 0 10%',
-        justifyContent:'space-evenly',
+        justifyContent:'space-around',
         alignItems:'center',
         // alignContent:'center',
     },

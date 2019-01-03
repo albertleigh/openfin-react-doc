@@ -19,6 +19,7 @@ const paperMockWinCompStyle = (theme:Theme)=> createStyles({
         height: 20,
         position:'absolute',
         top: 0,
+        left: 0,
         backgroundColor: theme.palette.primary.main,
         display: 'flex',
         justifyContent: 'flex-end',

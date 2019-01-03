@@ -50,6 +50,13 @@ class App extends React.Component<IProps,IState> {
                 fontSize: 8,
                 htmlFontSize: 10,
             },
+            overrides:{
+                MuiTypography:{
+                    body1:{
+                        maxWidth:'100%',
+                    }
+                }
+            }
         })
 
     }

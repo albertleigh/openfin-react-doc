@@ -14,7 +14,8 @@ const landingStyle = (theme:Theme)=> createStyles({
         // },
         width:'100%',
         height:'100vh',
-        overflow:'auto',
+        overflowX:'hidden',
+        overflowY:'auto',
     },
     sectionContainer:{
         width:'100%',

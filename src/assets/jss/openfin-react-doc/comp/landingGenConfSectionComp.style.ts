@@ -7,7 +7,7 @@ const landingGenConfSectionCompStyle = (theme:Theme)=> createStyles({
         width: '100%',
         height: '100%',
         padding:'0 10% 0 10%',
-        justifyContent:'space-evenly',
+        justifyContent:'space-around',
         alignItems:'center',
         // alignContent:'center',
     },
@@ -25,6 +25,13 @@ const landingGenConfSectionCompStyle = (theme:Theme)=> createStyles({
     },
     centerDashedLinesContainer:{
         width:150,
+        "& >*":{
+            maxHeight: 15,
+            overflow: 'hidden',
+        },
+        "& >:nth-child(1)":{
+            marginBottom: 10,
+        },
         "& >:nth-child(2)":{
             transform: 'rotate(180deg)',
         },

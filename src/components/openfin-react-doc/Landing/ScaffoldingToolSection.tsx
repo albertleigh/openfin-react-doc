@@ -72,13 +72,14 @@ class ScaffoldingToolSectionComp extends AbstractLandingSection<IProps, IState>{
                     {t('scaffoldingSec.title')}
                 </Typography>
 
-                <div className={
-                    cx(
-                        classes.sampleCodeContainer,
-                        'animated', 'infinite', 'fadeIn', 'slow',
-                    )
-                }>
-                    <Code withMargin text={newCompCode} />
+                <div className={classes.sampleCodeContainer}>
+                    <div className={
+                        cx(
+                            'animated', 'infinite', 'fadeIn', 'slower',
+                        )
+                    }>
+                        <Code withMargin text={newCompCode} />
+                    </div>
                 </div>
 
                 <div
