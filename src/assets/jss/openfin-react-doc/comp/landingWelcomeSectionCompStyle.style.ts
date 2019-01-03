@@ -44,7 +44,7 @@ const landingWelcomeSectionCompStyleStyle = (theme:Theme)=> createStyles({
         left: 0,
         bottom: 0,
         right: 0,
-        background:'url(https://media.giphy.com/media/10zxDv7Hv5RF9C/giphy.gif) no-repeat center center fixed',
+        background:'url(/img/screenshoot.gif) no-repeat center center fixed',
         backgroundSize: 'cover',
     }
 });
