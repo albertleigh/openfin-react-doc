@@ -12,15 +12,31 @@ const documentStyle = (theme:Theme)=> createStyles({
     drawerPaper: {
         width: drawerWidth,
     },
-    content: {
+    main:{
         flexGrow: 1,
-        padding: theme.spacing.unit * 3,
+        padding: `0 ${theme.spacing.unit * 3}px`,
         marginTop: 56,
+        height:'calc(100vh - 56px)',
+        color: theme.palette.text.primary,
+        backgroundColor:theme.palette.background.default,
+        overflowY: 'auto',
+        [theme.breakpoints.up('lg')]:{
+            padding: 0,
+        },
         [theme.breakpoints.up('md')]:{
             marginLeft: drawerWidth,
         },
         [theme.breakpoints.up('sm')]:{
             marginTop: 64,
+            height:'calc(100vh - 64px)',
+        },
+    },
+    content: {
+        minHeight: '99%',
+        paddingTop: theme.spacing.unit * 3,
+        [theme.breakpoints.up('lg')]:{
+            maxWidth:960,
+            margin:'0 auto',
         },
     },
 });

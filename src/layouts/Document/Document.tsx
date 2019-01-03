@@ -28,6 +28,7 @@ import {
 import i18n from "../../i18n";
 
 import documentRoutes from '../../routes/document';
+import {IRouteCompItem} from "../../routes";
 
 interface IProps extends WithStyles<typeof style>, WithNamespaces {
     drawerOpen:boolean,
@@ -36,6 +37,15 @@ interface IProps extends WithStyles<typeof style>, WithNamespaces {
         onToggleTheme:()=>void,
         onToggleDirection:()=>void,
     }
+}
+
+const getBrand = ()=>{
+    for(const docRoute of documentRoutes){
+        if (docRoute.path === location.pathname){
+            return (docRoute as IRouteCompItem).name;
+        }
+    }
+    return null;
 }
 
 const switchRoutes = (
@@ -69,7 +79,7 @@ class DocumentLayout extends React.Component<IProps,{}>{
         return (
             <React.Fragment>
                 <DocHeader
-                    navbarName={'navbarName from Doc'}
+                    navbarName={t(getBrand())}
                     onSwitchLanguage={this.handleSwitchLanguage}
                     onToggleDrawer = {onToggleDrawer}
                     onToggleTheme = {onToggleTheme}
@@ -101,9 +111,10 @@ class DocumentLayout extends React.Component<IProps,{}>{
                     </Hidden>
                 </div>
 
-                <div className={classes.content}>
-                    Documents layout works ~
-                    {switchRoutes}
+                <div className={classes.main}>
+                    <div className={classes.content}>
+                        {switchRoutes}
+                    </div>
                 </div>
             </React.Fragment>
         )
@@ -130,7 +141,7 @@ export default connect(
 
 )(
     withStyles(style)(
-        withNamespaces('landing')(DocumentLayout)
+        withNamespaces('docMenu')(DocumentLayout)
     )
 );
 
