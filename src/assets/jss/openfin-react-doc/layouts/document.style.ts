@@ -32,7 +32,6 @@ const documentStyle = (theme:Theme)=> createStyles({
         },
     },
     content: {
-        minHeight: '99%',
         paddingTop: theme.spacing.unit * 3,
         [theme.breakpoints.up('lg')]:{
             maxWidth:960,
