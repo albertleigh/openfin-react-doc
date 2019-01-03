@@ -30,6 +30,10 @@ const documentStyle = (theme:Theme)=> createStyles({
             marginTop: 64,
             height:'calc(100vh - 64px)',
         },
+        [theme.breakpoints.down('xs')]:{
+            marginTop: 48,
+            height:'calc(100vh - 48px)',
+        },
     },
     content: {
         paddingTop: theme.spacing.unit * 3,

@@ -28,7 +28,7 @@ class DocMenuComp extends React.Component<IProps, IState>{
     render(){
         const { classes } = this.props;
         return(
-            <div>
+            <div className={classes.container}>
                 <div className={classes.toolbar}>
                     <Link className={classes.link} to="/">
                         <Typography variant="subtitle1" color='inherit' >
@@ -46,19 +46,21 @@ class DocMenuComp extends React.Component<IProps, IState>{
                     </a>
                 </div>
                 <Divider />
-                <List
-                    component="nav"
-                    className={classes.menuListContainer}
-                >
-                    {
-                        docRouteItems.map((docRouteItem:IDocRouteCompItems,index,arr)=>(
-                            <DocMenuItem
-                                key={index}
-                                docRouteCompItem={docRouteItem}
-                            />
-                        ))
-                    }
-                </List>
+                <div className={classes.menuListOuterContainer}>
+                    <List
+                        component="nav"
+                        className={classes.menuListContainer}
+                    >
+                        {
+                            docRouteItems.map((docRouteItem:IDocRouteCompItems,index,arr)=>(
+                                <DocMenuItem
+                                    key={index}
+                                    docRouteCompItem={docRouteItem}
+                                />
+                            ))
+                        }
+                    </List>
+                </div>
             </div>
         )
     }

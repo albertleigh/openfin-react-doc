@@ -1,6 +1,9 @@
 import { Theme, createStyles } from '@material-ui/core/styles';
 
 const docMenuCompStyle = (theme:Theme)=> createStyles({
+    container:{
+        overflow:'hidden',
+    },
     link:{
         color:theme.palette.text.primary,
         textDecoration:'none',
@@ -21,6 +24,16 @@ const docMenuCompStyle = (theme:Theme)=> createStyles({
         '&:hover': {
             color: theme.palette.primary.dark,
             textDecoration: 'underline',
+        },
+    },
+    menuListOuterContainer:{
+        height:'calc(100vh - 56px)',
+        overflow:'auto',
+        [theme.breakpoints.up('sm')]:{
+            height:'calc(100vh - 64px)',
+        },
+        [theme.breakpoints.down('xs')]:{
+            height:'calc(100vh - 48px)',
         },
     },
     menuListContainer:{
