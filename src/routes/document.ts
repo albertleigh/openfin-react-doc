@@ -11,6 +11,8 @@ import ScaffoldingInstall from '../views/Scaffolding/ScaffoldingInstall';
 // starterBase
 // about
 
+import { mapToPublicPathname } from './utils';
+
 export const docRouteItems:IDocRouteCompItems[] = [
     {
         name:'start',
@@ -30,7 +32,7 @@ export const docRouteItems:IDocRouteCompItems[] = [
                 name:'startFaq',
                 component:StartFaq,
             },
-        ],
+        ].map(mapToPublicPathname),
     },
     {
         name:'scaffolding',
@@ -40,23 +42,23 @@ export const docRouteItems:IDocRouteCompItems[] = [
                 name:'scaffoldingInstall',
                 component:ScaffoldingInstall,
             },
-        ],
+        ].map(mapToPublicPathname),
     },
     {
         name:'browserAdaptor',
-        routeItems:[],
+        routeItems:[].map(mapToPublicPathname),
     },
     {
         name:'reduxOpenfin',
-        routeItems:[],
+        routeItems:[].map(mapToPublicPathname),
     },
     {
         name:'starterBase',
-        routeItems:[],
+        routeItems:[].map(mapToPublicPathname),
     },
     {
         name:'about',
-        routeItems:[],
+        routeItems:[].map(mapToPublicPathname),
     },
 ];
 

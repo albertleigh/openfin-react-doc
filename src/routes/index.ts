@@ -3,6 +3,8 @@ import { RouteItem } from './types';
 import DefaultLanding from '../layouts/Landing/Landing';
 import Document from '../layouts/Document/Document';
 
+import { mapToPublicPathname } from './utils';
+
 const indexRoutes:RouteItem[] = [
     {
         path:'/doc',
@@ -17,4 +19,4 @@ const indexRoutes:RouteItem[] = [
 
 export * from './types';
 
-export default indexRoutes;
+export default indexRoutes.map(mapToPublicPathname);

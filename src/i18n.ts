@@ -9,6 +9,9 @@ i18n
     .use(reactI18nextModule)
     .init({
         ns: ['landing','docMenu',],
+        backend:{
+            loadPath:`${process.env.PUBLIC_URL}/locales/{{lng}}/{{ns}}.json`,
+        },
         defaultNS: 'landing',
         lng:'en',
         fallbackLng:'en',

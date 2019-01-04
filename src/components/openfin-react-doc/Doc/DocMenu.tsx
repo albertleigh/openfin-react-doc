@@ -13,6 +13,7 @@ import { docMenuCompStyle as style } from '../../../assets/jss/openfin-react-doc
 import DocMenuItem from './DocMenuItem';
 
 import {IDocRouteCompItems} from "../../../routes";
+import {publicPathname} from "../../../routes/utils";
 import { docRouteItems } from '../../../routes/document';
 
 interface IProps extends WithStyles<typeof style>{
@@ -30,7 +31,7 @@ class DocMenuComp extends React.Component<IProps, IState>{
         return(
             <div className={classes.container}>
                 <div className={classes.toolbar}>
-                    <Link className={classes.link} to="/">
+                    <Link className={classes.link} to={publicPathname}>
                         <Typography variant="subtitle1" color='inherit' >
                             Openfin react starter
                         </Typography>

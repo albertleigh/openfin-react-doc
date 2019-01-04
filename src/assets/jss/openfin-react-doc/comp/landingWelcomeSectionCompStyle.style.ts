@@ -44,7 +44,7 @@ const landingWelcomeSectionCompStyleStyle = (theme:Theme)=> createStyles({
         left: 0,
         bottom: 0,
         right: 0,
-        background:'url(/img/screenshoot.gif) no-repeat center center fixed',
+        background:`url(${process.env.PUBLIC_URL}/img/screenshoot.gif) no-repeat center center fixed`,
         backgroundSize: 'cover',
     }
 });
