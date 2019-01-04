@@ -2,6 +2,7 @@ import * as React from 'react';
 import { WithStyles, withStyles } from '@material-ui/core/styles';
 
 import Typography from '@material-ui/core/Typography';
+import Paper from '@material-ui/core/Paper';
 
 import cx from "classnames";
 import { connect } from 'react-redux';
@@ -17,6 +18,30 @@ interface IProps extends WithStyles<typeof style>{
 
 import { IRootState } from '../../reduxs';
 
+const alCli =
+`
+        _ _               _             _ _ 
+   __ _| | |__   ___ _ __| |_       ___| (_)
+  / _\` | | '_ \\ / _ \\ '__| __|____ / __| | |
+ | (_| | | |_) |  __/ |  | ||_____| (__| | |
+  \\__,_|_|_.__/ \\___|_|   \\__|     \\___|_|_|
+                                            
+  v0.30.10
+ 
+  albert li personal cli to generate boilerplate codes
+ 
+  SYNOPSIS
+      $ al-cli comp <component name>
+      $ al-cli openfin-react-ts <app name>
+      $ al-cli react-ts <app name>
+      $ al-cli help
+  DESCRIPTION
+      --force -f          Create the target file by force, override if any already exist
+      --directory -d      Override the default path where the file created
+      --verbose -v        Include comments
+      --skipInstall       Skip to install node_moduels
+`;
+
 class StartInstallationView extends React.Component<IProps,{}>{
     render(){
         return (
@@ -25,7 +50,7 @@ class StartInstallationView extends React.Component<IProps,{}>{
                     Installation & Setup
                 </Typography>
                 <Typography variant="body1" gutterBottom>
-                    Initially to install the scaffolding tool to generate template.
+                    Initially, install the scaffolding tool to generate template.
                 </Typography>
                 <Code withMargin text="npm install @albertli90/al-cli -g"/>
 
@@ -33,61 +58,11 @@ class StartInstallationView extends React.Component<IProps,{}>{
                     or
                 </Typography>
                 <Code withMargin text="yarn global add @albertli90/al-cli"/>
-                <Typography variant="body1" gutterBottom>
-                    body1. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos blanditiis tenetur
-                    unde suscipit, quam beatae rerum inventore consectetur, neque doloribus, cupiditate numquam
-                    dignissimos laborum fugiat deleniti? Eum quasi quidem quibusdam.
-
-                    body1. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos blanditiis tenetur
-                    unde suscipit, quam beatae rerum inventore consectetur, neque doloribus, cupiditate numquam
-                    dignissimos laborum fugiat deleniti? Eum quasi quidem quibusdam.
-
-                    body1. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos blanditiis tenetur
-                    unde suscipit, quam beatae rerum inventore consectetur, neque doloribus, cupiditate numquam
-                    dignissimos laborum fugiat deleniti? Eum quasi quidem quibusdam.
-
-                    body1. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos blanditiis tenetur
-                    unde suscipit, quam beatae rerum inventore consectetur, neque doloribus, cupiditate numquam
-                    dignissimos laborum fugiat deleniti? Eum quasi quidem quibusdam.
-
-                    body1. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos blanditiis tenetur
-                    unde suscipit, quam beatae rerum inventore consectetur, neque doloribus, cupiditate numquam
-                    dignissimos laborum fugiat deleniti? Eum quasi quidem quibusdam.
-
-                    body1. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos blanditiis tenetur
-                    unde suscipit, quam beatae rerum inventore consectetur, neque doloribus, cupiditate numquam
-                    dignissimos laborum fugiat deleniti? Eum quasi quidem quibusdam.
-
-                    body1. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos blanditiis tenetur
-                    unde suscipit, quam beatae rerum inventore consectetur, neque doloribus, cupiditate numquam
-                    dignissimos laborum fugiat deleniti? Eum quasi quidem quibusdam.
-
-                    body1. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos blanditiis tenetur
-                    unde suscipit, quam beatae rerum inventore consectetur, neque doloribus, cupiditate numquam
-                    dignissimos laborum fugiat deleniti? Eum quasi quidem quibusdam.
-
-                    body1. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos blanditiis tenetur
-                    unde suscipit, quam beatae rerum inventore consectetur, neque doloribus, cupiditate numquam
-                    dignissimos laborum fugiat deleniti? Eum quasi quidem quibusdam.
-
-                    body1. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos blanditiis tenetur
-                    unde suscipit, quam beatae rerum inventore consectetur, neque doloribus, cupiditate numquam
-                    dignissimos laborum fugiat deleniti? Eum quasi quidem quibusdam.
-
-                    body1. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos blanditiis tenetur
-                    unde suscipit, quam beatae rerum inventore consectetur, neque doloribus, cupiditate numquam
-                    dignissimos laborum fugiat deleniti? Eum quasi quidem quibusdam.
-
-                    body1. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos blanditiis tenetur
-                    unde suscipit, quam beatae rerum inventore consectetur, neque doloribus, cupiditate numquam
-                    dignissimos laborum fugiat deleniti? Eum quasi quidem quibusdam.
-
-                    body1. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos blanditiis tenetur
-                    unde suscipit, quam beatae rerum inventore consectetur, neque doloribus, cupiditate numquam
-                    dignissimos laborum fugiat deleniti? Eum quasi quidem quibusdam.
 
 
-                </Typography>
+                <Paper>
+                    <Code language='vim' withMargin text={alCli}/>
+                </Paper>
 
             </React.Fragment>
         )

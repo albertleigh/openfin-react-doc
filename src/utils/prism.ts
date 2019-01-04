@@ -1,6 +1,8 @@
 import prism from 'prismjs';
 import 'prismjs/components/prism-jsx';
 import 'prismjs/components/prism-typescript';
+import 'prismjs/components/prism-bash';
+import 'prismjs/components/prism-vim';
 
 /* eslint-disable import/no-webpack-loader-syntax  */
 import lightTheme from '!raw-loader!prismjs/themes/prism.css';
