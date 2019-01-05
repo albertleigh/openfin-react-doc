@@ -64,6 +64,10 @@ class StartInstallationView extends React.Component<IProps,{}>{
                     <Code language='vim' withMargin text={alCli}/>
                 </Paper>
 
+                <Typography variant="body1" gutterBottom>
+                    test 3
+                </Typography>
+
             </React.Fragment>
         )
     }
