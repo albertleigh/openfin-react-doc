@@ -6,6 +6,7 @@ import StartDevelopers from '../views/Start/StartDevelopers';
 import StartFaq from '../views/Start/StartFaq';
 // scaffolding
 import ScaffoldingInstall from '../views/Scaffolding/ScaffoldingInstall';
+import ScaffoldingGenrTpl from '../views/Scaffolding/ScaffoldingGenrTpl';
 // browserAdaptor
 // reduxOpenfin
 // starterBase
@@ -41,6 +42,11 @@ export const docRouteItems:IDocRouteCompItems[] = [
                 path:'/doc/scaffoldingInstall',
                 name:'scaffoldingInstall',
                 component:ScaffoldingInstall,
+            },
+            {
+                path:'/doc/scaffoldingGenrTpl',
+                name:'scaffoldingGenrTpl',
+                component:ScaffoldingGenrTpl,
             },
         ].map(mapToPublicPathname),
     },

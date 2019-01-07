@@ -1,11 +1,12 @@
 {
   "start":"Get started",
-  "startInstallation":"Installation",
+  "startInstallation":"Installer",
   "startDevelopers":"For developers",
   "startFaq":"FAQ",
 
   "scaffolding":"AL-CLI",
   "scaffoldingInstall":"Installation",
+  "scaffoldingGenrTpl":"Generating templates",
 
   "browserAdaptor":"Browser Adaptor",
 
