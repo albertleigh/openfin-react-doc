@@ -9,6 +9,8 @@
   "scaffoldingGenrTpl":"Generating templates",
 
   "browserAdaptor":"Browser Adaptor",
+  "browserAdaptorInstall":"Install BA",
+  "browserAdaptorUsecases":"BA user cases",
 
   "reduxOpenfin":"Redux Openfin",
 

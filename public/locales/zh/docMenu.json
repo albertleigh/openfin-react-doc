@@ -9,6 +9,8 @@
   "scaffoldingGenrTpl":"生成模板代码",
 
   "browserAdaptor":"浏览器适配器",
+  "browserAdaptorInstall":"安装适配器",
+  "browserAdaptorUsecases":"适配器用例",
 
   "reduxOpenfin":"Redux Openfin",
 

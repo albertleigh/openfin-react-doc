@@ -8,6 +8,8 @@ import StartFaq from '../views/Start/StartFaq';
 import ScaffoldingInstall from '../views/Scaffolding/ScaffoldingInstall';
 import ScaffoldingGenrTpl from '../views/Scaffolding/ScaffoldingGenrTpl';
 // browserAdaptor
+import BrowserAdaptorInstall from '../views/BrowserAdaptor/BrowserAdaptorInstall';
+import BrowserAdaptorUsecases from '../views/BrowserAdaptor/BrowserAdaptorUsecases';
 // reduxOpenfin
 // starterBase
 // about
@@ -52,7 +54,18 @@ export const docRouteItems:IDocRouteCompItems[] = [
     },
     {
         name:'browserAdaptor',
-        routeItems:[].map(mapToPublicPathname),
+        routeItems:[
+            {
+                path:'/doc/browserAdaptorInstall',
+                name:'browserAdaptorInstall',
+                component:BrowserAdaptorInstall,
+            },
+            {
+                path:'/doc/browserAdaptorUsecases',
+                name:'browserAdaptorUsecases',
+                component:BrowserAdaptorUsecases,
+            },
+        ].map(mapToPublicPathname),
     },
     {
         name:'reduxOpenfin',

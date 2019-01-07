@@ -23,4 +23,6 @@ export {default as startDevelopersViewStyle } from './view/startDevelopersView.s
 export {default as startFaqViewStyle } from './view/startFaqView.style'
 export {default as scaffoldingInstallViewStyle } from './view/scaffoldingInstallView.style'
 export {default as scaffoldingGenrTplViewStyle } from './view/scaffoldingGenrTplView.style'
+export {default as browserAdaptorInstallViewStyle } from './view/browserAdaptorInstallView.style'
+export {default as browserAdaptorUsecasesViewStyle } from './view/browserAdaptorUsecasesView.style'
 // END_OF_AL_CLI_VIEW
