@@ -25,6 +25,8 @@
   "starterBaseStyles":"Styles",
   "starterBaseWhyTs":"Why typescript?",
 
-  "about":"About"
+  "about":"About",
+  "aboutCollaborators":"Collaborators",
+  "aboutThanks":"Thanks"
 
 }

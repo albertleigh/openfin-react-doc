@@ -22,6 +22,8 @@ import StarterBaseReduxs from '../views/StarterBase/StarterBaseReduxs';
 import StarterBaseStyles from '../views/StarterBase/StarterBaseStyles';
 import StarterBaseWhyTs from '../views/StarterBase/StarterBaseWhyTs';
 // about
+import AboutCollaborators from '../views/About/AboutCollaborators';
+import AboutThanks from '../views/About/AboutThanks';
 
 import { mapToPublicPathname } from './utils';
 
@@ -133,7 +135,18 @@ export const docRouteItems:IDocRouteCompItems[] = [
     },
     {
         name:'about',
-        routeItems:[].map(mapToPublicPathname),
+        routeItems:[
+            {
+                path:'/doc/aboutCollaborators',
+                name:'aboutCollaborators',
+                component:AboutCollaborators,
+            },
+            {
+                path:'/doc/aboutThanks',
+                name:'aboutThanks',
+                component:AboutThanks,
+            },
+        ].map(mapToPublicPathname),
     },
 ];
 

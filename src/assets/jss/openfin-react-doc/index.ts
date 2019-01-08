@@ -34,4 +34,6 @@ export {default as starterBaseCompsViewStyle } from './view/starterBaseCompsView
 export {default as starterBaseReduxsViewStyle } from './view/starterBaseReduxsView.style'
 export {default as starterBaseStylesViewStyle } from './view/starterBaseStylesView.style'
 export {default as starterBaseWhyTsViewStyle } from './view/starterBaseWhyTsView.style'
+export {default as aboutCollaboratorsViewStyle } from './view/aboutCollaboratorsView.style'
+export {default as aboutThanksViewStyle } from './view/aboutThanksView.style'
 // END_OF_AL_CLI_VIEW
