@@ -30,4 +30,8 @@ export {default as reduxOpenfinCommPattViewStyle } from './view/reduxOpenfinComm
 export {default as reduxOpenfinSupportApisViewStyle } from './view/reduxOpenfinSupportApisView.style'
 export {default as reduxOpenfinSharedActionsViewStyle } from './view/reduxOpenfinSharedActionsView.style'
 export {default as reduxOpenfinSnapDockViewStyle } from './view/reduxOpenfinSnapDockView.style'
+export {default as starterBaseCompsViewStyle } from './view/starterBaseCompsView.style'
+export {default as starterBaseReduxsViewStyle } from './view/starterBaseReduxsView.style'
+export {default as starterBaseStylesViewStyle } from './view/starterBaseStylesView.style'
+export {default as starterBaseWhyTsViewStyle } from './view/starterBaseWhyTsView.style'
 // END_OF_AL_CLI_VIEW

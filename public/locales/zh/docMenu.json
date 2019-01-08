@@ -19,6 +19,12 @@
   "reduxOpenfinSharedActions":"Actions通信",
   "reduxOpenfinSnapDock":"Snap&dock",
 
+  "starterBase":"模板代码",
+  "starterBaseComps":"Components",
+  "starterBaseReduxs":"Reduxs",
+  "starterBaseStyles":"Styles",
+  "starterBaseWhyTs":"为什么typescript?",
+
   "about":"关于"
 
 }

@@ -19,6 +19,12 @@
   "reduxOpenfinSharedActions":"Sharing actions",
   "reduxOpenfinSnapDock":"Snap&dock",
 
+  "starterBase":"Starter kit",
+  "starterBaseComps":"Components",
+  "starterBaseReduxs":"Reduxs",
+  "starterBaseStyles":"Styles",
+  "starterBaseWhyTs":"Why typescript?",
+
   "about":"About"
 
 }

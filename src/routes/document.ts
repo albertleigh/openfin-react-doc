@@ -17,6 +17,10 @@ import ReduxOpenfinSupportApis from '../views/ReduxOpenfin/ReduxOpenfinSupportAp
 import ReduxOpenfinSharedActions from '../views/ReduxOpenfin/ReduxOpenfinSharedActions';
 import ReduxOpenfinSnapDock from '../views/ReduxOpenfin/ReduxOpenfinSnapDock';
 // starterBase
+import StarterBaseComps from '../views/StarterBase/StarterBaseComps';
+import StarterBaseReduxs from '../views/StarterBase/StarterBaseReduxs';
+import StarterBaseStyles from '../views/StarterBase/StarterBaseStyles';
+import StarterBaseWhyTs from '../views/StarterBase/StarterBaseWhyTs';
 // about
 
 import { mapToPublicPathname } from './utils';
@@ -104,7 +108,28 @@ export const docRouteItems:IDocRouteCompItems[] = [
     },
     {
         name:'starterBase',
-        routeItems:[].map(mapToPublicPathname),
+        routeItems:[
+            {
+                path:'/doc/starterBaseComps',
+                name:'starterBaseComps',
+                component:StarterBaseComps,
+            },
+            {
+                path:'/doc/starterBaseReduxs',
+                name:'starterBaseReduxs',
+                component:StarterBaseReduxs,
+            },
+            {
+                path:'/doc/starterBaseStyles',
+                name:'starterBaseStyles',
+                component:StarterBaseStyles,
+            },
+            {
+                path:'/doc/starterBaseWhyTs',
+                name:'starterBaseWhyTs',
+                component:StarterBaseWhyTs,
+            },
+        ].map(mapToPublicPathname),
     },
     {
         name:'about',
