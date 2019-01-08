@@ -73,9 +73,7 @@ class ScaffoldingInstallView extends React.Component<IProps,{}>{
                 <Typography variant="body1" gutterBottom>
                     will dump the help into the console
                 </Typography>
-                <Paper>
-                    <Code language='vim' withMargin text={alCli}/>
-                </Paper>
+                <Code language='vim' withMargin text={alCli}/>
 
             </React.Fragment>
         )
