@@ -13,6 +13,11 @@
   "browserAdaptorUsecases":"BA user cases",
 
   "reduxOpenfin":"Redux Openfin",
+  "reduxOpenfinInstall":"Install redux-openfin",
+  "reduxOpenfinCommPatt":"Common pattern",
+  "reduxOpenfinSupportApis":"Supported Apis",
+  "reduxOpenfinSharedActions":"Sharing actions",
+  "reduxOpenfinSnapDock":"Snap&dock",
 
   "about":"About"
 

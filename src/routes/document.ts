@@ -11,6 +11,11 @@ import ScaffoldingGenrTpl from '../views/Scaffolding/ScaffoldingGenrTpl';
 import BrowserAdaptorInstall from '../views/BrowserAdaptor/BrowserAdaptorInstall';
 import BrowserAdaptorUsecases from '../views/BrowserAdaptor/BrowserAdaptorUsecases';
 // reduxOpenfin
+import ReduxOpenfinInstall from '../views/ReduxOpenfin/ReduxOpenfinInstall';
+import ReduxOpenfinCommPatt from '../views/ReduxOpenfin/ReduxOpenfinCommPatt';
+import ReduxOpenfinSupportApis from '../views/ReduxOpenfin/ReduxOpenfinSupportApis';
+import ReduxOpenfinSharedActions from '../views/ReduxOpenfin/ReduxOpenfinSharedActions';
+import ReduxOpenfinSnapDock from '../views/ReduxOpenfin/ReduxOpenfinSnapDock';
 // starterBase
 // about
 
@@ -69,7 +74,33 @@ export const docRouteItems:IDocRouteCompItems[] = [
     },
     {
         name:'reduxOpenfin',
-        routeItems:[].map(mapToPublicPathname),
+        routeItems:[
+            {
+                path:'/doc/reduxOpenfinInstall',
+                name:'reduxOpenfinInstall',
+                component:ReduxOpenfinInstall,
+            },
+            {
+                path:'/doc/reduxOpenfinCommPatt',
+                name:'reduxOpenfinCommPatt',
+                component:ReduxOpenfinCommPatt,
+            },
+            {
+                path:'/doc/reduxOpenfinSupportApis',
+                name:'reduxOpenfinSupportApis',
+                component:ReduxOpenfinSupportApis,
+            },
+            {
+                path:'/doc/reduxOpenfinSharedActions',
+                name:'reduxOpenfinSharedActions',
+                component:ReduxOpenfinSharedActions,
+            },
+            {
+                path:'/doc/reduxOpenfinSnapDock',
+                name:'reduxOpenfinSnapDock',
+                component:ReduxOpenfinSnapDock,
+            },
+        ].map(mapToPublicPathname),
     },
     {
         name:'starterBase',

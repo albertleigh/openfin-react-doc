@@ -13,6 +13,11 @@
   "browserAdaptorUsecases":"适配器用例",
 
   "reduxOpenfin":"Redux Openfin",
+  "reduxOpenfinInstall":"安装redux-openfin",
+  "reduxOpenfinCommPatt":"常用模式",
+  "reduxOpenfinSupportApis":"支持Apis",
+  "reduxOpenfinSharedActions":"Actions通信",
+  "reduxOpenfinSnapDock":"Snap&dock",
 
   "about":"关于"
 

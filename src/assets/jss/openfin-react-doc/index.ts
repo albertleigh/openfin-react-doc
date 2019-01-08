@@ -25,4 +25,9 @@ export {default as scaffoldingInstallViewStyle } from './view/scaffoldingInstall
 export {default as scaffoldingGenrTplViewStyle } from './view/scaffoldingGenrTplView.style'
 export {default as browserAdaptorInstallViewStyle } from './view/browserAdaptorInstallView.style'
 export {default as browserAdaptorUsecasesViewStyle } from './view/browserAdaptorUsecasesView.style'
+export {default as reduxOpenfinInstallViewStyle } from './view/reduxOpenfinInstallView.style'
+export {default as reduxOpenfinCommPattViewStyle } from './view/reduxOpenfinCommPattView.style'
+export {default as reduxOpenfinSupportApisViewStyle } from './view/reduxOpenfinSupportApisView.style'
+export {default as reduxOpenfinSharedActionsViewStyle } from './view/reduxOpenfinSharedActionsView.style'
+export {default as reduxOpenfinSnapDockViewStyle } from './view/reduxOpenfinSnapDockView.style'
 // END_OF_AL_CLI_VIEW
