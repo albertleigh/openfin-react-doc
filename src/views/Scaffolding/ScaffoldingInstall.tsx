@@ -47,18 +47,32 @@ class ScaffoldingInstallView extends React.Component<IProps,{}>{
         return (
             <React.Fragment>
                 <Typography variant='h2' gutterBottom>
-                    Installation & Setup
+                    Scaffolding tool installation
                 </Typography>
+
                 <Typography variant="body1" gutterBottom>
-                    Initially, install the scaffolding tool to generate template.
+                    Initially, install the scaffolding tool globally
                 </Typography>
+
                 <Code withMargin text="npm install @albertli90/al-cli -g"/>
 
                 <Typography variant="body1" gutterBottom>
                     or
                 </Typography>
+
                 <Code withMargin text="yarn global add @albertli90/al-cli"/>
 
+                <Typography variant="body1" gutterBottom>
+                    Once installed
+                </Typography>
+                <Code withMargin text="al-cli"/>
+                <Typography variant="body1" gutterBottom>
+                    or
+                </Typography>
+                <Code withMargin text="al-cli --help"/>
+                <Typography variant="body1" gutterBottom>
+                    will dump the help into the console
+                </Typography>
                 <Paper>
                     <Code language='vim' withMargin text={alCli}/>
                 </Paper>
