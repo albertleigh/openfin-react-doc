@@ -22,6 +22,8 @@ export {default as startInstallationViewStyle } from './view/startInstallationVi
 export {default as startDevelopersViewStyle } from './view/startDevelopersView.style'
 export {default as startFaqViewStyle } from './view/startFaqView.style'
 export {default as scaffoldingInstallViewStyle } from './view/scaffoldingInstallView.style'
+export {default as scaffoldingGenrPrjViewStyle } from './view/scaffoldingGenrPrjView.style'
+export {default as scaffoldingStandalonePkgViewStyle } from './view/scaffoldingStandalonePkgView.style'
 export {default as scaffoldingGenrTplViewStyle } from './view/scaffoldingGenrTplView.style'
 export {default as browserAdaptorInstallViewStyle } from './view/browserAdaptorInstallView.style'
 export {default as browserAdaptorUsecasesViewStyle } from './view/browserAdaptorUsecasesView.style'

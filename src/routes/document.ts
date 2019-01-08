@@ -6,6 +6,8 @@ import StartDevelopers from '../views/Start/StartDevelopers';
 import StartFaq from '../views/Start/StartFaq';
 // scaffolding
 import ScaffoldingInstall from '../views/Scaffolding/ScaffoldingInstall';
+import ScaffoldingGenrPrj from '../views/Scaffolding/ScaffoldingGenrPrj';
+import ScaffoldingStandalonePkg from '../views/Scaffolding/ScaffoldingStandalonePkg';
 import ScaffoldingGenrTpl from '../views/Scaffolding/ScaffoldingGenrTpl';
 // browserAdaptor
 import BrowserAdaptorInstall from '../views/BrowserAdaptor/BrowserAdaptorInstall';
@@ -55,6 +57,16 @@ export const docRouteItems:IDocRouteCompItems[] = [
                 path:'/doc/scaffoldingInstall',
                 name:'scaffoldingInstall',
                 component:ScaffoldingInstall,
+            },
+            {
+                path:'/doc/scaffoldingGenrPrj',
+                name:'scaffoldingGenrPrj',
+                component:ScaffoldingGenrPrj,
+            },
+            {
+                path:'/doc/scaffoldingStandalonePkg',
+                name:'scaffoldingStandalonePkg',
+                component:ScaffoldingStandalonePkg,
             },
             {
                 path:'/doc/scaffoldingGenrTpl',

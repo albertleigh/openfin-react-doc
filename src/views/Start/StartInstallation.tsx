@@ -66,7 +66,7 @@ class StartInstallationView extends React.Component<IProps,{}>{
                     Current installers upon mac and linux platform are not supported by Openfin.
                 </Typography>
                 <Typography variant="body1" gutterBottom>
-                    But an alternative solution is provided via al-cli.
+                    But an alternative standalone solution is provided via al-cli.
                     Plz check scaffolding al-cli section.
                 </Typography>
 

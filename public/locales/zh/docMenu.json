@@ -6,6 +6,8 @@
 
   "scaffolding":"代码生成工具 AL-CLI",
   "scaffoldingInstall":"安装代码生成工具",
+  "scaffoldingGenrPrj":"生成模板工程",
+  "scaffoldingStandalonePkg":"Openfin-react-ts 独立打包",
   "scaffoldingGenrTpl":"生成模板代码",
 
   "browserAdaptor":"浏览器适配器",
@@ -19,7 +21,7 @@
   "reduxOpenfinSharedActions":"Actions通信",
   "reduxOpenfinSnapDock":"Snap&dock",
 
-  "starterBase":"模板代码",
+  "starterBase":"模板工程代码解析",
   "starterBaseComps":"Components",
   "starterBaseReduxs":"Reduxs",
   "starterBaseStyles":"Styles",

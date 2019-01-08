@@ -128,13 +128,6 @@ class ScaffoldingGenrTplView extends React.Component<IProps,{}>{
                     Diff between Layout, View and Component
                 </Typography>
 
-                <Typography variant='h5' gutterBottom>
-                    Typescript template based on create-react-app
-                </Typography>
-
-                <Typography variant='h5' gutterBottom>
-                    Openfin react TS template
-                </Typography>
 
             </React.Fragment>
         )

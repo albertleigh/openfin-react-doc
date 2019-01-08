@@ -6,6 +6,8 @@
 
   "scaffolding":"AL-CLI",
   "scaffoldingInstall":"Installation",
+  "scaffoldingGenrPrj":"Generating projects",
+  "scaffoldingStandalonePkg":"Standalone Package",
   "scaffoldingGenrTpl":"Generating templates",
 
   "browserAdaptor":"Browser Adaptor",
