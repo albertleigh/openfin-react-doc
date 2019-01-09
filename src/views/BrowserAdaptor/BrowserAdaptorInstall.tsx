@@ -40,7 +40,7 @@ class BrowserAdaptorInstallView extends React.Component<IProps,{}>{
 
                 <Typography variant='body1' gutterBottom>
                     Openfin browser adaptor is just a bunch doing-nothing mock-up of openfin js apis.
-                    Infact, the adaptor did not do anything but let the the code survive when openfin apis called
+                    Infact, the adaptor doesn't do much but just let the the code survive when openfin apis called
                     instead of throwing undefined handles errors.
                 </Typography>
 
