@@ -19,9 +19,16 @@ import { Code } from '../../components';
 import newCompOneStyleCode from '!raw-loader!./samples/newOneComp.style_ts';
 import newCompTwoStyleCode from '!raw-loader!./samples/newTwoComp.style_ts';
 import newCompStyleIndexCode from '!raw-loader!./samples/newCompStyleIndex_ts';
-import newCompOneIndexCode from '!raw-loader!./samples/newOneComp_tsx';
-import newCompTwoIndexCode from '!raw-loader!./samples/newTwoComp_tsx';
+import newCompOneCode from '!raw-loader!./samples/newOneComp_tsx';
+import newCompTwoCode from '!raw-loader!./samples/newTwoComp_tsx';
 import newCompIndexCode from '!raw-loader!./samples/newCompIndex_ts';
+
+import newViewOneStyleCode from '!raw-loader!./samples/newOneView.style_ts';
+import newViewTwoStyleCode from '!raw-loader!./samples/newTwoView.style_ts';
+import newViewStyleIndexCode from '!raw-loader!./samples/newViewStyleIndex_ts';
+import newViewOneCode from '!raw-loader!./samples/newOneView_ts';
+import newViewTwoCode from '!raw-loader!./samples/newTwoView_ts';
+
 
 interface IProps extends WithStyles<typeof style>{
 
@@ -38,7 +45,7 @@ const newCompOneOutput=
  | (_| | | |_) |  __/ |  | ||_____| (__| | |
   \\__,_|_|_.__/ \\___|_|   \\__|     \\___|_|_|
                                             
-  v0.30.4-beta
+  v0.30.20
 prompt: new component name?:  (NewOne) 
 prompt: new jss style name?:  (newOne) 
 prompt: current working space name?:  (sample-app) 
@@ -94,6 +101,41 @@ src/
     └── NewTwo
         └── NewTwo.tsx                      // added
 
+`;
+
+const newLtyStruct=
+`
+src/
+├── assets
+│   └── jss
+│       └── sample-app
+│           ├── comp
+│           │   ├── newOneComp.style.ts
+│           │   └── newTwoComp.style.ts
+│           ├── index.ts                    // modified
+│           ├── layout
+│           │   ├── newOne.style.ts         // added
+│           │   └── newTwo.style.ts         // added
+│           └── view
+│               ├── newOneView.style.ts
+│               └── newTwoView.style.ts
+├── components
+│   ├── index.ts
+│   └── sample-app
+│       ├── NewOne
+│       │   └── NewOne.tsx
+│       └── NewTwo
+│           └── NewTwo.tsx
+├── layouts
+│   ├── NewOne
+│   │   └── NewOne.tsx                      // added
+│   └── NewTwo
+│       └── NewTwo.tsx                      // added
+└── views
+    ├── NewOne
+    │   └── NewOne.tsx
+    └── NewTwo
+        └── NewTwo.tsx
 `;
 
 class ScaffoldingGenrTplView extends React.Component<IProps,{}>{
@@ -214,12 +256,12 @@ class ScaffoldingGenrTplView extends React.Component<IProps,{}>{
                 <Typography variant='caption' gutterBottom>
                     src/components/sample-app/NewOne/NewOne.tsx
                 </Typography>
-                <Code withMargin text={newCompOneIndexCode} />
+                <Code withMargin text={newCompOneCode} />
 
                 <Typography variant='caption' gutterBottom>
                     src/components/sample-app/NewTwo/NewTwo.tsx
                 </Typography>
-                <Code withMargin text={newCompTwoIndexCode} />
+                <Code withMargin text={newCompTwoCode} />
 
                 <Typography variant='body1' gutterBottom>
                     Similarily, the generated components are exported via a comp router index
@@ -247,7 +289,7 @@ class ScaffoldingGenrTplView extends React.Component<IProps,{}>{
                     Generate view template
                 </Typography>
                 <Typography variant='body1' gutterBottom>
-                    Similarly, let create two new view components based on the previous results.
+                    Similarly, let's create two new view components based on the previous results.
                 </Typography>
                 <Code withMargin text="al-cli view NewOne"/>
                 <Code withMargin text="al-cli view NewTwo"/>
@@ -255,6 +297,36 @@ class ScaffoldingGenrTplView extends React.Component<IProps,{}>{
                     Once done, al-cli will add the files like these
                 </Typography>
                 <Code language='bash' withMargin text={newViewStruct}/>
+                <Typography variant='body1' gutterBottom>
+                    Similar we have the isolated style objects for two views
+                </Typography>
+                <Typography variant='caption' gutterBottom>
+                    src/assets/jss/sample-app/view/newOneView.style.ts
+                </Typography>
+                <Code withMargin text={newViewOneStyleCode} />
+                <Typography variant='caption' gutterBottom>
+                    src/assets/jss/sample-app/view/newTwoView.style.ts
+                </Typography>
+                <Code withMargin text={newViewTwoStyleCode} />
+                <Typography variant='body1' gutterBottom>
+                    and the two styles are also exported via a router index.ts
+                </Typography>
+                <Typography variant='caption' gutterBottom>
+                    src/assets/jss/sample-app/index.ts
+                </Typography>
+                <Code withMargin text={newViewStyleIndexCode} />
+                <Typography variant='body1' gutterBottom>
+                    then the styles will be injected into two views created.
+                </Typography>
+                <Typography variant='caption' gutterBottom>
+                    src/views/NewOne/NewOne.tsx
+                </Typography>
+                <Code withMargin text={newViewOneCode} />
+
+                <Typography variant='caption' gutterBottom>
+                    src/views/NewTwo/NewTwo.tsx
+                </Typography>
+                <Code withMargin text={newViewTwoCode} />
 
 
 
@@ -262,6 +334,18 @@ class ScaffoldingGenrTplView extends React.Component<IProps,{}>{
 
                 <Typography className={classes.hasMargin} variant='h5' gutterBottom>
                     Generate layout template
+                </Typography>
+                <Typography variant='body1' gutterBottom>
+                    Similarly, we could also create two new lyt components based on the previous results.
+                </Typography>
+                <Code withMargin text="al-cli lyt NewOne"/>
+                <Code withMargin text="al-cli lty NewTwo"/>
+                <Typography variant='body1' gutterBottom>
+                    Make no mistake, once done, al-cli will create all the files in a structure like these.
+                </Typography>
+                <Code language='bash' withMargin text={newLtyStruct}/>
+                <Typography variant='body1' gutterBottom>
+                    Lyts and their isolated styles
                 </Typography>
 
 
