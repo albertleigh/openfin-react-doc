@@ -30,6 +30,10 @@ import newViewOneCode from '!raw-loader!./samples/newOneView_ts';
 import newViewTwoCode from '!raw-loader!./samples/newTwoView_ts';
 
 
+import newLytOneStyleCode from '!raw-loader!./samples/newOneLyt.style_ts';
+import newLytTwoStyleCode from '!raw-loader!./samples/newTwoLyt.style_ts';
+import newLytStyleIndexCode from '!raw-loader!./samples/newLytStyleIndex_ts';
+
 interface IProps extends WithStyles<typeof style>{
 
 
@@ -339,7 +343,7 @@ class ScaffoldingGenrTplView extends React.Component<IProps,{}>{
                     Similarly, we could also create two new lyt components based on the previous results.
                 </Typography>
                 <Code withMargin text="al-cli lyt NewOne"/>
-                <Code withMargin text="al-cli lty NewTwo"/>
+                <Code withMargin text="al-cli lyt NewTwo"/>
                 <Typography variant='body1' gutterBottom>
                     Make no mistake, once done, al-cli will create all the files in a structure like these.
                 </Typography>
@@ -347,6 +351,18 @@ class ScaffoldingGenrTplView extends React.Component<IProps,{}>{
                 <Typography variant='body1' gutterBottom>
                     Lyts and their isolated styles
                 </Typography>
+                <Typography variant='caption' gutterBottom>
+                    src/assets/jss/sample-app/index.ts
+                </Typography>
+                <Code withMargin text={newLytOneStyleCode} />
+                <Typography variant='caption' gutterBottom>
+                    src/assets/jss/sample-app/layout/newTwo.style.ts
+                </Typography>
+                <Code withMargin text={newLytTwoStyleCode} />
+                <Typography variant='caption' gutterBottom>
+                    src/assets/jss/sample-app/layout/newTwo.style.ts
+                </Typography>
+                <Code withMargin text={newLytStyleIndexCode} />
 
 
 
