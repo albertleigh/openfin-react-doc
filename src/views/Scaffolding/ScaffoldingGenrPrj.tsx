@@ -307,6 +307,10 @@ class ScaffoldingGenrPrjView extends React.Component<IProps,{}>{
         return (
             <React.Fragment>
 
+                <Typography variant='h3' gutterBottom>
+                    Generate projects
+                </Typography>
+
                 <Typography variant='h5' gutterBottom>
                     Typescript template project based on create-react-app
                 </Typography>
