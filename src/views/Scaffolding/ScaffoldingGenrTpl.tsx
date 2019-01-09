@@ -33,6 +33,8 @@ import newViewTwoCode from '!raw-loader!./samples/newTwoView_ts';
 import newLytOneStyleCode from '!raw-loader!./samples/newOneLyt.style_ts';
 import newLytTwoStyleCode from '!raw-loader!./samples/newTwoLyt.style_ts';
 import newLytStyleIndexCode from '!raw-loader!./samples/newLytStyleIndex_ts';
+import newLytOneCode from '!raw-loader!./samples/newOneLyt_ts';
+import newLytTwoCode from '!raw-loader!./samples/newTwoLyt_ts';
 
 interface IProps extends WithStyles<typeof style>{
 
@@ -363,6 +365,15 @@ class ScaffoldingGenrTplView extends React.Component<IProps,{}>{
                     src/assets/jss/sample-app/layout/newTwo.style.ts
                 </Typography>
                 <Code withMargin text={newLytStyleIndexCode} />
+
+                <Typography variant='caption' gutterBottom>
+                    src/views/NewOne/NewOne.tsx
+                </Typography>
+                <Code withMargin text={newLytOneCode} />
+                <Typography variant='caption' gutterBottom>
+                    src/views/NewTwo/NewTwo.tsx
+                </Typography>
+                <Code withMargin text={newLytTwoCode} />
 
 
 
