@@ -44,10 +44,23 @@ const alCli =
 
 class ScaffoldingInstallView extends React.Component<IProps,{}>{
     render(){
+
+        const { classes } = this.props;
+
         return (
             <React.Fragment>
                 <Typography variant='h2' gutterBottom>
-                    Scaffolding tool installation
+                    Scaffolding tool
+                </Typography>
+
+                <Typography variant="body1" gutterBottom>
+                    An scaffolding tool called al-cli is provided to help deveoper to generate boilerplate codes and sample project.
+                    Along with it, a simple design pattern lyt/view/comp is also suggested.
+                    But developers do not have to follow it to utilize the stuff we provided.
+                </Typography>
+
+                <Typography className={classes.hasMargin} variant='h5' gutterBottom>
+                    Installation
                 </Typography>
 
                 <Typography variant="body1" gutterBottom>
