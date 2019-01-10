@@ -2,6 +2,12 @@ import * as React from 'react';
 import { WithStyles, withStyles } from '@material-ui/core/styles';
 
 import Typography from '@material-ui/core/Typography';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
 
 import cx from "classnames";
 import { connect } from 'react-redux';
@@ -32,6 +38,9 @@ if(!window.fin){
 
 class ReduxOpenfinInstallView extends React.Component<IProps,{}>{
     render(){
+
+        const  { classes } = this.props;
+
         return (
             <React.Fragment>
                 <Typography variant='h3' gutterBottom>
@@ -62,6 +71,60 @@ class ReduxOpenfinInstallView extends React.Component<IProps,{}>{
                 </Typography>
                 <Code withMargin text={configureStoreCode} />
 
+                <Typography variant='caption' gutterBottom>
+                    @albertli90/redux-openfin/createOpenfinMiddleware parameters:
+                </Typography>
+                <Paper className={classes.root}>
+                    <Table className={classes.table}>
+                        <TableHead>
+                            <TableRow>
+                                <TableCell align="right">Parameter</TableCell>
+                                <TableCell align="right">Type</TableCell>
+                                <TableCell align="right">Description</TableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            <TableRow>
+                                <TableCell align="right">fin</TableCell>
+                                <TableCell align="right">Any (not controlled)</TableCell>
+                                <TableCell align="right">openfin js api handler</TableCell>
+                            </TableRow>
+                            <TableRow>
+                                <TableCell align="right">config</TableCell>
+                                <TableCell align="right">@albertli90/redux-openfin/IConfig</TableCell>
+                                <TableCell align="right">The configuration object of redux-openfin</TableCell>
+                            </TableRow>
+                        </TableBody>
+                    </Table>
+                </Paper>
+
+
+                <Typography className={classes.hasMargin} variant='caption' gutterBottom>
+                    @albertli90/redux-openfin/IConfig configuration object schema:
+                </Typography>
+                <Paper className={classes.root}>
+                    <Table className={classes.table}>
+                        <TableHead>
+                            <TableRow>
+                                <TableCell align="right">Field</TableCell>
+                                <TableCell align="right">Type</TableCell>
+                                <TableCell align="right">Description</TableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            <TableRow>
+                                <TableCell align="right">finUuid</TableCell>
+                                <TableCell align="right">String</TableCell>
+                                <TableCell align="right">openfin app UUID, which could be siezed via process.env at compile time</TableCell>
+                            </TableRow>
+                            <TableRow>
+                                <TableCell align="right">sharedActions</TableCell>
+                                <TableCell align="right">String[]</TableCell>
+                                <TableCell align="right">Actions names of shared action</TableCell>
+                            </TableRow>
+                        </TableBody>
+                    </Table>
+                </Paper>
 
 
             </React.Fragment>
