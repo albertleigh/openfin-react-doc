@@ -17,6 +17,7 @@ import { IRootState } from '../../reduxs';
 
 class StartFaqView extends React.Component<IProps,{}>{
     render(){
+        const { classes } = this.props;
         return (
             <React.Fragment>
                 <Typography variant='h3' gutterBottom>
@@ -42,6 +43,17 @@ class StartFaqView extends React.Component<IProps,{}>{
                     Their supported IDE are not that friendly with flow very well, usually causing a lot of memory-leaking.
                     Thus, typescript will be our first primary supported static check language other than flow, and will consider to support flow at latter stage.
 
+                </Typography>
+
+                <Typography className={classes.hasMargin} variant='h5' gutterBottom>
+                    Will response action still be dispatched into redux even only the promise api called?
+                </Typography>
+
+                <Typography variant='body1' gutterBottom>
+                    The answer is by default yes.
+                </Typography>
+                <Typography variant='body1' gutterBottom>
+                    But you can disable it by setting the ignoreStore to true in the IConfig object when you create the middleware.
                 </Typography>
             </React.Fragment>
         )
