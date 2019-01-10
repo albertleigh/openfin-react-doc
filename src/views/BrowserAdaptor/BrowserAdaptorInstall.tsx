@@ -18,7 +18,9 @@ interface IProps extends WithStyles<typeof style>{
 import { IRootState } from '../../reduxs';
 
 const initBrowserAdaptor =
-`if(!window.fin){
+`import { BrowserAdapter } from '@albertli90/openfin-browser-adapter';
+
+if(!window.fin){
     window.fin = new BrowserAdapter({
         finUuid:process.env.REACT_APP_FIN_UUID,
         silentMode:false,
