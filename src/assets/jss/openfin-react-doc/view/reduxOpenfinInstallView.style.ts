@@ -14,6 +14,11 @@ const reduxOpenfinInstallViewStyle = (theme:Theme)=> createStyles({
         marginTop: theme.spacing.unit * 6,
     },
 
+    coveredTopicItem:{
+        marginLeft: theme.spacing.unit * 2,
+
+    }
+
 });
 
 export default reduxOpenfinInstallViewStyle;

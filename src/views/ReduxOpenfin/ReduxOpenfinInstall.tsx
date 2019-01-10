@@ -122,9 +122,55 @@ class ReduxOpenfinInstallView extends React.Component<IProps,{}>{
                                 <TableCell align="right">String[]</TableCell>
                                 <TableCell align="right">Actions names of shared action</TableCell>
                             </TableRow>
+                            <TableRow>
+                                <TableCell align="right">ignoreStore</TableCell>
+                                <TableCell align="right">Boolean[Optional]</TableCell>
+                                <TableCell align="right">Optional flag to ignore redux store to dispatch response when set</TableCell>
+                            </TableRow>
+                            <TableRow>
+                                <TableCell align="right">autoDocking</TableCell>
+                                <TableCell align="right">Boolean[Optional]</TableCell>
+                                <TableCell align="right">Optional flag to enable or disable current window docking when set or not</TableCell>
+                            </TableRow>
+                            <TableRow>
+                                <TableCell align="right">dockingOptions</TableCell>
+                                <TableCell align="right">@albertli90/redux-openfin/IDockingOptions [Optional]</TableCell>
+                                <TableCell align="right">
+                                    Optional configuration object to fine tune windows docking,
+                                    please refer Redux-Openfin Snap&Dock section for more info.
+                                </TableCell>
+                            </TableRow>
                         </TableBody>
                     </Table>
                 </Paper>
+
+
+                <Typography className={classes.hasMargin} variant='h5' gutterBottom>
+                    More
+                </Typography>
+
+
+                <Typography variant='body1' gutterBottom>
+                    In the following section,
+                    topics of
+                </Typography>
+
+                    <Typography className={classes.coveredTopicItem} variant='subtitle1' gutterBottom>
+                        common communication pattern utilized by the redux openfin,
+                    </Typography>
+                    <Typography className={classes.coveredTopicItem} variant='subtitle1' gutterBottom>
+                        a breif list of apis supported of the version,
+                    </Typography>
+                    <Typography className={classes.coveredTopicItem} variant='subtitle1' gutterBottom>
+                        cross windows communication via shared actions,
+                    </Typography>
+                    <Typography className={classes.coveredTopicItem} variant='subtitle1' gutterBottom>
+                        snap&dock feature and its configuration,
+                    </Typography>
+
+                <Typography variant='body1' gutterBottom>
+                    will be covered one by one.
+                </Typography>
 
 
             </React.Fragment>
