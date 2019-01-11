@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { WithStyles, withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
+import Paper from '@material-ui/core/Paper';
 
 import cx from "classnames";
 import { connect } from 'react-redux';
@@ -13,6 +14,8 @@ interface IProps extends WithStyles<typeof style>{
 }
 
 import { IRootState } from '../../reduxs';
+
+import reduxOpenfinDeployDiagram from '../../assets/svg/openfin-react-doc/redux-openfin-deploy.svg';
 
 class ReduxOpenfinSharedActionsView extends React.Component<IProps,{}>{
     render(){
@@ -39,6 +42,12 @@ class ReduxOpenfinSharedActionsView extends React.Component<IProps,{}>{
                     Redux actions as cross windows meta object.
                 </Typography>
 
+                <Typography className={classes.hasMargin} variant='h5' gutterBottom>
+                    Bic pic
+                </Typography>
+                <Paper className={classes.imgPaper}>
+                    <img src = {reduxOpenfinDeployDiagram}/>
+                </Paper>
 
             </React.Fragment>
         )

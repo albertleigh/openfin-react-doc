@@ -6,6 +6,11 @@ const reduxOpenfinSharedActionsViewStyle = (theme:Theme)=> createStyles({
         marginTop: theme.spacing.unit * 6,
     },
 
+    imgPaper:{
+        display:'flex',
+        justifyContent:'center',
+    }
+
 });
 
 export default reduxOpenfinSharedActionsViewStyle;
