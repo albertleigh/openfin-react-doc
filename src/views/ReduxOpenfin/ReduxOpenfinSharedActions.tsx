@@ -15,7 +15,41 @@ interface IProps extends WithStyles<typeof style>{
 
 import { IRootState } from '../../reduxs';
 
+import configureStoreCode from '!raw-loader!./samples/configureStore_ts';
+
 import reduxOpenfinDeployDiagram from '../../assets/svg/openfin-react-doc/redux-openfin-deploy.svg';
+
+import { Code } from '../../components';
+
+const receiverTagCode =
+`function* someGeneratorFun(action){
+
+    if (window.name === process.env.REACT_APP_FIN_UUID){
+        // main window receives this shared action    
+    }else if (window.name === 'some-other-window-name'){
+        // some other window receives this shared action    
+    }
+}
+
+yield takeEvery('SOME_SHARED_ACTION_NAME',someGeneratorFun);
+`;
+
+const senderTagCode =
+`import { SHARED_ACTION_ORIGIN_TAG } from '@albertli90/redux-openfin/channel';
+
+function* someGeneratorFun(action){
+
+    const ORIGIN_TAG = action.payload[SHARED_ACTION_ORIGIN_TAG];
+
+    if ( ORIGIN_TAG === process.env.REACT_APP_FIN_UUID){
+        // main window sends this shared action    
+    }else if ( ORIGIN_TAG === 'some-other-window-name'){
+        // some other sends catches this shared action    
+    }
+}
+
+yield takeEvery('SOME_SHARED_ACTION_NAME',someGeneratorFun);
+`;
 
 class ReduxOpenfinSharedActionsView extends React.Component<IProps,{}>{
     render(){
@@ -43,11 +77,46 @@ class ReduxOpenfinSharedActionsView extends React.Component<IProps,{}>{
                 </Typography>
 
                 <Typography className={classes.hasMargin} variant='h5' gutterBottom>
-                    Bic pic
+                    Big Pic: Deploy diagram
                 </Typography>
                 <Paper className={classes.imgPaper}>
                     <img src = {reduxOpenfinDeployDiagram}/>
                 </Paper>
+
+                <Typography variant='body1' gutterBottom>
+                    Redux openfin implement the interface to connect to the event bus(Openfin channel) transparent to developers.
+                    All developers need to do is to tell redux-openfin the list of action names to share.
+                    And the redux openfin will be responsible to send or receive the actions whose name match any one of the action name list provided.
+                </Typography>
+
+
+                <Typography className={classes.hasMargin} variant='h5' gutterBottom>
+                    Specify the actions in the configuration
+                </Typography>
+                <Code withMargin text={configureStoreCode} />
+                <Typography variant='body1' gutterBottom>
+                    Just like the previous example, to create the middleware, need to specify the actions name array when we create them.
+                </Typography>
+
+
+
+
+                <Typography className={classes.hasMargin} variant='h5' gutterBottom>
+                    Identify sender or receiver
+                </Typography>
+                <Typography variant='body1' gutterBottom>
+                    Openfin Rvm wll inject appUUID as window.name in the main window,
+                    and the window name specified in the creating config in the other children window.
+                </Typography>
+                <Typography variant='body1' gutterBottom>
+                    Therefore, we can identify where we receive it on the same code base like
+                </Typography>
+                <Code withMargin text={receiverTagCode} />
+                <Typography variant='body1' gutterBottom>
+                    Similarly, we can identify who sends it on the same code base like
+                </Typography>
+                <Code withMargin text={senderTagCode} />
+
 
             </React.Fragment>
         )
