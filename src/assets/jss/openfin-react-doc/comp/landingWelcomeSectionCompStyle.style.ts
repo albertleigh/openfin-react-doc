@@ -5,7 +5,7 @@ import grey from '@material-ui/core/colors/grey'
 const landingWelcomeSectionCompStyleStyle = (theme:Theme)=> createStyles({
     container:{
         position: 'relative',
-        backgroundColor: grey['800'],
+        backgroundColor: theme.palette.background.default,
         width:'100%',
         height:'100%',
         display:'flex',
