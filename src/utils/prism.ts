@@ -5,7 +5,7 @@ import 'prismjs/components/prism-bash';
 import 'prismjs/components/prism-vim';
 
 /* eslint-disable import/no-webpack-loader-syntax  */
-import lightTheme from '!raw-loader!prismjs/themes/prism-coy.css';
+import lightTheme from '!raw-loader!prismjs/themes/prism.css';
 import darkTheme from '!raw-loader!prismjs/themes/prism-tomorrow.css';
 
 const styleNode = document.createElement('style');
