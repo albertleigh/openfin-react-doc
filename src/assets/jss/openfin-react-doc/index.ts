@@ -38,4 +38,5 @@ export {default as starterBaseStylesViewStyle } from './view/starterBaseStylesVi
 export {default as starterBaseWhyTsViewStyle } from './view/starterBaseWhyTsView.style'
 export {default as aboutCollaboratorsViewStyle } from './view/aboutCollaboratorsView.style'
 export {default as aboutThanksViewStyle } from './view/aboutThanksView.style'
+export {default as starterBaseFeaturesViewStyle } from './view/starterBaseFeaturesView.style'
 // END_OF_AL_CLI_VIEW
