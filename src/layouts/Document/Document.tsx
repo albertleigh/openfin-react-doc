@@ -23,7 +23,7 @@ import {
     applicationToggleDirection,
 
     // types
-    IRootState,
+    IRootState, MuiTheme,
 } from '../../reduxs';
 import i18n from "../../i18n";
 
@@ -124,6 +124,7 @@ class DocumentLayout extends React.Component<IProps,{}>{
 
 export default connect(
     (state:IRootState)=>({
+        theme: state.application.theme,
         drawerOpen: state.application.drawerOpen,
     }),
     dispatch => ({
@@ -131,14 +132,30 @@ export default connect(
             onToggleDrawer: ()=>{
                 dispatch(applicationToggleDrawer());
             },
-            onToggleTheme : ()=>{
-                dispatch(applicationToggleTheme());
+            _doToggleTheme : (theme:MuiTheme)=>{
+                dispatch(applicationToggleTheme(theme));
             },
             onToggleDirection : ()=>{
                 dispatch(applicationToggleDirection());
             }
         }
-    })
+    }),
+    (statePros,dispatchProps,ownProps)=>{
+        const { theme, drawerOpen } = statePros;
+        const {
+            onToggleDrawer,_doToggleTheme,onToggleDirection,
+        } = dispatchProps.actions;
+        return {
+            drawerOpen,
+            actions:{
+                onToggleDrawer,
+                onToggleTheme : ()=>{
+                    _doToggleTheme(theme === MuiTheme.DARK?MuiTheme.LIGHT:MuiTheme.DARK)
+                },
+                onToggleDirection,
+            }
+        }
+    }
 
 )(
     withStyles(style)(

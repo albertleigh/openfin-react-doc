@@ -1,9 +1,12 @@
 import { delay } from 'redux-saga';
 import { all, call, put, takeLatest } from 'redux-saga/effects';
 
+import {setPrismTheme} from '../../utils/prism'
+
 import {
     APPLICATION_STARTED,
     applicationReady,
+    APPLICATION_TOGGLE_THEME,
 } from '..';
 
 export function* handleApplicationLoading() {
@@ -17,6 +20,11 @@ export function* handleApplicationLoading() {
 
 }
 
+export function* handleApplicationToggleTheme(action) {
+    setPrismTheme(action.payload.theme);
+}
+
 export default function* () {
     yield takeLatest(APPLICATION_STARTED,handleApplicationLoading);
+    yield takeLatest(APPLICATION_TOGGLE_THEME,handleApplicationToggleTheme);
 }

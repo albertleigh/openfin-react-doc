@@ -30,7 +30,7 @@ export default handleActions({
     }),
     [APPLICATION_TOGGLE_THEME]:(state,action)=>({
         ...state,
-        theme: state.theme === MuiTheme.DARK?MuiTheme.LIGHT:MuiTheme.DARK
+        theme: action.payload.theme,
     }),
     [APPLICATION_TOGGLE_DIRECTION]:(state,action)=>({
         ...state,
