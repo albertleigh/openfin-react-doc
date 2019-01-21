@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Typography from '@material-ui/core/Typography';
 import { WithStyles, withStyles } from '@material-ui/core/styles';
 import cx from "classnames";
 import { connect } from 'react-redux';
@@ -16,7 +17,18 @@ class StarterBaseStylesView extends React.Component<IProps,{}>{
     render(){
         return (
             <React.Fragment>
-                StarterBaseStyles view works ~
+                <Typography variant='h3' gutterBottom>
+                    Starter kit sytle
+                </Typography>
+
+                <Typography variant='subtitle1' gutterBottom>
+                    subtitle of components
+                </Typography>
+
+
+                <Typography variant='body1' gutterBottom>
+                    body1
+                </Typography>
             </React.Fragment>
         )
     }
