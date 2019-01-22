@@ -40,7 +40,7 @@ class StarterBaseReduxsView extends React.Component<IProps,{}>{
         const { classes }= this.props;
 
         return (
-            <div>
+            <React.Fragment>
                 <Typography variant='h3' gutterBottom>
                     Multi-win support Reduxs structure
                 </Typography>
@@ -105,7 +105,7 @@ class StarterBaseReduxsView extends React.Component<IProps,{}>{
                 </Typography>
 
 
-            </div>
+            </React.Fragment>
         )
     }
 }

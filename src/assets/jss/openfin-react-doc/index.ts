@@ -34,9 +34,9 @@ export {default as reduxOpenfinSharedActionsViewStyle } from './view/reduxOpenfi
 export {default as reduxOpenfinSnapDockViewStyle } from './view/reduxOpenfinSnapDockView.style'
 export {default as starterBaseCompsViewStyle } from './view/starterBaseCompsView.style'
 export {default as starterBaseReduxsViewStyle } from './view/starterBaseReduxsView.style'
-export {default as starterBaseStylesViewStyle } from './view/starterBaseStylesView.style'
 export {default as starterBaseWhyTsViewStyle } from './view/starterBaseWhyTsView.style'
 export {default as aboutCollaboratorsViewStyle } from './view/aboutCollaboratorsView.style'
 export {default as aboutThanksViewStyle } from './view/aboutThanksView.style'
 export {default as starterBaseFeaturesViewStyle } from './view/starterBaseFeaturesView.style'
+export {default as starterBaseRoutesViewStyle } from './view/starterBaseRoutesView.style'
 // END_OF_AL_CLI_VIEW

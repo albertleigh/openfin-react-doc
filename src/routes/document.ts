@@ -22,7 +22,7 @@ import ReduxOpenfinSnapDock from '../views/ReduxOpenfin/ReduxOpenfinSnapDock';
 import StarterBaseFeatures from '../views/StarterBase/StarterBaseFeatures';
 import StarterBaseReduxs from '../views/StarterBase/StarterBaseReduxs';
 import StarterBaseComps from '../views/StarterBase/StarterBaseComps';
-import StarterBaseStyles from '../views/StarterBase/StarterBaseStyles';
+import StarterBaseRoutes from '../views/StarterBase/StarterBaseRoutes';
 import StarterBaseWhyTs from '../views/StarterBase/StarterBaseWhyTs';
 // about
 import AboutCollaborators from '../views/About/AboutCollaborators';
@@ -140,9 +140,9 @@ export const docRouteItems:IDocRouteCompItems[] = [
                 component:StarterBaseComps,
             },
             {
-                path:'/doc/starterBaseStyles',
-                name:'starterBaseStyles',
-                component:StarterBaseStyles,
+                path:'/doc/starterBaseRoutes',
+                name:'starterBaseRoutes',
+                component:StarterBaseRoutes,
             },
             {
                 path:'/doc/starterBaseWhyTs',
