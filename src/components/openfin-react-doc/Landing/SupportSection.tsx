@@ -13,6 +13,7 @@ import { landingSupportSectionCompStyle as style } from '../../../assets/jss/ope
 
 import AbstractLandingSection from "./AbstractLandingSection";
 
+import appLogo from '../../../logo.svg';
 import dbGearsSvg from '../../../assets/svg/developer/database-gears.svg';
 import githubSvg from '../../../assets/svg/developer/github-logo.svg';
 import githubDarkSvg from '../../../assets/svg/developer/github-logo-dark.svg';
@@ -77,7 +78,7 @@ class SupportSectionComp extends AbstractLandingSection<IProps, IState>{
             },
             {
                 icons:[
-                    dbGearsSvg,settingSvg,
+                    appLogo,dbGearsSvg,settingSvg,
                 ],
                 authorName:'Smashicons',
                 authorLink:'https://smashicons.com/',
