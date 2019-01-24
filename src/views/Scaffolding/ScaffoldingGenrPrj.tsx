@@ -85,6 +85,7 @@ sample-react-ts-app/
 const newSampleOpenfinReactTsPrjStructure =
 `
 sample-openfin-react-ts-app/
+├── .babelrc
 ├── CHANGELOG.md
 ├── config
 │   ├── env.js
@@ -99,6 +100,13 @@ sample-openfin-react-ts-app/
 │   ├── webpack.config.prod.js
 │   └── webpackDevServer.config.js
 ├── custom.d.ts
+├── Dockerfile
+├── .dockerignore
+├── .env
+├── .env.development
+├── .env.production
+├── .env.test
+├── .gitignore
 ├── LICENSE.md
 ├── openfin
 │   ├── app.development.json
@@ -114,6 +122,15 @@ sample-openfin-react-ts-app/
 │   ├── img
 │   │   └── sidebar-1.jpg
 │   ├── index.html
+│   ├── locales
+│   │   ├── en-US
+│   │   │   ├── config.json
+│   │   │   ├── landing.json
+│   │   │   └── menu.json
+│   │   └── zh-CN
+│   │       ├── config.json
+│   │       ├── landing.json
+│   │       └── menu.json
 │   ├── manifest.json
 │   ├── mstile-144x144.png
 │   ├── mstile-150x150.png
@@ -124,11 +141,17 @@ sample-openfin-react-ts-app/
 ├── README.md
 ├── scripts
 │   ├── build.js
+│   ├── package.js
+│   ├── routers
+│   │   └── config.js
 │   ├── server.js
 │   ├── server.openfin.js
+│   ├── standalone.openfin.js
 │   ├── start.js
 │   ├── start.openfin.js
-│   └── test.js
+│   ├── test.js
+│   └── utils
+│       └── serverUtils.js
 ├── src
 │   ├── App.spec.tsx
 │   ├── App.tsx
@@ -138,66 +161,91 @@ sample-openfin-react-ts-app/
 │   │   ├── jss
 │   │   │   ├── openfin-starter
 │   │   │   │   ├── comp
-│   │   │   │   │   ├── buttonStyle.ts
-│   │   │   │   │   ├── configFieldCompStyle.ts
-│   │   │   │   │   ├── headerCompStyle.ts
-│   │   │   │   │   ├── headerLinksCompStyle.ts
-│   │   │   │   │   ├── sidebarCompStyle.ts
-│   │   │   │   │   └── snackbarContentCompStyle.ts
+│   │   │   │   │   ├── button.style.ts
+│   │   │   │   │   ├── configAboutField.style.ts
+│   │   │   │   │   ├── configFieldComp.style.ts
+│   │   │   │   │   ├── headerComp.style.ts
+│   │   │   │   │   ├── headerLinksComp.style.ts
+│   │   │   │   │   ├── offlineOverlay.style.ts
+│   │   │   │   │   ├── sidebarComp.style.ts
+│   │   │   │   │   └── snackbarContentComp.style.ts
 │   │   │   │   ├── index.ts
 │   │   │   │   ├── layout
-│   │   │   │   │   ├── dashboardLayoutStyle.ts
-│   │   │   │   │   └── launchBarLayoutStyle.ts
+│   │   │   │   │   ├── dashboardLayout.style.ts
+│   │   │   │   │   ├── launchBarLayout.style.ts
+│   │   │   │   │   └── notification.style.ts
 │   │   │   │   └── view
-│   │   │   │       ├── configViewStyle.ts
-│   │   │   │       └── reportViewStyle.ts
+│   │   │   │       ├── configLangView.style.ts
+│   │   │   │       ├── configThemeView.style.ts
+│   │   │   │       ├── configView.style.ts
+│   │   │   │       ├── reportView.style.ts
+│   │   │   │       └── sampleNotificationView.style.ts
 │   │   │   └── openfin-starter-constant.ts
 │   │   └── svg
 │   │       ├── app.svg
 │   │       ├── company.svg
+│   │       ├── nationals
+│   │       │   ├── china.svg
+│   │       │   ├── russia.svg
+│   │       │   ├── spain.svg
+│   │       │   └── united-states.svg
 │   │       ├── other
+│   │       │   ├── check-box.svg
 │   │       │   ├── google-search.svg
 │   │       │   ├── list-checked-dark.svg
 │   │       │   ├── number-1.svg
 │   │       │   └── number-2.svg
 │   │       └── support
 │   │           ├── controls_dark.svg
-│   │           └── controls.svg
+│   │           ├── controls.svg
+│   │           ├── information-dark.svg
+│   │           └── information.svg
 │   ├── components
-│   │   ├── client
-│   │   │   └── ClientCounter.tsx
-│   │   ├── ConfigComp
-│   │   │   ├── ConfigField.spec.tsx
-│   │   │   ├── ConfigField.tsx
-│   │   │   └── __snapshots__
-│   │   │       └── ConfigField.spec.tsx.snap
-│   │   ├── Header
-│   │   │   ├── HeaderLinks.spec.tsx
-│   │   │   ├── HeaderLinks.tsx
-│   │   │   ├── Header.spec.tsx
-│   │   │   ├── Header.tsx
-│   │   │   └── __snapshots__
-│   │   │       ├── HeaderLinks.spec.tsx.snap
-│   │   │       └── Header.spec.tsx.snap
 │   │   ├── index.ts
-│   │   ├── Sidebar
-│   │   │   ├── Sidebar.spec.tsx
-│   │   │   ├── Sidebar.tsx
-│   │   │   └── __snapshots__
-│   │   │       └── Sidebar.spec.tsx.snap
-│   │   └── Snackbar
-│   │       ├── MySnackbarContent.spec.tsx
-│   │       ├── MySnackbarContent.tsx
-│   │       └── __snapshots__
-│   │           └── MySnackbarContent.spec.tsx.snap
+│   │   └── openfin-starter
+│   │       ├── client
+│   │       │   └── ClientCounter.tsx
+│   │       ├── ConfigComp
+│   │       │   ├── ConfigAboutField.spec.tsx
+│   │       │   ├── ConfigAboutField.tsx
+│   │       │   ├── ConfigField.spec.tsx
+│   │       │   ├── ConfigField.tsx
+│   │       │   └── __snapshots__
+│   │       │       ├── ConfigAboutField.spec.tsx.snap
+│   │       │       └── ConfigField.spec.tsx.snap
+│   │       ├── Header
+│   │       │   ├── HeaderLinks.spec.tsx
+│   │       │   ├── HeaderLinks.tsx
+│   │       │   ├── Header.spec.tsx
+│   │       │   ├── Header.tsx
+│   │       │   └── __snapshots__
+│   │       │       ├── HeaderLinks.spec.tsx.snap
+│   │       │       └── Header.spec.tsx.snap
+│   │       ├── Overlays
+│   │       │   ├── OfflineOverlay.spec.tsx
+│   │       │   ├── OfflineOverlay.tsx
+│   │       │   └── __snapshots__
+│   │       │       └── OfflineOverlay.spec.tsx.snap
+│   │       ├── Sidebar
+│   │       │   ├── Sidebar.spec.tsx
+│   │       │   ├── Sidebar.tsx
+│   │       │   └── __snapshots__
+│   │       │       └── Sidebar.spec.tsx.snap
+│   │       └── Snackbar
+│   │           ├── MySnackbarContent.spec.tsx
+│   │           ├── MySnackbarContent.tsx
+│   │           └── __snapshots__
+│   │               └── MySnackbarContent.spec.tsx.snap
 │   ├── dexie
 │   │   ├── configDao.spec.ts
-│   │   ├── configDao.spec.ts.snap
 │   │   ├── configDao.ts
 │   │   ├── db.spec.ts
 │   │   ├── db.ts
-│   │   └── __mocks__
-│   │       └── db.ts
+│   │   ├── __mocks__
+│   │   │   └── db.ts
+│   │   └── __snapshots__
+│   │       └── configDao.spec.ts.snap
+│   ├── i18n.ts
 │   ├── index.tsx
 │   ├── layouts
 │   │   ├── ChildWindow
@@ -216,9 +264,14 @@ sample-openfin-react-ts-app/
 │   │   │   ├── LaunchBar.tsx
 │   │   │   └── __snapshots__
 │   │   │       └── LaunchBar.spec.tsx.snap
-│   │   └── Loading
-│   │       ├── Loading.spec.tsx
-│   │       └── Loading.tsx
+│   │   ├── Loading
+│   │   │   ├── Loading.spec.tsx
+│   │   │   └── Loading.tsx
+│   │   └── Notification
+│   │       ├── Notification.spec.tsx
+│   │       ├── Notification.tsx
+│   │       └── __snapshots__
+│   │           └── Notification.spec.tsx.snap
 │   ├── reduxs
 │   │   ├── application
 │   │   │   ├── actions.ts
@@ -239,25 +292,32 @@ sample-openfin-react-ts-app/
 │   │   │   ├── client.ts
 │   │   │   ├── config.ts
 │   │   │   └── index.ts
+│   │   ├── sharedActions.ts
 │   │   └── __tests__
 │   │       ├── application.actions.ts
 │   │       ├── application.reducer.ts
 │   │       ├── application.saga.ts
+│   │       ├── client.reducer.ts
 │   │       ├── client.saga.ts
 │   │       ├── config.actions.ts
 │   │       ├── config.reducer.ts
 │   │       ├── config.saga.ts
 │   │       ├── index.saga.ts
+│   │       ├── sharedActions.spec.ts
 │   │       └── __snapshots__
 │   │           ├── application.actions.ts.snap
 │   │           ├── application.reducer.ts.snap
+│   │           ├── application.saga.ts.snap
+│   │           ├── client.reducer.ts.snap
 │   │           ├── config.actions.ts.snap
-│   │           └── config.reducer.ts.snap
+│   │           ├── config.reducer.ts.snap
+│   │           └── sharedActions.spec.ts.snap
 │   ├── routes
 │   │   ├── Base.ts
 │   │   ├── ChildWindow.ts
 │   │   ├── Dashboard.ts
-│   │   └── index.ts
+│   │   ├── index.ts
+│   │   └── notification.ts
 │   ├── serviceWorker.d.ts
 │   ├── serviceWorker.js
 │   ├── utils
@@ -276,8 +336,20 @@ sample-openfin-react-ts-app/
 │       ├── ConfigView
 │       │   ├── ConfigJson.spec.tsx
 │       │   ├── ConfigJson.tsx
+│       │   ├── ConfigLang.spec.tsx
+│       │   ├── ConfigLang.tsx
+│       │   ├── ConfigTheme.spec.tsx
+│       │   ├── ConfigTheme.tsx
 │       │   ├── ConfigView.spec.tsx
-│       │   └── ConfigView.tsx
+│       │   ├── ConfigView.tsx
+│       │   └── __snapshots__
+│       │       ├── ConfigLang.spec.tsx.snap
+│       │       └── ConfigTheme.spec.tsx.snap
+│       ├── NotificationViews
+│       │   ├── SampleNotification.spec.tsx
+│       │   ├── SampleNotification.tsx
+│       │   └── __snapshots__
+│       │       └── SampleNotification.spec.tsx.snap
 │       ├── ReportView
 │       │   ├── ReportView.spec.tsx
 │       │   └── ReportView.tsx
@@ -294,7 +366,7 @@ sample-openfin-react-ts-app/
 ├── tsconfig.json
 └── tslint.json
 
-55 directories, 153 files
+71 directories, 210 files
 `;
 
 import { IRootState } from '../../reduxs';
