@@ -18,7 +18,7 @@ interface IProps extends WithStyles<typeof style>{
 import { IRootState } from '../../reduxs';
 
 const initBrowserAdaptor =
-`import { BrowserAdapter } from '@albertli90/openfin-browser-adapter';
+`import { BrowserAdapter } from 'openfin-browser-adapter';
 
 if(!window.fin){
     window.fin = new BrowserAdapter({
@@ -54,8 +54,8 @@ class BrowserAdaptorInstallView extends React.Component<IProps,{}>{
                     Install into your package.json
                 </Typography>
 
-                <Code withMargin text="yarn add @albertli90/openfin-browser-adapter"/>
-                <Code withMargin text="npm i @albertli90/openfin-browser-adapter"/>
+                <Code withMargin text="yarn add openfin-browser-adapter"/>
+                <Code withMargin text="npm i openfin-browser-adapter"/>
 
                 <Typography className={classes.hasMargin} variant='h5' gutterBottom>
                     Initialize

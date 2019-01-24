@@ -35,7 +35,7 @@ yield takeEvery('SOME_SHARED_ACTION_NAME',someGeneratorFun);
 `;
 
 const senderTagCode =
-`import { SHARED_ACTION_ORIGIN_TAG } from '@albertli90/redux-openfin/channel';
+`import { SHARED_ACTION_ORIGIN_TAG } from 'redux-openfin/channel';
 
 function* someGeneratorFun(action){
 
