@@ -1,0 +1,4 @@
+// BEGIN_OF_AL_CLI_COMPONENTS
+export {default as NewOne } from './sample-app/NewOne/NewOne'
+export {default as NewTwo } from './sample-app/NewTwo/NewTwo'
+// END_OF_AL_CLI_COMPONENTS

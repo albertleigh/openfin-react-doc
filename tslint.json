@@ -27,7 +27,8 @@
     "jsx-no-lambda": false,
     "jsx-boolean-value": false,
     "object-literal-sort-keys": false,
-    "ordered-imports": false
+    "ordered-imports": false,
+    "prefer-for-of": false
   },
   "rulesDirectory": []
 }

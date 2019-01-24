@@ -1,0 +1,24 @@
+import * as React from 'react';
+import cx from 'classnames';
+import { WithStyles, withStyles } from '@material-ui/core/styles';
+
+import { newOneCompStyle as style } from '../../../assets/jss/sample-app';
+
+interface IProps extends WithStyles<typeof style>{
+
+}
+
+interface IState{
+    [key:number]:any,
+    [key:string]:any,
+}
+
+class NewOneComp extends React.Component<IProps, IState>{
+    render(){
+        return(
+            <React.Fragment>
+                NewOne component works ~
+            </React.Fragment>
+        )
+    }
+}
