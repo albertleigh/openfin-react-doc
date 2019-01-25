@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { WithStyles, withStyles } from '@material-ui/core/styles';
+import { withNamespaces, WithNamespaces } from 'react-i18next';
 
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
@@ -9,7 +10,7 @@ import { connect } from 'react-redux';
 
 import { startDevelopersViewStyle as style } from '../../assets/jss/openfin-react-doc';
 
-interface IProps extends WithStyles<typeof style>{
+interface IProps extends WithStyles<typeof style>, WithNamespaces{
 
 
 }
@@ -22,20 +23,20 @@ import standaloneDeploySvg from '../../assets/svg/openfin-react-doc/StandaloneDe
 class StartDevelopersView extends React.Component<IProps,{}>{
     render(){
 
-        const { classes } = this.props;
+        const { classes, t } = this.props;
 
         return (
             <React.Fragment>
                 <Typography variant='h3' gutterBottom>
-                    For Developers
+                    {t('developer.title')}
                 </Typography>
 
                 <Typography variant='body1' gutterBottom>
-                    Simply speaking, we just provide suite for developers to make building openfin embedded react js app much easier.
+                    {t('developer.subTitle')}
                 </Typography>
 
                 <Typography variant='h5' gutterBottom>
-                    Web based deployment
+                    {t('developer.webDeployTitle')}
                 </Typography>
 
                 <Paper className={classes.imgPaper}>
@@ -43,12 +44,11 @@ class StartDevelopersView extends React.Component<IProps,{}>{
                 </Paper>
 
                 <Typography variant='body1' gutterBottom>
-                    Be default, the static files should be deployed to a web server and openfin will provide an installer,
-                    through which we could install the app we built upon windows platform only.
+                    {t('developer.webDeployDesc')}
                 </Typography>
 
                 <Typography className={classes.hasMargin} variant='h5' gutterBottom>
-                    Standalone deployment
+                    {t('developer.standaloneDeployTitle')}
                 </Typography>
 
                 <Paper className={classes.imgPaper}>
@@ -56,9 +56,7 @@ class StartDevelopersView extends React.Component<IProps,{}>{
                 </Paper>
 
                 <Typography variant='body1' gutterBottom>
-                    Alternatively, a standalone package solution is also provided by us,
-                    packaged binaries could be deployed into client host. Through the embedded browser, built codes could
-                    seize outside api via standard web development methology.
+                    {t('developer.standaloneDeployDesc')}
                 </Typography>
 
 
@@ -78,6 +76,8 @@ export default connect(
     })
 
     )(
-    withStyles(style)(StartDevelopersView)
+    withStyles(style)(
+        withNamespaces('start')(StartDevelopersView)
+    )
 );
 
