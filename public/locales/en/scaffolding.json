@@ -1,6 +1,9 @@
 {
   "common": {
-    "or":"or"
+    "or":"or",
+    "yes": "Yes",
+    "no": "No",
+    "type": "Type"
   },
   "install": {
     "title": "Scaffolding tool",
@@ -44,6 +47,25 @@
       "step3": "Make no mistake, a package folder will be created containing the binary depending on the platform you built.",
       "step4": "To execute the binary, just execute openfin_starter at the package folder."
     }
+  },
+  "genrTpl": {
+    "title": "Generate templates",
+    "diff": {
+      "title": "Diff between Layout, View and Component",
+      "subtitle": "The scaffolding tool support to generate three types of templates: Component, View and Layout",
+      "desc": "All three templates are react component. Generally speaking, both lyt and view connects to redux. But lyt can act as the entry comp and view is the reusable unit inside lyt. View comp's outermost container should be set to use up all the space. Comps are reusable non-redux-connected units among view or lyt.",
+      "table": {
+        "col1": "Connected to Redux",
+        "col2": "Entry components",
+        "col3": "Reusable components",
+        "row1": "Component template (comp)",
+        "row2": "View template (view)",
+        "row3": "Layout template (lyt)"
+      }
+    },
+    "comp": {},
+    "view": {},
+    "lyt": {}
   }
 
 }

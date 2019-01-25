@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { WithStyles, withStyles } from '@material-ui/core/styles';
+import { withNamespaces, WithNamespaces } from 'react-i18next';
 
 import Typography from '@material-ui/core/Typography';
 import Table from '@material-ui/core/Table';
@@ -36,7 +37,7 @@ import newLytStyleIndexCode from '!raw-loader!./samples/newLytStyleIndex_ts';
 import newLytOneCode from '!raw-loader!./samples/newOneLyt_ts';
 import newLytTwoCode from '!raw-loader!./samples/newTwoLyt_ts';
 
-interface IProps extends WithStyles<typeof style>{
+interface IProps extends WithStyles<typeof style>, WithNamespaces{
 
 
 }
@@ -146,21 +147,21 @@ src/
 
 class ScaffoldingGenrTplView extends React.Component<IProps,{}>{
     render(){
-        const { classes } = this.props;
+        const { classes, t } = this.props;
         return (
             <React.Fragment>
 
                 <Typography variant='h3' gutterBottom>
-                    Generate templates
+                    {t('genrTpl.title')}
                 </Typography>
 
 
                 <Typography variant='h5' gutterBottom>
-                    Diff between Layout, View and Component
+                    {t('genrTpl.diff.title')}
                 </Typography>
 
                 <Typography variant='body1' gutterBottom>
-                    The scaffolding tool support to generate three types of templates: Component, View and Layout
+                    {t('genrTpl.diff.subtitle')}
                 </Typography>
 
                 <Paper className={classes.root}>
@@ -168,46 +169,42 @@ class ScaffoldingGenrTplView extends React.Component<IProps,{}>{
                         <TableHead>
                             <TableRow>
                                 <TableCell>Type</TableCell>
-                                <TableCell align="right">Connected to Redux</TableCell>
-                                <TableCell align="right">Entry components</TableCell>
-                                <TableCell align="right">Reusable components</TableCell>
+                                <TableCell align="right">{t('genrTpl.diff.table.col1')}</TableCell>
+                                <TableCell align="right">{t('genrTpl.diff.table.col2')}</TableCell>
+                                <TableCell align="right">{t('genrTpl.diff.table.col3')}</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
                             <TableRow>
                                 <TableCell component="th" scope="row">
-                                    Component template (comp)
+                                    {t('genrTpl.diff.table.row1')}
                                 </TableCell>
-                                <TableCell align="right">No</TableCell>
-                                <TableCell align="right">No</TableCell>
-                                <TableCell align="right">Yes</TableCell>
+                                <TableCell align="right">{t('common.no')}</TableCell>
+                                <TableCell align="right">{t('common.no')}</TableCell>
+                                <TableCell align="right">{t('common.yes')}</TableCell>
                             </TableRow>
                             <TableRow>
                                 <TableCell component="th" scope="row">
-                                    View template (view)
+                                    {t('genrTpl.diff.table.row2')}
                                 </TableCell>
-                                <TableCell align="right">Yes</TableCell>
-                                <TableCell align="right">No</TableCell>
-                                <TableCell align="right">Yes</TableCell>
+                                <TableCell align="right">{t('common.yes')}</TableCell>
+                                <TableCell align="right">{t('common.no')}</TableCell>
+                                <TableCell align="right">{t('common.yes')}</TableCell>
                             </TableRow>
                             <TableRow>
                                 <TableCell component="th" scope="row">
-                                    Layout template (lyt)
+                                    {t('genrTpl.diff.table.row3')}
                                 </TableCell>
-                                <TableCell align="right">Yes</TableCell>
-                                <TableCell align="right">Yes</TableCell>
-                                <TableCell align="right">No</TableCell>
+                                <TableCell align="right">{t('common.yes')}</TableCell>
+                                <TableCell align="right">{t('common.yes')}</TableCell>
+                                <TableCell align="right">{t('common.no')}</TableCell>
                             </TableRow>
                         </TableBody>
                     </Table>
                 </Paper>
 
                 <Typography variant='body1' gutterBottom>
-                    All three templates are react component.
-                    Generally speaking, both lyt and view connects to redux.
-                    But lyt can act as the entry comp and view is the reusable unit inside lyt.
-                    View comp's outermost container should be configured to take up all the space.
-                    Comps are reusable non-redux-connectted units among view or lyt.
+                    {t('genrTpl.diff.desc')}
                 </Typography>
 
 
@@ -394,6 +391,8 @@ export default connect(
     })
 
     )(
-    withStyles(style)(ScaffoldingGenrTplView)
+    withStyles(style)(
+        withNamespaces('scaffolding')(ScaffoldingGenrTplView)
+    )
 );
 

@@ -1,6 +1,9 @@
 {
   "common": {
-    "or":"或者"
+    "or":"或者",
+    "yes": "是",
+    "no": "否",
+    "type": "类型"
   },
   "install": {
     "title": "代码生成工具（脚手架工具）",
@@ -44,6 +47,25 @@
       "step3": "不出意外，基于你指定系统的包会在输出路径如下",
       "step4": "可以在输出文件下，执行如下命令来启动独立客户端"
     }
+  },
+  "genrTpl": {
+    "title": "生成模板",
+    "diff": {
+      "title": "Layout, View 与 Component 的区别",
+      "subtitle": "生成工具支持3种模板: Component, View and Layout",
+      "desc": "3种模板都是react component. 一般认为, lyt 和 view 会连接 redux. 但是 lyt 可以当作入口组件， view 是嵌入lyt的复用组件. view 组件应利用全部外部空间. Comps 是不连接redux的复用组件.",
+      "table": {
+        "col1": "是否连接Redux",
+        "col2": "是否是入口组件",
+        "col3": "是否为复用组件",
+        "row1": "Component 组件模板 (comp)",
+        "row2": "View 组件模板 (view)",
+        "row3": "Layout 组件模板 (lyt)"
+      }
+    },
+    "comp": {},
+    "view": {},
+    "lyt": {}
   }
 
 }
