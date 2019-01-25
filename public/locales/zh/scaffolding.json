@@ -1,0 +1,49 @@
+{
+  "common": {
+    "or":"或者"
+  },
+  "install": {
+    "title": "代码生成工具（脚手架工具）",
+    "subtitle": "代码生成工具（脚手架工具） al-cli is 可以用来生成 样板代码 和 様例工程。 同时，一个开发模式 lyt/view/comp 被建议。 但并不强制开发人员遵守。",
+    "install": {
+      "title": "安装",
+      "step1": "全局安装代码生成工具",
+      "step2": "完成后，运行",
+      "step3": "将会列印参数信息到控制台"
+    }
+  },
+  "genrPrj": {
+    "title": "生成様例工程",
+    "reactTs": {
+      "title": "基于 create-react-app的Typescript様例工程",
+      "subtitle": "进入工程路径 例如 /home/User/Workspaces",
+      "step1":"生成工程代码并安装依赖库",
+      "step1B":"生成工程代码但跳过安装依赖库",
+      "step2":"一旦完成，会生成如下结构工程",
+      "step3":"进入项目路径，不出意外，可以如下启动。"
+    },
+    "openfinReactTs": {
+      "title": "Openfin react TS 様例工程",
+      "subtitle": "进入工程路径 例如 /home/User/Workspaces",
+      "step1":"生成工程代码并安装依赖库",
+      "step1B":"生成工程代码但跳过安装依赖库",
+      "step2":"进入项目路径，不出意外，可以如下启动。"
+    }
+  },
+  "standalonePkg": {
+    "title": "独立打包",
+    "build": {
+      "title": "Build",
+      "step1": "在打包前，必须提前生成静态文件",
+      "step2": "一旦完成，会得到生成的文件总结"
+    },
+    "pkg": {
+      "title": "打包",
+      "step1": "一旦生成了静态文件，可以通过以下命令来打包",
+      "step2": "打包输出路径: package",
+      "step3": "不出意外，基于你指定系统的包会在输出路径如下",
+      "step4": "可以在输出文件下，执行如下命令来启动独立客户端"
+    }
+  }
+
+}

@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { WithStyles, withStyles } from '@material-ui/core/styles';
+import { withNamespaces, WithNamespaces } from 'react-i18next';
+
 import Typography from '@material-ui/core/Typography';
 
 import cx from "classnames";
@@ -9,7 +11,7 @@ import { scaffoldingStandalonePkgViewStyle as style } from '../../assets/jss/ope
 
 import { Code } from '../../components';
 
-interface IProps extends WithStyles<typeof style>{
+interface IProps extends WithStyles<typeof style>, WithNamespaces{
 
 
 }
@@ -153,23 +155,27 @@ GET /favicon-16x16.png 304 0.945 ms - -
 class ScaffoldingStandalonePkgView extends React.Component<IProps,{}>{
     render(){
 
-        const { classes } = this.props;
+        const { classes, t } = this.props;
 
         return (
             <React.Fragment>
                 <Typography variant='h3' gutterBottom>
-                    Standalone binary package
+                    {t('standalonePkg.title')}
                 </Typography>
 
                 <Typography variant='h5' gutterBottom>
-                    Build
+                    {t('standalonePkg.build.title')}
                 </Typography>
                 <Typography variant='body1' gutterBottom>
-                    Before packaging, the static files should be built in advance, change directory into your project folder.
+                    {t('standalonePkg.build.step1')}
                 </Typography>
-                <Code withMargin text="yarn build or npm run build"/>
+                <Code withMargin text="yarn build"/>
                 <Typography variant='body1' gutterBottom>
-                    Once done, you should got the summary of all the files built.
+                    {t('common.or')}
+                </Typography>
+                <Code withMargin text="npm run build"/>
+                <Typography variant='body1' gutterBottom>
+                    {t('standalonePkg.build.step2')}
                 </Typography>
                 <Code language='bash' withMargin text={buildResult}/>
 
@@ -178,12 +184,16 @@ class ScaffoldingStandalonePkgView extends React.Component<IProps,{}>{
 
 
                 <Typography className={classes.hasMargin} variant='h5' gutterBottom>
-                    Package
+                    {t('standalonePkg.pkg.title')}
                 </Typography>
                 <Typography variant='body1' gutterBottom>
-                    Once static files built, we could generate packaged binary via
+                    {t('standalonePkg.pkg.step1')}
                 </Typography>
-                <Code withMargin text="yarn package or npm run package"/>
+                <Code withMargin text="yarn package"/>
+                <Typography variant='body1' gutterBottom>
+                    {t('common.or')}
+                </Typography>
+                <Code withMargin text="npm run package"/>
                 <Code language='bash' withMargin text={packageResult}/>
 
 
@@ -191,14 +201,14 @@ class ScaffoldingStandalonePkgView extends React.Component<IProps,{}>{
 
 
                 <Typography className={classes.hasMargin}  variant='h5' gutterBottom>
-                    Output folder: package
+                    {t('standalonePkg.pkg.step2')}
                 </Typography>
                 <Typography variant='body1' gutterBottom>
-                    Make no mistake, a package folder will be created containing the binary depending on the platform you built.
+                    {t('standalonePkg.pkg.step3')}
                 </Typography>
                 <Code language='bash' withMargin text={builtStructure}/>
                 <Typography variant='body1' gutterBottom>
-                    To execute the binary, just execute openfin_starter at the package folder.
+                    {t('standalonePkg.pkg.step4')}
                 </Typography>
 
                 <Code withMargin text="./openfin_starter"/>
@@ -220,6 +230,8 @@ export default connect(
     })
 
     )(
-    withStyles(style)(ScaffoldingStandalonePkgView)
+    withStyles(style)(
+        withNamespaces('scaffolding')(ScaffoldingStandalonePkgView)
+    )
 );
 
