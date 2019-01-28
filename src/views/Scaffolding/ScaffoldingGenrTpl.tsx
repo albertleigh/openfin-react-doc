@@ -52,7 +52,7 @@ const newCompOneOutput=
  | (_| | | |_) |  __/ |  | ||_____| (__| | |
   \\__,_|_|_.__/ \\___|_|   \\__|     \\___|_|_|
                                             
-  v0.30.20
+  v0.35.21
 prompt: new component name?:  (NewOne) 
 prompt: new jss style name?:  (newOne) 
 prompt: current working space name?:  (sample-app) 
