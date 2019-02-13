@@ -84,7 +84,12 @@
       "step4": "and the two styles are also exported via a router index.ts",
       "step5": "then the styles will be injected into two views created."
     },
-    "lyt": {}
+    "lyt": {
+      "title": "Generate layout template",
+      "step1": "Similarly, we could also create two new lyt components based on the previous results.",
+      "step2": "Make no mistake, once done, al-cli will create all the files in a structure like these.",
+      "step3": "Lyt components and their isolated styles"
+    }
   }
 
 }

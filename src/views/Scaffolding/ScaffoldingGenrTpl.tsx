@@ -328,19 +328,19 @@ class ScaffoldingGenrTplView extends React.Component<IProps,{}>{
 
 
                 <Typography className={classes.hasMargin} variant='h5' gutterBottom>
-                    Generate layout template
+                    {t('genrTpl.lyt.title')}
                 </Typography>
                 <Typography variant='body1' gutterBottom>
-                    Similarly, we could also create two new lyt components based on the previous results.
+                    {t('genrTpl.lyt.step1')}
                 </Typography>
                 <Code withMargin text="al-cli lyt NewOne"/>
                 <Code withMargin text="al-cli lyt NewTwo"/>
                 <Typography variant='body1' gutterBottom>
-                    Make no mistake, once done, al-cli will create all the files in a structure like these.
+                    {t('genrTpl.lyt.step2')}
                 </Typography>
                 <Code language='bash' withMargin text={newLtyStruct}/>
                 <Typography variant='body1' gutterBottom>
-                    Lyts and their isolated styles
+                    {t('genrTpl.lyt.step3')}
                 </Typography>
                 <Typography variant='caption' gutterBottom>
                     src/assets/jss/sample-app/index.ts
