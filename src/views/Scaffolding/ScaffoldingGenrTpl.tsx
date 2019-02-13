@@ -281,19 +281,19 @@ class ScaffoldingGenrTplView extends React.Component<IProps,{}>{
 
 
                 <Typography className={classes.hasMargin} variant='h5' gutterBottom>
-                    Generate view template
+                    {t('genrTpl.view.title')}
                 </Typography>
                 <Typography variant='body1' gutterBottom>
-                    Similarly, let's create two new view components based on the previous results.
+                    {t('genrTpl.view.step1')}
                 </Typography>
                 <Code withMargin text="al-cli view NewOne"/>
                 <Code withMargin text="al-cli view NewTwo"/>
                 <Typography variant='body1' gutterBottom>
-                    Once done, al-cli will add the files like these
+                    {t('genrTpl.view.step2')}
                 </Typography>
                 <Code language='bash' withMargin text={newViewStruct}/>
                 <Typography variant='body1' gutterBottom>
-                    Similar we have the isolated style objects for two views
+                    {t('genrTpl.view.step3')}
                 </Typography>
                 <Typography variant='caption' gutterBottom>
                     src/assets/jss/sample-app/view/newOneView.style.ts
@@ -304,14 +304,14 @@ class ScaffoldingGenrTplView extends React.Component<IProps,{}>{
                 </Typography>
                 <Code withMargin text={newViewTwoStyleCode} />
                 <Typography variant='body1' gutterBottom>
-                    and the two styles are also exported via a router index.ts
+                    {t('genrTpl.view.step4')}
                 </Typography>
                 <Typography variant='caption' gutterBottom>
                     src/assets/jss/sample-app/index.ts
                 </Typography>
                 <Code withMargin text={newViewStyleIndexCode} />
                 <Typography variant='body1' gutterBottom>
-                    then the styles will be injected into two views created.
+                    {t('genrTpl.view.step5')}
                 </Typography>
                 <Typography variant='caption' gutterBottom>
                     src/views/NewOne/NewOne.tsx

@@ -76,7 +76,14 @@
       "step9": "Similarly, the generated components are also exported via a comp router index",
       "step10": "You might notice, we suggest put styles and comps under the folder of the project name (sample-app), it is b/c, sometimes, it's much more easy to directly copy&paste some internal comps or styles into another folder of another project name for sharing instead of making them general enough to be capable to be shared. As it might be difficult to ask the author to export via pkg manager and maintain stable versions, or sometimes, even they exported, the requirements on our sides might force us have to modify little bit to support new specific features rather than directly using them."
     },
-    "view": {},
+    "view": {
+      "title": "Generate view template",
+      "step1": "Similarly, let's create two new view components based on the previous results.",
+      "step2": "Once done, al-cli will create the files like these",
+      "step3": "Similar we have the isolated style objects for two views",
+      "step4": "and the two styles are also exported via a router index.ts",
+      "step5": "then the styles will be injected into two views created."
+    },
     "lyt": {}
   }
 
