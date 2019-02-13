@@ -63,7 +63,19 @@
         "row3": "Layout template (lyt)"
       }
     },
-    "comp": {},
+    "comp": {
+      "title": "Generate component template",
+      "step1": "change directory into your project folder of your workspace, like /home/User/Workspaces/sample-app",
+      "step2": "then type in",
+      "step3": "The client should pop up to confirm all the component name, style name and their paths. Suggest not to change for now if not sure, we could press enter all the way down to use default values for the first time.",
+      "step4": "To fully understand the structure of the generated components template, let's create an another component called NewTwo to compare.",
+      "step5": "Once done, al-cli will create all the files in a structure like this.",
+      "step6": "styles of NewOne and NewTwo comps are like",
+      "step7": "and the two styles are exported via a router index.ts",
+      "step8": "And among the generated components, the isolated style are import via the router index",
+      "step9": "Similarly, the generated components are also exported via a comp router index",
+      "step10": "You might notice, we suggest put styles and comps under the folder of the project name (sample-app), it is b/c, sometimes, it's much more easy to directly copy&paste some internal comps or styles into another folder of another project name for sharing instead of making them general enough to be capable to be shared. As it might be difficult to ask the author to export via pkg manager and maintain stable versions, or sometimes, even they exported, the requirements on our sides might force us have to modify little bit to support new specific features rather than directly using them."
+    },
     "view": {},
     "lyt": {}
   }

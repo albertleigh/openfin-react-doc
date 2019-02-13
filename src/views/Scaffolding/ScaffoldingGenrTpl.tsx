@@ -52,7 +52,7 @@ const newCompOneOutput=
  | (_| | | |_) |  __/ |  | ||_____| (__| | |
   \\__,_|_|_.__/ \\___|_|   \\__|     \\___|_|_|
                                             
-  v0.35.21
+  v0.35.44
 prompt: new component name?:  (NewOne) 
 prompt: new jss style name?:  (newOne) 
 prompt: current working space name?:  (sample-app) 
@@ -209,33 +209,31 @@ class ScaffoldingGenrTplView extends React.Component<IProps,{}>{
 
 
                 <Typography className={classes.hasMargin} variant='h5' gutterBottom>
-                    Generate component template
+                    {t('genrTpl.comp.title')}
                 </Typography>
 
 
                 <Typography variant='body1' gutterBottom>
-                    change directory into your project folder of your working space, like /home/User/Workspaces/sample-app
+                    {t('genrTpl.comp.step1')}
                 </Typography>
                 <Typography variant='body1' gutterBottom>
-                    then type in
+                    {t('genrTpl.comp.step2')}
                 </Typography>
                 <Code withMargin text="al-cli comp NewOne"/>
                 <Typography variant='body1' gutterBottom>
-                    the client should pop up to confirm all the component name, style name and their paths.
-                    Suggest not to change for now, we could press enter all the way down to use default values.
-                    After knowing the default values, we could modify if needed.
+                    {t('genrTpl.comp.step3')}
                 </Typography>
                 <Code language='vim' withMargin text={newCompOneOutput}/>
                 <Typography variant='body1' gutterBottom>
-                    To fully explain the structure of the components template, let's create an another component called NewTwo
+                    {t('genrTpl.comp.step4')}
                 </Typography>
                 <Code withMargin text="al-cli comp NewTwo"/>
                 <Typography variant='body1' gutterBottom>
-                    Once done, al-cli will create all the files in a structure like these.
+                    {t('genrTpl.comp.step5')}
                 </Typography>
                 <Code language='bash' withMargin text={newCompStruct}/>
                 <Typography variant='body1' gutterBottom>
-                    styles of NewOne and NewTwo are like
+                    {t('genrTpl.comp.step6')}
                 </Typography>
                 <Typography variant='caption' gutterBottom>
                     src/assets/jss/sample-app/comp/newOneComp.style.ts
@@ -246,7 +244,7 @@ class ScaffoldingGenrTplView extends React.Component<IProps,{}>{
                 </Typography>
                 <Code withMargin text={newCompTwoStyleCode} />
                 <Typography variant='body1' gutterBottom>
-                    and the two styles are exported via a router index.ts
+                    {t('genrTpl.comp.step7')}。
                 </Typography>
                 <Typography variant='caption' gutterBottom>
                     src/assets/jss/sample-app/index.ts
@@ -254,7 +252,7 @@ class ScaffoldingGenrTplView extends React.Component<IProps,{}>{
                 <Code withMargin text={newCompStyleIndexCode} />
 
                 <Typography variant='body1' gutterBottom>
-                    And among the generated components, the isolated style are import via the router index
+                    {t('genrTpl.comp.step8')}
                 </Typography>
                 <Typography variant='caption' gutterBottom>
                     src/components/sample-app/NewOne/NewOne.tsx
@@ -267,7 +265,7 @@ class ScaffoldingGenrTplView extends React.Component<IProps,{}>{
                 <Code withMargin text={newCompTwoCode} />
 
                 <Typography variant='body1' gutterBottom>
-                    Similarily, the generated components are exported via a comp router index
+                    {t('genrTpl.comp.step9')}
                 </Typography>
                 <Typography variant='caption' gutterBottom>
                     src/components/index.ts
@@ -275,13 +273,7 @@ class ScaffoldingGenrTplView extends React.Component<IProps,{}>{
                 <Code withMargin text={newCompIndexCode} />
 
                 <Typography variant='body1' gutterBottom>
-                    You might notice, we suggest put styles and comps under the folder of the project(sample-app),
-                    it is b/c, sometimes, it's much more easy to directly copy&paste some internal comps or styles
-                    beneath another meaningfull folder to reuse which is sibling to the project folder.
-                    As it might be difficult to ask the author to export via pkg manager and maintain stable versions, or sometimes,
-                    even they exported, the requirements on our sides force us to modify to adopt new specific features instead of directly using them.
-                    In another word, if there were some not that general interal comps/styles we have to use, we can keep them separated from out codes.
-                    And, this tiny structure can act as last life jacket to keep us out of troubles.
+                    {t('genrTpl.comp.step10')}
                 </Typography>
 
 
