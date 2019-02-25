@@ -8,19 +8,19 @@ declare const window:any;
 
 export default ()=>{
 
-    const sagaMiddleware = createSagaMiddleware();
-    const devtools = window.devToolsExtension?window.devToolsExtension():(f:any):any => (f);
+    const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-    const middleware = compose(
+    const sagaMiddleware = createSagaMiddleware();
+
+    const enhancers = composeEnhancers(
         applyMiddleware(
             sagaMiddleware,
         ),
-        devtools
     );
 
     const store = createStore(
         rootReducer,
-        middleware,
+        enhancers,
     );
 
     sagaMiddleware.run(rootSaga as any);
