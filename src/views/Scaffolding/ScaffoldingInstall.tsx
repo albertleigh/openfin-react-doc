@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { WithStyles, withStyles } from '@material-ui/core/styles';
+import { withNamespaces, WithNamespaces } from 'react-i18next';
 
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
@@ -11,7 +12,7 @@ import { scaffoldingInstallViewStyle as style } from '../../assets/jss/openfin-r
 
 import { Code } from '../../components';
 
-interface IProps extends WithStyles<typeof style>{
+interface IProps extends WithStyles<typeof style>, WithNamespaces{
 
 
 }
@@ -26,11 +27,13 @@ const alCli =
  | (_| | | |_) |  __/ |  | ||_____| (__| | |
   \\__,_|_|_.__/ \\___|_|   \\__|     \\___|_|_|
                                             
-  v0.30.10
+  v0.35.21
  
   albert li personal cli to generate boilerplate codes
  
   SYNOPSIS
+      $ al-cli lyt <layout component name>
+      $ al-cli view <view component name>
       $ al-cli comp <component name>
       $ al-cli openfin-react-ts <app name>
       $ al-cli react-ts <app name>
@@ -45,46 +48,44 @@ const alCli =
 class ScaffoldingInstallView extends React.Component<IProps,{}>{
     render(){
 
-        const { classes } = this.props;
+        const { classes, t } = this.props;
 
         return (
             <React.Fragment>
-                <Typography variant='h2' gutterBottom>
-                    Scaffolding tool
+                <Typography variant='h3' gutterBottom>
+                    {t('install.title')}
                 </Typography>
 
                 <Typography variant="body1" gutterBottom>
-                    An scaffolding tool called al-cli is provided to help deveoper to generate boilerplate codes and sample project.
-                    Along with it, a simple design pattern lyt/view/comp is also suggested.
-                    But developers do not have to follow it to utilize the stuff we provided.
+                    {t('install.subtitle')}
                 </Typography>
 
                 <Typography className={classes.hasMargin} variant='h5' gutterBottom>
-                    Installation
+                    {t('install.install.title')}
                 </Typography>
 
                 <Typography variant="body1" gutterBottom>
-                    Initially, install the scaffolding tool globally
+                    {t('install.install.step1')}
                 </Typography>
 
                 <Code withMargin text="npm install @albertli90/al-cli -g"/>
 
                 <Typography variant="body1" gutterBottom>
-                    or
+                    {t('common.or')}
                 </Typography>
 
                 <Code withMargin text="yarn global add @albertli90/al-cli"/>
 
                 <Typography variant="body1" gutterBottom>
-                    Once installed
+                    {t('install.install.step2')}
                 </Typography>
                 <Code withMargin text="al-cli"/>
                 <Typography variant="body1" gutterBottom>
-                    or
+                    {t('common.or')}
                 </Typography>
                 <Code withMargin text="al-cli --help"/>
                 <Typography variant="body1" gutterBottom>
-                    will dump the help into the console
+                    {t('install.install.step3')}
                 </Typography>
                 <Code language='vim' withMargin text={alCli}/>
 
@@ -104,6 +105,8 @@ export default connect(
     })
 
     )(
-    withStyles(style)(ScaffoldingInstallView)
+    withStyles(style)(
+        withNamespaces('scaffolding')(ScaffoldingInstallView)
+    )
 );
 

@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { WithStyles, withStyles } from '@material-ui/core/styles';
+import { withNamespaces, WithNamespaces } from 'react-i18next';
 
 import IconButton from '@material-ui/core/IconButton';
-import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 
 import SettingIcon from '@material-ui/icons/Settings';
@@ -12,9 +12,7 @@ import { connect } from 'react-redux';
 
 import { startInstallationViewStyle as style } from '../../assets/jss/openfin-react-doc';
 
-import { Code } from '../../components';
-
-interface IProps extends WithStyles<typeof style>{
+interface IProps extends WithStyles<typeof style>, WithNamespaces{
 
 
 }
@@ -29,12 +27,12 @@ class StartInstallationView extends React.Component<IProps,{}>{
 
     render(){
 
-        const {classes} = this.props;
+        const {classes, t} = this.props;
 
         return (
             <React.Fragment>
                 <Typography variant='h2' gutterBottom>
-                    Installer
+                    {t('start.installer')}
                 </Typography>
                 <Typography variant='h4' gutterBottom>
                     Windows
@@ -42,7 +40,7 @@ class StartInstallationView extends React.Component<IProps,{}>{
 
                 <div className={classes.sampleInstallerContainer}>
                     <Typography variant='h6' gutterBottom>
-                        Sample installer
+                        {t('start.sampleInstaller')}
                     </Typography>
                     <IconButton aria-label="SampleInstaller"
                                 onClick={this.handleSampleInstallerClick}
@@ -52,7 +50,7 @@ class StartInstallationView extends React.Component<IProps,{}>{
                 </div>
 
                 <Typography variant="body1" gutterBottom>
-                    Openfin provides an window platform installer generator to generate installer of your application.
+                    {t('start.winInstallerGenerator')}
                 </Typography>
                 <Typography variant="body1" gutterBottom>
                     <a className={classes.anchor}
@@ -63,11 +61,10 @@ class StartInstallationView extends React.Component<IProps,{}>{
                     Mac & Linux
                 </Typography>
                 <Typography variant="caption" gutterBottom>
-                    Current installers upon mac and linux platform are not supported by Openfin.
+                    {t('start.linuxInstallerGenerator')}
                 </Typography>
                 <Typography variant="body1" gutterBottom>
-                    But an alternative standalone solution is provided via al-cli.
-                    Plz check scaffolding al-cli section.
+                    {t('start.linuxInstallerGeneratorAlternative')}
                 </Typography>
 
 
@@ -87,6 +84,8 @@ export default connect(
     })
 
     )(
-    withStyles(style)(StartInstallationView)
+    withStyles(style)(
+        withNamespaces('start')(StartInstallationView)
+    )
 );
 

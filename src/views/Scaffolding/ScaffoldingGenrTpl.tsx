@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { WithStyles, withStyles } from '@material-ui/core/styles';
+import { withNamespaces, WithNamespaces } from 'react-i18next';
 
 import Typography from '@material-ui/core/Typography';
 import Table from '@material-ui/core/Table';
@@ -36,7 +37,7 @@ import newLytStyleIndexCode from '!raw-loader!./samples/newLytStyleIndex_ts';
 import newLytOneCode from '!raw-loader!./samples/newOneLyt_ts';
 import newLytTwoCode from '!raw-loader!./samples/newTwoLyt_ts';
 
-interface IProps extends WithStyles<typeof style>{
+interface IProps extends WithStyles<typeof style>, WithNamespaces{
 
 
 }
@@ -51,7 +52,7 @@ const newCompOneOutput=
  | (_| | | |_) |  __/ |  | ||_____| (__| | |
   \\__,_|_|_.__/ \\___|_|   \\__|     \\___|_|_|
                                             
-  v0.30.20
+  v0.35.44
 prompt: new component name?:  (NewOne) 
 prompt: new jss style name?:  (newOne) 
 prompt: current working space name?:  (sample-app) 
@@ -146,21 +147,21 @@ src/
 
 class ScaffoldingGenrTplView extends React.Component<IProps,{}>{
     render(){
-        const { classes } = this.props;
+        const { classes, t } = this.props;
         return (
             <React.Fragment>
 
                 <Typography variant='h3' gutterBottom>
-                    Generate templates
+                    {t('genrTpl.title')}
                 </Typography>
 
 
                 <Typography variant='h5' gutterBottom>
-                    Diff between Layout, View and Component
+                    {t('genrTpl.diff.title')}
                 </Typography>
 
                 <Typography variant='body1' gutterBottom>
-                    The scaffolding tool support to generate three types of templates: Component, View and Layout
+                    {t('genrTpl.diff.subtitle')}
                 </Typography>
 
                 <Paper className={classes.root}>
@@ -168,77 +169,71 @@ class ScaffoldingGenrTplView extends React.Component<IProps,{}>{
                         <TableHead>
                             <TableRow>
                                 <TableCell>Type</TableCell>
-                                <TableCell align="right">Connected to Redux</TableCell>
-                                <TableCell align="right">Entry components</TableCell>
-                                <TableCell align="right">Reusable components</TableCell>
+                                <TableCell align="right">{t('genrTpl.diff.table.col1')}</TableCell>
+                                <TableCell align="right">{t('genrTpl.diff.table.col2')}</TableCell>
+                                <TableCell align="right">{t('genrTpl.diff.table.col3')}</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
                             <TableRow>
                                 <TableCell component="th" scope="row">
-                                    Component template (comp)
+                                    {t('genrTpl.diff.table.row1')}
                                 </TableCell>
-                                <TableCell align="right">No</TableCell>
-                                <TableCell align="right">No</TableCell>
-                                <TableCell align="right">Yes</TableCell>
+                                <TableCell align="right">{t('common.no')}</TableCell>
+                                <TableCell align="right">{t('common.no')}</TableCell>
+                                <TableCell align="right">{t('common.yes')}</TableCell>
                             </TableRow>
                             <TableRow>
                                 <TableCell component="th" scope="row">
-                                    View template (view)
+                                    {t('genrTpl.diff.table.row2')}
                                 </TableCell>
-                                <TableCell align="right">Yes</TableCell>
-                                <TableCell align="right">No</TableCell>
-                                <TableCell align="right">Yes</TableCell>
+                                <TableCell align="right">{t('common.yes')}</TableCell>
+                                <TableCell align="right">{t('common.no')}</TableCell>
+                                <TableCell align="right">{t('common.yes')}</TableCell>
                             </TableRow>
                             <TableRow>
                                 <TableCell component="th" scope="row">
-                                    Layout template (lyt)
+                                    {t('genrTpl.diff.table.row3')}
                                 </TableCell>
-                                <TableCell align="right">Yes</TableCell>
-                                <TableCell align="right">Yes</TableCell>
-                                <TableCell align="right">No</TableCell>
+                                <TableCell align="right">{t('common.yes')}</TableCell>
+                                <TableCell align="right">{t('common.yes')}</TableCell>
+                                <TableCell align="right">{t('common.no')}</TableCell>
                             </TableRow>
                         </TableBody>
                     </Table>
                 </Paper>
 
                 <Typography variant='body1' gutterBottom>
-                    All three templates are react component.
-                    Generally speaking, both lyt and view connects to redux.
-                    But lyt can act as the entry comp and view is the reusable unit inside lyt.
-                    View comp's outermost container should be configured to take up all the space.
-                    Comps are reusable non-redux-connectted units among view or lyt.
+                    {t('genrTpl.diff.desc')}
                 </Typography>
 
 
                 <Typography className={classes.hasMargin} variant='h5' gutterBottom>
-                    Generate component template
+                    {t('genrTpl.comp.title')}
                 </Typography>
 
 
                 <Typography variant='body1' gutterBottom>
-                    change directory into your project folder of your working space, like /home/User/Workspaces/sample-app
+                    {t('genrTpl.comp.step1')}
                 </Typography>
                 <Typography variant='body1' gutterBottom>
-                    then type in
+                    {t('genrTpl.comp.step2')}
                 </Typography>
                 <Code withMargin text="al-cli comp NewOne"/>
                 <Typography variant='body1' gutterBottom>
-                    the client should pop up to confirm all the component name, style name and their paths.
-                    Suggest not to change for now, we could press enter all the way down to use default values.
-                    After knowing the default values, we could modify if needed.
+                    {t('genrTpl.comp.step3')}
                 </Typography>
                 <Code language='vim' withMargin text={newCompOneOutput}/>
                 <Typography variant='body1' gutterBottom>
-                    To fully explain the structure of the components template, let's create an another component called NewTwo
+                    {t('genrTpl.comp.step4')}
                 </Typography>
                 <Code withMargin text="al-cli comp NewTwo"/>
                 <Typography variant='body1' gutterBottom>
-                    Once done, al-cli will create all the files in a structure like these.
+                    {t('genrTpl.comp.step5')}
                 </Typography>
                 <Code language='bash' withMargin text={newCompStruct}/>
                 <Typography variant='body1' gutterBottom>
-                    styles of NewOne and NewTwo are like
+                    {t('genrTpl.comp.step6')}
                 </Typography>
                 <Typography variant='caption' gutterBottom>
                     src/assets/jss/sample-app/comp/newOneComp.style.ts
@@ -249,7 +244,7 @@ class ScaffoldingGenrTplView extends React.Component<IProps,{}>{
                 </Typography>
                 <Code withMargin text={newCompTwoStyleCode} />
                 <Typography variant='body1' gutterBottom>
-                    and the two styles are exported via a router index.ts
+                    {t('genrTpl.comp.step7')}。
                 </Typography>
                 <Typography variant='caption' gutterBottom>
                     src/assets/jss/sample-app/index.ts
@@ -257,7 +252,7 @@ class ScaffoldingGenrTplView extends React.Component<IProps,{}>{
                 <Code withMargin text={newCompStyleIndexCode} />
 
                 <Typography variant='body1' gutterBottom>
-                    And among the generated components, the isolated style are import via the router index
+                    {t('genrTpl.comp.step8')}
                 </Typography>
                 <Typography variant='caption' gutterBottom>
                     src/components/sample-app/NewOne/NewOne.tsx
@@ -270,7 +265,7 @@ class ScaffoldingGenrTplView extends React.Component<IProps,{}>{
                 <Code withMargin text={newCompTwoCode} />
 
                 <Typography variant='body1' gutterBottom>
-                    Similarily, the generated components are exported via a comp router index
+                    {t('genrTpl.comp.step9')}
                 </Typography>
                 <Typography variant='caption' gutterBottom>
                     src/components/index.ts
@@ -278,13 +273,7 @@ class ScaffoldingGenrTplView extends React.Component<IProps,{}>{
                 <Code withMargin text={newCompIndexCode} />
 
                 <Typography variant='body1' gutterBottom>
-                    You might notice, we suggest put styles and comps under the folder of the project(sample-app),
-                    it is b/c, sometimes, it's much more easy to directly copy&paste some internal comps or styles
-                    beneath another meaningfull folder to reuse which is sibling to the project folder.
-                    As it might be difficult to ask the author to export via pkg manager and maintain stable versions, or sometimes,
-                    even they exported, the requirements on our sides force us to modify to adopt new specific features instead of directly using them.
-                    In another word, if there were some not that general interal comps/styles we have to use, we can keep them separated from out codes.
-                    And, this tiny structure can act as last life jacket to keep us out of troubles.
+                    {t('genrTpl.comp.step10')}
                 </Typography>
 
 
@@ -292,19 +281,19 @@ class ScaffoldingGenrTplView extends React.Component<IProps,{}>{
 
 
                 <Typography className={classes.hasMargin} variant='h5' gutterBottom>
-                    Generate view template
+                    {t('genrTpl.view.title')}
                 </Typography>
                 <Typography variant='body1' gutterBottom>
-                    Similarly, let's create two new view components based on the previous results.
+                    {t('genrTpl.view.step1')}
                 </Typography>
                 <Code withMargin text="al-cli view NewOne"/>
                 <Code withMargin text="al-cli view NewTwo"/>
                 <Typography variant='body1' gutterBottom>
-                    Once done, al-cli will add the files like these
+                    {t('genrTpl.view.step2')}
                 </Typography>
                 <Code language='bash' withMargin text={newViewStruct}/>
                 <Typography variant='body1' gutterBottom>
-                    Similar we have the isolated style objects for two views
+                    {t('genrTpl.view.step3')}
                 </Typography>
                 <Typography variant='caption' gutterBottom>
                     src/assets/jss/sample-app/view/newOneView.style.ts
@@ -315,14 +304,14 @@ class ScaffoldingGenrTplView extends React.Component<IProps,{}>{
                 </Typography>
                 <Code withMargin text={newViewTwoStyleCode} />
                 <Typography variant='body1' gutterBottom>
-                    and the two styles are also exported via a router index.ts
+                    {t('genrTpl.view.step4')}
                 </Typography>
                 <Typography variant='caption' gutterBottom>
                     src/assets/jss/sample-app/index.ts
                 </Typography>
                 <Code withMargin text={newViewStyleIndexCode} />
                 <Typography variant='body1' gutterBottom>
-                    then the styles will be injected into two views created.
+                    {t('genrTpl.view.step5')}
                 </Typography>
                 <Typography variant='caption' gutterBottom>
                     src/views/NewOne/NewOne.tsx
@@ -339,19 +328,19 @@ class ScaffoldingGenrTplView extends React.Component<IProps,{}>{
 
 
                 <Typography className={classes.hasMargin} variant='h5' gutterBottom>
-                    Generate layout template
+                    {t('genrTpl.lyt.title')}
                 </Typography>
                 <Typography variant='body1' gutterBottom>
-                    Similarly, we could also create two new lyt components based on the previous results.
+                    {t('genrTpl.lyt.step1')}
                 </Typography>
                 <Code withMargin text="al-cli lyt NewOne"/>
                 <Code withMargin text="al-cli lyt NewTwo"/>
                 <Typography variant='body1' gutterBottom>
-                    Make no mistake, once done, al-cli will create all the files in a structure like these.
+                    {t('genrTpl.lyt.step2')}
                 </Typography>
                 <Code language='bash' withMargin text={newLtyStruct}/>
                 <Typography variant='body1' gutterBottom>
-                    Lyts and their isolated styles
+                    {t('genrTpl.lyt.step3')}
                 </Typography>
                 <Typography variant='caption' gutterBottom>
                     src/assets/jss/sample-app/index.ts
@@ -394,6 +383,8 @@ export default connect(
     })
 
     )(
-    withStyles(style)(ScaffoldingGenrTplView)
+    withStyles(style)(
+        withNamespaces('scaffolding')(ScaffoldingGenrTplView)
+    )
 );
 

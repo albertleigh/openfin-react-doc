@@ -8,7 +8,10 @@ i18n
     .use(backend)
     .use(reactI18nextModule)
     .init({
-        ns: ['landing','docMenu',],
+        ns: [
+            'landing','docMenu',
+            'start',
+        ],
         backend:{
             loadPath:`${process.env.PUBLIC_URL}/locales/{{lng}}/{{ns}}.json`,
         },

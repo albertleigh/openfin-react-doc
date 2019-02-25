@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { WithStyles, withStyles } from '@material-ui/core/styles';
+import { withNamespaces, WithNamespaces } from 'react-i18next';
 
 import Typography from '@material-ui/core/Typography';
 
@@ -10,7 +11,7 @@ import { scaffoldingGenrPrjViewStyle as style } from '../../assets/jss/openfin-r
 
 import { Code } from '../../components';
 
-interface IProps extends WithStyles<typeof style>{
+interface IProps extends WithStyles<typeof style>,WithNamespaces{
 
 
 }
@@ -374,48 +375,48 @@ import { IRootState } from '../../reduxs';
 class ScaffoldingGenrPrjView extends React.Component<IProps,{}>{
     render(){
 
-        const { classes } = this.props;
+        const { classes, t } = this.props;
 
         return (
             <React.Fragment>
 
                 <Typography variant='h3' gutterBottom>
-                    Generate projects
+                    {t('genrPrj.title')}
                 </Typography>
 
                 <Typography variant='h5' gutterBottom>
-                    Typescript template project based on create-react-app
+                    {t('genrPrj.reactTs.title')}
                 </Typography>
 
                 <Typography variant='body1' gutterBottom>
-                    To generate the sample project, change directory into your Workspace folder like /home/User/Workspaces
+                    {t('genrPrj.reactTs.subtitle')}
                 </Typography>
 
                 <Typography variant='caption' gutterBottom>
-                    Generate project with node_modules
+                    {t('genrPrj.reactTs.step1')}
                 </Typography>
                 <Code withMargin text="al-cli react-ts sample-react-ts-app"/>
 
                 <Typography variant='caption' gutterBottom>
-                    Gnerate but skip to install  node_modules
+                    {t('genrPrj.reactTs.step1B')}
                 </Typography>
                 <Code withMargin text="al-cli react-ts sample-react-ts-app -v --skipInstall"/>
 
                 <Typography variant='body1' gutterBottom>
-                    Once done, one sample typesript template project will be created like this:
+                    {t('genrPrj.reactTs.step2')}
                 </Typography>
 
                 <Code language='bash' withMargin text={newSampleReactTsPrjStructure}/>
 
                 <Typography variant='body1' gutterBottom>
-                    Redirect to the project folder and, make no mistake, you could start the sample project.
+                    {t('genrPrj.reactTs.step3')}
                 </Typography>
 
                 <Code withMargin text="cd sample-react-ts-app"/>
 
                 <Code withMargin text="yarn start"/>
                 <Typography variant='body1' gutterBottom>
-                    or
+                    {t('common.or')}
                 </Typography>
                 <Code withMargin text="npm run start"/>
 
@@ -424,34 +425,34 @@ class ScaffoldingGenrPrjView extends React.Component<IProps,{}>{
 
 
                 <Typography className={classes.hasMargin} variant='h5' gutterBottom>
-                    Openfin react TS template project
+                    {t('genrPrj.openfinReactTs.title')}
                 </Typography>
 
                 <Typography variant='body1' gutterBottom>
-                    To generate the openfin sample project, change directory into your Workspace folder like /home/User/Workspaces
+                    {t('genrPrj.openfinReactTs.subtitle')}
                 </Typography>
 
                 <Typography variant='caption' gutterBottom>
-                    Generate project with node_modules
+                    {t('genrPrj.openfinReactTs.step1')}
                 </Typography>
                 <Code withMargin text="al-cli openfin-react-ts sample-openfin-react-ts-app"/>
 
                 <Typography variant='caption' gutterBottom>
-                    Gnerate but skip to install  node_modules
+                    {t('genrPrj.openfinReactTs.step1B')}
                 </Typography>
                 <Code withMargin text="al-cli openfin-react-ts sample-openfin-react-ts-app -v --skipInstall"/>
 
                 <Code language='bash' withMargin text={newSampleOpenfinReactTsPrjStructure}/>
 
                 <Typography variant='body1' gutterBottom>
-                    Redirect to the project folder and, make no mistake, you could start the sample project.
+                    {t('genrPrj.openfinReactTs.step2')}
                 </Typography>
 
                 <Code withMargin text="cd sample-openfin-react-ts-app"/>
 
                 <Code withMargin text="yarn start-openfin"/>
                 <Typography variant='body1' gutterBottom>
-                    or
+                    {t('common.or')}
                 </Typography>
                 <Code withMargin text="npm run start-openfin"/>
 
@@ -471,6 +472,8 @@ export default connect(
     })
 
     )(
-    withStyles(style)(ScaffoldingGenrPrjView)
+    withStyles(style)(
+        withNamespaces('scaffolding')(ScaffoldingGenrPrjView)
+    )
 );
 

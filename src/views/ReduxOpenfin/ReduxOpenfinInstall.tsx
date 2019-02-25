@@ -26,7 +26,7 @@ import { IRootState } from '../../reduxs';
 import configureStoreCode from '!raw-loader!./samples/configureStore_ts';
 
 const initReduxOpenfin =
-`import { BrowserAdapter } from '@albertli90/openfin-browser-adapter';
+`import { BrowserAdapter } from 'openfin-browser-adapter';
 
 if(!window.fin){
     window.fin = new BrowserAdapter({
@@ -57,11 +57,11 @@ class ReduxOpenfinInstallView extends React.Component<IProps,{}>{
                     Install
                 </Typography>
 
-                <Code withMargin language='bash' text='yarn add @albertli90/redux-openfin'/>
+                <Code withMargin language='bash' text='yarn add redux-openfin'/>
                 <Typography variant='body1' gutterBottom>
                     or
                 </Typography>
-                <Code withMargin language='bash' text=' npm i @albertli90/redux-openfin'/>
+                <Code withMargin language='bash' text=' npm i redux-openfin'/>
 
                 <Typography variant='h5' gutterBottom>
                     Initialization
@@ -72,7 +72,7 @@ class ReduxOpenfinInstallView extends React.Component<IProps,{}>{
                 <Code withMargin text={configureStoreCode} />
 
                 <Typography variant='caption' gutterBottom>
-                    @albertli90/redux-openfin/createOpenfinMiddleware parameters:
+                    redux-openfin/createOpenfinMiddleware parameters:
                 </Typography>
                 <Paper className={classes.root}>
                     <Table className={classes.table}>
@@ -91,7 +91,7 @@ class ReduxOpenfinInstallView extends React.Component<IProps,{}>{
                             </TableRow>
                             <TableRow>
                                 <TableCell align="right">config</TableCell>
-                                <TableCell align="right">@albertli90/redux-openfin/IConfig</TableCell>
+                                <TableCell align="right">redux-openfin/IConfig</TableCell>
                                 <TableCell align="right">The configuration object of redux-openfin</TableCell>
                             </TableRow>
                         </TableBody>
@@ -100,7 +100,7 @@ class ReduxOpenfinInstallView extends React.Component<IProps,{}>{
 
 
                 <Typography className={classes.hasMargin} variant='caption' gutterBottom>
-                    @albertli90/redux-openfin/IConfig configuration object schema:
+                    redux-openfin/IConfig configuration object schema:
                 </Typography>
                 <Paper className={classes.root}>
                     <Table className={classes.table}>
@@ -134,7 +134,7 @@ class ReduxOpenfinInstallView extends React.Component<IProps,{}>{
                             </TableRow>
                             <TableRow>
                                 <TableCell align="right">dockingOptions</TableCell>
-                                <TableCell align="right">@albertli90/redux-openfin/IDockingOptions [Optional]</TableCell>
+                                <TableCell align="right">redux-openfin/IDockingOptions [Optional]</TableCell>
                                 <TableCell align="right">
                                     Optional configuration object to fine tune windows docking,
                                     please refer Redux-Openfin Snap&Dock section for more info.

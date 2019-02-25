@@ -7,6 +7,7 @@ import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
 
 import { WithStyles, withStyles } from '@material-ui/core/styles';
+import { withNamespaces, WithNamespaces } from 'react-i18next';
 
 import { docMenuCompStyle as style } from '../../../assets/jss/openfin-react-doc';
 
@@ -16,7 +17,7 @@ import {IDocRouteCompItems} from "../../../routes";
 import {publicPathname} from "../../../routes/utils";
 import { docRouteItems } from '../../../routes/document';
 
-interface IProps extends WithStyles<typeof style>{
+interface IProps extends WithStyles<typeof style>, WithNamespaces{
 
 }
 
@@ -27,13 +28,13 @@ interface IState{
 
 class DocMenuComp extends React.Component<IProps, IState>{
     render(){
-        const { classes } = this.props;
+        const { classes, t } = this.props;
         return(
             <div className={classes.container}>
                 <div className={classes.toolbar}>
                     <Link className={classes.link} to={publicPathname}>
                         <Typography variant="subtitle1" color='inherit' >
-                            Openfin react starter
+                            {t('openfinReactStarter')}
                         </Typography>
                     </Link>
                     <a
@@ -67,4 +68,6 @@ class DocMenuComp extends React.Component<IProps, IState>{
     }
 }
 
-export default withStyles(style)(DocMenuComp);
+export default withStyles(style)(
+    withNamespaces('docMenu')(DocMenuComp)
+);

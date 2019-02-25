@@ -19,7 +19,7 @@ import { IRootState } from '../../reduxs';
 
 
 const asyncSample1 =
-`import {System} from "@albertli90/redux-openfin";
+`import {System} from "redux-openfin";
 
 function * someSagaGenerator(){
        
@@ -30,8 +30,8 @@ function * someSagaGenerator(){
 `;
 
 const asyncSample2 =
-`import {System} from "@albertli90/redux-openfin";
-import * as types from "@albertli90/redux-openfin/system/types";
+`import {System} from "redux-openfin";
+import * as types from "redux-openfin/system/types";
 
 function * someSagaGenerator(){
        
@@ -44,7 +44,7 @@ function * someSagaGenerator(){
 `;
 
 const fluxSample1 =
-`import {System} from "@albertli90/redux-openfin";
+`import {System} from "redux-openfin";
 
 function * someSagaGenerator(){
     
@@ -56,8 +56,8 @@ function * someSagaGenerator(){
 `;
 
 const fluxSample2 =
-`import {System} from "@albertli90/redux-openfin";
-import * as types from "@albertli90/redux-openfin/system/types";
+`import {System} from "redux-openfin";
+import * as types from "redux-openfin/system/types";
 
 function * someSagaGenerator(){
     
