@@ -1,32 +1,28 @@
 import * as React from 'react';
 import cx from 'classnames';
-import { WithStyles, withStyles } from '@material-ui/core/styles';
-
+import { makeStyles } from '@material-ui/styles';
 import { aniDashedLineCompStyle as style } from '../../../assets/jss/openfin-react-doc';
 
-interface IProps extends WithStyles<typeof style>{
+const useStyles = makeStyles(style);
+
+interface IProps {
     viewBox:string,
     pathD:string,
 }
 
-interface IState{
-    [key:number]:any,
-    [key:string]:any,
+const AniDashedLineComp:React.FunctionComponent<IProps> = (
+    { viewBox, pathD }
+)=>{
+
+    const classes = useStyles();
+
+    return(
+        <div className={classes.container}>
+            <svg viewBox={viewBox} preserveAspectRatio="none">
+                <path d={pathD} />
+            </svg>
+        </div>
+    )
 }
 
-class AniDashedLineComp extends React.Component<IProps, IState>{
-    render(){
-
-        const {classes, viewBox, pathD} = this.props;
-
-        return(
-            <div className={classes.container}>
-                <svg viewBox={viewBox} preserveAspectRatio="none">
-                    <path d={pathD} />
-                </svg>
-            </div>
-        )
-    }
-}
-
-export default withStyles(style)(AniDashedLineComp);
+export default AniDashedLineComp;

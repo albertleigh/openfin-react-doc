@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState } from 'react';
 import cx from 'classnames';
 import { NavLink } from 'react-router-dom';
 
@@ -11,15 +12,15 @@ import Collapse from '@material-ui/core/Collapse';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
-import { WithStyles, withStyles } from '@material-ui/core/styles';
-import { withNamespaces, WithNamespaces } from 'react-i18next';
+import { makeStyles } from '@material-ui/styles';
+import { useTranslation } from 'react-i18next';
 
 import { docMenuItemCompStyle as style } from '../../../assets/jss/openfin-react-doc';
 import {
     IDocRouteCompItems,IRouteCompItem,RouteItem,
 } from "../../../routes";
 
-interface IProps extends WithStyles<typeof style>, WithNamespaces {
+interface IProps {
     docRouteCompItem:IDocRouteCompItems,
 }
 
@@ -27,27 +28,30 @@ interface IState{
     open:boolean,
 }
 
-class DocMenuItemComp extends React.Component<IProps, IState>{
+const useStyles = makeStyles(style);
 
-    state={
-        open:false,
+const DocMenuItemComp:React.FunctionComponent<IProps> = (
+    {
+        docRouteCompItem
     }
+)=>{
 
-    handleClick = () => {
-        this.setState(state => ({ open: !state.open }));
+    const classes = useStyles();
+    const { t, i18n } = useTranslation('docMenu', { useSuspense: false });
+
+    const [state, setState] = useState<IState>({
+        open:false,
+    });
+
+    const handleClick = () => {
+        setState(state => ({ open: !state.open }));
     };
 
-    renderParentAndChild = () => {
-        const {
-            classes, t,
-            docRouteCompItem,
-        } = this.props;
-
-        const { open } = this.state;
-
+    if (docRouteCompItem.routeItems && docRouteCompItem.routeItems.length){
+        const { open } = state;
         return (
             <React.Fragment>
-                <ListItem button onClick={this.handleClick}>
+                <ListItem button onClick={handleClick}>
                     <ListItemText primary={t(docRouteCompItem.name)} />
                     {open ? <ExpandLessIcon color="inherit" /> : <ExpandMoreIcon color="inherit" />}
                 </ListItem>
@@ -75,23 +79,10 @@ class DocMenuItemComp extends React.Component<IProps, IState>{
                 </Collapse>
             </React.Fragment>
         );
-
+    }else{
+        return null;
     }
 
-    render(){
-
-        const {
-            docRouteCompItem,
-        } = this.props;
-
-        if (docRouteCompItem.routeItems && docRouteCompItem.routeItems.length){
-            return this.renderParentAndChild();
-        }else{
-            return null;
-        }
-    }
 }
 
-export default withStyles(style)(
-    withNamespaces('docMenu')(DocMenuItemComp)
-);
+export default DocMenuItemComp;
