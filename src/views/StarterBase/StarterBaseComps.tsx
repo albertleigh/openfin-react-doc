@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Typography from '@material-ui/core/Typography';
-import { WithStyles, withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/styles';
 import cx from "classnames";
 import { connect } from 'react-redux';
 
@@ -8,12 +8,9 @@ import { Code } from '../../components';
 
 import { starterBaseCompsViewStyle as style } from '../../assets/jss/openfin-react-doc';
 
-interface IProps extends WithStyles<typeof style>{
-
-
-}
-
 import { IRootState } from '../../reduxs';
+
+const useStyles = makeStyles(style);
 
 const componentsStruct =
 `src/views
@@ -140,48 +137,38 @@ const styleStruct =
 └── openfin-starter-constant.ts
 `
 
-class StarterBaseCompsView extends React.Component<IProps,{}>{
-    render(){
-        return (
-            <React.Fragment>
-                <Typography variant='h3' gutterBottom>
-                    Starter kit Components
-                </Typography>
+const StarterBaseCompsView:React.FunctionComponent<{}>=(
+    props
+)=>{
 
-                <Typography variant='subtitle1' gutterBottom>
-                    All components in the template follow the lyt/view/comp pattern introduced in the al-cli section.
-                </Typography>
-                <Typography variant='body1' gutterBottom>
-                    One thing worth noting, the router index for comps are locate at /components instead of
-                    /componentes/openfin-starter for flexibility consideration.
-                    It is b/c, in this way, user can replace or rename comp if needed like name conflicts or missing features.
-                </Typography>
+    const classes = useStyles();
 
-                <Code withMargin language='bash' text={componentsStruct} />
+    return (
+        <React.Fragment>
+            <Typography variant='h3' gutterBottom>
+                Starter kit Components
+            </Typography>
 
+            <Typography variant='subtitle1' gutterBottom>
+                All components in the template follow the lyt/view/comp pattern introduced in the al-cli section.
+            </Typography>
+            <Typography variant='body1' gutterBottom>
+                One thing worth noting, the router index for comps are locate at /components instead of
+                /componentes/openfin-starter for flexibility consideration.
+                It is b/c, in this way, user can replace or rename comp if needed like name conflicts or missing features.
+            </Typography>
 
-                <Typography variant='subtitle1' gutterBottom>
-                    Similarly, all styles are exported via a routing index.ts
-                </Typography>
-                <Code withMargin language='bash' text={styleStruct} />
+            <Code withMargin language='bash' text={componentsStruct} />
 
 
-            </React.Fragment>
-        )
-    }
+            <Typography variant='subtitle1' gutterBottom>
+                Similarly, all styles are exported via a routing index.ts
+            </Typography>
+            <Code withMargin language='bash' text={styleStruct} />
+
+
+        </React.Fragment>
+    )
 }
 
-export default connect(
-    (state:IRootState)=>({
-
-    }),
-    dispatch => ({
-        actions:{
-
-        }
-    })
-
-    )(
-    withStyles(style)(StarterBaseCompsView)
-);
-
+export default StarterBaseCompsView;
