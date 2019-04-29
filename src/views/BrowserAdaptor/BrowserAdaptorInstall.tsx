@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { WithStyles, withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/styles';
 
 import Typography from '@material-ui/core/Typography';
 
@@ -9,11 +9,6 @@ import { connect } from 'react-redux';
 import { browserAdaptorInstallViewStyle as style } from '../../assets/jss/openfin-react-doc';
 
 import { Code } from '../../components';
-
-interface IProps extends WithStyles<typeof style>{
-
-
-}
 
 import { IRootState } from '../../reduxs';
 
@@ -28,65 +23,55 @@ if(!window.fin){
 }
 `
 
-class BrowserAdaptorInstallView extends React.Component<IProps,{}>{
-    render(){
+const useStyles = makeStyles(style);
 
-        const { classes } = this.props;
+const BrowserAdaptorInstallView:React.FunctionComponent<{}>=(
+    props
+)=>{
 
-        return (
-            <React.Fragment>
+    const classes = useStyles();
 
-                <Typography variant='h3' gutterBottom>
-                    BrowserAdaptor
-                </Typography>
+    return (
+        <React.Fragment>
 
-                <Typography variant='body1' gutterBottom>
-                    Openfin browser adaptor is just a bunch doing-nothing mock-up of openfin js apis.
-                    Infact, the adaptor doesn't do much but just let the the code survive when openfin apis called
-                    instead of throwing undefined handles errors.
-                </Typography>
+            <Typography variant='h3' gutterBottom>
+                BrowserAdaptor
+            </Typography>
 
-                <Typography variant='h5' gutterBottom>
-                    Install
-                </Typography>
+            <Typography variant='body1' gutterBottom>
+                Openfin browser adaptor is just a bunch doing-nothing mock-up of openfin js apis.
+                Infact, the adaptor doesn't do much but just let the the code survive when openfin apis called
+                instead of throwing undefined handles errors.
+            </Typography>
 
-                <Typography variant='body1' gutterBottom>
-                    Install into your package.json
-                </Typography>
+            <Typography variant='h5' gutterBottom>
+                Install
+            </Typography>
 
-                <Code withMargin text="yarn add openfin-browser-adapter"/>
-                <Code withMargin text="npm i openfin-browser-adapter"/>
+            <Typography variant='body1' gutterBottom>
+                Install into your package.json
+            </Typography>
 
-                <Typography className={classes.hasMargin} variant='h5' gutterBottom>
-                    Initialize
-                </Typography>
+            <Code withMargin text="yarn add openfin-browser-adapter"/>
+            <Code withMargin text="npm i openfin-browser-adapter"/>
 
-                <Typography variant='body1' gutterBottom>
-                    Before initializing the redux, make sure to use BrowserAdaptor if fin handler is undefined.
-                </Typography>
+            <Typography className={classes.hasMargin} variant='h5' gutterBottom>
+                Initialize
+            </Typography>
 
-                <Code withMargin text={initBrowserAdaptor}/>
+            <Typography variant='body1' gutterBottom>
+                Before initializing the redux, make sure to use BrowserAdaptor if fin handler is undefined.
+            </Typography>
 
-                <Typography variant='body1' gutterBottom>
-                    after that the app codes should be able to survive the browser runtime wit mock-up openfin api handler.
-                </Typography>
+            <Code withMargin text={initBrowserAdaptor}/>
 
-            </React.Fragment>
-        )
-    }
+            <Typography variant='body1' gutterBottom>
+                after that the app codes should be able to survive the browser runtime wit mock-up openfin api handler.
+            </Typography>
+
+        </React.Fragment>
+    )
 }
 
-export default connect(
-    (state:IRootState)=>({
-
-    }),
-    dispatch => ({
-        actions:{
-
-        }
-    })
-
-    )(
-    withStyles(style)(BrowserAdaptorInstallView)
-);
+export default BrowserAdaptorInstallView
 
