@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { WithStyles, withStyles } from '@material-ui/core/styles';
-import { withNamespaces, WithNamespaces } from 'react-i18next';
+import { makeStyles } from '@material-ui/styles';
+import { useTranslation } from 'react-i18next';
 
 import Typography from '@material-ui/core/Typography';
 
@@ -11,13 +11,9 @@ import { scaffoldingStandalonePkgViewStyle as style } from '../../assets/jss/ope
 
 import { Code } from '../../components';
 
-interface IProps extends WithStyles<typeof style>, WithNamespaces{
-
-
-}
-
 import { IRootState } from '../../reduxs';
 
+const useStyles = makeStyles(style);
 
 const buildResult =
 `yarn run v1.12.3
@@ -152,86 +148,72 @@ GET /favicon-16x16.png 304 0.945 ms - -
 
 `;
 
-class ScaffoldingStandalonePkgView extends React.Component<IProps,{}>{
-    render(){
+const ScaffoldingStandalonePkgView:React.FunctionComponent<{}>=(
+    {}
+)=>{
 
-        const { classes, t } = this.props;
+    const classes = useStyles();
+    const { t, i18n } = useTranslation('scaffolding', { useSuspense: false });
 
-        return (
-            <React.Fragment>
-                <Typography variant='h3' gutterBottom>
-                    {t('standalonePkg.title')}
-                </Typography>
+    return (
+        <React.Fragment>
+            <Typography variant='h3' gutterBottom>
+                {t('standalonePkg.title')}
+            </Typography>
 
-                <Typography variant='h5' gutterBottom>
-                    {t('standalonePkg.build.title')}
-                </Typography>
-                <Typography variant='body1' gutterBottom>
-                    {t('standalonePkg.build.step1')}
-                </Typography>
-                <Code withMargin text="yarn build"/>
-                <Typography variant='body1' gutterBottom>
-                    {t('common.or')}
-                </Typography>
-                <Code withMargin text="npm run build"/>
-                <Typography variant='body1' gutterBottom>
-                    {t('standalonePkg.build.step2')}
-                </Typography>
-                <Code language='bash' withMargin text={buildResult}/>
-
-
-
-
-
-                <Typography className={classes.hasMargin} variant='h5' gutterBottom>
-                    {t('standalonePkg.pkg.title')}
-                </Typography>
-                <Typography variant='body1' gutterBottom>
-                    {t('standalonePkg.pkg.step1')}
-                </Typography>
-                <Code withMargin text="yarn package"/>
-                <Typography variant='body1' gutterBottom>
-                    {t('common.or')}
-                </Typography>
-                <Code withMargin text="npm run package"/>
-                <Code language='bash' withMargin text={packageResult}/>
+            <Typography variant='h5' gutterBottom>
+                {t('standalonePkg.build.title')}
+            </Typography>
+            <Typography variant='body1' gutterBottom>
+                {t('standalonePkg.build.step1')}
+            </Typography>
+            <Code withMargin text="yarn build"/>
+            <Typography variant='body1' gutterBottom>
+                {t('common.or')}
+            </Typography>
+            <Code withMargin text="npm run build"/>
+            <Typography variant='body1' gutterBottom>
+                {t('standalonePkg.build.step2')}
+            </Typography>
+            <Code language='bash' withMargin text={buildResult}/>
 
 
 
 
 
-                <Typography className={classes.hasMargin}  variant='h5' gutterBottom>
-                    {t('standalonePkg.pkg.step2')}
-                </Typography>
-                <Typography variant='body1' gutterBottom>
-                    {t('standalonePkg.pkg.step3')}
-                </Typography>
-                <Code language='bash' withMargin text={builtStructure}/>
-                <Typography variant='body1' gutterBottom>
-                    {t('standalonePkg.pkg.step4')}
-                </Typography>
+            <Typography className={classes.hasMargin} variant='h5' gutterBottom>
+                {t('standalonePkg.pkg.title')}
+            </Typography>
+            <Typography variant='body1' gutterBottom>
+                {t('standalonePkg.pkg.step1')}
+            </Typography>
+            <Code withMargin text="yarn package"/>
+            <Typography variant='body1' gutterBottom>
+                {t('common.or')}
+            </Typography>
+            <Code withMargin text="npm run package"/>
+            <Code language='bash' withMargin text={packageResult}/>
 
-                <Code withMargin text="./openfin_starter"/>
-                <Code language='bash' withMargin text={startingOpenfinBin}/>
 
-            </React.Fragment>
-        )
-    }
+
+
+
+            <Typography className={classes.hasMargin}  variant='h5' gutterBottom>
+                {t('standalonePkg.pkg.step2')}
+            </Typography>
+            <Typography variant='body1' gutterBottom>
+                {t('standalonePkg.pkg.step3')}
+            </Typography>
+            <Code language='bash' withMargin text={builtStructure}/>
+            <Typography variant='body1' gutterBottom>
+                {t('standalonePkg.pkg.step4')}
+            </Typography>
+
+            <Code withMargin text="./openfin_starter"/>
+            <Code language='bash' withMargin text={startingOpenfinBin}/>
+
+        </React.Fragment>
+    )
 }
 
-export default connect(
-    (state:IRootState)=>({
-
-    }),
-    dispatch => ({
-        actions:{
-
-        }
-    })
-
-    )(
-    withStyles(style)(
-        withNamespaces('scaffolding')(ScaffoldingStandalonePkgView)
-    )
-);
-
+export default ScaffoldingStandalonePkgView;

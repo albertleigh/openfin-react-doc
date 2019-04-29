@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { WithStyles, withStyles } from '@material-ui/core/styles';
-import { withNamespaces, WithNamespaces } from 'react-i18next';
+import { makeStyles } from '@material-ui/styles';
+import { useTranslation } from 'react-i18next';
 
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
@@ -12,12 +12,9 @@ import { scaffoldingInstallViewStyle as style } from '../../assets/jss/openfin-r
 
 import { Code } from '../../components';
 
-interface IProps extends WithStyles<typeof style>, WithNamespaces{
-
-
-}
-
 import { IRootState } from '../../reduxs';
+
+const useStyles = makeStyles(style);
 
 const alCli =
     `
@@ -45,68 +42,54 @@ const alCli =
       --skipInstall       Skip to install node_moduels
 `;
 
-class ScaffoldingInstallView extends React.Component<IProps,{}>{
-    render(){
+const ScaffoldingInstallView:React.FunctionComponent<{}>=(
+    props
+)=>{
 
-        const { classes, t } = this.props;
+    const classes = useStyles();
+    const { t, i18n } = useTranslation('scaffolding', { useSuspense: false });
 
-        return (
-            <React.Fragment>
-                <Typography variant='h3' gutterBottom>
-                    {t('install.title')}
-                </Typography>
+    return (
+        <React.Fragment>
+            <Typography variant='h3' gutterBottom>
+                {t('install.title')}
+            </Typography>
 
-                <Typography variant="body1" gutterBottom>
-                    {t('install.subtitle')}
-                </Typography>
+            <Typography variant="body1" gutterBottom>
+                {t('install.subtitle')}
+            </Typography>
 
-                <Typography className={classes.hasMargin} variant='h5' gutterBottom>
-                    {t('install.install.title')}
-                </Typography>
+            <Typography className={classes.hasMargin} variant='h5' gutterBottom>
+                {t('install.install.title')}
+            </Typography>
 
-                <Typography variant="body1" gutterBottom>
-                    {t('install.install.step1')}
-                </Typography>
+            <Typography variant="body1" gutterBottom>
+                {t('install.install.step1')}
+            </Typography>
 
-                <Code withMargin text="npm install @albertli90/al-cli -g"/>
+            <Code withMargin text="npm install @albertli90/al-cli -g"/>
 
-                <Typography variant="body1" gutterBottom>
-                    {t('common.or')}
-                </Typography>
+            <Typography variant="body1" gutterBottom>
+                {t('common.or')}
+            </Typography>
 
-                <Code withMargin text="yarn global add @albertli90/al-cli"/>
+            <Code withMargin text="yarn global add @albertli90/al-cli"/>
 
-                <Typography variant="body1" gutterBottom>
-                    {t('install.install.step2')}
-                </Typography>
-                <Code withMargin text="al-cli"/>
-                <Typography variant="body1" gutterBottom>
-                    {t('common.or')}
-                </Typography>
-                <Code withMargin text="al-cli --help"/>
-                <Typography variant="body1" gutterBottom>
-                    {t('install.install.step3')}
-                </Typography>
-                <Code language='vim' withMargin text={alCli}/>
+            <Typography variant="body1" gutterBottom>
+                {t('install.install.step2')}
+            </Typography>
+            <Code withMargin text="al-cli"/>
+            <Typography variant="body1" gutterBottom>
+                {t('common.or')}
+            </Typography>
+            <Code withMargin text="al-cli --help"/>
+            <Typography variant="body1" gutterBottom>
+                {t('install.install.step3')}
+            </Typography>
+            <Code language='vim' withMargin text={alCli}/>
 
-            </React.Fragment>
-        )
-    }
+        </React.Fragment>
+    )
 }
 
-export default connect(
-    (state:IRootState)=>({
-
-    }),
-    dispatch => ({
-        actions:{
-
-        }
-    })
-
-    )(
-    withStyles(style)(
-        withNamespaces('scaffolding')(ScaffoldingInstallView)
-    )
-);
-
+export default ScaffoldingInstallView;

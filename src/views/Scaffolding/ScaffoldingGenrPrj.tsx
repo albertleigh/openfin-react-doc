@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { WithStyles, withStyles } from '@material-ui/core/styles';
-import { withNamespaces, WithNamespaces } from 'react-i18next';
+import { makeStyles } from '@material-ui/styles';
+import { useTranslation } from 'react-i18next';
 
 import Typography from '@material-ui/core/Typography';
 
@@ -11,10 +11,7 @@ import { scaffoldingGenrPrjViewStyle as style } from '../../assets/jss/openfin-r
 
 import { Code } from '../../components';
 
-interface IProps extends WithStyles<typeof style>,WithNamespaces{
-
-
-}
+const useStyles = makeStyles(style);
 
 const newSampleReactTsPrjStructure=
 `
@@ -372,108 +369,95 @@ sample-openfin-react-ts-app/
 
 import { IRootState } from '../../reduxs';
 
-class ScaffoldingGenrPrjView extends React.Component<IProps,{}>{
-    render(){
+const ScaffoldingGenrPrjView:React.FunctionComponent<{}>=(
+    props
+)=>{
 
-        const { classes, t } = this.props;
+    const classes = useStyles();
+    const { t, i18n } = useTranslation('scaffolding', { useSuspense: false });
 
-        return (
-            <React.Fragment>
+    return (
+        <React.Fragment>
 
-                <Typography variant='h3' gutterBottom>
-                    {t('genrPrj.title')}
-                </Typography>
+            <Typography variant='h3' gutterBottom>
+                {t('genrPrj.title')}
+            </Typography>
 
-                <Typography variant='h5' gutterBottom>
-                    {t('genrPrj.reactTs.title')}
-                </Typography>
+            <Typography variant='h5' gutterBottom>
+                {t('genrPrj.reactTs.title')}
+            </Typography>
 
-                <Typography variant='body1' gutterBottom>
-                    {t('genrPrj.reactTs.subtitle')}
-                </Typography>
+            <Typography variant='body1' gutterBottom>
+                {t('genrPrj.reactTs.subtitle')}
+            </Typography>
 
-                <Typography variant='caption' gutterBottom>
-                    {t('genrPrj.reactTs.step1')}
-                </Typography>
-                <Code withMargin text="al-cli react-ts sample-react-ts-app"/>
+            <Typography variant='caption' gutterBottom>
+                {t('genrPrj.reactTs.step1')}
+            </Typography>
+            <Code withMargin text="al-cli react-ts sample-react-ts-app"/>
 
-                <Typography variant='caption' gutterBottom>
-                    {t('genrPrj.reactTs.step1B')}
-                </Typography>
-                <Code withMargin text="al-cli react-ts sample-react-ts-app -v --skipInstall"/>
+            <Typography variant='caption' gutterBottom>
+                {t('genrPrj.reactTs.step1B')}
+            </Typography>
+            <Code withMargin text="al-cli react-ts sample-react-ts-app -v --skipInstall"/>
 
-                <Typography variant='body1' gutterBottom>
-                    {t('genrPrj.reactTs.step2')}
-                </Typography>
+            <Typography variant='body1' gutterBottom>
+                {t('genrPrj.reactTs.step2')}
+            </Typography>
 
-                <Code language='bash' withMargin text={newSampleReactTsPrjStructure}/>
+            <Code language='bash' withMargin text={newSampleReactTsPrjStructure}/>
 
-                <Typography variant='body1' gutterBottom>
-                    {t('genrPrj.reactTs.step3')}
-                </Typography>
+            <Typography variant='body1' gutterBottom>
+                {t('genrPrj.reactTs.step3')}
+            </Typography>
 
-                <Code withMargin text="cd sample-react-ts-app"/>
+            <Code withMargin text="cd sample-react-ts-app"/>
 
-                <Code withMargin text="yarn start"/>
-                <Typography variant='body1' gutterBottom>
-                    {t('common.or')}
-                </Typography>
-                <Code withMargin text="npm run start"/>
-
-
-
+            <Code withMargin text="yarn start"/>
+            <Typography variant='body1' gutterBottom>
+                {t('common.or')}
+            </Typography>
+            <Code withMargin text="npm run start"/>
 
 
-                <Typography className={classes.hasMargin} variant='h5' gutterBottom>
-                    {t('genrPrj.openfinReactTs.title')}
-                </Typography>
 
-                <Typography variant='body1' gutterBottom>
-                    {t('genrPrj.openfinReactTs.subtitle')}
-                </Typography>
 
-                <Typography variant='caption' gutterBottom>
-                    {t('genrPrj.openfinReactTs.step1')}
-                </Typography>
-                <Code withMargin text="al-cli openfin-react-ts sample-openfin-react-ts-app"/>
 
-                <Typography variant='caption' gutterBottom>
-                    {t('genrPrj.openfinReactTs.step1B')}
-                </Typography>
-                <Code withMargin text="al-cli openfin-react-ts sample-openfin-react-ts-app -v --skipInstall"/>
+            <Typography className={classes.hasMargin} variant='h5' gutterBottom>
+                {t('genrPrj.openfinReactTs.title')}
+            </Typography>
 
-                <Code language='bash' withMargin text={newSampleOpenfinReactTsPrjStructure}/>
+            <Typography variant='body1' gutterBottom>
+                {t('genrPrj.openfinReactTs.subtitle')}
+            </Typography>
 
-                <Typography variant='body1' gutterBottom>
-                    {t('genrPrj.openfinReactTs.step2')}
-                </Typography>
+            <Typography variant='caption' gutterBottom>
+                {t('genrPrj.openfinReactTs.step1')}
+            </Typography>
+            <Code withMargin text="al-cli openfin-react-ts sample-openfin-react-ts-app"/>
 
-                <Code withMargin text="cd sample-openfin-react-ts-app"/>
+            <Typography variant='caption' gutterBottom>
+                {t('genrPrj.openfinReactTs.step1B')}
+            </Typography>
+            <Code withMargin text="al-cli openfin-react-ts sample-openfin-react-ts-app -v --skipInstall"/>
 
-                <Code withMargin text="yarn start-openfin"/>
-                <Typography variant='body1' gutterBottom>
-                    {t('common.or')}
-                </Typography>
-                <Code withMargin text="npm run start-openfin"/>
+            <Code language='bash' withMargin text={newSampleOpenfinReactTsPrjStructure}/>
 
-            </React.Fragment>
-        )
-    }
+            <Typography variant='body1' gutterBottom>
+                {t('genrPrj.openfinReactTs.step2')}
+            </Typography>
+
+            <Code withMargin text="cd sample-openfin-react-ts-app"/>
+
+            <Code withMargin text="yarn start-openfin"/>
+            <Typography variant='body1' gutterBottom>
+                {t('common.or')}
+            </Typography>
+            <Code withMargin text="npm run start-openfin"/>
+
+        </React.Fragment>
+    )
 }
 
-export default connect(
-    (state:IRootState)=>({
-
-    }),
-    dispatch => ({
-        actions:{
-
-        }
-    })
-
-    )(
-    withStyles(style)(
-        withNamespaces('scaffolding')(ScaffoldingGenrPrjView)
-    )
-);
+export default ScaffoldingGenrPrjView;
 

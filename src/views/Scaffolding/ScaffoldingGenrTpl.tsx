@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { WithStyles, withStyles } from '@material-ui/core/styles';
-import { withNamespaces, WithNamespaces } from 'react-i18next';
+import { makeStyles } from '@material-ui/styles';
+import { useTranslation } from 'react-i18next';
 
 import Typography from '@material-ui/core/Typography';
 import Table from '@material-ui/core/Table';
@@ -37,12 +37,9 @@ import newLytStyleIndexCode from '!raw-loader!./samples/newLytStyleIndex_ts';
 import newLytOneCode from '!raw-loader!./samples/newOneLyt_ts';
 import newLytTwoCode from '!raw-loader!./samples/newTwoLyt_ts';
 
-interface IProps extends WithStyles<typeof style>, WithNamespaces{
-
-
-}
-
 import { IRootState } from '../../reduxs';
+
+const useStyles = makeStyles(style);
 
 const newCompOneOutput=
 `
@@ -145,246 +142,234 @@ src/
         └── NewTwo.tsx
 `;
 
-class ScaffoldingGenrTplView extends React.Component<IProps,{}>{
-    render(){
-        const { classes, t } = this.props;
-        return (
-            <React.Fragment>
+const ScaffoldingGenrTplView:React.FunctionComponent<{}>=(
+    props
+)=>{
 
-                <Typography variant='h3' gutterBottom>
-                    {t('genrTpl.title')}
-                </Typography>
+    const classes = useStyles();
+    const { t, i18n } = useTranslation('scaffolding', { useSuspense: false });
 
+    return (
+        <React.Fragment>
 
-                <Typography variant='h5' gutterBottom>
-                    {t('genrTpl.diff.title')}
-                </Typography>
-
-                <Typography variant='body1' gutterBottom>
-                    {t('genrTpl.diff.subtitle')}
-                </Typography>
-
-                <Paper className={classes.root}>
-                    <Table className={classes.table}>
-                        <TableHead>
-                            <TableRow>
-                                <TableCell>Type</TableCell>
-                                <TableCell align="right">{t('genrTpl.diff.table.col1')}</TableCell>
-                                <TableCell align="right">{t('genrTpl.diff.table.col2')}</TableCell>
-                                <TableCell align="right">{t('genrTpl.diff.table.col3')}</TableCell>
-                            </TableRow>
-                        </TableHead>
-                        <TableBody>
-                            <TableRow>
-                                <TableCell component="th" scope="row">
-                                    {t('genrTpl.diff.table.row1')}
-                                </TableCell>
-                                <TableCell align="right">{t('common.no')}</TableCell>
-                                <TableCell align="right">{t('common.no')}</TableCell>
-                                <TableCell align="right">{t('common.yes')}</TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell component="th" scope="row">
-                                    {t('genrTpl.diff.table.row2')}
-                                </TableCell>
-                                <TableCell align="right">{t('common.yes')}</TableCell>
-                                <TableCell align="right">{t('common.no')}</TableCell>
-                                <TableCell align="right">{t('common.yes')}</TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell component="th" scope="row">
-                                    {t('genrTpl.diff.table.row3')}
-                                </TableCell>
-                                <TableCell align="right">{t('common.yes')}</TableCell>
-                                <TableCell align="right">{t('common.yes')}</TableCell>
-                                <TableCell align="right">{t('common.no')}</TableCell>
-                            </TableRow>
-                        </TableBody>
-                    </Table>
-                </Paper>
-
-                <Typography variant='body1' gutterBottom>
-                    {t('genrTpl.diff.desc')}
-                </Typography>
+            <Typography variant='h3' gutterBottom>
+                {t('genrTpl.title')}
+            </Typography>
 
 
-                <Typography className={classes.hasMargin} variant='h5' gutterBottom>
-                    {t('genrTpl.comp.title')}
-                </Typography>
+            <Typography variant='h5' gutterBottom>
+                {t('genrTpl.diff.title')}
+            </Typography>
+
+            <Typography variant='body1' gutterBottom>
+                {t('genrTpl.diff.subtitle')}
+            </Typography>
+
+            <Paper className={classes.root}>
+                <Table className={classes.table}>
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>Type</TableCell>
+                            <TableCell align="right">{t('genrTpl.diff.table.col1')}</TableCell>
+                            <TableCell align="right">{t('genrTpl.diff.table.col2')}</TableCell>
+                            <TableCell align="right">{t('genrTpl.diff.table.col3')}</TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        <TableRow>
+                            <TableCell component="th" scope="row">
+                                {t('genrTpl.diff.table.row1')}
+                            </TableCell>
+                            <TableCell align="right">{t('common.no')}</TableCell>
+                            <TableCell align="right">{t('common.no')}</TableCell>
+                            <TableCell align="right">{t('common.yes')}</TableCell>
+                        </TableRow>
+                        <TableRow>
+                            <TableCell component="th" scope="row">
+                                {t('genrTpl.diff.table.row2')}
+                            </TableCell>
+                            <TableCell align="right">{t('common.yes')}</TableCell>
+                            <TableCell align="right">{t('common.no')}</TableCell>
+                            <TableCell align="right">{t('common.yes')}</TableCell>
+                        </TableRow>
+                        <TableRow>
+                            <TableCell component="th" scope="row">
+                                {t('genrTpl.diff.table.row3')}
+                            </TableCell>
+                            <TableCell align="right">{t('common.yes')}</TableCell>
+                            <TableCell align="right">{t('common.yes')}</TableCell>
+                            <TableCell align="right">{t('common.no')}</TableCell>
+                        </TableRow>
+                    </TableBody>
+                </Table>
+            </Paper>
+
+            <Typography variant='body1' gutterBottom>
+                {t('genrTpl.diff.desc')}
+            </Typography>
 
 
-                <Typography variant='body1' gutterBottom>
-                    {t('genrTpl.comp.step1')}
-                </Typography>
-                <Typography variant='body1' gutterBottom>
-                    {t('genrTpl.comp.step2')}
-                </Typography>
-                <Code withMargin text="al-cli comp NewOne"/>
-                <Typography variant='body1' gutterBottom>
-                    {t('genrTpl.comp.step3')}
-                </Typography>
-                <Code language='vim' withMargin text={newCompOneOutput}/>
-                <Typography variant='body1' gutterBottom>
-                    {t('genrTpl.comp.step4')}
-                </Typography>
-                <Code withMargin text="al-cli comp NewTwo"/>
-                <Typography variant='body1' gutterBottom>
-                    {t('genrTpl.comp.step5')}
-                </Typography>
-                <Code language='bash' withMargin text={newCompStruct}/>
-                <Typography variant='body1' gutterBottom>
-                    {t('genrTpl.comp.step6')}
-                </Typography>
-                <Typography variant='caption' gutterBottom>
-                    src/assets/jss/sample-app/comp/newOneComp.style.ts
-                </Typography>
-                <Code withMargin text={newCompOneStyleCode} />
-                <Typography variant='caption' gutterBottom>
-                    src/assets/jss/sample-app/comp/newTwoComp.style.ts
-                </Typography>
-                <Code withMargin text={newCompTwoStyleCode} />
-                <Typography variant='body1' gutterBottom>
-                    {t('genrTpl.comp.step7')}。
-                </Typography>
-                <Typography variant='caption' gutterBottom>
-                    src/assets/jss/sample-app/index.ts
-                </Typography>
-                <Code withMargin text={newCompStyleIndexCode} />
-
-                <Typography variant='body1' gutterBottom>
-                    {t('genrTpl.comp.step8')}
-                </Typography>
-                <Typography variant='caption' gutterBottom>
-                    src/components/sample-app/NewOne/NewOne.tsx
-                </Typography>
-                <Code withMargin text={newCompOneCode} />
-
-                <Typography variant='caption' gutterBottom>
-                    src/components/sample-app/NewTwo/NewTwo.tsx
-                </Typography>
-                <Code withMargin text={newCompTwoCode} />
-
-                <Typography variant='body1' gutterBottom>
-                    {t('genrTpl.comp.step9')}
-                </Typography>
-                <Typography variant='caption' gutterBottom>
-                    src/components/index.ts
-                </Typography>
-                <Code withMargin text={newCompIndexCode} />
-
-                <Typography variant='body1' gutterBottom>
-                    {t('genrTpl.comp.step10')}
-                </Typography>
+            <Typography className={classes.hasMargin} variant='h5' gutterBottom>
+                {t('genrTpl.comp.title')}
+            </Typography>
 
 
+            <Typography variant='body1' gutterBottom>
+                {t('genrTpl.comp.step1')}
+            </Typography>
+            <Typography variant='body1' gutterBottom>
+                {t('genrTpl.comp.step2')}
+            </Typography>
+            <Code withMargin text="al-cli comp NewOne"/>
+            <Typography variant='body1' gutterBottom>
+                {t('genrTpl.comp.step3')}
+            </Typography>
+            <Code language='vim' withMargin text={newCompOneOutput}/>
+            <Typography variant='body1' gutterBottom>
+                {t('genrTpl.comp.step4')}
+            </Typography>
+            <Code withMargin text="al-cli comp NewTwo"/>
+            <Typography variant='body1' gutterBottom>
+                {t('genrTpl.comp.step5')}
+            </Typography>
+            <Code language='bash' withMargin text={newCompStruct}/>
+            <Typography variant='body1' gutterBottom>
+                {t('genrTpl.comp.step6')}
+            </Typography>
+            <Typography variant='caption' gutterBottom>
+                src/assets/jss/sample-app/comp/newOneComp.style.ts
+            </Typography>
+            <Code withMargin text={newCompOneStyleCode} />
+            <Typography variant='caption' gutterBottom>
+                src/assets/jss/sample-app/comp/newTwoComp.style.ts
+            </Typography>
+            <Code withMargin text={newCompTwoStyleCode} />
+            <Typography variant='body1' gutterBottom>
+                {t('genrTpl.comp.step7')}。
+            </Typography>
+            <Typography variant='caption' gutterBottom>
+                src/assets/jss/sample-app/index.ts
+            </Typography>
+            <Code withMargin text={newCompStyleIndexCode} />
 
+            <Typography variant='body1' gutterBottom>
+                {t('genrTpl.comp.step8')}
+            </Typography>
+            <Typography variant='caption' gutterBottom>
+                src/components/sample-app/NewOne/NewOne.tsx
+            </Typography>
+            <Code withMargin text={newCompOneCode} />
 
+            <Typography variant='caption' gutterBottom>
+                src/components/sample-app/NewTwo/NewTwo.tsx
+            </Typography>
+            <Code withMargin text={newCompTwoCode} />
 
-                <Typography className={classes.hasMargin} variant='h5' gutterBottom>
-                    {t('genrTpl.view.title')}
-                </Typography>
-                <Typography variant='body1' gutterBottom>
-                    {t('genrTpl.view.step1')}
-                </Typography>
-                <Code withMargin text="al-cli view NewOne"/>
-                <Code withMargin text="al-cli view NewTwo"/>
-                <Typography variant='body1' gutterBottom>
-                    {t('genrTpl.view.step2')}
-                </Typography>
-                <Code language='bash' withMargin text={newViewStruct}/>
-                <Typography variant='body1' gutterBottom>
-                    {t('genrTpl.view.step3')}
-                </Typography>
-                <Typography variant='caption' gutterBottom>
-                    src/assets/jss/sample-app/view/newOneView.style.ts
-                </Typography>
-                <Code withMargin text={newViewOneStyleCode} />
-                <Typography variant='caption' gutterBottom>
-                    src/assets/jss/sample-app/view/newTwoView.style.ts
-                </Typography>
-                <Code withMargin text={newViewTwoStyleCode} />
-                <Typography variant='body1' gutterBottom>
-                    {t('genrTpl.view.step4')}
-                </Typography>
-                <Typography variant='caption' gutterBottom>
-                    src/assets/jss/sample-app/index.ts
-                </Typography>
-                <Code withMargin text={newViewStyleIndexCode} />
-                <Typography variant='body1' gutterBottom>
-                    {t('genrTpl.view.step5')}
-                </Typography>
-                <Typography variant='caption' gutterBottom>
-                    src/views/NewOne/NewOne.tsx
-                </Typography>
-                <Code withMargin text={newViewOneCode} />
+            <Typography variant='body1' gutterBottom>
+                {t('genrTpl.comp.step9')}
+            </Typography>
+            <Typography variant='caption' gutterBottom>
+                src/components/index.ts
+            </Typography>
+            <Code withMargin text={newCompIndexCode} />
 
-                <Typography variant='caption' gutterBottom>
-                    src/views/NewTwo/NewTwo.tsx
-                </Typography>
-                <Code withMargin text={newViewTwoCode} />
+            <Typography variant='body1' gutterBottom>
+                {t('genrTpl.comp.step10')}
+            </Typography>
 
 
 
 
 
-                <Typography className={classes.hasMargin} variant='h5' gutterBottom>
-                    {t('genrTpl.lyt.title')}
-                </Typography>
-                <Typography variant='body1' gutterBottom>
-                    {t('genrTpl.lyt.step1')}
-                </Typography>
-                <Code withMargin text="al-cli lyt NewOne"/>
-                <Code withMargin text="al-cli lyt NewTwo"/>
-                <Typography variant='body1' gutterBottom>
-                    {t('genrTpl.lyt.step2')}
-                </Typography>
-                <Code language='bash' withMargin text={newLtyStruct}/>
-                <Typography variant='body1' gutterBottom>
-                    {t('genrTpl.lyt.step3')}
-                </Typography>
-                <Typography variant='caption' gutterBottom>
-                    src/assets/jss/sample-app/index.ts
-                </Typography>
-                <Code withMargin text={newLytOneStyleCode} />
-                <Typography variant='caption' gutterBottom>
-                    src/assets/jss/sample-app/layout/newTwo.style.ts
-                </Typography>
-                <Code withMargin text={newLytTwoStyleCode} />
-                <Typography variant='caption' gutterBottom>
-                    src/assets/jss/sample-app/layout/newTwo.style.ts
-                </Typography>
-                <Code withMargin text={newLytStyleIndexCode} />
+            <Typography className={classes.hasMargin} variant='h5' gutterBottom>
+                {t('genrTpl.view.title')}
+            </Typography>
+            <Typography variant='body1' gutterBottom>
+                {t('genrTpl.view.step1')}
+            </Typography>
+            <Code withMargin text="al-cli view NewOne"/>
+            <Code withMargin text="al-cli view NewTwo"/>
+            <Typography variant='body1' gutterBottom>
+                {t('genrTpl.view.step2')}
+            </Typography>
+            <Code language='bash' withMargin text={newViewStruct}/>
+            <Typography variant='body1' gutterBottom>
+                {t('genrTpl.view.step3')}
+            </Typography>
+            <Typography variant='caption' gutterBottom>
+                src/assets/jss/sample-app/view/newOneView.style.ts
+            </Typography>
+            <Code withMargin text={newViewOneStyleCode} />
+            <Typography variant='caption' gutterBottom>
+                src/assets/jss/sample-app/view/newTwoView.style.ts
+            </Typography>
+            <Code withMargin text={newViewTwoStyleCode} />
+            <Typography variant='body1' gutterBottom>
+                {t('genrTpl.view.step4')}
+            </Typography>
+            <Typography variant='caption' gutterBottom>
+                src/assets/jss/sample-app/index.ts
+            </Typography>
+            <Code withMargin text={newViewStyleIndexCode} />
+            <Typography variant='body1' gutterBottom>
+                {t('genrTpl.view.step5')}
+            </Typography>
+            <Typography variant='caption' gutterBottom>
+                src/views/NewOne/NewOne.tsx
+            </Typography>
+            <Code withMargin text={newViewOneCode} />
 
-                <Typography variant='caption' gutterBottom>
-                    src/views/NewOne/NewOne.tsx
-                </Typography>
-                <Code withMargin text={newLytOneCode} />
-                <Typography variant='caption' gutterBottom>
-                    src/views/NewTwo/NewTwo.tsx
-                </Typography>
-                <Code withMargin text={newLytTwoCode} />
+            <Typography variant='caption' gutterBottom>
+                src/views/NewTwo/NewTwo.tsx
+            </Typography>
+            <Code withMargin text={newViewTwoCode} />
 
 
 
 
-            </React.Fragment>
-        )
-    }
+
+            <Typography className={classes.hasMargin} variant='h5' gutterBottom>
+                {t('genrTpl.lyt.title')}
+            </Typography>
+            <Typography variant='body1' gutterBottom>
+                {t('genrTpl.lyt.step1')}
+            </Typography>
+            <Code withMargin text="al-cli lyt NewOne"/>
+            <Code withMargin text="al-cli lyt NewTwo"/>
+            <Typography variant='body1' gutterBottom>
+                {t('genrTpl.lyt.step2')}
+            </Typography>
+            <Code language='bash' withMargin text={newLtyStruct}/>
+            <Typography variant='body1' gutterBottom>
+                {t('genrTpl.lyt.step3')}
+            </Typography>
+            <Typography variant='caption' gutterBottom>
+                src/assets/jss/sample-app/index.ts
+            </Typography>
+            <Code withMargin text={newLytOneStyleCode} />
+            <Typography variant='caption' gutterBottom>
+                src/assets/jss/sample-app/layout/newTwo.style.ts
+            </Typography>
+            <Code withMargin text={newLytTwoStyleCode} />
+            <Typography variant='caption' gutterBottom>
+                src/assets/jss/sample-app/layout/newTwo.style.ts
+            </Typography>
+            <Code withMargin text={newLytStyleIndexCode} />
+
+            <Typography variant='caption' gutterBottom>
+                src/views/NewOne/NewOne.tsx
+            </Typography>
+            <Code withMargin text={newLytOneCode} />
+            <Typography variant='caption' gutterBottom>
+                src/views/NewTwo/NewTwo.tsx
+            </Typography>
+            <Code withMargin text={newLytTwoCode} />
+
+
+
+
+        </React.Fragment>
+    )
 }
 
-export default connect(
-    (state:IRootState)=>({
-
-    }),
-    dispatch => ({
-        actions:{
-
-        }
-    })
-
-    )(
-    withStyles(style)(
-        withNamespaces('scaffolding')(ScaffoldingGenrTplView)
-    )
-);
-
+export default ScaffoldingGenrTplView;
