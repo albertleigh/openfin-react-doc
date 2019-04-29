@@ -41,7 +41,7 @@ const StartInstallationView:React.FunctionComponent<{}>=(
                     {t('start.sampleInstaller')}
                 </Typography>
                 <IconButton aria-label="SampleInstaller"
-                            onClick={this.handleSampleInstallerClick}
+                            onClick={handleSampleInstallerClick}
                 >
                     <SettingIcon fontSize="small" />
                 </IconButton>

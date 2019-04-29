@@ -82,7 +82,7 @@ const DocumentLayout:React.FunctionComponent<IProps>=(
         <React.Fragment>
             <DocHeader
                 navbarName={t(getBrand())}
-                onSwitchLanguage={this.handleSwitchLanguage}
+                onSwitchLanguage={handleSwitchLanguage}
                 onToggleDrawer = {onToggleDrawer}
                 onToggleTheme = {onToggleTheme}
             />

@@ -22,8 +22,7 @@ import settingSvg from '../../../assets/svg/other/settings.svg';
 import openfinLogoSvg from '../../../assets/svg/developer/openfin.svg';
 import matUiLogoSvg from '../../../assets/svg/developer/material-ui-logo.svg';
 import reactSvg from '../../../assets/svg/developer/react.svg';
-import useLandingSectionIntersectionListener
-    from "src/components/openfin-react-doc/Landing/useLandingSectionIntersectionListener";
+import useLandingSectionIntersectionListener from "./useLandingSectionIntersectionListener";
 
 interface IProps {
     onIntersectionChanged: (intersectionObserverEntry:IntersectionObserverEntry) =>void,

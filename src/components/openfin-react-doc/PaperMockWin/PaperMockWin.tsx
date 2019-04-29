@@ -22,7 +22,7 @@ const useStyles = makeStyles(style);
 
 const PaperMockWinComp:React.FunctionComponent<IProps> = (
     {
-        docked,onUndock
+        docked,onUndock, children
     }
 )=>{
 
@@ -51,7 +51,7 @@ const PaperMockWinComp:React.FunctionComponent<IProps> = (
                 <div className={classes.redBtn}><Clear/></div>
             </div>
             <div>
-                {this.props.children}
+                {children}
             </div>
         </Paper>
     )

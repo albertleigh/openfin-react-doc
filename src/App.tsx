@@ -5,6 +5,7 @@ import { Router, Route, Switch, Redirect } from 'react-router-dom';
 
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
 import red from '@material-ui/core/colors/red';
 
 import indexRoutes from './routes/index';
@@ -65,16 +66,18 @@ const App:React.FunctionComponent<IProps> = (
         <CssBaseline/>
         <Router history={hist}>
             <MuiThemeProvider theme={muiTheme}>
-                <Switch>
-                    {
-                        indexRoutes.map((prop:any,key)=>{
-                            if (prop.redirect)
-                                return <Redirect from={prop.path} to={prop.to} key={key}/>;
-                            return <Route path={prop.path} component={prop.component} key={key}/>;
+                <ThemeProvider theme={muiTheme}>
+                    <Switch>
+                        {
+                            indexRoutes.map((prop:any,key)=>{
+                                if (prop.redirect)
+                                    return <Redirect from={prop.path} to={prop.to} key={key}/>;
+                                return <Route path={prop.path} component={prop.component} key={key}/>;
 
-                        })
-                    }
-                </Switch>
+                            })
+                        }
+                    </Switch>
+                </ThemeProvider>
             </MuiThemeProvider>
         </Router>
     </React.Fragment>);
