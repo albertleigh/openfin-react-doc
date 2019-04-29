@@ -12,7 +12,7 @@ export function* handleApplicationLoading() {
 
     yield all([
         // you can add more sagas overhere
-        call(delay,5000),
+        delay(5000),
     ]);
 
     yield putResolve(applicationReady());
