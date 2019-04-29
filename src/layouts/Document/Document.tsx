@@ -6,8 +6,8 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import Hidden from '@material-ui/core/Hidden';
 import Drawer from '@material-ui/core/Drawer';
 
-import { WithStyles, withStyles } from '@material-ui/core/styles';
-import { withNamespaces, WithNamespaces } from 'react-i18next';
+import { makeStyles } from '@material-ui/styles';
+import { useTranslation } from 'react-i18next';
 
 import { documentStyle as style } from '../../assets/jss/openfin-react-doc';
 
@@ -25,12 +25,11 @@ import {
     // types
     IRootState, MuiTheme,
 } from '../../reduxs';
-import i18n from "../../i18n";
 
 import documentRoutes from '../../routes/document';
 import {IRouteCompItem} from "../../routes";
 
-interface IProps extends WithStyles<typeof style>, WithNamespaces {
+interface IProps {
     drawerOpen:boolean,
     actions:{
         onToggleDrawer:()=>void,
@@ -38,6 +37,8 @@ interface IProps extends WithStyles<typeof style>, WithNamespaces {
         onToggleDirection:()=>void,
     }
 }
+
+const useStyles = makeStyles(style);
 
 const getBrand = ()=>{
     for(let i=0; i < documentRoutes.length; i++){
@@ -61,65 +62,64 @@ const switchRoutes = (
 );
 
 
-class DocumentLayout extends React.Component<IProps,{}>{
+const DocumentLayout:React.FunctionComponent<IProps>=(
+    {
+        drawerOpen,
+        actions:{
+            onToggleDrawer,onToggleTheme,onToggleDirection,
+        }
+    }
+)=>{
 
-    handleSwitchLanguage = (languageName:string) => {
+    const classes = useStyles();
+    const { t, i18n } = useTranslation('docMenu', { useSuspense: false });
+
+    const handleSwitchLanguage = (languageName:string) => {
         i18n.changeLanguage(languageName);
     }
 
-    render(){
+    return (
+        <React.Fragment>
+            <DocHeader
+                navbarName={t(getBrand())}
+                onSwitchLanguage={this.handleSwitchLanguage}
+                onToggleDrawer = {onToggleDrawer}
+                onToggleTheme = {onToggleTheme}
+            />
 
-        const {
-            classes, t,
-            drawerOpen,
-            actions:{
-                onToggleDrawer,onToggleTheme,onToggleDirection,
-            }
-        } = this.props;
+            <div className={classes.drawer}>
+                <Hidden mdUp>
+                    <Drawer
+                        classes={{
+                            paper: classes.drawerPaper,
+                        }}
+                        variant='temporary'
+                        open={drawerOpen}
+                        onClose={onToggleDrawer}
+                    >
+                        <DocMenu/>
+                    </Drawer>
+                </Hidden>
+                <Hidden smDown implementation='css'>
+                    <Drawer
+                        classes={{
+                            paper: classes.drawerPaper,
+                        }}
+                        variant='permanent'
+                        open
+                    >
+                        <DocMenu/>
+                    </Drawer>
+                </Hidden>
+            </div>
 
-        return (
-            <React.Fragment>
-                <DocHeader
-                    navbarName={t(getBrand())}
-                    onSwitchLanguage={this.handleSwitchLanguage}
-                    onToggleDrawer = {onToggleDrawer}
-                    onToggleTheme = {onToggleTheme}
-                />
-
-                <div className={classes.drawer}>
-                    <Hidden mdUp>
-                        <Drawer
-                            classes={{
-                                paper: classes.drawerPaper,
-                            }}
-                            variant='temporary'
-                            open={drawerOpen}
-                            onClose={onToggleDrawer}
-                        >
-                            <DocMenu/>
-                        </Drawer>
-                    </Hidden>
-                    <Hidden smDown implementation='css'>
-                        <Drawer
-                            classes={{
-                                paper: classes.drawerPaper,
-                            }}
-                            variant='permanent'
-                            open
-                        >
-                            <DocMenu/>
-                        </Drawer>
-                    </Hidden>
+            <div className={classes.main}>
+                <div className={classes.content}>
+                    {switchRoutes}
                 </div>
-
-                <div className={classes.main}>
-                    <div className={classes.content}>
-                        {switchRoutes}
-                    </div>
-                </div>
-            </React.Fragment>
-        )
-    }
+            </div>
+        </React.Fragment>
+    )
 }
 
 export default connect(
@@ -158,8 +158,6 @@ export default connect(
     }
 
 )(
-    withStyles(style)(
-        withNamespaces('docMenu')(DocumentLayout)
-    )
+    DocumentLayout
 );
 

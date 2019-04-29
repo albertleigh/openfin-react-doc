@@ -1,11 +1,11 @@
 import * as React from 'react';
-
+import { useRef, useState } from 'react';
 import Drawer from '@material-ui/core/Drawer';
 
-import { WithStyles, withStyles } from '@material-ui/core/styles';
 import cx from "classnames";
 import { connect } from 'react-redux';
-import { withNamespaces, WithNamespaces } from 'react-i18next';
+import { makeStyles } from '@material-ui/styles';
+import { useTranslation } from 'react-i18next';
 
 import { landingStyle as style } from '../../assets/jss/openfin-react-doc';
 
@@ -30,10 +30,9 @@ import {
     // types
     IRootState, MuiTheme,
 } from '../../reduxs';
-import i18n from "../../i18n";
 import { scrollTo } from '../../utils/scrollIng';
 
-interface IProps extends WithStyles<typeof style>, WithNamespaces {
+interface IProps {
     drawerOpen:boolean,
     actions:{
         onToggleDrawer:()=>void,
@@ -47,165 +46,169 @@ interface IState {
     activeChildSectionIndex:number,
 }
 
-class LandingLayout extends React.Component<IProps,IState>{
+const useStyles = makeStyles(style);
 
-    state = {
-        activeChildSectionIndex: 0,
+const childSectionNames=['welcome','scaffolding','snapDock', 'crossWin', 'genConf', 'allCust', 'support', ];
+const childIntersectionRatios:number[]=[0,0,0,0,0,0,0,];
+
+
+const LandingLayout:React.FunctionComponent<IProps>=(
+    {
+        drawerOpen,
+        actions:{
+            onToggleDrawer,onToggleTheme,onToggleDirection,
+        }
     }
+)=>{
 
-    childSectionNames=['welcome','scaffolding','snapDock', 'crossWin', 'genConf', 'allCust', 'support', ];
-    childSectionRefs = {
-        welcome: null,
-        scaffolding: null,
-        snapDock: null,
-        crossWin: null,
-        genConf: null,
-        allCust: null,
-        support: null,
+    const classes = useStyles();
+    const { t, i18n } = useTranslation('landing', { useSuspense: false });
+
+    const [state, setState] = useState<IState>({activeChildSectionIndex: 0,});
+
+    const childSectionRefs = {
+        welcome: useRef(null),
+        scaffolding: useRef(null),
+        snapDock: useRef(null),
+        crossWin: useRef(null),
+        genConf: useRef(null),
+        allCust: useRef(null),
+        support: useRef(null),
     };
-    childIntersectionRatios:number[]=[0,0,0,0,0,0,0,];
 
-    handleSwitchLanguage = (languageName:string) => {
+
+    const handleSwitchLanguage = (languageName:string) => {
         i18n.changeLanguage(languageName);
     }
 
-    handleIntersectionChanged = (index:number)=> (intersectionObserverEntry:IntersectionObserverEntry) => {
-        this.childIntersectionRatios[index] = intersectionObserverEntry.intersectionRatio;
+    const handleIntersectionChanged = (index:number)=> (intersectionObserverEntry:IntersectionObserverEntry) => {
+        childIntersectionRatios[index] = intersectionObserverEntry.intersectionRatio;
 
         let maxIndex:number = 0;
-        let max = this.childIntersectionRatios[0];
-        for (let i= 0; i < this.childIntersectionRatios.length; i++){
-            if (this.childIntersectionRatios[i]> max){
-                max = this.childIntersectionRatios[i];
+        let max = childIntersectionRatios[0];
+        for (let i= 0; i < childIntersectionRatios.length; i++){
+            if (childIntersectionRatios[i]> max){
+                max = childIntersectionRatios[i];
                 maxIndex = i;
             }
         }
-        this.setState({activeChildSectionIndex:maxIndex});
+        setState({activeChildSectionIndex:maxIndex});
     }
 
-    handleActiveChildSectionChanged = (activeChildSectionName:string)=>{
+    const handleActiveChildSectionChanged = (activeChildSectionName:string)=>{
         // console.log('LandingLayout::handleActiveChildSectionChanged',
         //     activeChildSectionName,
-        //     this.childSectionRefs[activeChildSectionName].offsetTop,
-        //     this.childSectionRefs[activeChildSectionName],
+        //     childSectionRefs[activeChildSectionName].offsetTop,
+        //     childSectionRefs[activeChildSectionName],
         // );
         scrollTo(
             document.querySelector('.landingContainer'),
-            this.childSectionRefs[activeChildSectionName].offsetTop,
+            childSectionRefs[activeChildSectionName].offsetTop,
             600,
         )
     }
 
-    render(){
+    const { activeChildSectionIndex } = state;
 
-        const {
-            classes, t,
-            drawerOpen,
-            actions:{
-                onToggleDrawer,onToggleTheme,onToggleDirection,
-            }
-        } = this.props;
-
-        const {activeChildSectionIndex} = this.state;
-
-        return (<React.Fragment>
-            <div className={cx(
-                'landingContainer',
-                classes.container,
-            )}>
-                <LandingHeader
-                    activeChildSectionIndex={activeChildSectionIndex}
-                    childrenSectionNames={this.childSectionNames}
-                    onSwitchLanguage={this.handleSwitchLanguage}
-                    onActiveChildSectionChange={this.handleActiveChildSectionChanged}
-                    onToggleDrawer = {onToggleDrawer}
-                    onToggleTheme = {onToggleTheme}
+    return (<React.Fragment>
+        <div className={cx(
+            'landingContainer',
+            classes.container,
+        )}>
+            <LandingHeader
+                activeChildSectionIndex={activeChildSectionIndex}
+                childrenSectionNames={childSectionNames}
+                onSwitchLanguage={handleSwitchLanguage}
+                onActiveChildSectionChange={handleActiveChildSectionChanged}
+                onToggleDrawer = {onToggleDrawer}
+                onToggleTheme = {onToggleTheme}
+            />
+            <div className={classes.sectionContainer}
+                 ref={childSectionRefs.welcome}
+            >
+                <LandingWelcomeSection
+                    onIntersectionChanged = {handleIntersectionChanged(0)}
                 />
-                <div className={classes.sectionContainer} ref={el => this.childSectionRefs.welcome = el}>
-                    <LandingWelcomeSection
-                        onIntersectionChanged = {this.handleIntersectionChanged(0)}
-                    />
-                </div>
-                <div
-                    className={cx(
-                        classes.sectionContainer, classes.sectionPaddingContainer,
-                        classes.scaffoldingSectionContainer,
-                    )}
-                    ref={el => this.childSectionRefs.scaffolding = el}
-                >
-                    <LandingScaffoldingToolSection
-                        onIntersectionChanged = {this.handleIntersectionChanged(1)}
-                    />
-                </div>
-                <div
-                    className={cx(
-                        classes.sectionContainer, classes.sectionPaddingContainer,
-                        classes.snapDockSectionContainer,
-                    )}
-                    ref={el => this.childSectionRefs.snapDock = el}
-                >
-                    <LandingSnapDockSection
-                        onIntersectionChanged = {this.handleIntersectionChanged(2)}
-                    />
-                </div>
-                <div
-                    className={cx(
-                        classes.sectionContainer, classes.sectionPaddingContainer,
-                        classes.crossWinSectionContainer,
-                    )}
-                    ref={el => this.childSectionRefs.crossWin = el}
-                >
-                    <LandingCrossWinCommSection
-                        onIntersectionChanged = {this.handleIntersectionChanged(3)}
-                    />
-                </div>
-                <div
-                    className={cx(
-                        classes.sectionContainer, classes.sectionPaddingContainer,
-                        classes.genConfSectionContainer,
-                    )}
-                    ref={el => this.childSectionRefs.genConf = el}
-                >
-                    <LandingGenConfSection
-                        onIntersectionChanged = {this.handleIntersectionChanged(4)}
-                    />
-                </div>
-                <div
-                    className={cx(
-                        classes.sectionContainer, classes.sectionPaddingContainer,
-                        classes.allCustSectionContainer,'cutting-mat',
-                    )}
-                    ref={el => this.childSectionRefs.allCust = el}
-                >
-                    <LandingAllCustomizableSection
-                        onIntersectionChanged = {this.handleIntersectionChanged(5)}
-                    />
-                </div>
-                <div
-                    className={cx(
-                        classes.sectionContainer, classes.sectionPaddingContainer,
-                        classes.supportContainer,
-                    )}
-                    ref={el => this.childSectionRefs.support = el}
-                >
-                    <LandingSupportSection
-                        onIntersectionChanged = {this.handleIntersectionChanged(6)}
-                    />
-                </div>
-                <Drawer
-                    classes={{
-                        paper: classes.drawerPaper,
-                    }}
-                    variant='temporary'
-                    open={drawerOpen}
-                    onClose={onToggleDrawer}
-                >
-                    <DocMenu/>
-                </Drawer>
             </div>
+            <div
+                className={cx(
+                    classes.sectionContainer, classes.sectionPaddingContainer,
+                    classes.scaffoldingSectionContainer,
+                )}
+                ref={childSectionRefs.scaffolding}
+            >
+                <LandingScaffoldingToolSection
+                    onIntersectionChanged = {handleIntersectionChanged(1)}
+                />
+            </div>
+            <div
+                className={cx(
+                    classes.sectionContainer, classes.sectionPaddingContainer,
+                    classes.snapDockSectionContainer,
+                )}
+                ref={childSectionRefs.snapDock}
+            >
+                <LandingSnapDockSection
+                    onIntersectionChanged = {handleIntersectionChanged(2)}
+                />
+            </div>
+            <div
+                className={cx(
+                    classes.sectionContainer, classes.sectionPaddingContainer,
+                    classes.crossWinSectionContainer,
+                )}
+                ref={childSectionRefs.crossWin}
+            >
+                <LandingCrossWinCommSection
+                    onIntersectionChanged = {handleIntersectionChanged(3)}
+                />
+            </div>
+            <div
+                className={cx(
+                    classes.sectionContainer, classes.sectionPaddingContainer,
+                    classes.genConfSectionContainer,
+                )}
+                ref={childSectionRefs.genConf}
+            >
+                <LandingGenConfSection
+                    onIntersectionChanged = {handleIntersectionChanged(4)}
+                />
+            </div>
+            <div
+                className={cx(
+                    classes.sectionContainer, classes.sectionPaddingContainer,
+                    classes.allCustSectionContainer,'cutting-mat',
+                )}
+                ref={childSectionRefs.allCust}
+            >
+                <LandingAllCustomizableSection
+                    onIntersectionChanged = {handleIntersectionChanged(5)}
+                />
+            </div>
+            <div
+                className={cx(
+                    classes.sectionContainer, classes.sectionPaddingContainer,
+                    classes.supportContainer,
+                )}
+                ref={childSectionRefs.support}
+            >
+                <LandingSupportSection
+                    onIntersectionChanged = {handleIntersectionChanged(6)}
+                />
+            </div>
+            <Drawer
+                classes={{
+                    paper: classes.drawerPaper,
+                }}
+                variant='temporary'
+                open={drawerOpen}
+                onClose={onToggleDrawer}
+            >
+                <DocMenu/>
+            </Drawer>
+        </div>
 
-        </React.Fragment>)
-    }
+    </React.Fragment>)
 }
 
 export default connect(
@@ -244,8 +247,6 @@ export default connect(
         }
     }
 )(
-    withStyles(style)(
-        withNamespaces('landing')(LandingLayout)
-    )
+    LandingLayout
 );
 
