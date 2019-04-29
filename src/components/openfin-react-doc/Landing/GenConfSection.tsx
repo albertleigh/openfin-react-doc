@@ -29,12 +29,12 @@ const GenConfSectionComp:React.FunctionComponent<IProps> = (
     }
 )=>{
 
-    const element:any = useRef(null);
+    const element = useRef(null);
 
     const classes = useStyles();
     const { t, i18n } = useTranslation('landing', { useSuspense: false });
 
-    const { visiblePct } = useLandingSectionIntersectionListener({element,onIntersectionChanged})
+    const { visiblePct } = useLandingSectionIntersectionListener({element:element.current,onIntersectionChanged})
 
 
     return(

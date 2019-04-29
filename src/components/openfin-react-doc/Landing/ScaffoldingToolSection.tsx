@@ -31,7 +31,7 @@ const ScaffoldingToolSectionComp:React.FunctionComponent<IProps> = (
     }
 )=>{
 
-    const element:any = useRef(null);
+    const element = useRef(null);
     const classes = useStyles();
     const { t, i18n } = useTranslation('landing', { useSuspense: false });
 
@@ -39,7 +39,7 @@ const ScaffoldingToolSectionComp:React.FunctionComponent<IProps> = (
         animated:false,
     });
     const { visiblePct } = useLandingSectionIntersectionListener({
-        element,
+        element:element.current,
         onIntersectionChanged:(intersectionObserverEntry:IntersectionObserverEntry)=>{
 
             if (onIntersectionChanged){

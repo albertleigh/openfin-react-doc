@@ -51,7 +51,6 @@ const useStyles = makeStyles(style);
 const childSectionNames=['welcome','scaffolding','snapDock', 'crossWin', 'genConf', 'allCust', 'support', ];
 const childIntersectionRatios:number[]=[0,0,0,0,0,0,0,];
 
-
 const LandingLayout:React.FunctionComponent<IProps>=(
     {
         drawerOpen,
@@ -76,7 +75,6 @@ const LandingLayout:React.FunctionComponent<IProps>=(
         support: useRef(null),
     };
 
-
     const handleSwitchLanguage = (languageName:string) => {
         i18n.changeLanguage(languageName);
     }
@@ -93,17 +91,24 @@ const LandingLayout:React.FunctionComponent<IProps>=(
             }
         }
         setState({activeChildSectionIndex:maxIndex});
+
+        // console.log('LandingLayout::handleIntersectionChanged',
+        //     index, intersectionObserverEntry.intersectionRatio,
+        //     childIntersectionRatios,
+        //     maxIndex,
+        //
+        // )
     }
 
     const handleActiveChildSectionChanged = (activeChildSectionName:string)=>{
         // console.log('LandingLayout::handleActiveChildSectionChanged',
         //     activeChildSectionName,
-        //     childSectionRefs[activeChildSectionName].offsetTop,
+        //     childSectionRefs[activeChildSectionName].current.offsetTop,
         //     childSectionRefs[activeChildSectionName],
         // );
         scrollTo(
             document.querySelector('.landingContainer'),
-            childSectionRefs[activeChildSectionName].offsetTop,
+            childSectionRefs[activeChildSectionName].current.offsetTop,
             600,
         )
     }
