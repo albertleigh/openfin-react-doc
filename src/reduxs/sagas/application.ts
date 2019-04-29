@@ -1,5 +1,4 @@
-import { delay } from 'redux-saga';
-import { all, call, put, takeLatest } from 'redux-saga/effects';
+import { all, call, delay, put, putResolve, takeLatest } from 'redux-saga/effects';
 
 import {setPrismTheme} from '../../utils/prism'
 
@@ -16,7 +15,7 @@ export function* handleApplicationLoading() {
         call(delay,5000),
     ]);
 
-    yield put.resolve(applicationReady());
+    yield putResolve(applicationReady());
 
 }
 
