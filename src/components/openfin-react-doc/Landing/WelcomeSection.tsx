@@ -1,91 +1,74 @@
 import * as React from 'react';
+import { useRef, useState } from 'react';
 import cx from 'classnames';
-import { withNamespaces, WithNamespaces } from 'react-i18next';
-
-import { WithStyles, withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/styles';
+import { useTranslation } from 'react-i18next';
 
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
 import DesktopWindowsIcon from '@material-ui/icons/DesktopWindows';
 
-import AbstractLandingSection from './AbstractLandingSection';
+import useLandingSectionIntersectionListener from './useLandingSectionIntersectionListener';
 
 import { landingWelcomeSectionCompStyle as style } from '../../../assets/jss/openfin-react-doc';
 
-interface IProps extends WithStyles<typeof style>, WithNamespaces{
+interface IProps {
     onIntersectionChanged: (intersectionObserverEntry:IntersectionObserverEntry) =>void,
 }
 
-interface IState{
-    [key:number]:any,
-    [key:string]:any,
-}
+const useStyles = makeStyles(style);
 
-class WelcomeSectionComp extends AbstractLandingSection<IProps, IState>{
-
-    element:any;
-
-    state={
-        visiblePct: 0,
+const WelcomeSectionComp:React.FunctionComponent<IProps>=(
+    {
+        onIntersectionChanged
     }
+)=>{
 
-    componentDidMount(): void {
-        super.componentDidMount();
-    }
+    const element:any = useRef(null);
+    const classes = useStyles();
+    const { t, i18n } = useTranslation('landing', { useSuspense: false });
 
-    componentWillUnmount(): void {
-        super.componentWillUnmount();
-    }
+    const { visiblePct } = useLandingSectionIntersectionListener({element,onIntersectionChanged})
 
-    onIntersectionChanged =(intersectionObserverEntry:IntersectionObserverEntry)=>{
-        if (this.props.onIntersectionChanged){
-            this.props.onIntersectionChanged(intersectionObserverEntry);
-        }
-    }
+    return(
+        <div
+            ref = {element}
+            className={classes.container}
+        >
+            <div
+                className={classes.backgroundContainer}
+            />
 
-    render(){
-
-        const { classes, t } = this.props;
-
-        return(
-            <div ref = {el => this.element = el} className={classes.container}>
-                <div
-                    className={classes.backgroundContainer}
+            <div className={classes.mainIconContainer}>
+                <DesktopWindowsIcon
+                    className={classes.mainIcon}
                 />
-
-                <div className={classes.mainIconContainer}>
-                    <DesktopWindowsIcon
-                        className={classes.mainIcon}
-                    />
-                </div>
-
-                <Typography
-                    className={classes.text}
-                    variant='h4' color="inherit" gutterBottom
-                >
-                    {t('welcomeSec.title')}
-                </Typography>
-
-
-                <Typography
-                    className={classes.text}
-                    variant='h5' color="inherit" gutterBottom
-                >
-                    {t('welcomeSec.subtitle')}
-                </Typography>
-
-                <Button
-                    variant="contained"
-                    color='secondary'
-                >{t('welcomeSec.startBtn')}</Button>
-
-
             </div>
-        )
-    }
+
+            <Typography
+                className={classes.text}
+                variant='h4' color="inherit" gutterBottom
+            >
+                {t('welcomeSec.title')}
+            </Typography>
+
+
+            <Typography
+                className={classes.text}
+                variant='h5' color="inherit" gutterBottom
+            >
+                {t('welcomeSec.subtitle')}
+            </Typography>
+
+            <Button
+                variant="contained"
+                color='secondary'
+            >{t('welcomeSec.startBtn')}</Button>
+
+
+        </div>
+    )
 }
 
-export default withStyles(style)(
-    withNamespaces("landing")(WelcomeSectionComp)
-);
+export default WelcomeSectionComp;

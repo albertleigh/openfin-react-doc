@@ -1,17 +1,15 @@
 import * as React from 'react';
-import cx from 'classnames';
+import { useRef, useState } from 'react';
 
 import Avatar from '@material-ui/core/Avatar';
 import Chip from '@material-ui/core/Chip';
 import Typography from '@material-ui/core/Typography';
 import Tooltip from '@material-ui/core/Tooltip';
 
-import { WithStyles, withStyles } from '@material-ui/core/styles';
-import { withNamespaces, WithNamespaces } from 'react-i18next';
+import { makeStyles } from '@material-ui/styles';
+import { useTranslation } from 'react-i18next';
 
 import { landingSupportSectionCompStyle as style } from '../../../assets/jss/openfin-react-doc';
-
-import AbstractLandingSection from "./AbstractLandingSection";
 
 import appLogo from '../../../logo.svg';
 import dbGearsSvg from '../../../assets/svg/developer/database-gears.svg';
@@ -24,8 +22,10 @@ import settingSvg from '../../../assets/svg/other/settings.svg';
 import openfinLogoSvg from '../../../assets/svg/developer/openfin.svg';
 import matUiLogoSvg from '../../../assets/svg/developer/material-ui-logo.svg';
 import reactSvg from '../../../assets/svg/developer/react.svg';
+import useLandingSectionIntersectionListener
+    from "src/components/openfin-react-doc/Landing/useLandingSectionIntersectionListener";
 
-interface IProps extends WithStyles<typeof style>, WithNamespaces{
+interface IProps {
     onIntersectionChanged: (intersectionObserverEntry:IntersectionObserverEntry) =>void,
 }
 
@@ -49,162 +49,141 @@ interface ISupporter{
     height:string|number,
 }
 
-interface IState{
-    contributors:IContributor[],
-    flatIconCredits:IFlatIconCredit[],
-    supporters:ISupporter[],
-}
+const useStyles = makeStyles(style);
 
-class SupportSectionComp extends AbstractLandingSection<IProps, IState>{
-
-    element:any;
-
-    state:IState={
-        visiblePct: 0,
-        contributors:[
-            {
-                name:'albertleigh',
-                avatar:'https://github.com/albertleigh.png',
-                email:'liwentao90@yahoo.com',
-            }
-        ],
-        flatIconCredits:[
-            {
-                icons:[
-                    githubSvg,githubDarkSvg,chinaFlagSvg,usFlagSvg,
-                ],
-                authorName:'Freepik',
-                authorLink:'http://www.freepik.com/',
-            },
-            {
-                icons:[
-                    appLogo,dbGearsSvg,settingSvg,
-                ],
-                authorName:'Smashicons',
-                authorLink:'https://smashicons.com/',
-            },
-        ],
-        supporters:[
-            {
-                name:'Openfin',
-                icon:openfinLogoSvg,
-                link:'https://openfin.co/',
-                height:'3.626em',
-                width:'10em',
-            },
-            {
-                name:'Material UI',
-                icon:matUiLogoSvg,
-                link:'https://material-ui.com/',
-                height:'3.626em',
-                width:'auto',
-            },
-            {
-                name:'React',
-                icon:reactSvg,
-                link:'https://reactjs.org/',
-                height:'3.626em',
-                width:'auto',
-            },
-        ],
-    } as IState;
-
-    componentDidMount(): void {
-        super.componentDidMount();
+const contributors:IContributor[]=[
+    {
+        name:'albertleigh',
+        avatar:'https://github.com/albertleigh.png',
+        email:'liwentao90@yahoo.com',
     }
+];
 
-    componentWillUnmount(): void {
-        super.componentWillUnmount();
+const flatIconCredits:IFlatIconCredit[]=[
+    {
+        icons:[
+            githubSvg,githubDarkSvg,chinaFlagSvg,usFlagSvg,
+            ],
+        authorName:'Freepik',
+        authorLink:'http://www.freepik.com/',
+    },
+    {
+        icons:[
+            appLogo,dbGearsSvg,settingSvg,
+        ],
+        authorName:'Smashicons',
+        authorLink:'https://smashicons.com/',
+    },
+];
+
+const supporters:ISupporter[]=[
+    {
+        name:'Openfin',
+        icon:openfinLogoSvg,
+        link:'https://openfin.co/',
+        height:'3.626em',
+        width:'10em',
+    },
+    {
+        name:'Material UI',
+        icon:matUiLogoSvg,
+        link:'https://material-ui.com/',
+        height:'3.626em',
+        width:'auto',
+    },
+    {
+        name:'React',
+        icon:reactSvg,
+        link:'https://reactjs.org/',
+        height:'3.626em',
+        width:'auto',
+    },
+];
+
+const SupportSectionComp:React.FunctionComponent<IProps>=(
+    {
+        onIntersectionChanged,
     }
+)=>{
 
-    onIntersectionChanged =(intersectionObserverEntry:IntersectionObserverEntry)=>{
+    const element:any = useRef(null);
+    const classes = useStyles();
+    const { t, i18n } = useTranslation('landing', { useSuspense: false });
 
-        if (this.props.onIntersectionChanged){
-            this.props.onIntersectionChanged(intersectionObserverEntry);
-        }
+    const { visiblePct } = useLandingSectionIntersectionListener({element,onIntersectionChanged})
 
-    }
-
-    handleEmailBtnClick = (email:string) => ()=>{
+    const handleEmailBtnClick = (email:string) => ()=>{
         window.location.href=`mailto:mail@${email}`;
     }
 
-    render(){
+    return(
+        <div
+            className={classes.container}
+            ref = {element}
+        >
+            <div className={classes.oneSubSec}>
+                <Typography className={classes.header} variant="h5" gutterBottom>
+                    {t('support.contributors')}
+                </Typography>
+                {
+                    contributors.map(((contributor:IContributor,index,arr)=>(
+                        <Chip
+                            key={index}
+                            avatar={<Avatar alt={contributor.name} src={contributor.avatar} />}
+                            label={t(`support.contributorNames.${contributor.name}`)}
+                            onClick={handleEmailBtnClick(contributor.email)}
+                        />
+                    )))
 
-        const { classes, t } = this.props;
-        const { contributors, flatIconCredits, supporters }= this.state;
+                }
+            </div>
 
-        return(
-            <div
-                className={classes.container}
-                ref = {el => this.element = el}
-            >
-                <div className={classes.oneSubSec}>
-                    <Typography className={classes.header} variant="h5" gutterBottom>
-                        {t('support.contributors')}
-                    </Typography>
+            <div className={classes.oneSubSec}>
+                <Typography className={classes.header} variant="h5" gutterBottom>
+                    {t('support.credits')}
+                </Typography>
+                {
+                    flatIconCredits.map((oneFlatIconCredit:IFlatIconCredit, flatIconIndex, flatIconArr)=>(
+                        <div className={classes.flatIconCreditContainers} key={flatIconIndex}>
+                            {oneFlatIconCredit.icons.map((icon:string, iconIndex, iconArr) => (
+                                <Avatar
+                                    className = {classes.flatIconCreditAvatar}
+                                    key={iconIndex} src={icon} />
+                            ))}
+                            <Typography variant="body1" gutterBottom>
+                                {t('support.flatIconPhase1')}<a href={oneFlatIconCredit.authorLink}>{oneFlatIconCredit.authorName}</a>{t('support.flatIconPhase2')}<a href="http://www.flaticon.com">www.flaticon.com</a>
+                            </Typography>
+                        </div>
+                    ))
+
+                }
+            </div>
+
+            <div className={classes.oneSubSec}>
+                <Typography className={classes.header} variant="h5" gutterBottom>
+                    {t('support.support')}
+                </Typography>
+                <div>
                     {
-                        contributors.map(((contributor:IContributor,index,arr)=>(
-                            <Chip
-                                key={index}
-                                avatar={<Avatar alt={contributor.name} src={contributor.avatar} />}
-                                label={t(`support.contributorNames.${contributor.name}`)}
-                                onClick={this.handleEmailBtnClick(contributor.email)}
-                            />
-                        )))
-
-                    }
-                </div>
-
-                <div className={classes.oneSubSec}>
-                    <Typography className={classes.header} variant="h5" gutterBottom>
-                        {t('support.credits')}
-                    </Typography>
-                    {
-                        flatIconCredits.map((oneFlatIconCredit:IFlatIconCredit, flatIconIndex, flatIconArr)=>(
-                            <div className={classes.flatIconCreditContainers} key={flatIconIndex}>
-                                {oneFlatIconCredit.icons.map((icon:string, iconIndex, iconArr) => (
-                                    <Avatar
-                                        className = {classes.flatIconCreditAvatar}
-                                        key={iconIndex} src={icon} />
-                                ))}
-                                <Typography variant="body1" gutterBottom>
-                                    {t('support.flatIconPhase1')}<a href={oneFlatIconCredit.authorLink}>{oneFlatIconCredit.authorName}</a>{t('support.flatIconPhase2')}<a href="http://www.flaticon.com">www.flaticon.com</a>
-                                </Typography>
-                            </div>
+                        supporters.map((supporter:ISupporter,index,arr)=>(
+                            <a className={classes.supporterAnchor}
+                               key={index} href={supporter.link}>
+                                <Tooltip title={supporter.name}>
+                                    <img alt={supporter.name} src={supporter.icon}
+                                         style={{
+                                             'width': supporter.width,
+                                             'height': supporter.height,
+                                         }}
+                                    />
+                                </Tooltip>
+                            </a>
                         ))
 
                     }
                 </div>
-
-                <div className={classes.oneSubSec}>
-                    <Typography className={classes.header} variant="h5" gutterBottom>
-                        {t('support.support')}
-                    </Typography>
-                    <div>
-                        {
-                            supporters.map((supporter:ISupporter,index,arr)=>(
-                                <a className={classes.supporterAnchor}
-                                   key={index} href={supporter.link}>
-                                    <Tooltip title={supporter.name}>
-                                        <img alt={supporter.name} src={supporter.icon}
-                                             style={{
-                                                 'width': supporter.width,
-                                                 'height': supporter.height,
-                                             }}
-                                        />
-                                    </Tooltip>
-                                </a>
-                            ))
-
-                        }
-                    </div>
-                </div>
             </div>
-        )
-    }
+        </div>
+    )
 }
 
-export default withStyles(style)(
-    withNamespaces('landing')(SupportSectionComp)
-);
+export default SupportSectionComp;
