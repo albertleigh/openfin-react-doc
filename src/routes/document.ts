@@ -1,6 +1,7 @@
 import {IDocRouteCompItems, RouteItem} from "./types";
 
 // start
+import StartIntroduction from '../views/Start/StartIntroduction';
 import StartInstallation from '../views/Start/StartInstallation';
 import StartDevelopers from '../views/Start/StartDevelopers';
 import StartFaq from '../views/Start/StartFaq';
@@ -34,6 +35,11 @@ export const docRouteItems:IDocRouteCompItems[] = [
     {
         name:'start',
         routeItems:[
+            {
+                path:'/doc/startIntroduction',
+                name:'startIntroduction',
+                component:StartIntroduction,
+            },
             {
                 path:'/doc/startInstallation',
                 name:'startInstallation',
