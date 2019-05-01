@@ -75,10 +75,6 @@ const LandingLayout:React.FunctionComponent<IProps>=(
         support: useRef(null),
     };
 
-    const handleSwitchLanguage = (languageName:string) => {
-        i18n.changeLanguage(languageName);
-    }
-
     const handleIntersectionChanged = (index:number)=> (intersectionObserverEntry:IntersectionObserverEntry) => {
         childIntersectionRatios[index] = intersectionObserverEntry.intersectionRatio;
 
@@ -123,7 +119,6 @@ const LandingLayout:React.FunctionComponent<IProps>=(
             <LandingHeader
                 activeChildSectionIndex={activeChildSectionIndex}
                 childrenSectionNames={childSectionNames}
-                onSwitchLanguage={handleSwitchLanguage}
                 onActiveChildSectionChange={handleActiveChildSectionChanged}
                 onToggleDrawer = {onToggleDrawer}
                 onToggleTheme = {onToggleTheme}

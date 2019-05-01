@@ -1,10 +1,9 @@
 import * as React from 'react';
-import { useState } from 'react';
-import cx from 'classnames';
-import { makeStyles } from '@material-ui/styles';
-import { useTranslation } from 'react-i18next';
+import {useState} from 'react';
+import {makeStyles} from '@material-ui/styles';
+import {useTranslation} from 'react-i18next';
 
-import { docHeaderCompStyle as style } from '../../../assets/jss/openfin-react-doc';
+import {docHeaderCompStyle as style} from '../../../assets/jss/openfin-react-doc';
 
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -18,13 +17,14 @@ import Icon from '@material-ui/core/Icon';
 import MenuIcon from '@material-ui/icons/Menu';
 import MoreIcon from '@material-ui/icons/MoreVert';
 
+import {Language} from '../../../GlobalTypes';
+
 import gitHubSvg from '../../../assets/svg/developer/github-logo-dark.svg';
 import chinaSvg from '../../../assets/svg/language/china.svg';
 import usSvg from '../../../assets/svg/language/united-states.svg';
 
 interface IProps {
     navbarName:string,
-    onSwitchLanguage:(languageName:string)=> void,
     onToggleDrawer:()=> void,
     onToggleTheme:()=> void,
 }
@@ -39,7 +39,6 @@ const useStyles = makeStyles(style);
 const DocHeaderComp:React.FunctionComponent<IProps> = (
     {
         navbarName,
-        onSwitchLanguage,
         onToggleDrawer,
         onToggleTheme,
     }
@@ -65,13 +64,8 @@ const DocHeaderComp:React.FunctionComponent<IProps> = (
         handleMobileMenuClose();
     };
 
-    const handleLanguageEngMenuBtnClick = ()=>{
-        onSwitchLanguage('en');
-        setState({ ...state, anchorEl: null });
-    }
-
-    const handleLanguageChnMenuBtnClick = ()=>{
-        onSwitchLanguage('zh');
+    const handleChangeLanguageBtnClick = (lang:Language)=>()=>{
+        i18n.changeLanguage(lang);
         setState({ ...state, anchorEl: null });
     }
 
@@ -94,13 +88,13 @@ const DocHeaderComp:React.FunctionComponent<IProps> = (
             open={isMenuOpen}
             onClose={handleLanguageMenuClose}
         >
-            <MenuItem onClick={handleLanguageEngMenuBtnClick}>
+            <MenuItem onClick={handleChangeLanguageBtnClick(Language.en_US)}>
                 <IconButton color="inherit">
                     <img className={classes.menuSvg} src={usSvg}/>
                 </IconButton>
                 English
             </MenuItem>
-            <MenuItem onClick={handleLanguageChnMenuBtnClick}>
+            <MenuItem onClick={handleChangeLanguageBtnClick(Language.zh_CN)}>
                 <IconButton color="inherit">
                     <img className={classes.menuSvg} src={chinaSvg}/>
                 </IconButton>
@@ -110,7 +104,7 @@ const DocHeaderComp:React.FunctionComponent<IProps> = (
     );
 
     const currentLanguageSvg = (
-        i18n.language === "zh"?
+        i18n.language === Language.zh_CN?
             <img className={classes.menuSvg} src={chinaSvg}/>:
             <img className={classes.menuSvg} src={usSvg}/>
     )
@@ -131,7 +125,7 @@ const DocHeaderComp:React.FunctionComponent<IProps> = (
             </MenuItem>
             <MenuItem>
                 <IconButton color="inherit"
-                            href="https://github.com/albertleigh/openfin-react-starter"
+                            href="https://github.com/openfin-js-app/openfin-react-starter"
                 >
                     <img className={classes.menuSvg} src={gitHubSvg}/>
                 </IconButton>
@@ -164,7 +158,7 @@ const DocHeaderComp:React.FunctionComponent<IProps> = (
                         </Tooltip>
                         <Tooltip title={t('header.toolTip.github')} enterDelay={300}>
                             <IconButton color="inherit"
-                                        href="https://github.com/albertleigh/openfin-react-starter"
+                                        href="https://github.com/openfin-js-app/openfin-react-starter"
                             >
                                 <img className={classes.menuSvg} src={gitHubSvg}/>
                             </IconButton>

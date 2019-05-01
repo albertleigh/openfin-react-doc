@@ -74,15 +74,10 @@ const DocumentLayout:React.FunctionComponent<IProps>=(
     const classes = useStyles();
     const { t, i18n } = useTranslation('docMenu', { useSuspense: false });
 
-    const handleSwitchLanguage = (languageName:string) => {
-        i18n.changeLanguage(languageName);
-    }
-
     return (
         <React.Fragment>
             <DocHeader
                 navbarName={t(getBrand())}
-                onSwitchLanguage={handleSwitchLanguage}
                 onToggleDrawer = {onToggleDrawer}
                 onToggleTheme = {onToggleTheme}
             />
