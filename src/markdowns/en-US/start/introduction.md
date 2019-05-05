@@ -1,43 +1,40 @@
-Marked - Markdown Parser
+Openfin JS - Lightweight Desktop App
 ========================
 
-[Marked] lets you convert [Markdown] into HTML.  Markdown is a simple text format whose goal is to be very easy to read and write, even when not converted to HTML.  This demo page will let you type anything you like and see how it gets converted.  Live.  No more waiting around.
+[Openfin] provides a runtime to allow various kinds app executed in a client browser. 
+Basing upon it, openfin js app provides a solution suite to assist poor developers interesting in openfin 
+to develop openfin app via javascript.
 
-How To Use The Demo
--------------------
+Why Openfin? why not a regular browser?
+----------------------------------------
 
-1. Type in stuff on the left.
-2. See the live updates on the right.
+1. Actually openfin simplify developing, there is one unique browser version for each runtime. 
+Therefore developers do not have to code for various kinds of notorious browsers via tons of polyfills.
+2. Openfin brings more features, like cross-win crow-app communication and other desktop application like features.
 
-That's it.  Pretty simple.  There's also a drop-down option in the upper right to switch between various views:
+That's it.  But there are cons and pros, building openfin app via js is not exactly the same as regular web developing.
+That's why [openfin-js-app] kicks in.
 
-- **Preview:**  A live display of the generated HTML as it would render in a browser.
-- **HTML Source:**  The generated HTML before your browser makes it pretty.
-- **Lexer Data:**  What [marked] uses internally, in case you like gory stuff like this.
-- **Quick Reference:**  A brief run-down of how to format things using markdown.
 
-Why Markdown?
--------------
+What [openfin-js-app] does?
+----------------------------------------
 
-It's easy.  It's not overly bloated, unlike HTML.  Also, as the creator of [markdown] says,
+- **Simplicity**  A template of great extensibility is provided to simplify developing. 
+- **Flexibility**  The blank concise template is not tied to anything but structure framework like React.
+- **Open source**  The js app solutions is open source and definitely open to enhancement.
 
-> The overriding design goal for Markdown's
-> formatting syntax is to make it as readable
-> as possible. The idea is that a
-> Markdown-formatted document should be
-> publishable as-is, as plain text, without
-> looking like it's been marked up with tags
-> or formatting instructions.
+Contribution
+------------
+Please check fellow up on `https://github.com/openfin-js-app` group project 
 
-``` typescript
-// BEGIN_OF_AL_CLI_COMPONENTS
-export {default as NewOne } from './sample-app/NewOne/NewOne'
-export {default as NewTwo } from './sample-app/NewTwo/NewTwo'
-// END_OF_AL_CLI_COMPONENTS
-```
+Thanks 
+------
 
-Ready to start writing?  Either start changing stuff on the left or
-[clear everything](/demo/?text=) with a simple click.
+[React]
+[Openfin]
+[material-ui]
 
-[Marked]: https://github.com/markedjs/marked/
-[Markdown]: http://daringfireball.net/projects/markdown/
+[Openfin]: https://openfin.co/
+[React]: https://reactjs.org/
+[material-ui]: https://material-ui.com/
+[openfin-js-app]: https://github.com/openfin-js-app
