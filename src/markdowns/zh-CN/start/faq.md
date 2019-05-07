@@ -1,22 +1,22 @@
-FAQ
+常问问题
 ---
 
-### Why typescript?
+### 为啥用typescript?
 
-This might be most frequently asked question. Why typescript, why not typeless or flow?
+这恐怕是最常被问到的问题。为啥用typescript, 为啥不typeless 为啥不用flow?
 
-Well...
+好吧...
 
-For certain teams, api schema might not be settled at the initial stage and there might be multi developers participating in the project. From the template perspective, compile-time type check can help the various-levels developers work together and effectively, provide type-check throughout schema evolving, increase codes readabilities and could act as one protection to avoid unexpected run-time type mismatch errors.
+并不是所以开发团队都会在开始阶段定下API结构，而其通常并不只有一个开发人员参与项目。基于模板复用角度，编译时检测可以帮助不同程度的开发人员有效合作，并在API结构演变过程中提供类型编译时检测，提高代码可读性，有效避免运行时类型不匹错误。
 
-Typescript codes are also of some self-explain ability. They are naturally self-documented. Moreover, most libs provide type definition of their apis, codes experiences using typescript will be much better than typeless.
+Typescript代码能自我解释变量类型，天然自我记录文档。而且，绝大部分复用库都支持Typescript definition. 开发经历比无类型开发更好。
 
-And, typescript doesn't require to have all codes typed, it is up to the developers to decide how deep the type would be.
+Typescript 并不需要所有代码属于强类型，开发人员可以决定类型强度。
 
-As for flow, some companies might disallow you develop outside their internal DEV environment. Their supported IDEs are not that friendly with flow, usually causing a lot of memory-leaking problems. Thus, typescript will be our first primary supported static check language other than flow, and will consider to support flow at the latter stage.
+至于flow, 根据过往开发经验， 有些公司并不提供自由的开发环境。在为数不多的IDE中，flow插件往往由于各种原因导致内存溢出问题。所以，本团队将首先支持typescript,将在后续开发中考虑支持flow。
 
-### Will response action still be dispatched into redux even only the promise api called?
+### 即使只有promise api 被调用，相应action依然会被促发么?
 
-The short answer is, by default yes it will
+默认情况下 会
 
-But you can disable it by setting the ignoreStore to true in the IConfig object when you create the middleware, if you really need to.
+但如有需要,可以通过在生成middleware时配置IConfig 对象，设置ignoreStore项为true 来关闭.

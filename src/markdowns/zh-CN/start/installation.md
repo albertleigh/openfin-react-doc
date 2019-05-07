@@ -1,16 +1,15 @@
-Installer
+安装包
 ---------
 
 ### Window
 
-[Sample installer](https://install.openfin.co/download/?config=https%3A%2F%2Fwinslow90.github.io%2Fapp.json&fileName=openfin-react-installer&supportEmail=liwentao90%40yahoo.com",'_blank)
-> Openfin `https://install.openfin.co/` provides an installer generator for window platform to deploy 
-> your application.
+[様例安装包](https://install.openfin.co/download/?config=https%3A%2F%2Fwinslow90.github.io%2Fapp.json&fileName=openfin-react-installer&supportEmail=liwentao90%40yahoo.com",'_blank)
+> Openfin `https://install.openfin.co/` 提供 Window系统安装包生气器 来部署应用。
 
 
 
 ### Mac & Linux
 
-> Current installers upon mac and linux platform are not supported by Openfin.
+> 目前Openfin 并不提供 Mac&Linux 下安装包
 
-> However, an alternative standalone solution is provided via al-cli. Plz check scaffolding al-cli section for more info.
+> 但 代码生成工具al-cli提供一种封装方案，在代码生成工具 openfin-js-cli 部分有介绍。
