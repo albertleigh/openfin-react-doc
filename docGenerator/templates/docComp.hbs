@@ -7,8 +7,6 @@ import { MarkdownElement } from '../../../components'
 
 import { Language } from '../../../GlobalTypes';
 
-const useStyles = makeStyles(style);
-
 {{#each langs}}
 import {{this.langVar}} from '../../../markdowns/{{this.langLabel}}/{{../tabName}}/{{../itemName}}.md';
 {{/each}}

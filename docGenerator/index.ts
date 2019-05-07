@@ -1,6 +1,8 @@
+import fs from 'fs';
 import path from 'path';
 import chalk from 'chalk';
 import handlebars from 'handlebars';
+import shell from 'shelljs';
 import camelcase from 'camelcase';
 import prettyjson from 'prettyjson';
 
@@ -82,6 +84,23 @@ const docCompTemplate = handlebars.compile(`{{import "${
 //     chalk.green(routesCompItemsTemplate({arg:routeArguments}))
 // );
 
-console.log(
-    chalk.green(docCompTemplate(compArguments[0]))
-);
+
+// remove view doc folder if it exist
+shell.rm('-rf',path.join(pwd,'src/view/doc'));
+// generate comp files
+compArguments.forEach(compArgument => {
+    const relativePath = `src/views/doc/${compArgument.tabName}/${compArgument.FullName}.tsx`;
+    const fullPath = path.join(pwd,relativePath);
+    const onlyDirectory = path.dirname(fullPath);
+
+    if (!fs.existsSync(onlyDirectory)){
+        shell.mkdir('-p',onlyDirectory);
+    }
+
+    const content = new Uint8Array(Buffer.from(docCompTemplate(compArgument)));
+    fs.writeFile(fullPath,content,(error)=>{
+        if (error) throw error;
+        console.log(chalk.cyan(`${relativePath} generated`));
+    })
+
+})
