@@ -19,10 +19,6 @@ const seed:ISeed = {
             children:['install','genrPrj','standalonePkg','genrTpl']
         },
         {
-            name:'scaffolding',
-            children:['install','genrPrj','standalonePkg','genrTpl']
-        },
-        {
             name:'browserAdaptor',
             children:['install','userCases']
         },

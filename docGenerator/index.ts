@@ -84,6 +84,46 @@ const docCompTemplate = handlebars.compile(`{{import "${
 //     chalk.green(routesCompItemsTemplate({arg:routeArguments}))
 // );
 
+// ---------------------------------------------------------
+// ------------------INJECT DOC ROUTES----------------------
+// ---------------------------------------------------------
+const importBegin = '// @@BEGIN OF Generated routes imports';
+const importEnd = '// @@END OF Generated routes imports';
+const importBeginIdentifier = importBegin.replace('//','\\/\\/');
+const importEndIdentifier = importEnd.replace('//','\\/\\/');
+
+
+const routeItemBegin = '// @@BEGIN OF Generated routes comp items';
+const routeItemEnd = '// @@END OF Generated routes comp items';
+const routeItemBeginIdentifier = routeItemBegin.replace('//','\\/\\/');
+const routeItemEndIdentifier = routeItemEnd.replace('//','\\/\\/');
+
+const otherRegex  = '[^]*';
+
+const targetDocRouteTs = path.join(pwd, 'src/routes/document.ts');
+
+if (!fs.existsSync(targetDocRouteTs)){
+    throw new Error(`${targetDocRouteTs} not exit`);
+}
+
+let content = fs.readFileSync(targetDocRouteTs, 'utf8');
+
+// @ts-ignore
+content = content.replace(new RegExp(`${importBeginIdentifier}${otherRegex}${importEndIdentifier}`),(match,offset,str)=>{
+    const importContent = routesImportTemplate({arg:routeArguments});
+    return `${importBegin}\n${importContent}${importEnd}`;
+})
+// @ts-ignore
+content = content.replace(new RegExp(`${routeItemBeginIdentifier}${otherRegex}${routeItemEndIdentifier}`),(match,offset,str)=>{
+    const routesCompItems = routesCompItemsTemplate({arg:routeArguments});
+    return `${routeItemBegin}\n${routesCompItems}${routeItemEnd}`;
+})
+
+fs.writeFileSync(targetDocRouteTs,content,'utf8');
+
+// ---------------------------------------------------------
+// ------------------GENERATE COMPs------------------------
+// ---------------------------------------------------------
 
 // remove view doc folder if it exist
 shell.rm('-rf',path.join(pwd,'src/view/doc'));
