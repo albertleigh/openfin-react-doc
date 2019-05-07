@@ -7,8 +7,11 @@ import { MarkdownElement } from '../../../components'
 
 import { Language } from '../../../GlobalTypes';
 
-import enUs from '../../../markdowns/en-US/startBase/features.md';
-import zhCn from '../../../markdowns/zh-CN/startBase/features.md';
+import _enUs from '../../../markdowns/en-US/startBase/features.md';
+import _zhCn from '../../../markdowns/zh-CN/startBase/features.md';
+
+const enUs = _enUs.replace('PUBLIC_URL',process.env.PUBLIC_URL);
+const zhCn = _zhCn.replace('PUBLIC_URL',process.env.PUBLIC_URL);
 
 const StartBaseFeaturesView:React.FunctionComponent<{}> = (
 {}

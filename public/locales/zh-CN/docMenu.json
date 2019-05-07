@@ -7,6 +7,13 @@
   "startDevelopers":"给开发者",
   "startFaq":"FAQ",
 
+  "starterBase":"模板工程 代码解析",
+  "starterBaseFeatures":"功能",
+  "starterBaseReduxs":"Reduxs",
+  "starterBaseComps":"自带组件",
+  "starterBaseRoutes":"路径样式",
+  "starterBaseWhyTs":"为什么typescript?",
+
   "scaffolding":"代码生成工具 AL-CLI",
   "scaffoldingInstall":"安装代码生成工具",
   "scaffoldingGenrPrj":"生成模板工程",
@@ -19,17 +26,10 @@
 
   "reduxOpenfin":"Redux Openfin",
   "reduxOpenfinInstall":"安装redux-openfin",
-  "reduxOpenfinCommPatt":"常用模式",
-  "reduxOpenfinSupportApis":"支持Apis",
+  "reduxOpenfinCommPattern":"常用模式",
+  "reduxOpenfinSupportedApis":"支持Apis",
   "reduxOpenfinSharedActions":"Actions通信",
   "reduxOpenfinSnapDock":"Snap&dock",
-
-  "starterBase":"模板工程代码解析",
-  "starterBaseFeatures":"功能",
-  "starterBaseReduxs":"Reduxs",
-  "starterBaseComps":"自带组件",
-  "starterBaseRoutes":"路径样式",
-  "starterBaseWhyTs":"为什么typescript?",
 
   "about":"关于",
   "aboutCollaborators":"开发人员",
