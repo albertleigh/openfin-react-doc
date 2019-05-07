@@ -107,7 +107,8 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js"
+    "test": "node scripts/test.js",
+    "generate-doc": "babel-node --config-file ./docGenerator/.babelrc --extensions \".ts\" -- docGenerator/index.ts"
   },
   "browserslist": {
     "production": [
@@ -182,5 +183,12 @@
     "presets": [
       "react-app"
     ]
+  },
+  "devDependencies": {
+    "@babel/node": "^7.2.2",
+    "@babel/preset-env": "^7.4.4",
+    "@babel/preset-typescript": "^7.3.3",
+    "handlebars": "^4.1.2",
+    "handlebars-helper-import": "^2.4.0"
   }
 }
