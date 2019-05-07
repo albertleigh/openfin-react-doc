@@ -1,4 +1,5 @@
 export interface ISeed {
+    defaultLanguageIndex:number,
     languages:string[],
     documents:Array<{
         name:string,

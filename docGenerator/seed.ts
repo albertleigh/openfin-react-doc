@@ -1,6 +1,7 @@
 import { ISeed } from './GeneratorTypes'
 
 const seed:ISeed = {
+    defaultLanguageIndex: 0,
     languages:[
         'en_US', 'zh_CN',
     ],

@@ -1,0 +1,41 @@
+import * as React from 'react';
+import {makeStyles} from "@material-ui/styles";
+import cx from "classnames";
+import {useTranslation} from "react-i18next";
+
+import { MarkdownElement } from '../../../components'
+
+import { Language } from '../../../GlobalTypes';
+
+const useStyles = makeStyles(style);
+
+{{#each langs}}
+import {{this.langVar}} from '../../../markdowns/{{this.langLabel}}/{{../tabName}}/{{../itemName}}.md';
+{{/each}}
+
+const {{FullName}}View:React.FunctionComponent<{}> = (
+{}
+) => {
+
+    const { t, i18n } = useTranslation('{{tabName}}', { useSuspense: false });
+
+    switch (i18n.language) {
+        {{#each langs}}
+        case Language.{{this.language}}:
+            return(
+            <React.Fragment>
+                <MarkdownElement text={ {{this.langVar}} }/>
+            </React.Fragment>
+            );
+        {{/each}}
+        default:
+            return(
+                <React.Fragment>
+                    <MarkdownElement text={ {{defaultLang.langVar}} }/>
+                </React.Fragment>
+            );
+    }
+
+}
+
+export default {{FullName}}View;
