@@ -121,6 +121,8 @@ content = content.replace(new RegExp(`${routeItemBeginIdentifier}${otherRegex}${
 
 fs.writeFileSync(targetDocRouteTs,content,'utf8');
 
+console.log(chalk.cyan(`${targetDocRouteTs} modified`));
+
 // ---------------------------------------------------------
 // ------------------GENERATE COMPs------------------------
 // ---------------------------------------------------------
