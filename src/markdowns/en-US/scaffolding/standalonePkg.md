@@ -8,7 +8,7 @@ Standalone binary packaging
 
 Once done, you should got the summary of all the files built.
 
-```text
+```vim
 yarn run v1.12.3
 $ rimraf build && rimraf package && node scripts/build.js
 Creating an optimized production build...
@@ -46,7 +46,7 @@ Done in 18.74s.
 Once static files built, we could generate packaged binary via
 `yarn package` or `npm run package`
 
-```text
+```vim
 yarn run v1.12.3
 $ node scripts/package.js
 TARGET node10-linux-x64
@@ -72,7 +72,7 @@ Done in 3.46s.
 ### Output directory: package
 Make no mistake, a package folder will be created containing the binary depending on the platform you built.
 
-```text
+```vim
 package
 ├── build
 │   ├── android-chrome-192x192.png

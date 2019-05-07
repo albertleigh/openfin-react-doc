@@ -1,7 +1,0 @@
-import { Theme, createStyles } from '@material-ui/core/styles';
-
-const newOneStyle = (theme:Theme)=> createStyles({
-
-});
-
-export default newOneStyle;

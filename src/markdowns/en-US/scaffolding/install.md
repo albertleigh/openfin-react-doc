@@ -15,7 +15,7 @@ Once installed, run
 
 will dump the help info into the console
 
-```text
+```vim
    ___                    __ _             _ ____  
   / _ \ _ __   ___ _ __  / _(_)_ __       | / ___| 
  | | | | '_ \ / _ \ '_ \| |_| | '_ \   _  | \___ \ 

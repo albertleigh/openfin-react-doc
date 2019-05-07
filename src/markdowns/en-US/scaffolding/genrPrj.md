@@ -14,7 +14,7 @@ Generate but skip installing node_modules
 
 Once done, one sample typescript template project will be created like this:
 
-```text
+```vim
 SampleReactTsApp/
 ├── CHANGELOG.md
 ├── LICENSE.md

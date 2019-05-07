@@ -22,7 +22,7 @@ then type in
 
 The client should pop up to confirm all the component name, style name and their paths. Suggest not to change for now if not sure, we could press enter all the way down to use default values for the first time.
 
-```text
+```vim
    ___                    __ _             _ ____  
   / _ \ _ __   ___ _ __  / _(_)_ __       | / ___| 
  | | | | '_ \ / _ \ '_ \| |_| | '_ \   _  | \___ \ 
@@ -45,7 +45,7 @@ To fully understand the structure of the generated components template, let's cr
 
 Once done, al-cli will create all the files in a structure like this.
 
-```text
+```vim
 src/
 ├── assets
 │   └── jss
@@ -181,7 +181,7 @@ Similarly, let's create two new view components based on the previous results.
 
 Once done, [openfin-js-cli] will create the files like these
 
-```text
+```vim
 src/
 ├── assets
 │   └── jss
@@ -345,7 +345,7 @@ Similarly, we could also create two new lyt components based on the previous res
 
 Make no mistake, once done, al-cli will create all the files in a structure like these.
 
-```text
+```vim
 src/
 ├── assets
 │   └── jss

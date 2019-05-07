@@ -22,7 +22,7 @@
 
 工具会确认comp名称 其様例名称及其路径。建议初次使用默认值，可一路按回车选用。
 
-```text
+```vim
    ___                    __ _             _ ____  
   / _ \ _ __   ___ _ __  / _(_)_ __       | / ___| 
  | | | | '_ \ / _ \ '_ \| |_| | '_ \   _  | \___ \ 
@@ -45,7 +45,7 @@ prompt: component index file?:  (./src/components/index.ts)
 
 一旦完成, al-cli 会按以下结构生成模板。
 
-```text
+```vim
 src/
 ├── assets
 │   └── jss
@@ -182,7 +182,7 @@ export {default as NewTwo } from './sample-app/NewTwo/NewTwo'
 
 一旦完成，al-cli会以如下结构来生成文件。
 
-```text
+```vim
 src/
 ├── assets
 │   └── jss
@@ -346,7 +346,7 @@ export default connect(
 
 不出意外，一旦完成，al-cli会生成如下结构的文件。
 
-```text
+```vim
 src/
 ├── assets
 │   └── jss

@@ -14,7 +14,7 @@
 
 一旦完成，会生成如下结构工程
 
-```text
+```vim
 SampleReactTsApp/
 ├── CHANGELOG.md
 ├── LICENSE.md

@@ -8,7 +8,7 @@
 
 一旦完成，会得到生成的文件总结
 
-```text
+```vim
 yarn run v1.12.3
 $ rimraf build && rimraf package && node scripts/build.js
 Creating an optimized production build...
@@ -46,7 +46,7 @@ Done in 18.74s.
 一旦生成了静态文件，可以通过以下命令来打包
 `yarn package` or `npm run package`
 
-```text
+```vim
 yarn run v1.12.3
 $ node scripts/package.js
 TARGET node10-linux-x64
@@ -72,7 +72,7 @@ Done in 3.46s.
 ### 打包输出路径: package
 不出意外，基于你指定系统的包会在输出路径如下
 
-```text
+```vim
 package
 ├── build
 │   ├── android-chrome-192x192.png

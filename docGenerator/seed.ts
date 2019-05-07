@@ -11,8 +11,8 @@ const seed:ISeed = {
             children:['introduction','installation','faq']
         },
         {
-            name:'startBase',
-            children:['features','reduxs','whyTS']
+            name:'starterBase',
+            children:['features','reduxs','whyTs']
         },
         {
             name:'scaffolding',
