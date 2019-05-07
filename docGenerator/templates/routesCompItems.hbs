@@ -1,0 +1,16 @@
+{{#each arg}}
+    {{#with this}}
+        {
+            name : '{{tabName}}'
+            routeItems : [
+        {{#each children}}
+                {
+                    path: '/doc/{{fullName}}',
+                    name: '{{fullName}}',
+                    component: {{FullName}},
+                },
+        {{/each}}
+            ].map(mapToPublicPathname),
+        },
+    {{/with}}
+{{/each}}
