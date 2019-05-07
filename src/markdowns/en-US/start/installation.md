@@ -13,4 +13,7 @@ Installer
 
 > Current installers upon mac and linux platform are not supported by Openfin.
 
-> However, an alternative standalone solution is provided via al-cli. Plz check scaffolding al-cli section for more info.
+> However, an alternative standalone solution is provided via [openfin-js-cli]. Plz check scaffolding [openfin-js-cli] section for more info.
+
+
+[openfin-js-cli]: https://www.npmjs.com/package/openfin-js-cli
