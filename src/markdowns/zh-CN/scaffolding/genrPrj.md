@@ -1,18 +1,18 @@
-Generate template projects
+生成様例工程
 ----------------
-*Typescript template projects based on create-react-app*
+*基于 create-react-app的Typescript様例工程*
 
-To generate the sample project, change directory into your Workspace folder like /home/User/Workspaces
+进入工程路径 例如 /home/User/Workspaces
 
-Generate project with node_modules
+生成工程代码并安装依赖库
 
 `openfin-js react-app sample-react-ts-app`
 
-Generate but skip installing node_modules
+生成工程代码但跳过安装依赖库
 
 `openfin-js react-app sample-react-ts-app -v --skipInstall`
 
-Once done, one sample typescript template project will be created like this:
+一旦完成，会生成如下结构工程
 
 ```text
 SampleReactTsApp/
@@ -132,8 +132,8 @@ SampleReactTsApp/
 30 directories, 82 files
 ```
 
-Redirect to the project directory and, make no mistake, you could start the sample project.
+进入项目路径，不出意外，可以如下启动。
 
 `cd SampleReactTsApp`
 
-`yarn start-openfin` or `npm run start-openfin`
+`yarn start-openfin` 或者 `npm run start-openfin`

@@ -1,12 +1,12 @@
-Standalone binary packaging
+独立打包
 ---------------------------
 
 ### Build
-> Before packaging, the static files should be built in advance, change directory into your project folder.
+> 在打包前，必须提前生成静态文件
 
 `yarn build` or `npm run build`
 
-Once done, you should got the summary of all the files built.
+一旦完成，会得到生成的文件总结
 
 ```text
 yarn run v1.12.3
@@ -42,8 +42,8 @@ Find out more about deployment here:
 Done in 18.74s.
 ```
 
-### Package into binary
-Once static files built, we could generate packaged binary via
+### 打包
+一旦生成了静态文件，可以通过以下命令来打包
 `yarn package` or `npm run package`
 
 ```text
@@ -69,8 +69,8 @@ Created package.json in /home/superman90/Workspaces/OpenfinWorkspaces/openfin-re
 Done in 3.46s.
 ```
 
-### Output directory: package
-Make no mistake, a package folder will be created containing the binary depending on the platform you built.
+### 打包输出路径: package
+不出意外，基于你指定系统的包会在输出路径如下
 
 ```text
 package
@@ -121,7 +121,7 @@ package
 6 directories, 37 files
 ```
 
-To execute the binary, just execute openfin_starter at the package folder.
+可以在输出文件下，执行如下命令来启动独立客户端
 
 `./openfin_starter`
 

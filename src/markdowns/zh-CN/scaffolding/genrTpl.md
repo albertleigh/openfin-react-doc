@@ -1,26 +1,26 @@
-Generate template components
+生成模板
 ----------------------------
 
-### Diff between Layout, View and Component
+### Layout, View 与 Component 的区别
 
-> All three templates are react component. Generally speaking, both lyt and view connects to redux. But lyt can act as the entry comp and view is the reusable unit inside lyt. View comp's outermost container should be set to use up all the space. Comps are reusable non-redux-connected units among view or lyt.
+> 3种模板都是react component. 一般认为, lyt 和 view 会连接 redux. 但是 lyt 可以当作入口组件， view 是嵌入lyt的复用组件. view 组件应利用全部外部空间. Comps 是不连接redux的复用组件.
 
-The scaffolding tool support to generate three types of templates: Component, View and Layout
+生成工具支持3种模板: Component, View and Layout
 
-| Type | Connected to Redux | Entry components| Reusable components |
+| Type | 是否连接Redux | 是否为入口组件 | 是否为复用组件 |
 | --- | --- | --- | --- | 
-| Component template (comp) | No | No | Yes |
-| View template (view) | Yes | No | Yes |
-| Layout template (lyt) | Yes | Yes | No |
+| Component 组件模板 (comp) | 否 | 否 | 是 |
+| View 组件模板 (view) | 是 | 否 | 是 |
+| Layout 组件模板 (lyt) | 是 | 是 | 否 |
 
-### Generate component templates
-Change directory into your project folder of your workspace, like /home/User/Workspaces/sample-app
+### 生成 Comp 模板
+进入到工作路径，例如 /home/User/Workspaces/sample-app
 
-then type in
+然后输入
 
 `openfin-js react-comp NewOne`
 
-The client should pop up to confirm all the component name, style name and their paths. Suggest not to change for now if not sure, we could press enter all the way down to use default values for the first time.
+工具会确认comp名称 其様例名称及其路径。建议初次使用默认值，可一路按回车选用。
 
 ```text
    ___                    __ _             _ ____  
@@ -39,11 +39,11 @@ prompt: new component directory?:  (./src/components/sample-app/NewOne)
 prompt: component index file?:  (./src/components/index.ts)
 ```
 
-To fully understand the structure of the generated components template, let's create an another component called NewTwo to compare.
+为了更好理解生成的模板结构，我们来建立另一个Comp模板 NewTwo 来作比较。
 
 `openfin-js react-comp NewTwo`
 
-Once done, al-cli will create all the files in a structure like this.
+一旦完成, al-cli 会按以下结构生成模板。
 
 ```text
 src/
@@ -64,7 +64,8 @@ src/
 
 ```
 
-styles of NewOne and NewTwo comps are like
+生成的 NewOne NewTwo 的样式文件如下
+
 *src/assets/jss/sample-app/comp/newOneComp.style.ts*
 ```typescript
 import { Theme, createStyles } from '@material-ui/core/styles';
@@ -85,7 +86,7 @@ const newTwoCompStyle = (theme:Theme)=> createStyles({
 
 export default newTwoCompStyle;
 ```
-and the two styles are exported via a router index.ts
+样式文件会通过索引文件index.ts输出。
 
 *src/assets/jss/sample-app/index.ts*
 ```typescript
@@ -95,7 +96,7 @@ export {default as newTwoCompStyle } from './comp/newTwoComp.style'
 // END_OF_AL_CLI_COMP
 ```
 
-And among the generated components, the isolated style are import via the router index
+在生成的模板中，通过索引文件来引入隔离的样式文件。
 
 *src/components/sample-app/NewOne/NewOne.tsx*
 ```typescript jsx
@@ -160,7 +161,7 @@ const NewTwoComp:React.FunctionComponent<IProps> = (
 export default NewTwoComp;
 ```
 
-Similarly, the generated components are also exported via a comp router index
+类似的，生成的模板也通过一索引文件index.ts输出。
 
 *src/components/index.ts*
 ```typescript
@@ -169,17 +170,17 @@ export {default as NewOne } from './sample-app/NewOne/NewOne'
 export {default as NewTwo } from './sample-app/NewTwo/NewTwo'
 // END_OF_AL_CLI_COMPONENTS
 ```
-> You might notice, we suggest put styles and comps under the folder of the project name (sample-app), it is b/c, sometimes, it's much more easy to directly copy&paste some internal comps or styles into another folder of another project name for sharing instead of making them general enough to be capable to be shared. As it might be difficult to ask the author to export via pkg manager and maintain stable versions, or sometimes, even they exported, the requirements on our sides might force us have to modify little bit to support new specific features rather than directly using them.
+> 所有的样式组件文件都被置于工程同名文件夹下(sample-app)。这样的好处是，不同工程的组件样式可以通过复制粘贴到另一个工程名路径来复用。 相比于直接更改组件来使其满足需求并发布到容器，这样更快捷。同时也方便因地制宜的快速更改。
 
-### Generate view templates
+### 生成 View 模板
 
-Similarly, let's create two new view components based on the previous results.
+类似地，基于之前的步骤，我们来建立两个新的view组件。
 
 `openfin-js react-view NewOne` 
 
 `openfin-js react-view NewTwo`
 
-Once done, [openfin-js-cli] will create the files like these
+一旦完成，al-cli会以如下结构来生成文件。
 
 ```text
 src/
@@ -206,7 +207,7 @@ src/
     └── NewTwo
         └── NewTwo.tsx                      // added
 ```
-Similar we have the isolated style objects for two views
+类似地，我们也会注入隔离的样式对象进入两个view 组件。
 
 *src/assets/jss/sample-app/view/newOneView.style.ts*
 ```typescript
@@ -228,7 +229,7 @@ const newTwoViewStyle = (theme:Theme)=> createStyles({
 
 export default newTwoViewStyle;
 ```
-and the two styles are also exported via a router index.ts
+而其样式文件亦会通过索引文件index.ts输出。
 
 *src/assets/jss/sample-app/index.ts*
 ```typescript
@@ -242,7 +243,7 @@ export {default as newTwoViewStyle } from './view/newTwoView.style'
 // END_OF_AL_CLI_VIEW
 ```
 
-then the styles will be injected into two views created.
+然后注入两个view 组件。
 
 *src/views/NewOne/NewOne.tsx*
 ```typescript jsx
@@ -335,15 +336,15 @@ export default connect(
 );
 ```
 
-### Generate layout templates
+### 生成 layout 模板
 
-Similarly, we could also create two new lyt components based on the previous results.
+类似地，亦基于之前的步骤，我们来建立两个新的lyt组件。
 
 `openfin-js react-lyt NewOne` 
 
 `openfin-js react-lyt NewTwo`
 
-Make no mistake, once done, al-cli will create all the files in a structure like these.
+不出意外，一旦完成，al-cli会生成如下结构的文件。
 
 ```text
 src/
@@ -379,7 +380,7 @@ src/
         └── NewTwo.tsx
 ```
 
-Lyt components and their isolated styles
+Lyt组件和他们隔离的样式。
 
 *src/assets/jss/sample-app/layout/newTwo.style.ts*
 ```typescript

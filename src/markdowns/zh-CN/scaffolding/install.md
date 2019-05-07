@@ -1,19 +1,17 @@
-Scaffolding Tool
+代码生成工具（脚手架工具）
 ----------------
-*An scaffolding tool called [openfin-js-cli] is provided to help developers to generate boilerplate codes and sample projects. 
-Along with it, a simple design pattern lyt/view/comp is also recommended. But developers are not required to follow it 
-to utilized the templates.*
+*代码生成工具（脚手架工具）[openfin-js-cli] 可以用来生成 样板代码 和 様例工程。 同时，一个开发模式 lyt/view/comp 被建议。 但并不强制开发人员遵守。*
 
 
-### Install
+### 安装
 
-Initially, install the scaffolding tool globally
+全局安装代码生成工具
 
-`npm install openfin-js-cli -g` or `yarn global add openfin-js-cli`
+`npm install openfin-js-cli -g` 或者 `yarn global add openfin-js-cli`
 
-Once installed, run
+完成后，运行
 
-will dump the help info into the console
+将会列印参数信息到控制台
 
 ```text
    ___                    __ _             _ ____  
