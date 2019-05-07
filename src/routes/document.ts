@@ -1,5 +1,6 @@
 import {IDocRouteCompItems, RouteItem} from "./types";
 
+// @@BEGIN OF Generated routes imports
 // start
 import StartIntroduction from '../views/Start/StartIntroduction';
 import StartInstallation from '../views/Start/StartInstallation';
@@ -25,6 +26,8 @@ import StarterBaseReduxs from '../views/StarterBase/StarterBaseReduxs';
 import StarterBaseComps from '../views/StarterBase/StarterBaseComps';
 import StarterBaseRoutes from '../views/StarterBase/StarterBaseRoutes';
 import StarterBaseWhyTs from '../views/StarterBase/StarterBaseWhyTs';
+// @@END OF Generated routes imports
+
 // about
 import AboutCollaborators from '../views/About/AboutCollaborators';
 import AboutThanks from '../views/About/AboutThanks';
@@ -32,6 +35,7 @@ import AboutThanks from '../views/About/AboutThanks';
 import { mapToPublicPathname } from './utils';
 
 export const docRouteItems:IDocRouteCompItems[] = [
+// @@BEGIN OF Generated routes comp items
     {
         name:'start',
         routeItems:[
@@ -157,6 +161,7 @@ export const docRouteItems:IDocRouteCompItems[] = [
             },
         ].map(mapToPublicPathname),
     },
+// @@END OF Generated routes comp items
     {
         name:'about',
         routeItems:[
