@@ -33,5 +33,11 @@ Templates-provided Features
 
 ![Theme Lang](https://openfin-js-app.github.io/openfin-react-starter/img/features/theme_lang.gif)
 
+### Wanna checkout and get hands dirty
+> Not having fun with the gifs, please check the [openfin-js-cli] and its corresponding sections of this document 
+> to dig into the template codes for more. Have fun~
+ 
+
+[openfin-js-cli]: https://www.npmjs.com/package/openfin-js-cli
 [Concise]: https://github.com/openfin-js-app/openfin-react-concise
 [Professional]: https://github.com/openfin-js-app/openfin-react-concise

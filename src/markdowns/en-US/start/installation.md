@@ -17,7 +17,7 @@ Installer
 
 ### Wanna get hands dirty?
 
-> Not having fun with the installer, please check the [openfin-js-cli] and its corresponding section of this document 
+> Not having fun with the installer, please check the [openfin-js-cli] and its corresponding sections of this document 
 > to dig into the template codes for more. Have fun~
 
 
