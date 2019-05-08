@@ -38,6 +38,8 @@ attract users attention. Moreover, the notification can send msg and communicate
 Therefore, the path `notification` is also reserved for them. 
 
 
+#### _Once routing pattern settled, it is time to pour reusable components into the routes._
+
 [Openfin]: https://openfin.co/
 [react-openfin]:https://www.npmjs.com/package/react-openfin
 [react-openfin-mat-impl]:https://www.npmjs.com/package/react-openfin-mat-impl
