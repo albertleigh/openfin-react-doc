@@ -1,7 +1,6 @@
 Templates-provided Features
 -------------------
 > Two templates, [Concise] and [Professional] versions, will be provided as an example or starting base to developers. Both templates contains the same features.
-> 
 
 - [Concise] version will be just like a blank create-react-app but connected with essential helper components to bear 
  the features mentioned bellow.
@@ -36,6 +35,8 @@ Templates-provided Features
 ### Wanna checkout and get hands dirty
 > Not having fun with the gifs, please check the [openfin-js-cli] and its corresponding sections of this document 
 > to dig into the template codes for more. Have fun~
+
+> Or you can directly checkout from here `https://github.com/openfin-js-app/openfin-react-concise` for now.
  
 
 [openfin-js-cli]: https://www.npmjs.com/package/openfin-js-cli
