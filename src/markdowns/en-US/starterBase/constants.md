@@ -65,13 +65,29 @@ Generally speaking, `RouteItem` could be either `IRouteCompItem` or `IRouteRedir
 | --- | --- | --- |
 | path | string | trigger url path |
 | component | React.Node | Component rendered beneath the layout |
-| sidebarName | optional string | field name of `public/locales/{lang}/menu.json` to render sidebar label |
-| navbarName | optional string | field name of `public/locales/{lang}/menu.json` to render navigator bar label |
-| icon | optional Icon | Icon on the sidebar item |
-| shown | optional boolean or ()=>boolean | Flag or callback to render the menu item or not, like basing on entitlement |
+| sidebarName | optional `string` | field name of `public/locales/{lang}/menu.json` to render sidebar label |
+| navbarName | optional `string` | field name of `public/locales/{lang}/menu.json` to render navigator bar label |
+| icon | optional `Icon` | Icon on the sidebar item |
+| shown | optional `boolean` or `()=>boolean` | Flag or callback to render the menu item or not, like basing on entitlement check |
 
 
 ### LaunchBar items
+
+Example: [`src/constants/launchBarItems.tsx`](https://github.com/openfin-js-app/openfin-react-concise/blob/master/src/constants/launchBarItems.tsx)
+
+```typescript
+export interface ILaunchBarItem {
+    icon:any,
+    disabled:boolean,
+    svg:string,
+    appJson:any,
+    shown?:ShownField,
+}
+```
+| Field | Type | Description |
+| --- | --- | --- |
+| shown | optional `boolean` or `()=>boolean` | Flag or callback to render the launchBar item or not, like basing on entitlement check |
+
 ### Config Tabs & their items
 
 [react-openfin]:https://www.npmjs.com/package/react-openfin
