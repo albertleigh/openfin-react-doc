@@ -64,7 +64,64 @@ const Loading:React.FunctionComponent<{}> = ({})=>(
 | companyLogo | string | company img base url |
 | version | string | version string to be renderred on the loading layout |
 
-#### Dashboard
+#### DashboardLyt
+
+> `DashboardLyt` is a layout component that serves as the container on main view with a header, sidebar. 
+> Therefore, among props will contain the fields relating to the header and sidebar comp.
+
+```typescript jsx
+import * as React from 'react';
+import { useContext } from 'react';
+import { DashboardLyt } from 'react-openfin-mat-impl';
+
+import appLogo from '../assets/svg/app.svg';
+
+export const Dashboard:React.FunctionComponent<{}> = ({...rest}) => {
+
+    const {
+        actions:{
+            onNewSnackBar
+        }
+    } = useContext(ApplicationContext);
+
+    const handleLogoutBtnClick = ()=>{
+        onNewSnackBar({
+            variant:'rose',
+            message:'User clicked the logout btn',
+            // README
+            // vertical and horizontal fields are optional
+            vertical:'top',
+            horizontal:'right',
+        })
+    }
+
+    return (<DashboardLyt
+        appLogo={appLogo}
+        routes={dashboardRoutes}
+        menuItems={[{
+            icon:<ExitToAppIcon/>,
+            label:'staticMenu.logout',
+            onClick: handleLogoutBtnClick,
+        }]}
+        headerPrefixElements={<ClientPrefix {...rest} />}
+        {...rest}
+    />)
+}
+``` 
+
+##### Props
+
+| Name | Type | Description |
+| --- | --- | --- |
+| appLogo | string | app img base url |
+| routes | RouteItem[] | sub routes of dashboard path, an [sample](https://github.com/openfin-js-app/openfin-react-concise/blob/master/src/routes/Dashboard.ts) will be provided  |
+| sidebarBgUrl | optional string | the url of the sidebar background image if you wanna override  |
+| menuItems | optional ISideBarMenuItem[] | static sidebar item besides route items, a sample is also provided  |
+| hideSwitchToLaunchbar | optional boolean | will hide the button to switch to launchbar if set to true |
+| headerPrefixElements | optional ReactNode | prefix nodes upon headers, an [example](https://github.com/openfin-js-app/openfin-react-concise/blob/master/src/components/sample-name/ClientPrefix.tsx) also provided |
+| headerSuffixElements | optional ReactNode | suffix nodes upon headers, similar to prefix nodes |
+
+
 #### ChildWindow
 #### Notification
 #### LaunchBar
