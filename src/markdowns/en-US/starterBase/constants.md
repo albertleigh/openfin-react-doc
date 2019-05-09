@@ -76,8 +76,13 @@ Generally speaking, `RouteItem` could be either `IRouteCompItem` or `IRouteRedir
 Example: [`src/constants/launchBarItems.tsx`](https://github.com/openfin-js-app/openfin-react-concise/blob/master/src/constants/launchBarItems.tsx)
 
 ```typescript
+import {SvgIconProps} from '@material-ui/core/SvgIcon'
+
+export type ShownFunction = () => boolean;
+export type ShownField = boolean | ShownFunction;
+
 export interface ILaunchBarItem {
-    icon:any,
+    icon:React.ComponentType<SvgIconProps>,
     disabled:boolean,
     svg:string,
     appJson:any,
@@ -86,6 +91,10 @@ export interface ILaunchBarItem {
 ```
 | Field | Type | Description |
 | --- | --- | --- |
+| icon | optional `Icon` | Icon on the launch bar item |
+| disabled | `boolean` | Flag to disable the launchbar item or not |
+| svg | `null` or `string` | Icon img base url to replace icon if set to truthy _not null either undefined_ |
+| appJson | Any | The config json of new openfin window |
 | shown | optional `boolean` or `()=>boolean` | Flag or callback to render the launchBar item or not, like basing on entitlement check |
 
 ### Config Tabs & their items
