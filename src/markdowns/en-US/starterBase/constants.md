@@ -99,6 +99,74 @@ export interface ILaunchBarItem {
 
 ### Config Tabs & their items
 
+Example: [`src/constants/configTabs.tsx`](https://github.com/openfin-js-app/openfin-react-concise/blob/master/src/constants/configTabs.tsx)
+
+```typescript
+import { SvgIconProps } from '@material-ui/core/SvgIcon';
+import { TextFieldProps } from '@material-ui/core/TextField';
+import {TimePickerModalProps} from "material-ui-pickers/TimePicker/TimePickerModal";
+import {DatePickerModalProps} from "material-ui-pickers/DatePicker/DatePickerModal";
+
+export enum FieldType{
+    CUSTOM_FIELD = 1,
+    STRING = 2,
+    DATETIME = 3,
+    DATE = 4,
+    TIME = 5,
+    NUMBER = 6,
+    CURRENCY = 7,
+    TITLE = 8,
+    SUBHEADING = 9,
+    BODY1 = 10,
+}
+
+export interface IConfigField {
+    _type:FieldType;
+    _label:string;
+    _name?:string;
+    _defaultValue?:any;
+    _cols?:number;
+    _rows?:number;
+    _props?:TextFieldProps|TimePickerModalProps|DatePickerModalProps;
+    _custom?:React.ReactNode;
+}
+
+export interface IConfigTab {
+    _order?:number;
+    _label:string;
+    _name:string;
+    _svgUrl:string;
+    _svgUrl_dark?:string;
+    _icon?:React.ComponentType<SvgIconProps>;
+    _fields:IConfigField[];
+}
+```
+
+#### IConfigTab
+| Field | Type | Description |
+| --- | --- | --- |
+| _order | optional `number` | the order number to control the sequence of current tab |
+| _label | `string` | field name of `public/locales/{lang}/config.json` to render the config tab label |
+| _name | `string` | the name of the tab for query |
+| _svgUrl | `string` | current tab icon base url |
+| _svgUrl_dark | optional `string` | current tab dark icon base url |
+| _icon | optional SvgIconProps | The optional Mat Icon as current tab icon |
+| _fields | IConfigField[] | The child config fields of current tab  |
+
+
+#### IConfigField
+
+| Field | Type | Description |
+| --- | --- | --- |
+| _type | FieldType | Type of the config field, either build-in type or CUSTOM_FIELD field |
+| _label | `string` | field name of `public/locales/{lang}/config.json` to render the config item label |
+| _name | optional `any` | the name of the tab for query, a label field doesnt require a name |
+| _defaultValue | optional `any` | the default value of current item field |
+| _cols | optional `number` only valid from 1 to 12 | the span of the config field |
+| _rows | optional `number` | the height of the config field |
+| _props | optional `TextFieldProps` or `TimePickerModalProps` or `DatePickerModalProps` | the height of the config field |
+| _custom | optional `React.ReactNode` | The custom field if _type set to CUSTOM_FIELD |
+
 [react-openfin]:https://www.npmjs.com/package/react-openfin
 [react-openfin-mat-impl]:https://www.npmjs.com/package/react-openfin-mat-impl
 
