@@ -342,6 +342,86 @@ _Not props required_
 | --- | --- | --- |
 | n/a | n/a | n/a |
 
+### Comp components
+
+> Basically, [react-openfin-mat-impl] provides two sets of components, one for app developer to directly use. And 
+> another set of components internal used to build other components like layout components.  
+
+- Exported reusable components
+    - ConfigAboutField - A about view of the infos relating to the app
+    - ConfigJsonField - A json view of config state maintained by [react-openfin], generally for debuing purpose
+    - ConfigLangField - A switcher to change language maintained by [react-openfin] 
+    - ConfigThemeField  - A theme switcher to change theme between light and dark.
+- Internal use components
+    - ConfigField
+    - Header
+    - HeaderLinks
+    - HeaderThemeSwitcher
+    - Sidebar
+    - SnackbarContent
+    - OfflineOverlay
+
+#### ConfigAboutField
+
+> A about view of the infos relating to the app
+
+```typescript jsx
+import * as React from 'react';
+import { IConfigTab } from 'react-openfin';
+import { ConfigAboutField, FieldType } from 'react-openfin-mat-impl';
+
+import SettingIcon from '@material-ui/icons/Settings';
+
+import appSvg from '../assets/svg/app.svg';
+import companySvg from '../assets/svg/company.svg';
+import infomationSvg from '../assets/svg/support/information.svg';
+import infomationDarkSvg from '../assets/svg/support/information-dark.svg';
+
+const configTabs:IConfigTab[]=[
+    {
+        _order: 1 ,
+        _label: 'about.label',
+        _name:'about',
+        _svgUrl: infomationSvg,
+        _svgUrl_dark: infomationDarkSvg,
+        _icon: SettingIcon,
+        _fields:[
+            {
+                _type:FieldType.CUSTOM_FIELD,
+                _label:'About openfin starter',
+                _custom:
+                    <ConfigAboutField
+                        appLogo={appSvg}
+                        companyLogo={companySvg}
+                    />
+                ,
+                _cols:12,
+                _rows:12,
+            }
+        ]
+    },
+];
+```
+
+##### Props
+
+| Name | Type | Description |
+| --- | --- | --- |
+| appLogo | string | app img base url |
+| companyLogo | string | company img base url |
+
+#### ConfigJsonField, ConfigLangField, ConfigThemeField
+
+These three components can build directly used and no required props needed at all. And they are designed to render the 
+config item of [react-openfin].
+
+For instance, please refer [src/constants/configTabs.tsx](https://github.com/openfin-js-app/openfin-react-concise/blob/master/src/constants/configTabs.tsx)
+for details.
+
+#### Internal use components
+
+_TODO: provide the documentation of this part in next release_ 
+
 [Openfin]: https://openfin.co/
 
 [react-openfin]:https://www.npmjs.com/package/react-openfin
