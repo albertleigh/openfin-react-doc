@@ -37,6 +37,12 @@ reusable components provides.
 
 ### Layout components
 
+- Loading Layout
+- Dashboard Layout
+- Child Window Layout
+- Notification Layout
+- LaunchBar Layout
+
 #### LoadingLyt
 
 > `LoadingLyt` is a layout component that will be rendered at screen center while the application starting. 
@@ -197,8 +203,146 @@ _The schema and details of ILaunchBarItem will be covered in the next section._
 
 ### View components
 
+- Config View
+- Report View
+
 #### ConfigView
+
+> A config view which render the all items of the config service provided by [react-openfin]. And its item should be 
+> configured via the constants introduced in next constant section.
+
+
+```typescript jsx
+import * as React from 'react';
+import { IConfigTab, MuiTheme, FieldType } from 'react-openfin';
+
+import SettingIcon from '@material-ui/icons/Settings';
+
+import listCheckedSvg from'../assets/svg/other/check-box.svg';
+import listCheckedDarkSvg from'../assets/svg/other/list-checked-dark.svg';
+
+const configTabs:IConfigTab[]=[
+    {
+            _order: 2,
+            _label: 'sample.label',
+            _name:'sample',
+            _svgUrl: listCheckedSvg,
+            _svgUrl_dark: listCheckedDarkSvg,
+            _icon: SettingIcon,
+            _fields:[
+                {
+                    _type:FieldType.SUBHEADING,
+                    _label:'sample.vals.label',
+                    _cols: 12,
+                },
+                {
+                    _type:FieldType.SUBHEADING,
+                    _label:'sample.vals.string.label',
+                    _cols: 4,
+                },
+                {
+                    _type:FieldType.STRING,
+                    _label:'sample.vals.string.field',
+                    _name:'strValue',
+                    _defaultValue:"",
+                    _cols: 8,
+                },
+                {
+                    _type:FieldType.SUBHEADING,
+                    _label:'sample.vals.currency.label',
+                    _cols: 4,
+                },
+                {
+                    _type:FieldType.CURRENCY,
+                    _label:'sample.vals.currency.field',
+                    _name:'crrValue',
+                    _defaultValue:123456789,
+                    _cols: 8,
+                },
+                {
+                    _type:FieldType.SUBHEADING,
+                    _label:'sample.vals.date.label',
+                    _cols: 4,
+                },
+                {
+                    _type:FieldType.DATE,
+                    _label:'sample.vals.date.field',
+                    _name:'dateValue',
+                    _defaultValue:new Date(),
+                    _cols: 8,
+                },
+                {
+                    _type:FieldType.SUBHEADING,
+                    _label:'sample.vals.time.label',
+                    _cols: 4,
+                },
+                {
+                    _type:FieldType.TIME,
+                    _label:'sample.vals.time.field',
+                    _name:'timeValue',
+                    _defaultValue:new Date(),
+                    _cols: 8,
+                },
+                {
+                    _type:FieldType.SUBHEADING,
+                    _label:'sample.vals.dateTime.label',
+                    _cols: 4,
+                },
+                {
+                    _type:FieldType.DATETIME,
+                    _label:'sample.vals.dateTime.field',
+                    _name:'datetimeValue',
+                    _defaultValue:new Date(),
+                    _cols: 8,
+                },
+                {
+                    _type:FieldType.SUBHEADING,
+                    _label:'sample.vals.customField.label',
+                    _cols: 12,
+                },
+                {
+                    _type:FieldType.CUSTOM_FIELD,
+                    _label:'sample.vals.customField.field',
+                    _custom:<ConfigJsonField/>,
+                    _cols:12,
+                    _rows:6,
+                }
+            ]
+        }
+    
+];
+
+export const MyConfigView:React.FunctionComponent<{}> = ({})=>{
+    return (<ConfigView tabs={configTabs}/>)
+}
+```  
+
+##### Props
+
+| Name | Type | Description |
+| --- | --- | --- |
+| tabs | IConfigTab[] | the constant items for launchBar, [sample](https://github.com/openfin-js-app/openfin-react-concise/blob/master/src/constants/configTabs.tsx) |
+
+_The schema and details of IConfigTab will be covered in the next section._
 
 #### ReportView
 
+> Report View is a reusable view to render essentials variables seized from [Openfin], like openfin runtime version, 
+username, machineName, hardware infos and etc.s
+
+```typescript jsx
+import { ReportView } from 'react-openfin-mat-impl';
+```
+
+##### Props
+
+_Not props required_
+
+| Name | Type | Description |
+| --- | --- | --- |
+| n/a | n/a | n/a |
+
+[Openfin]: https://openfin.co/
+
+[react-openfin]:https://www.npmjs.com/package/react-openfin
 [react-openfin-mat-impl]:https://www.npmjs.com/package/react-openfin-mat-impl
