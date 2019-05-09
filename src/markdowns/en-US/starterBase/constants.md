@@ -167,9 +167,23 @@ export interface IConfigTab {
 | _props | optional `TextFieldProps` or `TimePickerModalProps` or `DatePickerModalProps` | the height of the config field |
 | _custom | optional `React.ReactNode` | The custom field if _type set to CUSTOM_FIELD |
 
+
+### Summary of Samples
+
+- `src/routes`
+    - [`index.ts`](https://github.com/openfin-js-app/openfin-react-concise/blob/master/src/routes/index.ts)
+    - [`Dashboard.ts`](https://github.com/openfin-js-app/openfin-react-concise/blob/master/src/routes/Dashboard.ts)
+    - [`ChildWindow.ts`](https://github.com/openfin-js-app/openfin-react-concise/blob/master/src/routes/ChildWindow.ts)
+    - [`notification.ts`](https://github.com/openfin-js-app/openfin-react-concise/blob/master/src/routes/notification.ts)
+
+- [`src/constants/launchBarItems.tsx`](https://github.com/openfin-js-app/openfin-react-concise/blob/master/src/constants/launchBarItems.tsx)
+- [`src/constants/configTabs.tsx`](https://github.com/openfin-js-app/openfin-react-concise/blob/master/src/constants/configTabs.tsx)
+
 [react-openfin]:https://www.npmjs.com/package/react-openfin
 [react-openfin-mat-impl]:https://www.npmjs.com/package/react-openfin-mat-impl
 
 [react-router-dom]: https://www.npmjs.com/package/react-router-dom
+
+_Once all constants set, let's start and render some in a openfin app._
 
 [openfin-react-concise]:https://github.com/openfin-js-app/openfin-react-concise
