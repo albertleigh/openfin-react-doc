@@ -122,11 +122,83 @@ export const Dashboard:React.FunctionComponent<{}> = ({...rest}) => {
 | headerSuffixElements | optional ReactNode | suffix nodes upon headers, similar to prefix nodes |
 
 
-#### ChildWindow
-#### Notification
-#### LaunchBar
+#### ChildWindowLyt
+
+> `ChildWindowLyt` is a layout component that serves as the container on each child window with a header. 
+> Therefore, among props will contain the fields relating to the header comp.
+
+```typescript jsx
+import * as React from 'react';
+import { ChildWindowLyt } from 'react-openfin-mat-impl';
+
+import appLogo from '../assets/svg/app.svg';
+
+export const ChildWindow:React.FunctionComponent<{}> = ({...rest}) => {
+    return (<ChildWindowLyt appLogo={appLogo} routes={childrenRoutes} {...rest}/>)
+}
+```
+
+##### Props
+
+| Name | Type | Description |
+| --- | --- | --- |
+| appLogo | string | app img base url |
+| routes | RouteItem[] | sub routes of child path, an [sample](https://github.com/openfin-js-app/openfin-react-concise/blob/master/src/routes/ChildWindow.ts) will be provided  |
+| headerPrefixElements | optional ReactNode | prefix nodes upon headers, an [example](https://github.com/openfin-js-app/openfin-react-concise/blob/master/src/components/sample-name/ClientPrefix.tsx) also provided |
+| headerSuffixElements | optional ReactNode | suffix nodes upon headers, similar to prefix nodes |
+
+#### NotificationLyt
+
+> `NotificationLyt` is a layout component that serves as the container of each notification window.
+
+```typescript jsx
+import * as React from 'react';
+import { NotificationLyt } from 'react-openfin-mat-impl';
+
+export const Notification:React.FunctionComponent<{}> = ({})=>{
+    return (<NotificationLyt routes={notificationRoutes}/>)
+}
+```
+##### Props
+
+| Name | Type | Description |
+| --- | --- | --- |
+| routes | RouteItem[] | sub routes of notification path, an [sample](https://github.com/openfin-js-app/openfin-react-concise/blob/master/src/routes/notification.ts) will be provided  |
 
 
+#### LaunchBarLyt
 
+> LaunchBarLyt provides a scroller bar from which a new child window could be opened. The launchBar could be collapsed 
+> into a smaller size for better user experiences. And the first item on the bar is a place holder like header of the 
+> launchBar, like user can drag upon it to move the bar. Moreover there is a prop called firstAppBar via which app 
+> developer could customize the launch bar item.   
+
+```typescript jsx
+import * as React from 'react';
+import { LaunchBarLyt } from 'react-openfin-mat-impl';
+
+import appLogo from '../assets/svg/app.svg';
+import launchBarItems from '../constants/launchBarItems';
+
+export const LaunchBar:React.FunctionComponent<{}> = ({})=>{
+    return (<LaunchBarLyt appLogo={appLogo} items={launchBarItems}/>)
+}
+```
+
+##### Props
+ 
+| Name | Type | Description |
+| --- | --- | --- |
+| appLogo | string | app img base url |
+| items | ILaunchBarItem[] | the constant items for launchBar, [sample](https://github.com/openfin-js-app/openfin-react-concise/blob/master/src/constants/launchBarItems.tsx) |
+| firstAppBar | optional ReactNode | app img base url |
+
+_The schema and details of ILaunchBarItem will be covered in the next section._
+
+### View components
+
+#### ConfigView
+
+#### ReportView
 
 [react-openfin-mat-impl]:https://www.npmjs.com/package/react-openfin-mat-impl
