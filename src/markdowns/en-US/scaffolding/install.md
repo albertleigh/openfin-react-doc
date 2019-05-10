@@ -11,11 +11,12 @@ Initially, install the scaffolding tool globally
 
 `npm install openfin-js-cli -g` or `yarn global add openfin-js-cli`
 
-Once installed, run
+Once installed, run `openfin-js`
 
 will dump the help info into the console
 
 ```vim
+> [user@hostname]$ openfin-js
    ___                    __ _             _ ____  
   / _ \ _ __   ___ _ __  / _(_)_ __       | / ___| 
  | | | | '_ \ / _ \ '_ \| |_| | '_ \   _  | \___ \ 
