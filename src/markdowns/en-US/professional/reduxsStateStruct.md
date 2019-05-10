@@ -1,4 +1,4 @@
-Multi-win support Reduxs structure
+Multi-win support Redux state structure
 ---------
 *The pattern to adopt comm and support among multi-windows is slightly different
  and it requires certain clarifications.*
