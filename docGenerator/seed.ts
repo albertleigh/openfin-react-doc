@@ -12,7 +12,7 @@ const seed:ISeed = {
         },
         {
             name:'starterBase',
-            children:['features','dependencies','routes','reuseableComps','constants','scripts','whyTs']
+            children:['features','dependencies','routes','reuseableComps','constants','scripts','contextApis','whyTs']
         },
         {
             name:'scaffolding',
