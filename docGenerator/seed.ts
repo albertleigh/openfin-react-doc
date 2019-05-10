@@ -19,13 +19,17 @@ const seed:ISeed = {
             children:['install','genrPrj','standalonePkg','genrTpl']
         },
         {
-            name:'browserAdaptor',
-            children:['install','userCases']
+            name:'professional',
+            children:['reduxs',]
         },
-        {
-            name:'reduxOpenfin',
-            children:['install','commPattern','supportedApis','sharedActions','snapDock']
-        },
+        // {
+        //     name:'browserAdaptor',
+        //     children:['install','userCases']
+        // },
+        // {
+        //     name:'reduxOpenfin',
+        //     children:['install','commPattern','supportedApis','sharedActions','snapDock']
+        // },
     ]
 }
 
