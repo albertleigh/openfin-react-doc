@@ -7,14 +7,14 @@ import { MarkdownElement } from '../../../components'
 
 import { Language } from '../../../GlobalTypes';
 
-import enUs from '../../../markdowns/en-US/startBase/reduxs.md';
-import zhCn from '../../../markdowns/zh-CN/startBase/reduxs.md';
+import enUs from '../../../markdowns/en-US/starterBase/scripts.md';
+import zhCn from '../../../markdowns/zh-CN/starterBase/scripts.md';
 
-const StartBaseReduxsView:React.FunctionComponent<{}> = (
+const StarterBaseScriptsView:React.FunctionComponent<{}> = (
 {}
 ) => {
 
-    const { t, i18n } = useTranslation('startBase', { useSuspense: false });
+    const { t, i18n } = useTranslation('starterBase', { useSuspense: false });
 
     switch (i18n.language) {
         case Language.en_US:
@@ -39,4 +39,4 @@ const StartBaseReduxsView:React.FunctionComponent<{}> = (
 
 }
 
-export default StartBaseReduxsView;
+export default StarterBaseScriptsView;

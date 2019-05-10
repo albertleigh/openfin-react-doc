@@ -7,22 +7,20 @@ import StartInstallation from '../views/doc/start/StartInstallation';
 import StartFaq from '../views/doc/start/StartFaq';
 // Section: starterBase
 import StarterBaseFeatures from '../views/doc/starterBase/StarterBaseFeatures';
-import StarterBaseReduxs from '../views/doc/starterBase/StarterBaseReduxs';
+import StarterBaseDependencies from '../views/doc/starterBase/StarterBaseDependencies';
+import StarterBaseRoutes from '../views/doc/starterBase/StarterBaseRoutes';
+import StarterBaseReuseableComps from '../views/doc/starterBase/StarterBaseReuseableComps';
+import StarterBaseConstants from '../views/doc/starterBase/StarterBaseConstants';
+import StarterBaseScripts from '../views/doc/starterBase/StarterBaseScripts';
+import StarterBaseContextApis from '../views/doc/starterBase/StarterBaseContextApis';
 import StarterBaseWhyTs from '../views/doc/starterBase/StarterBaseWhyTs';
 // Section: scaffolding
 import ScaffoldingInstall from '../views/doc/scaffolding/ScaffoldingInstall';
 import ScaffoldingGenrPrj from '../views/doc/scaffolding/ScaffoldingGenrPrj';
 import ScaffoldingStandalonePkg from '../views/doc/scaffolding/ScaffoldingStandalonePkg';
 import ScaffoldingGenrTpl from '../views/doc/scaffolding/ScaffoldingGenrTpl';
-// Section: browserAdaptor
-import BrowserAdaptorInstall from '../views/doc/browserAdaptor/BrowserAdaptorInstall';
-import BrowserAdaptorUserCases from '../views/doc/browserAdaptor/BrowserAdaptorUserCases';
-// Section: reduxOpenfin
-import ReduxOpenfinInstall from '../views/doc/reduxOpenfin/ReduxOpenfinInstall';
-import ReduxOpenfinCommPattern from '../views/doc/reduxOpenfin/ReduxOpenfinCommPattern';
-import ReduxOpenfinSupportedApis from '../views/doc/reduxOpenfin/ReduxOpenfinSupportedApis';
-import ReduxOpenfinSharedActions from '../views/doc/reduxOpenfin/ReduxOpenfinSharedActions';
-import ReduxOpenfinSnapDock from '../views/doc/reduxOpenfin/ReduxOpenfinSnapDock';
+// Section: professional
+import ProfessionalReduxs from '../views/doc/professional/ProfessionalReduxs';
 // @@END OF Generated routes imports
 
 // about
@@ -62,9 +60,34 @@ export const docRouteItems:IDocRouteCompItems[] = [
                     component: StarterBaseFeatures,
                 },
                 {
-                    path: '/doc/starterBaseReduxs',
-                    name: 'starterBaseReduxs',
-                    component: StarterBaseReduxs,
+                    path: '/doc/starterBaseDependencies',
+                    name: 'starterBaseDependencies',
+                    component: StarterBaseDependencies,
+                },
+                {
+                    path: '/doc/starterBaseRoutes',
+                    name: 'starterBaseRoutes',
+                    component: StarterBaseRoutes,
+                },
+                {
+                    path: '/doc/starterBaseReuseableComps',
+                    name: 'starterBaseReuseableComps',
+                    component: StarterBaseReuseableComps,
+                },
+                {
+                    path: '/doc/starterBaseConstants',
+                    name: 'starterBaseConstants',
+                    component: StarterBaseConstants,
+                },
+                {
+                    path: '/doc/starterBaseScripts',
+                    name: 'starterBaseScripts',
+                    component: StarterBaseScripts,
+                },
+                {
+                    path: '/doc/starterBaseContextApis',
+                    name: 'starterBaseContextApis',
+                    component: StarterBaseContextApis,
                 },
                 {
                     path: '/doc/starterBaseWhyTs',
@@ -99,47 +122,12 @@ export const docRouteItems:IDocRouteCompItems[] = [
             ].map(mapToPublicPathname),
         },
         {
-            name : 'browserAdaptor',
+            name : 'professional',
             routeItems : [
                 {
-                    path: '/doc/browserAdaptorInstall',
-                    name: 'browserAdaptorInstall',
-                    component: BrowserAdaptorInstall,
-                },
-                {
-                    path: '/doc/browserAdaptorUserCases',
-                    name: 'browserAdaptorUserCases',
-                    component: BrowserAdaptorUserCases,
-                },
-            ].map(mapToPublicPathname),
-        },
-        {
-            name : 'reduxOpenfin',
-            routeItems : [
-                {
-                    path: '/doc/reduxOpenfinInstall',
-                    name: 'reduxOpenfinInstall',
-                    component: ReduxOpenfinInstall,
-                },
-                {
-                    path: '/doc/reduxOpenfinCommPattern',
-                    name: 'reduxOpenfinCommPattern',
-                    component: ReduxOpenfinCommPattern,
-                },
-                {
-                    path: '/doc/reduxOpenfinSupportedApis',
-                    name: 'reduxOpenfinSupportedApis',
-                    component: ReduxOpenfinSupportedApis,
-                },
-                {
-                    path: '/doc/reduxOpenfinSharedActions',
-                    name: 'reduxOpenfinSharedActions',
-                    component: ReduxOpenfinSharedActions,
-                },
-                {
-                    path: '/doc/reduxOpenfinSnapDock',
-                    name: 'reduxOpenfinSnapDock',
-                    component: ReduxOpenfinSnapDock,
+                    path: '/doc/professionalReduxs',
+                    name: 'professionalReduxs',
+                    component: ProfessionalReduxs,
                 },
             ].map(mapToPublicPathname),
         },

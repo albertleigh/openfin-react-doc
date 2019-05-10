@@ -7,14 +7,14 @@ import { MarkdownElement } from '../../../components'
 
 import { Language } from '../../../GlobalTypes';
 
-import enUs from '../../../markdowns/en-US/startBase/whyTS.md';
-import zhCn from '../../../markdowns/zh-CN/startBase/whyTS.md';
+import enUs from '../../../markdowns/en-US/starterBase/constants.md';
+import zhCn from '../../../markdowns/zh-CN/starterBase/constants.md';
 
-const StartBaseWhyTsView:React.FunctionComponent<{}> = (
+const StarterBaseConstantsView:React.FunctionComponent<{}> = (
 {}
 ) => {
 
-    const { t, i18n } = useTranslation('startBase', { useSuspense: false });
+    const { t, i18n } = useTranslation('starterBase', { useSuspense: false });
 
     switch (i18n.language) {
         case Language.en_US:
@@ -39,4 +39,4 @@ const StartBaseWhyTsView:React.FunctionComponent<{}> = (
 
 }
 
-export default StartBaseWhyTsView;
+export default StarterBaseConstantsView;

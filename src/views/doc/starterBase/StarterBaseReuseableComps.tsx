@@ -7,14 +7,14 @@ import { MarkdownElement } from '../../../components'
 
 import { Language } from '../../../GlobalTypes';
 
-import enUs from '../../../markdowns/en-US/reduxOpenfin/commPattern.md';
-import zhCn from '../../../markdowns/zh-CN/reduxOpenfin/commPattern.md';
+import enUs from '../../../markdowns/en-US/starterBase/reuseableComps.md';
+import zhCn from '../../../markdowns/zh-CN/starterBase/reuseableComps.md';
 
-const ReduxOpenfinCommPatternView:React.FunctionComponent<{}> = (
+const StarterBaseReuseableCompsView:React.FunctionComponent<{}> = (
 {}
 ) => {
 
-    const { t, i18n } = useTranslation('reduxOpenfin', { useSuspense: false });
+    const { t, i18n } = useTranslation('starterBase', { useSuspense: false });
 
     switch (i18n.language) {
         case Language.en_US:
@@ -39,4 +39,4 @@ const ReduxOpenfinCommPatternView:React.FunctionComponent<{}> = (
 
 }
 
-export default ReduxOpenfinCommPatternView;
+export default StarterBaseReuseableCompsView;

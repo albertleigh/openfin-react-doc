@@ -7,14 +7,14 @@ import { MarkdownElement } from '../../../components'
 
 import { Language } from '../../../GlobalTypes';
 
-import enUs from '../../../markdowns/en-US/browserAdaptor/userCases.md';
-import zhCn from '../../../markdowns/zh-CN/browserAdaptor/userCases.md';
+import enUs from '../../../markdowns/en-US/starterBase/routes.md';
+import zhCn from '../../../markdowns/zh-CN/starterBase/routes.md';
 
-const BrowserAdaptorUserCasesView:React.FunctionComponent<{}> = (
+const StarterBaseRoutesView:React.FunctionComponent<{}> = (
 {}
 ) => {
 
-    const { t, i18n } = useTranslation('browserAdaptor', { useSuspense: false });
+    const { t, i18n } = useTranslation('starterBase', { useSuspense: false });
 
     switch (i18n.language) {
         case Language.en_US:
@@ -39,4 +39,4 @@ const BrowserAdaptorUserCasesView:React.FunctionComponent<{}> = (
 
 }
 
-export default BrowserAdaptorUserCasesView;
+export default StarterBaseRoutesView;

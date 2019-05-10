@@ -7,14 +7,14 @@ import { MarkdownElement } from '../../../components'
 
 import { Language } from '../../../GlobalTypes';
 
-import enUs from '../../../markdowns/en-US/reduxOpenfin/supportedApis.md';
-import zhCn from '../../../markdowns/zh-CN/reduxOpenfin/supportedApis.md';
+import enUs from '../../../markdowns/en-US/professional/reduxs.md';
+import zhCn from '../../../markdowns/zh-CN/professional/reduxs.md';
 
-const ReduxOpenfinSupportedApisView:React.FunctionComponent<{}> = (
+const ProfessionalReduxsView:React.FunctionComponent<{}> = (
 {}
 ) => {
 
-    const { t, i18n } = useTranslation('reduxOpenfin', { useSuspense: false });
+    const { t, i18n } = useTranslation('professional', { useSuspense: false });
 
     switch (i18n.language) {
         case Language.en_US:
@@ -39,4 +39,4 @@ const ReduxOpenfinSupportedApisView:React.FunctionComponent<{}> = (
 
 }
 
-export default ReduxOpenfinSupportedApisView;
+export default ProfessionalReduxsView;

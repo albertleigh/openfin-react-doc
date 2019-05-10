@@ -7,14 +7,14 @@ import { MarkdownElement } from '../../../components'
 
 import { Language } from '../../../GlobalTypes';
 
-import enUs from '../../../markdowns/en-US/browserAdaptor/install.md';
-import zhCn from '../../../markdowns/zh-CN/browserAdaptor/install.md';
+import enUs from '../../../markdowns/en-US/starterBase/dependencies.md';
+import zhCn from '../../../markdowns/zh-CN/starterBase/dependencies.md';
 
-const BrowserAdaptorInstallView:React.FunctionComponent<{}> = (
+const StarterBaseDependenciesView:React.FunctionComponent<{}> = (
 {}
 ) => {
 
-    const { t, i18n } = useTranslation('browserAdaptor', { useSuspense: false });
+    const { t, i18n } = useTranslation('starterBase', { useSuspense: false });
 
     switch (i18n.language) {
         case Language.en_US:
@@ -39,4 +39,4 @@ const BrowserAdaptorInstallView:React.FunctionComponent<{}> = (
 
 }
 
-export default BrowserAdaptorInstallView;
+export default StarterBaseDependenciesView;

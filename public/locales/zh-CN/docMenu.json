@@ -9,16 +9,22 @@
 
   "starterBase":"模板工程解析",
   "starterBaseFeatures":"功能",
-  "starterBaseReduxs":"Reduxs",
-  "starterBaseComps":"自带组件",
+  "starterBaseDependencies":"依赖库",
   "starterBaseRoutes":"路径样式",
+  "starterBaseReuseableComps":"可复用组件",
+  "starterBaseConstants":"配置常量",
+  "starterBaseScripts":"帮助脚本",
+  "starterBaseContextApis":"Context APIs",
   "starterBaseWhyTs":"为什么typescript?",
 
-  "scaffolding":"代码生成工具 AL-CLI",
+  "scaffolding":"代码生成工具 openfin-js-cli",
   "scaffoldingInstall":"安装代码生成工具",
   "scaffoldingGenrPrj":"生成模板工程",
-  "scaffoldingStandalonePkg":"Openfin-react-ts 独立打包",
-  "scaffoldingGenrTpl":"生成模板代码",
+  "scaffoldingStandalonePkg":"独立打包",
+  "scaffoldingGenrTpl":"生成模板组件代码",
+
+  "professional":"高级特性解析",
+  "professionalReduxs":"Redux结构",
 
   "browserAdaptor":"浏览器适配器",
   "browserAdaptorInstall":"安装适配器",

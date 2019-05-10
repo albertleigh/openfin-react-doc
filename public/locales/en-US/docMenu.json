@@ -9,9 +9,12 @@
 
   "starterBase":"Templates",
   "starterBaseFeatures":"Features",
-  "starterBaseReduxs":"Reduxs",
-  "starterBaseComps":"Components",
+  "starterBaseDependencies":"Dependencies",
   "starterBaseRoutes":"Routes",
+  "starterBaseReuseableComps":"Reusable Comps",
+  "starterBaseConstants":"Config Constants",
+  "starterBaseScripts":"Helper Scripts",
+  "starterBaseContextApis":"Context APIs",
   "starterBaseWhyTs":"Why typescript?",
 
   "scaffolding":"openfin-js-cli",
@@ -19,6 +22,9 @@
   "scaffoldingGenrPrj":"Generating projects",
   "scaffoldingStandalonePkg":"Standalone Package",
   "scaffoldingGenrTpl":"Generating templates",
+
+  "professional":"Advanced Features",
+  "professionalReduxs":"Redux Structure",
 
   "browserAdaptor":"Browser Adaptor",
   "browserAdaptorInstall":"Install BA",

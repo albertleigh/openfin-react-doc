@@ -7,10 +7,10 @@ import { MarkdownElement } from '../../../components'
 
 import { Language } from '../../../GlobalTypes';
 
-import enUs from '../../../markdowns/en-US/starterBase/reduxs.md';
-import zhCn from '../../../markdowns/zh-CN/starterBase/reduxs.md';
+import enUs from '../../../markdowns/en-US/starterBase/contextApis.md';
+import zhCn from '../../../markdowns/zh-CN/starterBase/contextApis.md';
 
-const StarterBaseReduxsView:React.FunctionComponent<{}> = (
+const StarterBaseContextApisView:React.FunctionComponent<{}> = (
 {}
 ) => {
 
@@ -39,4 +39,4 @@ const StarterBaseReduxsView:React.FunctionComponent<{}> = (
 
 }
 
-export default StarterBaseReduxsView;
+export default StarterBaseContextApisView;
