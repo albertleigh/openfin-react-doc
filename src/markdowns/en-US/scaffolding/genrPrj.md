@@ -2,6 +2,9 @@ Generate template projects
 ----------------
 *Openfin JS App templates basing on create-react-app*
 
+- Template `react-app`
+- Template `react-app-pro`
+
 To generate the sample project, change directory into your Workspace folder like `/home/User/Workspaces`
 
 
