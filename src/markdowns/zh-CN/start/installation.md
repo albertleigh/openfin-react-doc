@@ -12,4 +12,12 @@
 
 > 目前Openfin 并不提供 Mac&Linux 下安装包
 
-> 但 代码生成工具al-cli提供一种封装方案，在代码生成工具 openfin-js-cli 部分有介绍。
+> 但 代码生成工具al-cli提供一种封装方案，在代码生成工具 [openfin-js-cli] 部分有介绍。
+
+### Wanna get hands dirty?
+
+> Not having fun with the installer, please check the [openfin-js-cli] and its corresponding sections of this document 
+> to dig into the template codes for more. Have fun~
+
+
+[openfin-js-cli]: https://www.npmjs.com/package/openfin-js-cli
