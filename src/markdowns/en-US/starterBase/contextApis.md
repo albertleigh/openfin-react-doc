@@ -244,5 +244,108 @@ export interface IWithApplication {
     - `onNotificationClose:()=>void`
     
         Close current notification.
+        
+        
+### Config Context
+
+> The state of config context could be extended by app developers, therefore there usually be more fields beneath configs.
+> It is completely up to how app developer set the configTabs fields of `InitializeReactOpenfin`'s argument.
+
+```typescript
+export enum MuiTheme{
+    LIGHT='light',
+    DARK='dark',
+}
+
+export type I18Language =
+    'en-US' |
+    'en-GB' |
+    'en-CA' |
+    'zh-CN' |
+    'zh-HK' |
+    'de-DE' |
+    'fr-FR' |
+    'es-ES' |
+    string;
+
+export interface IWithConfig {
+    config:{
+        application:{
+            theme:MuiTheme,
+            language:I18Language,
+            newWinTop:number,
+            newWinLeft:number,
+            newWinWidth:number,
+            newWinHeight:number,
+            newWindDeltaLeft:number,
+            newWindDeltaHeight:number,
+        }
+    },
+    actions:{
+        onToggleThemeField:()=>void,
+        onUpdateLangField:(lang:I18Language)=>void,
+        onUpdateGlobalFilterString:(filterStr:string)=>void,
+        onUpdateOneField:(tabName:string,fieldName:string,value:any)=>void,
+    },
+}
+```
+
+- #### config.application
+
+    - `theme:MuiTheme`
+    
+        Current theme of the application, either light or dark
+    
+    - `language:I18Language`
+    
+        Current language of the application.
+    
+    - `newWinTop:number`
+    
+        Current top position in pixel of a new window.
+    
+    - `newWinLeft:number`
+    
+        Current left position in pixel of a new window.
+    
+    - `newWinWidth:number`
+    
+        Current default width in pixel of a new window.
+    
+    - `newWinHeight:number`
+    
+        Current default height in pixel of a new window.
+    
+    - `newWindDeltaLeft:number`
+    
+        Current horizontal shift in pixel of a new window.
+    
+    - `newWindDeltaHeight:number`
+    
+        Current vertical shift in pixel of a new window.
+
+- #### actions
+
+    - `onToggleThemeField:()=>void`
+    
+        Toggle the theme of current application, switch between light and dark
+        
+    - `onUpdateLangField:(lang:I18Language)=>void`
+    
+        Update the current language of the application.
+    
+    - `onUpdateGlobalFilterString:(filterStr:string)=>void`
+    
+        Update the global filter string upon config tab.
+    
+    - `onUpdateOneField:(tabName:string,fieldName:string,value:any)=>void`
+    
+        Update the value of a config field via its tab name and field name.
+        
+        
+> So far, we have clear all the stuffs of concise template. In the next we will introduce [openfin-js-cli], a scaffolding
+> tool help us generate boilerplate codes. After that, we will start to cover few advance topics of [openfin-js-app].   
 
 [react-openfin]:https://www.npmjs.com/package/react-openfin
+[openfin-js-app]: https://github.com/openfin-js-app
+[openfin-js-cli]: https://www.npmjs.com/package/openfin-js-cli
