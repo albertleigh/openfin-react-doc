@@ -4,11 +4,11 @@ Connect to Redux
 > introduce a proper state pattern to work with [react-openfin], then we will continue to introduce what kind of 
 > advance features we can benefit out of it.  
 
-### Check `react-app-pro` via [openfin-js-cli]
+### Generate a `react-app-pro` template via [openfin-js-cli]
 
-For better understanding, please generate an pro template from [openfin-js-cli] for reference. 
+For better understanding, please generate an `react-app-pro` template via [openfin-js-cli] for reference. 
 
-Alternative, we can checkout [openfin-react-starter] directly, [openfin-js-cli] actually generates a pro template 
+Alternative, we can checkout [openfin-react-starter] directly, [openfin-js-cli] actually generates a `react-app-pro` template 
 basing on [openfin-react-starter].
 
 ### [react-openfin]'s redux middleware
@@ -56,16 +56,79 @@ export default (
 
 }
 ``` 
-Meanwhile we also need a side effect helper to help manager event chains, for here we choice [redux-saga] as the example.
+Meanwhile we also need a side effect helper to help manager event chains, for here we choice [redux-saga] as a example.
 
 #### Purpose and usage of `ReactOpenfinMiddleware`
 
-A redux action could be a ideal instance representing a user event. Moreover, via FLUX apis, [react-openfin] can effectively
-communicate with client redux store in a decoupled way.
+A redux action could be an ideal instance representing a user event. Moreover, via FLUX apis, [react-openfin] can effectively
+communicate with client redux store in a decoupled way. `ReactOpenfinMiddleware` is the bridge handle the communication between
+[react-openfin] and the app built, we call it client app. 
 
-For instance, if app wann show a snack bar msg maintained by [react-openfin]. 
+For instance, if app wann show a snack bar msg maintained by [react-openfin].  Instead of triggering via contextApi,
+action could be also dispatch from client redux. And `ReactOpenfinMiddleware` will intercept it and dispatch it.
 ```typescript
-import { appli} from 'react-openfin/reduxs'
+import { applicationNewSnackbar } from 'react-openfin/reduxs'
+
+// regular redux
+function reduxCb(){
+    dispatch(applicationNewSnackbar({
+        message:'From redux dispatch',
+        variant:'info'
+    }))
+    // snack bar will be shown.
+}
+
+import { put } from 'redux-saga';
+// saga
+function* sagaHandler(){
+    yield put(applicationNewSnackbar({
+        message:'From saga',
+        variant:'info'
+    }))
+    // snack bar will be shown.
+}
+```
+
+Moreover, `ReactOpenfinMiddleware` will also be responsible to dispatch response action back to client redux if needed.
+
+For instance, during application booting, once `onApplicationStart` upon `Application context` triggered from `App.tsx`.
+an `APPLICATION_AWAIT` action will be dispatched into client redux via `ReactOpenfinMiddleware` telling client that all
+[react-openfin] context are populated correctly and ready to use and also [react-openfin] is expecting client to return
+`APPLICATION_READY` with a time limit to response [react-openfin] that all client initialization done, and ready to switch
+to the default view or target url specified in `APPLICATION_READY` action. Then after receiving `APPLICATION_READY`, 
+[react-openfin] will reply a response action  `APPLICATION_STARTED` and dispatch into client redux also via `ReactOpenfinMiddleware`.
+
+_An example of intercepting app booting in a saga handler and the complete example could be found in 
+[src/reduxs/sagas/client.ts](https://github.com/openfin-js-app/openfin-react-starter/blob/master/src/reduxs/sagas/client.ts)_
+```typescript
+import { delay, putResolve, takeLatest } from 'redux-saga/effects';
+// !!!README!!!
+// use the redux for advanced features
+import {
+    APPLICATION_AWAIT,
+    applicationReady,
+} from 'react-openfin/reduxs';
+
+// !!!README!!!
+// trigger client side initialization over here if needed
+export function* handleStarting(action){
+    console.log('client saga :: handlStarting',action);
+    // APPLICATION_AWAIT will be sent once application started
+    // client side initialization effects can be triggered over here
+    yield delay(3000);
+    // once done, client could send applicationReady action to let react-openfin to switch to
+    // the targetUrl specified int the payload from loading view before fuse timeout
+    yield putResolve(applicationReady({
+        // optional sample targetUrl
+        // targetUrl:'/login'
+    }));
+}
+
+export default function *() {
+    // !!!README!!!
+    // trigger client side initialization over here if needed
+    yield takeLatest(APPLICATION_AWAIT, handleStarting);
+}
 ```
 
 [redux-saga]:https://www.npmjs.com/package/redux-saga
