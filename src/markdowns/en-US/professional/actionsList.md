@@ -363,6 +363,23 @@ Request and Response actions provided by [react-openfin]
         Show a snack bar msg maintained by react-openfin
 
 - #####`APPLICATION_LAUNCH_BAR_TOGGLE`
+
+    Req Action
+                        
+    ###### Creator Function
+    
+        `import { applicationLaunchBarToggle } from 'react-openfin/reduxs`
+        
+        applicationLaunchBarToggle()
+        
+    ###### Request payload schema
+        
+    Empty
+    
+    ###### Description
+    
+        Toggle either to siwtch to launchbar or return to main window. 
+
 - #####`APPLICATION_LAUNCH_BAR_TOGGLED`
 - #####`APPLICATION_LAUNCH_BAR_TOGGLE_COLLAPSE`
 - #####`APPLICATION_LAUNCH_NEW_WINDOW`
