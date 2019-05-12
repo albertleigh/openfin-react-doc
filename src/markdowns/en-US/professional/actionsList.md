@@ -1,5 +1,5 @@
 Request and Response actions provided by [react-openfin]
-----------------
+-------------------------------------------------------
 
 #### Complete List 
 
