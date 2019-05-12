@@ -265,10 +265,103 @@ Request and Response actions provided by [react-openfin]
         Respone action comfirming notification window booting process completed, redirect to default view or target url already.
 
 - #####`APPLICATION_DRAWER_TOGGLE`
+    
+    Req Action
+                
+    ###### Creator Function
+    
+        `import { applicationDrawerToggle } from 'react-openfin/reduxs`
+        
+        applicationDrawerToggle()
+        
+    ###### Request payload schema
+        
+    Empty
+    
+    ###### Description
+    
+        Toggle current drawer sidebar to be open or closed.
+        
 - #####`APPLICATION_TOGGLE_WINDOW_STATE`
+
+    Req Action
+                    
+    ###### Creator Function
+    
+        `import { applicationToggleWindowState } from 'react-openfin/reduxs`
+        
+        applicationToggleWindowState()
+        
+    ###### Request payload schema
+        
+    Empty
+    
+    ###### Description
+    
+        Toggle current window status to be normal or maximized.
+
 - #####`APPLICATION_CUR_WIN_CLOSING`
+
+    Res Action
+                    
+    ###### Action Type
+    
+        `import { APPLICATION_CUR_WIN_CLOSING } from 'react-openfin/reduxs`
+    
+    ###### Response payload schema
+    
+        Empty
+        
+    ###### Description
+        
+        Respone action telling client current window is closing, either response skip to close within a time limit or it will close after that. 
+
 - #####`APPLICATION_CUR_WIN_READY_TO_CLOSE`
+
+    Req Action
+                    
+    ###### Creator Function
+    
+        `import { applicationCurWinReadyToClose } from 'react-openfin/reduxs`
+        
+        applicationCurWinReadyToClose({})
+        
+    ###### Request payload schema - IReadyToClose
+        
+    | Field | Type | Description |
+    | --- | --- | --- |
+    | skipClosing | optional `boolean` | flag to skip default closing actions or not |
+    
+    ###### Description
+    
+        Ask react-openfin to intercept to block normal closing. 
+
 - #####`APPLICATION_NEW_SNACKBAR`
+
+    Req Action
+                        
+    ###### Creator Function
+    
+        `import { applicationNewSnackbar } from 'react-openfin/reduxs`
+        
+        applicationNewSnackbar({
+            message:'Sample msg',
+            variant:'info',
+        })
+        
+    ###### Request payload schema - IApplicationNewSnackbarOption
+        
+    | Field | Type | Description |
+    | --- | --- | --- |
+    | message | `string` | Message string |
+    | variant | optional 'primary' or 'success' or 'warning' or 'error' or 'info' or 'rose' | The variant of the message |
+    | vertical |  optional 'top' or 'bottom' | The variant of the message |
+    | horizontal | optional 'left' or 'right' or 'center' | The variant of the message |
+    
+    ###### Description
+    
+        Show a snack bar msg maintained by react-openfin
+
 - #####`APPLICATION_LAUNCH_BAR_TOGGLE`
 - #####`APPLICATION_LAUNCH_BAR_TOGGLED`
 - #####`APPLICATION_LAUNCH_BAR_TOGGLE_COLLAPSE`
