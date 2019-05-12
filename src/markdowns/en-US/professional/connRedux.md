@@ -6,7 +6,7 @@ Connect to Redux
 
 ### Generate a `react-app-pro` template via [openfin-js-cli]
 
-For better understanding, please generate an `react-app-pro` template via [openfin-js-cli] for reference. 
+For better understanding, suggest to generate an `react-app-pro` template via [openfin-js-cli] for reference. 
 
 Alternative, we can checkout [openfin-react-starter] directly, [openfin-js-cli] actually generates a `react-app-pro` template 
 basing on [openfin-react-starter].
@@ -130,6 +130,28 @@ export default function *() {
     yield takeLatest(APPLICATION_AWAIT, handleStarting);
 }
 ```
+
+One more thing, what might also be found is, if we want, we do not have to trigger onApplicationStart from view via 
+context api. Dispatch corresponding applicationStart action will also work. 
+
+```typescript
+import { applicationStart } from 'react-openfin/reduxs'
+
+// regular redux
+function reduxCb(){
+    // the same effect as calling applicationStart via context api
+    dispatch(applicationStart())
+}
+
+import { put } from 'redux-saga';
+// saga
+function* sagaHandler(){
+    // the same effect as calling applicationStart via context api
+    yield put(applicationStart())
+}
+```
+
+
 
 [redux-saga]:https://www.npmjs.com/package/redux-saga
 
