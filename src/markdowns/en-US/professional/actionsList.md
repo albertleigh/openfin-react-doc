@@ -381,8 +381,60 @@ Request and Response actions provided by [react-openfin]
         Toggle either to siwtch to launchbar or return to main window. 
 
 - #####`APPLICATION_LAUNCH_BAR_TOGGLED`
+
+    Res Action
+                        
+    ###### Action Type
+    
+        `import { APPLICATION_LAUNCH_BAR_TOGGLED } from 'react-openfin/reduxs`
+    
+    ###### Response payload schema
+    
+    | Field | Type | Description |
+    | --- | --- | --- |
+    | status | `APPLICATION_LAUNCH_BAR_STATUS` | Either `APPLICATION_LAUNCH_BAR_STATUS.SWITCH_TO_LAUNCHBAR` or `APPLICATION_LAUNCH_BAR_STATUS.SWITCH_TO_MAIN_WIN` |
+        
+    ###### Description
+        
+        Respone action dispatched only when applicaiton launchbar toggled, and its status value in the payload identifies 
+        whether it switchs to launchBar or return to mainWindow
+
 - #####`APPLICATION_LAUNCH_BAR_TOGGLE_COLLAPSE`
+    
+    Req Action
+                            
+    ###### Creator Function
+    
+        `import { applicationLaunchBarToggleCollapse } from 'react-openfin/reduxs`
+        
+        applicationLaunchBarToggleCollapse()
+        
+    ###### Request payload schema
+        
+    Empty
+    
+    ###### Description
+    
+        Collapse launchBar. 
+
 - #####`APPLICATION_LAUNCH_NEW_WINDOW`
+
+    Req Action
+                                
+    ###### Creator Function
+    
+        `import { applicationLaunchBarToggleCollapse } from 'react-openfin/reduxs`
+        
+        applicationLaunchBarToggleCollapse()
+        
+    ###### Request payload schema - Partial<WindowOptions>
+    
+    Openfin Window options
+    
+    ###### Description
+    
+        Launch a new window.
+
 - #####`APPLICATION_LAUNCH_BAR_CLOSE`
 - #####`CONFIG_UPDATE_GLOBAL_FILTER_STR`
 - #####`CONFIG_UPDATE_ONE_FIELD`
