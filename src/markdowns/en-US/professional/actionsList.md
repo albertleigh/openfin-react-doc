@@ -454,8 +454,69 @@ Request and Response actions provided by [react-openfin]
         Close launchBar and exit application.
 
 - #####`CONFIG_UPDATE_GLOBAL_FILTER_STR`
+
+    Req Action
+                                        
+    ###### Creator Function
+    
+        `import { configUpdateGlobalFilterStr } from 'react-openfin/reduxs`
+        
+        configUpdateGlobalFilterStr(configGlobalFilterString:string)
+        
+    ###### Request payload schema
+    
+    | Field | Type | Description |
+    | --- | --- | --- |
+    | configGlobalFilterString | `string` | The filter string to filer config fields on config view |
+    
+    ###### Description
+    
+        Set the global filter string to filter the config fields shwon on the config view.        
+        
 - #####`CONFIG_UPDATE_ONE_FIELD`
+
+    Req Action
+                                        
+    ###### Creator Function
+    
+        `import { configUpdateOneField } from 'react-openfin/reduxs`
+        
+        configUpdateOneField(tabName:string, fieldName:string, value:any)
+        
+    ###### Request payload schema
+    
+    | Field | Type | Description |
+    | --- | --- | --- |
+    | tabName | `string` | The tab name to of the config field to update |
+    | fieldName | `string` | The field name to of the config field to update |
+    | value | `any` | The value of the config field |
+    
+    ###### Description
+    
+        Create or update a config field value of the configure service provided by the react-openfin        
+
 - #####`CONFIG_SELECT_ONE_FIELD`
+
+    Req Action
+                                            
+    ###### Creator Function
+    
+        `import { configSelectOneField } from 'react-openfin/reduxs`
+        
+        configSelectOneField({tabName:string, fieldName:string})
+        
+    ###### Request payload schema - IConfigSelectOneFieldOption
+    
+    | Field | Type | Description |
+    | --- | --- | --- |
+    | tabName | `string` | The tab name to of the config field to select |
+    | fieldName | `string` | The field name to of the config field to select |
+    
+    ###### Description
+    
+        Select the value saved on configuration service provided by react-openfin, once the value sezied an
+        CONFIG_SELECT_ONE_FIELD_RES acion will be responed.
+
 - #####`CONFIG_SELECT_ONE_FIELD_RES`
 - #####`CONFIG_REMOVE_ONE_FIELD`
 
