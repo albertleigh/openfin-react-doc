@@ -78,7 +78,7 @@ Request and Response actions provided by [react-openfin]
             
     ###### Action Type
     
-        `import { APPLICATION_CHILD_AWAIT } from 'react-openfin/reduxs`
+        `import { APPLICATION_AWAIT } from 'react-openfin/reduxs`
     
     ###### Response payload schema
     
@@ -106,14 +106,94 @@ Request and Response actions provided by [react-openfin]
     
     ###### Description
     
-        Start the booting process of Main Window Application. Once booted APPLICATION_AWAIT will be responed.
+        Inform react-openfin, all client side initialization done, and ready to to redirect to default view or target url.
 
 - #####`APPLICATION_STARTED`
 
+    Res Action
+                
+    ###### Action Type
+    
+        `import { APPLICATION_STARTED } from 'react-openfin/reduxs`
+    
+    ###### Response payload schema
+    
+        Empty
+        
+    ###### Description
+        
+        Respone action comfirming applicaiton booting process completed, redirect to default view or target url already.
+
 - #####`APPLICATION_CHILD_START`
+
+    Req Action
+        
+    ###### Creator Function
+    
+        `import { applicationChildStart } from 'react-openfin/reduxs`
+        
+        applicationChildStart()
+        
+    ###### Request payload schema
+            
+        Empty  
+    
+    ###### Description
+    
+        Start the booting process of a child window. Once booted APPLICATION_CHILD_AWAIT will be responed.
+        
 - #####`APPLICATION_CHILD_AWAIT`
+
+    Res Action
+                
+    ###### Action Type
+    
+        `import { APPLICATION_CHILD_AWAIT } from 'react-openfin/reduxs`
+    
+    ###### Response payload schema
+    
+        Empty
+        
+    ###### Description
+        
+        Respone action comfirming child window fully stared, all conntexts populated and ready to use.
+
 - #####`APPLICATION_CHILD_READY`
+    
+    Req Action
+            
+    ###### Creator Function
+    
+        `import { applicationChildReady } from 'react-openfin/reduxs`
+        
+        applicationChildReady({})
+        
+    ###### Request payload schema
+        
+    | Field | Type | Description |
+    | --- | --- | --- |
+    | targetUrl | optional `string` | the path redirected to after full started |
+    
+    ###### Description
+    
+        Inform react-openfin, all client side initialization done, and ready to to redirect to default view or target url.
+        
 - #####`APPLICATION_CHILD_STARTED`
+
+    Res Action
+                
+    ###### Action Type
+    
+        `import { APPLICATION_CHILD_STARTED } from 'react-openfin/reduxs`
+    
+    ###### Response payload schema
+    
+        Empty
+        
+    ###### Description
+        
+        Respone action comfirming child window booting process completed, redirect to default view or target url already.
+
 - #####`APPLICATION_NOTIFICATION_START`
 - #####`APPLICATION_NOTIFICATION_AWAIT`
 - #####`APPLICATION_NOTIFICATION_READY`
