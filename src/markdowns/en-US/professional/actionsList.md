@@ -195,9 +195,75 @@ Request and Response actions provided by [react-openfin]
         Respone action comfirming child window booting process completed, redirect to default view or target url already.
 
 - #####`APPLICATION_NOTIFICATION_START`
+    
+    Req Action
+        
+    ###### Creator Function
+    
+        `import { applicationNotificationStart } from 'react-openfin/reduxs`
+        
+        applicationNotificationStart()
+        
+    ###### Request payload schema
+            
+        Empty  
+    
+    ###### Description
+    
+        Start the booting process of a notification window. Once booted APPLICATION_CHILD_AWAIT will be responed.
+        
 - #####`APPLICATION_NOTIFICATION_AWAIT`
+
+    Res Action
+                    
+    ###### Action Type
+    
+        `import { APPLICATION_NOTIFICATION_AWAIT } from 'react-openfin/reduxs`
+    
+    ###### Response payload schema
+    
+        Empty
+        
+    ###### Description
+        
+        Respone action comfirming notification window fully stared, all conntexts populated and ready to use.
+
 - #####`APPLICATION_NOTIFICATION_READY`
+
+    Req Action
+                
+    ###### Creator Function
+    
+        `import { applicationNotificationReady } from 'react-openfin/reduxs`
+        
+        applicationNotificationReady({})
+        
+    ###### Request payload schema
+        
+    | Field | Type | Description |
+    | --- | --- | --- |
+    | targetUrl | optional `string` | the path redirected to after full started |
+    
+    ###### Description
+    
+        Inform react-openfin, all client side initialization done, and ready to to redirect to default view or target url.
+
 - #####`APPLICATION_NOTIFICATION_STARTED`
+
+    Res Action
+                    
+    ###### Action Type
+    
+        `import { APPLICATION_NOTIFICATION_STARTED } from 'react-openfin/reduxs`
+    
+    ###### Response payload schema
+    
+        Empty
+        
+    ###### Description
+        
+        Respone action comfirming notification window booting process completed, redirect to default view or target url already.
+
 - #####`APPLICATION_DRAWER_TOGGLE`
 - #####`APPLICATION_TOGGLE_WINDOW_STATE`
 - #####`APPLICATION_CUR_WIN_CLOSING`
