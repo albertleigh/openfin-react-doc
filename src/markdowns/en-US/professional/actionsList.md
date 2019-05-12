@@ -511,6 +511,7 @@ Request and Response actions provided by [react-openfin]
     | --- | --- | --- |
     | tabName | `string` | The tab name to of the config field to select |
     | fieldName | `string` | The field name to of the config field to select |
+    | userObj | optional any | An optional user object to assist identify the response action if needed |
     
     ###### Description
     
@@ -518,7 +519,47 @@ Request and Response actions provided by [react-openfin]
         CONFIG_SELECT_ONE_FIELD_RES acion will be responed.
 
 - #####`CONFIG_SELECT_ONE_FIELD_RES`
+
+    Res Action
+                        
+    ###### Action Type
+    
+        `import { CONFIG_SELECT_ONE_FIELD_RES } from 'react-openfin/reduxs`
+    
+    ###### Response payload schema
+    
+    | Field | Type | Description |
+    | --- | --- | --- |
+    | tabName | `string` | The tab name to of the config field to select |
+    | fieldName | `string` | The field name to of the config field to select |
+    | userObj | optional any | An optional user object might be set previously to assist identify the response action |
+    | value | `any` | The config value seized |
+       
+    ###### Description
+        
+        Try to size a config value previous saved.
+
 - #####`CONFIG_REMOVE_ONE_FIELD`
 
+    Req Action
+                                            
+    ###### Creator Function
+    
+        `import { configRemoveOneField } from 'react-openfin/reduxs`
+        
+        configRemoveOneField({tabName:string, fieldName:string})
+        
+    ###### Request payload schema - IConfigSelectOneFieldOption
+    
+    | Field | Type | Description |
+    | --- | --- | --- |
+    | tabName | `string` | The tab name to of the config field to delete |
+    | fieldName | `string` | The field name to of the config field to delete |
+    | value | optional `any` | Customized empty value |
+    
+    ###### Description
+    
+        Remove a config value via tabName and fieldName. If value is undefined, the value will be delete from configuration 
+        service. Or the value upon the configure service will be set to the value.
 
 [react-openfin]:https://www.npmjs.com/package/react-openfin
