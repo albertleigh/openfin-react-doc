@@ -436,6 +436,23 @@ Request and Response actions provided by [react-openfin]
         Launch a new window.
 
 - #####`APPLICATION_LAUNCH_BAR_CLOSE`
+
+    Req Action
+                                    
+    ###### Creator Function
+    
+        `import { applicationLaunchBarClose } from 'react-openfin/reduxs`
+        
+        applicationLaunchBarClose()
+        
+    ###### Request payload schema
+    
+    Empty
+    
+    ###### Description
+    
+        Close launchBar and exit application.
+
 - #####`CONFIG_UPDATE_GLOBAL_FILTER_STR`
 - #####`CONFIG_UPDATE_ONE_FIELD`
 - #####`CONFIG_SELECT_ONE_FIELD`
