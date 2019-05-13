@@ -6,7 +6,7 @@
 > in more elegant way.  
 
 ### Common API communication pattern
-----
+
 - There are basically two communication pattern provided by redux-openfin: Promise apis and Flux actions.
 - Redux-openfin split the apis into Applcation, Event, InterApplicationBus Notification System and Window packages.
 - In each package, there will usually be three sub packages: actions, asyncs and types.
