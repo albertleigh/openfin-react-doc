@@ -24,7 +24,12 @@
   "scaffoldingGenrTpl":"Generating templates",
 
   "professional":"Advanced Features",
-  "professionalReduxs":"Redux Structure",
+  "professionalConnRedux":"Connect Redux",
+  "professionalActionsList":"Reusable Actions",
+  "professionalReduxsStateStruct":"State Structure",
+  "professionalStartCloseWin":"onStart and onClose",
+  "professionalSharedActions":"Cross-Win Actions",
+  "professionalReduxOpenfin":"Redux Openfin",
 
   "browserAdaptor":"Browser Adaptor",
   "browserAdaptorInstall":"Install BA",

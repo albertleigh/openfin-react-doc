@@ -24,7 +24,12 @@
   "scaffoldingGenrTpl":"生成模板组件代码",
 
   "professional":"高级特性解析",
-  "professionalReduxs":"Redux结构",
+  "professionalConnRedux":"连入 Redux",
+  "professionalActionsList":"复用 Actions",
+  "professionalReduxsStateStruct":"Redux State 结构",
+  "professionalStartCloseWin":"启动 和 退出",
+  "professionalSharedActions":"跨窗口Actions通信",
+  "professionalReduxOpenfin":"Redux Openfin",
 
   "browserAdaptor":"浏览器适配器",
   "browserAdaptorInstall":"安装适配器",

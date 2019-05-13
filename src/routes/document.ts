@@ -20,7 +20,12 @@ import ScaffoldingGenrPrj from '../views/doc/scaffolding/ScaffoldingGenrPrj';
 import ScaffoldingStandalonePkg from '../views/doc/scaffolding/ScaffoldingStandalonePkg';
 import ScaffoldingGenrTpl from '../views/doc/scaffolding/ScaffoldingGenrTpl';
 // Section: professional
-import ProfessionalReduxs from '../views/doc/professional/ProfessionalReduxs';
+import ProfessionalConnRedux from '../views/doc/professional/ProfessionalConnRedux';
+import ProfessionalActionsList from '../views/doc/professional/ProfessionalActionsList';
+import ProfessionalReduxsStateStruct from '../views/doc/professional/ProfessionalReduxsStateStruct';
+import ProfessionalStartCloseWin from '../views/doc/professional/ProfessionalStartCloseWin';
+import ProfessionalSharedActions from '../views/doc/professional/ProfessionalSharedActions';
+import ProfessionalReduxOpenfin from '../views/doc/professional/ProfessionalReduxOpenfin';
 // @@END OF Generated routes imports
 
 // about
@@ -125,9 +130,34 @@ export const docRouteItems:IDocRouteCompItems[] = [
             name : 'professional',
             routeItems : [
                 {
-                    path: '/doc/professionalReduxs',
-                    name: 'professionalReduxs',
-                    component: ProfessionalReduxs,
+                    path: '/doc/professionalConnRedux',
+                    name: 'professionalConnRedux',
+                    component: ProfessionalConnRedux,
+                },
+                {
+                    path: '/doc/professionalActionsList',
+                    name: 'professionalActionsList',
+                    component: ProfessionalActionsList,
+                },
+                {
+                    path: '/doc/professionalReduxsStateStruct',
+                    name: 'professionalReduxsStateStruct',
+                    component: ProfessionalReduxsStateStruct,
+                },
+                {
+                    path: '/doc/professionalStartCloseWin',
+                    name: 'professionalStartCloseWin',
+                    component: ProfessionalStartCloseWin,
+                },
+                {
+                    path: '/doc/professionalSharedActions',
+                    name: 'professionalSharedActions',
+                    component: ProfessionalSharedActions,
+                },
+                {
+                    path: '/doc/professionalReduxOpenfin',
+                    name: 'professionalReduxOpenfin',
+                    component: ProfessionalReduxOpenfin,
                 },
             ].map(mapToPublicPathname),
         },
