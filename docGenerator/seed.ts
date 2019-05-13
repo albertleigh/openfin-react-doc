@@ -20,7 +20,7 @@ const seed:ISeed = {
         },
         {
             name:'professional',
-            children:['reduxs',]
+            children:['connRedux', 'actionsList', 'reduxsStateStruct', 'startCloseWin', 'sharedActions','reduxOpenfin']
         },
         // {
         //     name:'browserAdaptor',

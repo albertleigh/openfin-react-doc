@@ -1,6 +1,8 @@
 Request and Response actions provided by [react-openfin]
 -------------------------------------------------------
 
+> Since we already introduce the corresponding actions in [react-openfin], better list all definition to clarify their functionality.
+
 #### Complete List 
 
 - `APPLICATION_SET_LOADING_MSG`
