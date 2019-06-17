@@ -1,121 +1,112 @@
 import * as React from 'react';
+import { useRef, useState } from 'react';
 import cx from 'classnames';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-import { WithStyles, withStyles } from '@material-ui/core/styles';
-import { withNamespaces, WithNamespaces } from 'react-i18next';
+import { makeStyles } from '@material-ui/styles';
+import { useTranslation } from 'react-i18next';
 
 import { landingScaffoldingToolSectionCompStyle as style } from '../../../assets/jss/openfin-react-doc';
 
 import Code from '../Code/Code';
 
-import AbstractLandingSection from './AbstractLandingSection';
+import useLandingSectionIntersectionListener from './useLandingSectionIntersectionListener';
 
 import newCompCode from '!raw-loader!./samples/NewComp_tsx';
 
-interface IProps extends WithStyles<typeof style>,WithNamespaces {
+interface IProps {
     onIntersectionChanged: (intersectionObserverEntry:IntersectionObserverEntry) =>void,
 
 }
 
+const useStyles = makeStyles(style);
+
 interface IState{
-    visiblePct:number,
     animated:boolean,
 }
 
-class ScaffoldingToolSectionComp extends AbstractLandingSection<IProps, IState>{
+const ScaffoldingToolSectionComp:React.FunctionComponent<IProps> = (
+    {
+        onIntersectionChanged
+    }
+)=>{
 
-    element:any;
+    const element = useRef(null);
+    const classes = useStyles();
+    const { t, i18n } = useTranslation('landing', { useSuspense: false });
 
-    state={
-        visiblePct: 0,
+    const [state, setState]  = useState<IState>({
         animated:false,
-    }
+    });
+    const { visiblePct } = useLandingSectionIntersectionListener({
+        element:element.current,
+        onIntersectionChanged:(intersectionObserverEntry:IntersectionObserverEntry)=>{
 
-    componentDidMount(): void {
-        super.componentDidMount();
-    }
+            if (onIntersectionChanged){
+                onIntersectionChanged(intersectionObserverEntry);
+            }
 
-    componentWillUnmount(): void {
-        super.componentWillUnmount();
-    }
-
-    onIntersectionChanged =(intersectionObserverEntry:IntersectionObserverEntry)=>{
-
-        if (this.props.onIntersectionChanged){
-            this.props.onIntersectionChanged(intersectionObserverEntry);
+            if (intersectionObserverEntry.intersectionRatio >0.95){
+                setState({animated: true});
+            }else{
+                setState({animated: false,});
+            }
         }
+    })
 
-        if (intersectionObserverEntry.intersectionRatio >0.95){
-            this.setState({animated: true});
-        }else{
-            this.setState({
-                animated: false,
-            })
-        }
-    }
+    const { animated } = state;
 
-    render(){
+    return(
+        <div
+            className={classes.container}
+            ref = {element}
+        >
 
-        const { classes, t } = this.props;
-        const {
-            visiblePct, animated,
-        } = this.state;
+            <Typography variant="h4" color="inherit" gutterBottom>
+                {t('scaffoldingSec.title')}
+            </Typography>
 
-        return(
+            <div className={classes.sampleCodeContainer}>
+                <div className={
+                    cx(
+                        'animated', 'infinite', 'fadeIn', 'slower',
+                    )
+                }>
+                    <Code withMargin text={newCompCode} />
+                </div>
+            </div>
+
             <div
-                className={classes.container}
-                ref = {el => this.element = el}
+                className={cx(
+                    classes.cmdInputContainer,
+                    {
+                        [classes.hidden]:!animated
+                    }
+                )}
             >
-
-                <Typography variant="h4" color="inherit" gutterBottom>
-                    {t('scaffoldingSec.title')}
-                </Typography>
-
-                <div className={classes.sampleCodeContainer}>
-                    <div className={
-                        cx(
-                            'animated', 'infinite', 'fadeIn', 'slower',
-                        )
-                    }>
-                        <Code withMargin text={newCompCode} />
-                    </div>
-                </div>
-
-                <div
-                    className={cx(
-                        classes.cmdInputContainer,
-                        {
-                            [classes.hidden]:!animated
-                        }
-                    )}
+                <Typography
+                    className={
+                        classes.green
+                    }
+                    variant="h5" gutterBottom
                 >
-                    <Typography
-                        className={
-                            classes.green
-                        }
-                        variant="h5" gutterBottom
-                    >
-                        $:&nbsp;\>
-                    </Typography>
-                    <Typography
-                        className={cx(
-                            {[classes.typewriter]:animated}
-                        )}
-                        variant="h5" color="inherit" gutterBottom
-                    >
-                        ali-cli comp New
-                    </Typography>
-                </div>
-
-                <Typography variant="body1" color="inherit" gutterBottom>
-                    {t('scaffoldingSec.desc')}
+                    $:&nbsp;\>
+                </Typography>
+                <Typography
+                    className={cx(
+                        {[classes.typewriter]:animated}
+                    )}
+                    variant="h5" color="inherit" gutterBottom
+                >
+                    ali-cli comp New
                 </Typography>
             </div>
-        )
-    }
+
+            <Typography variant="body1" color="inherit" gutterBottom>
+                {t('scaffoldingSec.desc')}
+            </Typography>
+        </div>
+    )
 }
 
-export default withStyles(style)(
-    withNamespaces('landing')(ScaffoldingToolSectionComp)
-);
+export default ScaffoldingToolSectionComp;

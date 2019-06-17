@@ -5,6 +5,7 @@ import { Router, Route, Switch, Redirect } from 'react-router-dom';
 
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
 import red from '@material-ui/core/colors/red';
 
 import indexRoutes from './routes/index';
@@ -31,45 +32,41 @@ interface IState {
     [key:string]:any,
 }
 
-class App extends React.Component<IProps,IState> {
+const App:React.FunctionComponent<IProps> = (
+    {
+        loading, theme, direction,
+    }
+)=> {
 
-    createMutTheme = () =>{
-        const { theme, direction } = this.props;
-
-        return createMuiTheme({
-            direction,
-            palette:{
-                type: theme,
-                primary: {
-                    main:'#504cff',
-                },
-                secondary: red
+    const muiTheme = createMuiTheme({
+        direction,
+        palette:{
+            type: theme,
+            primary: {
+                main:'#504cff',
             },
-            typography:{
-                useNextVariants:true,
-                fontSize: 8,
-                htmlFontSize: 10,
-            },
-            overrides:{
-                MuiTypography:{
-                    body1:{
-                        maxWidth:'100%',
-                    }
+            secondary: red
+        },
+        typography:{
+            useNextVariants:true,
+            fontSize: 8,
+            htmlFontSize: 10,
+        },
+        overrides:{
+            MuiTypography:{
+                body1:{
+                    maxWidth:'100%',
                 }
             }
-        })
-
-    }
-
+        }
+    });
 
 
-    render() {
-        const { loading } = this.props;
-
-        return (<React.Fragment>
-            <CssBaseline/>
-            <Router history={hist}>
-                <MuiThemeProvider theme={this.createMutTheme()}>
+    return (<React.Fragment>
+        <CssBaseline/>
+        <Router history={hist}>
+            <MuiThemeProvider theme={muiTheme}>
+                <ThemeProvider theme={muiTheme}>
                     <Switch>
                         {
                             indexRoutes.map((prop:any,key)=>{
@@ -80,10 +77,11 @@ class App extends React.Component<IProps,IState> {
                             })
                         }
                     </Switch>
-                </MuiThemeProvider>
-            </Router>
-        </React.Fragment>);
-    }
+                </ThemeProvider>
+            </MuiThemeProvider>
+        </Router>
+    </React.Fragment>);
+
 }
 
 export default connect(

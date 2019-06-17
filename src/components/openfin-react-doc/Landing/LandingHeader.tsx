@@ -1,12 +1,10 @@
 import * as React from 'react';
+import {useState} from 'react';
 import cx from 'classnames';
-import { withNamespaces, WithNamespaces } from 'react-i18next';
+import {makeStyles} from '@material-ui/styles';
+import {useTranslation} from 'react-i18next';
 
-import i18n from '../../../i18n';
-
-import { WithStyles, withStyles } from '@material-ui/core/styles';
-
-import { landingHeaderCompStyle as style } from '../../../assets/jss/openfin-react-doc';
+import {landingHeaderCompStyle as style} from '../../../assets/jss/openfin-react-doc';
 
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -25,10 +23,11 @@ import gitHubSvg from '../../../assets/svg/developer/github-logo-dark.svg';
 import chinaSvg from '../../../assets/svg/language/china.svg';
 import usSvg from '../../../assets/svg/language/united-states.svg';
 
-interface IProps extends WithStyles<typeof style>, WithNamespaces{
+import {Language} from '../../../GlobalTypes';
+
+interface IProps {
     activeChildSectionIndex:number,
     childrenSectionNames:string[],
-    onSwitchLanguage:(languageName:string)=> void,
     onActiveChildSectionChange: (activeChildSectionName:string) => void,
     onToggleDrawer:()=> void,
     onToggleTheme:()=> void,
@@ -39,174 +38,171 @@ interface IState{
     mobileMoreAnchorEl:any,
 }
 
-class LandingHeaderComp extends React.Component<IProps, IState>{
+const useStyles = makeStyles(style);
 
-    state = {
+const LandingHeaderComp:React.FunctionComponent<IProps> = (
+    {
+        activeChildSectionIndex,
+        childrenSectionNames,
+        onActiveChildSectionChange,
+        onToggleDrawer,
+        onToggleTheme,
+    }
+)=>{
+
+    const classes = useStyles();
+    const { t, i18n } = useTranslation('landing', { useSuspense: false });
+
+    const [state, setState] = useState<IState>({
         anchorEl: null,
         mobileMoreAnchorEl: null,
+    })
+
+    const handleLanguageMenuOpen = event => {
+        setState({...state, anchorEl: event.currentTarget });
     };
 
-    handleLanguageMenuOpen = event => {
-        this.setState({ anchorEl: event.currentTarget });
+    const handleLanguageMenuClose = () => {
+        setState({...state,  anchorEl: null });
+        handleMobileMenuClose();
     };
 
-    handleLanguageMenuClose = () => {
-        this.setState({ anchorEl: null });
-        this.handleMobileMenuClose();
-    };
-
-    handleLanguageEngMenuBtnClick = ()=>{
-        this.props.onSwitchLanguage('en');
-        this.setState({ anchorEl: null });
+    const handleChangeLanguageBtnClick = (lang:Language)=>()=>{
+        i18n.changeLanguage(lang);
+        setState({ ...state, anchorEl: null });
     }
 
-    handleLanguageChnMenuBtnClick = ()=>{
-        this.props.onSwitchLanguage('zh');
-        this.setState({ anchorEl: null });
-    }
-
-    handleMobileMenuOpen = event => {
-        this.setState({ mobileMoreAnchorEl: event.currentTarget });
+    const handleMobileMenuOpen = event => {
+        setState({ ...state, mobileMoreAnchorEl: event.currentTarget });
     };
 
-    handleMobileMenuClose = () => {
-        this.setState({ mobileMoreAnchorEl: null });
+    const handleMobileMenuClose = () => {
+        setState({ ...state, mobileMoreAnchorEl: null });
     };
 
-    handleActiveChildSectionChange = (event, value) => {
-        this.props.onActiveChildSectionChange(this.props.childrenSectionNames[value]);
+    const handleActiveChildSectionChange = (event, value) => {
+        onActiveChildSectionChange(childrenSectionNames[value]);
     }
 
-    render(){
+    const { anchorEl, mobileMoreAnchorEl } = state;
+    const isMenuOpen = Boolean(anchorEl);
+    const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
-        const {
-            classes, t,
-            activeChildSectionIndex, childrenSectionNames,
-            onToggleDrawer,
-        } = this.props;
+    const renderMenu = (
+        <Menu
+            anchorEl={anchorEl}
+            anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+            transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+            open={isMenuOpen}
+            onClose={handleLanguageMenuClose}
+        >
+            <MenuItem onClick={handleChangeLanguageBtnClick(Language.en_US)}>
+                <IconButton color="inherit">
+                    <img className={classes.menuSvg} src={usSvg}/>
+                </IconButton>
+                English
+            </MenuItem>
+            <MenuItem onClick={handleChangeLanguageBtnClick(Language.zh_CN)}>
+                <IconButton color="inherit">
+                    <img className={classes.menuSvg} src={chinaSvg}/>
+                </IconButton>
+                中文
+            </MenuItem>
+        </Menu>
+    );
 
-        const { anchorEl, mobileMoreAnchorEl } = this.state;
-        const isMenuOpen = Boolean(anchorEl);
-        const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-
-        const renderMenu = (
-            <Menu
-                anchorEl={anchorEl}
-                anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-                transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-                open={isMenuOpen}
-                onClose={this.handleLanguageMenuClose}
-            >
-                <MenuItem onClick={this.handleLanguageEngMenuBtnClick}>
-                    <IconButton color="inherit">
-                        <img className={classes.menuSvg} src={usSvg}/>
-                    </IconButton>
-                    English
-                </MenuItem>
-                <MenuItem onClick={this.handleLanguageChnMenuBtnClick}>
-                    <IconButton color="inherit">
-                        <img className={classes.menuSvg} src={chinaSvg}/>
-                    </IconButton>
-                    中文
-                </MenuItem>
-            </Menu>
-        );
-
-        const renderMobileMenu = (
-            <Menu
-                anchorEl={mobileMoreAnchorEl}
-                anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-                transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-                open={isMobileMenuOpen}
-                onClose={this.handleMobileMenuClose}
-            >
-                <MenuItem>
-                    <IconButton color="inherit" onClick={this.props.onToggleTheme}>
-                        <Icon>lightbulb_outline</Icon>
-                    </IconButton>
-                    <p>Light theme</p>
-                </MenuItem>
-                <MenuItem>
-                    <IconButton color="inherit"
-                                href="https://github.com/albertleigh/openfin-react-starter"
-                    >
-                        <img className={classes.menuSvg} src={gitHubSvg}/>
-                    </IconButton>
-                    <p>Github</p>
-                </MenuItem>
-            </Menu>
-        );
-
-        const currentLanguageSvg = (
-            i18n.language === "zh"?
-                <img className={classes.menuSvg} src={chinaSvg}/>:
-                <img className={classes.menuSvg} src={usSvg}/>
-        )
-
-        return(
-            <React.Fragment>
-                <AppBar
-                    className={cx(
-                        classes.appbar,
-                        {[classes.appbarTransparent]:activeChildSectionIndex===0}
-                    )}
-                    position="fixed"
+    const renderMobileMenu = (
+        <Menu
+            anchorEl={mobileMoreAnchorEl}
+            anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+            transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+            open={isMobileMenuOpen}
+            onClose={handleMobileMenuClose}
+        >
+            <MenuItem>
+                <IconButton color="inherit" onClick={onToggleTheme}>
+                    <Icon>lightbulb_outline</Icon>
+                </IconButton>
+                <p>Light theme</p>
+            </MenuItem>
+            <MenuItem>
+                <IconButton color="inherit"
+                            href="https://github.com/openfin-js-app/openfin-react-starter"
                 >
-                    <Toolbar>
-                        <IconButton className={classes.menuButton} color="inherit" aria-label="Open drawer"
-                                    onClick={onToggleDrawer}
-                        >
-                            <MenuIcon />
-                        </IconButton>
-                        <Tabs
-                            className={classes.titleTab} value={activeChildSectionIndex}
-                            onChange={this.handleActiveChildSectionChange}
-                        >
-                            {
-                                childrenSectionNames.map((name,index,arr)=>(
-                                    <Tab label={t(`header.tabsName.${name}`)} key={index} />
-                                ))
-                            }
-                        </Tabs>
-                        <div className={classes.grow} />
-                        <div className={classes.sectionDesktop}>
-                            <Tooltip title={t('header.toolTip.toggleTheme')} enterDelay={300}>
-                                <IconButton color="inherit" onClick={this.props.onToggleTheme} >
-                                    <Icon>lightbulb_outline</Icon>
-                                </IconButton>
-                            </Tooltip>
-                            <Tooltip title={t('header.toolTip.github')} enterDelay={300}>
-                                <IconButton color="inherit"
-                                            href="https://github.com/albertleigh/openfin-react-starter"
-                                >
-                                    <img className={classes.menuSvg} src={gitHubSvg}/>
-                                </IconButton>
-                            </Tooltip>
-                            <Tooltip title={t('header.toolTip.changeLanguage')} enterDelay={300}>
-                                <IconButton
-                                    aria-owns={isMenuOpen ? 'material-appbar' : undefined}
-                                    aria-haspopup="true"
-                                    onClick={this.handleLanguageMenuOpen}
-                                    color="inherit"
-                                >
-                                    {currentLanguageSvg}
-                                </IconButton>
-                            </Tooltip>
-                        </div>
-                        <div className={classes.sectionMobile}>
-                            <IconButton aria-haspopup="true" onClick={this.handleMobileMenuOpen} color="inherit">
-                                <MoreIcon />
+                    <img className={classes.menuSvg} src={gitHubSvg}/>
+                </IconButton>
+                <p>Github</p>
+            </MenuItem>
+        </Menu>
+    );
+
+    const currentLanguageSvg = (
+        i18n.language === Language.zh_CN?
+            <img className={classes.menuSvg} src={chinaSvg}/>:
+            <img className={classes.menuSvg} src={usSvg}/>
+    )
+
+    return(
+        <React.Fragment>
+            <AppBar
+                className={cx(
+                    classes.appbar,
+                    {[classes.appbarTransparent]:activeChildSectionIndex===0}
+                )}
+                position="fixed"
+            >
+                <Toolbar>
+                    <IconButton className={classes.menuButton} color="inherit" aria-label="Open drawer"
+                                onClick={onToggleDrawer}
+                    >
+                        <MenuIcon />
+                    </IconButton>
+                    <Tabs
+                        className={classes.titleTab} value={activeChildSectionIndex}
+                        onChange={handleActiveChildSectionChange}
+                    >
+                        {
+                            childrenSectionNames.map((name,index,arr)=>(
+                                <Tab label={t(`header.tabsName.${name}`)} key={index} />
+                            ))
+                        }
+                    </Tabs>
+                    <div className={classes.grow} />
+                    <div className={classes.sectionDesktop}>
+                        <Tooltip title={t('header.toolTip.toggleTheme')} enterDelay={300}>
+                            <IconButton color="inherit" onClick={onToggleTheme} >
+                                <Icon>lightbulb_outline</Icon>
                             </IconButton>
-                        </div>
-                    </Toolbar>
-                </AppBar>
-                {renderMenu}
-                {renderMobileMenu}
-            </React.Fragment>
-        )
-    }
+                        </Tooltip>
+                        <Tooltip title={t('header.toolTip.github')} enterDelay={300}>
+                            <IconButton color="inherit"
+                                        href="https://github.com/openfin-js-app/openfin-react-starter"
+                            >
+                                <img className={classes.menuSvg} src={gitHubSvg}/>
+                            </IconButton>
+                        </Tooltip>
+                        <Tooltip title={t('header.toolTip.changeLanguage')} enterDelay={300}>
+                            <IconButton
+                                aria-owns={isMenuOpen ? 'material-appbar' : undefined}
+                                aria-haspopup="true"
+                                onClick={handleLanguageMenuOpen}
+                                color="inherit"
+                            >
+                                {currentLanguageSvg}
+                            </IconButton>
+                        </Tooltip>
+                    </div>
+                    <div className={classes.sectionMobile}>
+                        <IconButton aria-haspopup="true" onClick={handleMobileMenuOpen} color="inherit">
+                            <MoreIcon />
+                        </IconButton>
+                    </div>
+                </Toolbar>
+            </AppBar>
+            {renderMenu}
+            {renderMobileMenu}
+        </React.Fragment>
+    )
 }
 
-export default withStyles(style)(
-    withNamespaces("landing")(LandingHeaderComp)
-);
+export default LandingHeaderComp;

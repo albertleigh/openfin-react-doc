@@ -65,12 +65,6 @@ const resolveModule = (resolveFn, filePath) => {
     return resolveFn(`${filePath}.js`);
 };
 
-const hasTSConfig = fs.existsSync(resolveApp('tsconfig.json'));
-const hasTSConfigProd = fs.existsSync(resolveApp('tsconfig.prod.json'));
-const hasTSLint = fs.existsSync(resolveApp('tslint.json'));
-const hasTSLintProd = fs.existsSync(resolveApp('tslint.prod.json'));
-const isTypeScript = hasTSConfig;
-
 // config after eject: we're in ./config/
 module.exports = {
     dotenv: resolveApp('.env'),
@@ -86,17 +80,11 @@ module.exports = {
     testsSetup: resolveModule(resolveApp, 'src/setupTests'),
     proxySetup: resolveApp('src/setupProxy.js'),
     appNodeModules: resolveApp('node_modules'),
-    appTSConfig: resolveApp('tsconfig.json'),
-    appTSConfigProd: resolveApp('tsconfig.prod.json'),
-    appTSLint: resolveApp('tslint.json'),
-    appTSLintProd: resolveApp('tslint.prod.json'),
+    appTsConfig: resolveApp('tsconfig.json'),
+    appJsConfig: resolveApp('jsconfig.json'),
+    appTsLint: resolveApp('tslint.json'),
     publicUrl: getPublicUrl(resolveApp('package.json')),
     servedPath: getServedPath(resolveApp('package.json')),
-    // for typescript etc
-    isTypeScript,
-    useTSConfigProd:isTypeScript && hasTSConfigProd,
-    useTSLint:isTypeScript && hasTSLint,
-    useTSLintProd: isTypeScript && hasTSLintProd,
 };
 
 module.exports.useYarn = fs.existsSync(

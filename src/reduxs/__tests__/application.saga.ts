@@ -1,6 +1,5 @@
 import { testSaga } from 'redux-saga-test-plan';
-import { delay } from 'redux-saga';
-import { all, call, put, take, takeLatest, takeEvery, fork, select, actionChannel } from 'redux-saga/effects';
+import { all, call, delay, put, take, takeLatest, takeEvery, fork, select, actionChannel } from 'redux-saga/effects';
 
 import {
     APPLICATION_STARTED,
@@ -26,7 +25,8 @@ describe('Application saga',()=>{
                     call(delay,5000),
                 ])
                 .next()
-                .put.resolve(applicationReady())
+                // @ts-ignore
+                .putResolve(applicationReady())
                 .next()
                 .isDone();
         })
@@ -35,7 +35,7 @@ describe('Application saga',()=>{
     it('default function register all event',()=>{
         testSaga(applicationSaga)
             .next()
-            .takeLatestEffect(APPLICATION_STARTED,handleApplicationLoading)
+            .takeLatest(APPLICATION_STARTED,handleApplicationLoading)
             .next()
             .isDone();
     })

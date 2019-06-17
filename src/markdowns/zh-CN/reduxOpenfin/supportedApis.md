@@ -1,0 +1,50 @@
+Redux Openfin
+--------------
+> Todo: populate this doc in next release 
+
+- ### Application
+    - new
+    - restart
+    - close
+- ###Event
+    - etc....
+- ### InterApplicationBus
+    - publish
+    - subscribe
+- ### Notification
+    - createNotification
+- ### System
+    - getMachineId
+    - getDeviceUserId
+    - getMonitorInfo
+    - getVersion
+    - getHostSpecs
+    - getEnvironmentVariable
+    - clearCache
+- ### Window
+    - getCurrent
+    - wrap
+    - addEventListener
+    - bringToFront
+    - newWindow
+    - close
+    - disableFrame
+    - enableFrame
+    - focus
+    - getGroup
+    - getBounds
+    - getState
+    - getOptions
+    - hide
+    - joinGroup
+    - leaveGroup
+    - maximize
+    - mergeGroups
+    - minimize
+    - moveBy
+    - moveTo
+    - restore
+    - show
+    - setAsForeground
+    - setBounds
+    - updateOptions

@@ -1,125 +1,122 @@
 import * as React from 'react';
+import { useRef, useState } from 'react';
+
 import cx from 'classnames';
 import Typography from '@material-ui/core/Typography';
 
-import { WithStyles, withStyles } from '@material-ui/core/styles';
-import { withNamespaces, WithNamespaces } from 'react-i18next';
+import { makeStyles } from '@material-ui/styles';
+import { useTranslation } from 'react-i18next';
 
 import { landingSnapDockSectionCompStyle as style } from '../../../assets/jss/openfin-react-doc';
 
 import PaperMockWin  from '../PaperMockWin/PaperMockWin';
 
-import AbstractLandingSection from './AbstractLandingSection';
+import useLandingSectionIntersectionListener from './useLandingSectionIntersectionListener';
 
-interface IProps extends WithStyles<typeof style>, WithNamespaces {
+interface IProps {
     onIntersectionChanged: (intersectionObserverEntry:IntersectionObserverEntry) =>void,
 }
 
 interface IState{
-    visiblePct:number,
     windowsShown:boolean,
     rightWindowDocked:boolean,
     // [key:number]:any,
     // [key:string]:any,
 }
 
-class SnapDockSectionComp extends AbstractLandingSection<IProps, IState>{
+const useStyles = makeStyles(style);
 
-    element:any;
+const SnapDockSectionComp:React.FunctionComponent<IProps>=(
+    {
+        onIntersectionChanged
+    }
+)=>{
 
-    state={
-        visiblePct: 0,
+    const element = useRef(null);
+    const classes = useStyles();
+    const { t, i18n } = useTranslation('landing', { useSuspense: false });
+
+    const [state, setState]  = useState<IState>({
         windowsShown: false,
         rightWindowDocked: true,
-    }
+    });
 
-    componentDidMount(): void {
-        super.componentDidMount();
-    }
+    const { visiblePct } = useLandingSectionIntersectionListener({
+        element:element.current,
+        onIntersectionChanged:(intersectionObserverEntry:IntersectionObserverEntry)=>{
 
-    componentWillUnmount(): void {
-        super.componentWillUnmount();
-    }
+            if (onIntersectionChanged){
+                onIntersectionChanged(intersectionObserverEntry);
+            }
 
-    onIntersectionChanged =(intersectionObserverEntry:IntersectionObserverEntry)=>{
-
-        if (this.props.onIntersectionChanged){
-            this.props.onIntersectionChanged(intersectionObserverEntry);
+            if (intersectionObserverEntry.intersectionRatio >0.75){
+                setState({...state, windowsShown: true});
+            }else{
+                setState({
+                    windowsShown: false,
+                    rightWindowDocked: true,
+                })
+            }
         }
+    })
 
-        if (intersectionObserverEntry.intersectionRatio >0.75){
-            this.setState({windowsShown: true});
-        }else{
-            this.setState({
-                windowsShown: false,
-                rightWindowDocked: true,
-            })
-        }
+    const handleRightWindowUndock = ()=>{
+        setState({...state, rightWindowDocked: false,})
     }
 
-    handleRightWindowUndock = ()=>{
-        this.setState({rightWindowDocked: false,})
-    }
+    const { windowsShown, rightWindowDocked } =state;
 
-    render(){
-
-        const { classes, t } = this.props;
-        const { visiblePct, windowsShown, rightWindowDocked } = this.state;
-
-        return(
+    return(
+        <div
+            className = {classes.container}
+            ref = {element}
+        >
+            <Typography variant="h4" color="inherit" gutterBottom>
+                {t('snapDockSec.title')}
+            </Typography>
             <div
-                className = {classes.container}
-                ref = {el => this.element = el}
+                className = {classes.windowsContainer}
             >
-                <Typography variant="h4" color="inherit" gutterBottom>
-                    {t('snapDockSec.title')}
-                </Typography>
                 <div
-                    className = {classes.windowsContainer}
+                    className = {cx(
+                        'animated',
+                        {
+                            [classes.windowHidden]:!windowsShown,
+                            'bounceInLeft':windowsShown
+                        }
+                    )}
                 >
-                    <div
-                        className = {cx(
-                            'animated',
-                            {
-                                [classes.windowHidden]:!windowsShown,
-                                'bounceInLeft':windowsShown
-                            }
-                        )}
-                    >
-                        <PaperMockWin>
-                            <Typography variant="h2" color="inherit" gutterBottom>
-                                {t('snapDockSec.win1')}
-                            </Typography>
-                        </PaperMockWin>
-                    </div>
-                    <div
-                        className = {cx(
-                            'animated',
-                            {
-                                [classes.windowHidden]:!windowsShown && rightWindowDocked,
-                                'bounceInRight':windowsShown && rightWindowDocked,
-                                'bounceOutDown':windowsShown && !rightWindowDocked,
-                            }
-                        )}
-                    >
-                        <PaperMockWin
-                            docked={true}
-                            onUndock={this.handleRightWindowUndock}
-                        >
-                            <Typography variant="h2" color="inherit" gutterBottom>
-                                {t('snapDockSec.win2')}
-                            </Typography>
-                        </PaperMockWin>
-                    </div>
+                    <PaperMockWin>
+                        <Typography variant="h2" color="inherit" gutterBottom>
+                            {t('snapDockSec.win1')}
+                        </Typography>
+                    </PaperMockWin>
                 </div>
-                <Typography variant="body1" color="inherit" gutterBottom>
-                    {t('snapDockSec.desc')}
-                </Typography>
+                <div
+                    className = {cx(
+                        'animated',
+                        {
+                            [classes.windowHidden]:!windowsShown && rightWindowDocked,
+                            'bounceInRight':windowsShown && rightWindowDocked,
+                            'bounceOutDown':windowsShown && !rightWindowDocked,
+                        }
+                    )}
+                >
+                    <PaperMockWin
+                        docked={true}
+                        onUndock={handleRightWindowUndock}
+                    >
+                        <Typography variant="h2" color="inherit" gutterBottom>
+                            {t('snapDockSec.win2')}
+                        </Typography>
+                    </PaperMockWin>
+                </div>
             </div>
-        )
-    }
+            <Typography variant="body1" color="inherit" gutterBottom>
+                {t('snapDockSec.desc')}
+            </Typography>
+        </div>
+    )
 }
 
-export default withStyles(style)(
-    withNamespaces('landing')(SnapDockSectionComp)
-);
+export default SnapDockSectionComp;

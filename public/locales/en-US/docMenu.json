@@ -1,0 +1,49 @@
+{
+  "openfinReactStarter": "Openfin react starter",
+
+  "start":"Get started",
+  "startIntroduction":"Introduction",
+  "startInstallation":"Installer",
+  "startDevelopers":"For developers",
+  "startFaq":"FAQ",
+
+  "starterBase":"Templates",
+  "starterBaseFeatures":"Features",
+  "starterBaseDependencies":"Dependencies",
+  "starterBaseRoutes":"Routes",
+  "starterBaseReuseableComps":"Reusable Comps",
+  "starterBaseConstants":"Config Constants",
+  "starterBaseScripts":"Helper Scripts",
+  "starterBaseContextApis":"Context APIs",
+  "starterBaseWhyTs":"Why typescript?",
+
+  "scaffolding":"openfin-js-cli",
+  "scaffoldingInstall":"Installation",
+  "scaffoldingGenrPrj":"Generating projects",
+  "scaffoldingStandalonePkg":"Standalone Package",
+  "scaffoldingGenrTpl":"Generating templates",
+
+  "professional":"Advanced Features",
+  "professionalConnRedux":"Connect Redux",
+  "professionalActionsList":"Reusable Actions",
+  "professionalReduxsStateStruct":"State Structure",
+  "professionalStartCloseWin":"onStart and onClose",
+  "professionalSharedActions":"Cross-Win Actions",
+  "professionalReduxOpenfin":"Redux Openfin",
+
+  "browserAdaptor":"Browser Adaptor",
+  "browserAdaptorInstall":"Install BA",
+  "browserAdaptorUsecases":"BA user cases",
+
+  "reduxOpenfin":"Redux Openfin",
+  "reduxOpenfinInstall":"Install redux-openfin",
+  "reduxOpenfinCommPattern":"Common pattern",
+  "reduxOpenfinSupportedApis":"Supported Apis",
+  "reduxOpenfinSharedActions":"Sharing actions",
+  "reduxOpenfinSnapDock":"Snap&dock",
+
+  "about":"About",
+  "aboutCollaborators":"Collaborators",
+  "aboutThanks":"Thanks"
+
+}
