@@ -13,4 +13,5 @@ export {default as LandingSupportSection } from './openfin-react-doc/Landing/Sup
 export {default as DocHeader } from './openfin-react-doc/Doc/DocHeader'
 export {default as DocMenu } from './openfin-react-doc/Doc/DocMenu'
 export {default as DocMenuItem } from './openfin-react-doc/Doc/DocMenuItem'
+export {default as MarkdownElement } from './openfin-react-doc/Markdown/MarkdownElement'
 // END_OF_AL_CLI_COMPONENTS

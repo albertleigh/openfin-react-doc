@@ -4,7 +4,7 @@ let localPublicPathname;
 try {
     localPublicPathname = new URL(process.env.PUBLIC_URL).pathname
 }catch(e){
-    localPublicPathname=""
+    localPublicPathname=process.env.PUBLIC_URL
 }
 
 export const publicPathname = localPublicPathname;

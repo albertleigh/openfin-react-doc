@@ -1,103 +1,84 @@
 import * as React from 'react';
+import { useRef } from 'react';
 import cx from 'classnames';
 
 import Typography from '@material-ui/core/Typography';
 
-import { WithStyles, withStyles } from '@material-ui/core/styles';
-import { withNamespaces, WithNamespaces } from 'react-i18next';
+import { makeStyles } from '@material-ui/styles';
+import { useTranslation } from 'react-i18next';
 
 import { landingGenConfSectionCompStyle as style } from '../../../assets/jss/openfin-react-doc';
 
 import PaperMockWin  from '../PaperMockWin/PaperMockWin';
 import AniDashedLine from '../AniDashedLine/AniDashedLine';
 
-import AbstractLandingSection from "./AbstractLandingSection";
+import useLandingSectionIntersectionListener from './useLandingSectionIntersectionListener';
 
 import databaseGearsSvg from '../../../assets/svg/developer/database-gears.svg';
 import settingSvg from '../../../assets/svg/other/settings.svg';
 
-interface IProps extends WithStyles<typeof style>, WithNamespaces {
+interface IProps {
     onIntersectionChanged: (intersectionObserverEntry:IntersectionObserverEntry) =>void,
 }
 
-interface IState{
-    [key:number]:any,
-    [key:string]:any,
-}
+const useStyles = makeStyles(style);
 
-class GenConfSectionComp extends AbstractLandingSection<IProps, IState>{
-
-    element:any;
-
-    state={
-        visiblePct: 0,
+const GenConfSectionComp:React.FunctionComponent<IProps> = (
+    {
+        onIntersectionChanged
     }
+)=>{
 
-    componentDidMount(): void {
-        super.componentDidMount();
-    }
+    const element = useRef(null);
 
-    componentWillUnmount(): void {
-        super.componentWillUnmount();
-    }
+    const classes = useStyles();
+    const { t, i18n } = useTranslation('landing', { useSuspense: false });
 
-    onIntersectionChanged =(intersectionObserverEntry:IntersectionObserverEntry)=>{
+    const { visiblePct } = useLandingSectionIntersectionListener({element:element.current,onIntersectionChanged})
 
-        if (this.props.onIntersectionChanged){
-            this.props.onIntersectionChanged(intersectionObserverEntry);
-        }
 
-    }
+    return(
+        <div
+            className={classes.container}
+            ref = {element}
+        >
+            <Typography variant="h4" color="inherit" gutterBottom>
+                {t('genConf.title')}
+            </Typography>
 
-    render(){
+            <div className={classes.centerContainer}>
+                <img className={classes.centerDbImgContainer}
+                     src={databaseGearsSvg}/>
 
-        const { classes, t } = this.props;
+                <div className={classes.centerDashedLinesContainer} >
+                    <AniDashedLine
+                        viewBox='0 0 10 1'
+                        pathD='M0 0 l10,0'
+                    />
 
-        return(
-            <div
-                className={classes.container}
-                ref = {el => this.element = el}
-            >
-                <Typography variant="h4" color="inherit" gutterBottom>
-                    {t('genConf.title')}
-                </Typography>
-
-                <div className={classes.centerContainer}>
-                    <img className={classes.centerDbImgContainer}
-                         src={databaseGearsSvg}/>
-
-                    <div className={classes.centerDashedLinesContainer} >
-                        <AniDashedLine
-                            viewBox='0 0 10 1'
-                            pathD='M0 0 l10,0'
-                        />
-
-                        <AniDashedLine
-                            viewBox='0 0 10 1'
-                            pathD='M0 0 l10,0'
-                        />
-                    </div>
-
-                    <div className={classes.centerMockWinContainer}>
-                        <PaperMockWin>
-                            <Typography variant="h4" color="inherit" gutterBottom>
-                                {t('genConf.application')}
-                            </Typography>
-                        </PaperMockWin>
-                        <img className={classes.centerMockWinGears}
-                            src={settingSvg}/>
-                    </div>
-
+                    <AniDashedLine
+                        viewBox='0 0 10 1'
+                        pathD='M0 0 l10,0'
+                    />
                 </div>
 
-                <Typography variant="body1" color="inherit" gutterBottom>
-                    {t('genConf.desc')}
-                </Typography>
+                <div className={classes.centerMockWinContainer}>
+                    <PaperMockWin>
+                        <Typography variant="h4" color="inherit" gutterBottom>
+                            {t('genConf.application')}
+                        </Typography>
+                    </PaperMockWin>
+                    <img className={classes.centerMockWinGears}
+                         src={settingSvg}/>
+                </div>
+
             </div>
-        )
-    }
+
+            <Typography variant="body1" color="inherit" gutterBottom>
+                {t('genConf.desc')}
+            </Typography>
+        </div>
+    )
 }
 
-export default withStyles(style)(
-    withNamespaces('landing')(GenConfSectionComp)
-);
+export default GenConfSectionComp;

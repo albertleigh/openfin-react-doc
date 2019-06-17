@@ -1,77 +1,57 @@
 import * as React from 'react';
+import { useRef } from 'react';
 import cx from 'classnames';
 import Typography from '@material-ui/core/Typography';
-import { WithStyles, withStyles } from '@material-ui/core/styles';
-import { withNamespaces, WithNamespaces } from 'react-i18next';
+import { makeStyles } from '@material-ui/styles';
+import { useTranslation } from 'react-i18next';
 
 import { landingAllCustomizableSectionCompStyle as style } from '../../../assets/jss/openfin-react-doc';
 
 import PaperMockWin  from '../PaperMockWin/PaperMockWin';
 
-import AbstractLandingSection from "./AbstractLandingSection";
+import useLandingSectionIntersectionListener from './useLandingSectionIntersectionListener';
 
 import ReactSvg from '../../../assets/svg/developer/react.svg';
 
-interface IProps extends WithStyles<typeof style>, WithNamespaces {
+interface IProps {
     onIntersectionChanged: (intersectionObserverEntry:IntersectionObserverEntry) =>void,
 }
 
-interface IState{
-    [key:number]:any,
-    [key:string]:any,
-}
+const useStyles = makeStyles(style);
 
-class AllCustomizableSectionComp extends AbstractLandingSection<IProps, IState>{
-
-    element:any;
-
-    state={
-        visiblePct: 0,
+const AllCustomizableSectionComp:React.FunctionComponent<IProps>= (
+    {
+        onIntersectionChanged,
     }
+)=>{
 
-    componentDidMount(): void {
-        super.componentDidMount();
-    }
+    const element = useRef(null);
 
-    componentWillUnmount(): void {
-        super.componentWillUnmount();
-    }
+    const classes = useStyles();
+    const { t, i18n } = useTranslation('landing', { useSuspense: false });
 
-    onIntersectionChanged =(intersectionObserverEntry:IntersectionObserverEntry)=>{
+    const { visiblePct } = useLandingSectionIntersectionListener({element:element.current,onIntersectionChanged})
 
-        if (this.props.onIntersectionChanged){
-            this.props.onIntersectionChanged(intersectionObserverEntry);
-        }
+    return(
+        <div
+            className={classes.container}
+            ref = {element}
+        >
+            <Typography variant="h4" color="inherit" gutterBottom>
+                {t('allCust.title')}
+            </Typography>
 
-    }
-
-    render(){
-
-        const { classes, t } = this.props;
-
-        return(
-            <div
-                className={classes.container}
-                ref = {el => this.element = el}
-            >
-                <Typography variant="h4" color="inherit" gutterBottom>
-                    {t('allCust.title')}
-                </Typography>
-
-                <div>
-                    <PaperMockWin>
-                        <img className={classes.mockAppImg} src={ReactSvg}/>
-                    </PaperMockWin>
-                </div>
-
-                <Typography variant="body1" color="inherit" gutterBottom>
-                    {t('allCust.desc')}
-                </Typography>
+            <div>
+                <PaperMockWin>
+                    <img className={classes.mockAppImg} src={ReactSvg}/>
+                </PaperMockWin>
             </div>
-        )
-    }
+
+            <Typography variant="body1" color="inherit" gutterBottom>
+                {t('allCust.desc')}
+            </Typography>
+        </div>
+    )
 }
 
-export default withStyles(style)(
-    withNamespaces('landing')(AllCustomizableSectionComp)
-);
+export default AllCustomizableSectionComp;

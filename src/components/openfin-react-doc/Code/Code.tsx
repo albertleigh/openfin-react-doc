@@ -1,39 +1,35 @@
 import * as React from 'react';
 import cx from 'classnames';
-import { WithStyles, withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/styles';
 
 import { codeCompStyle as style } from '../../../assets/jss/openfin-react-doc';
 
 import prism from '../../../utils/prism';
 
-interface IProps extends WithStyles<typeof style>{
+const useStyles = makeStyles(style);
+
+interface IProps {
     language?:string,
     text:string,
     withMargin?:boolean,
 }
 
-interface IState{
-    [key:number]:any,
-    [key:string]:any,
-}
+const CodeComp:React.FunctionComponent<IProps> = (
+    {
+        language, text, withMargin,
+    }
+)=>{
+    const classes = useStyles();
 
-class CodeComp extends React.Component<IProps, IState>{
-    render(){
+    const hightlightedCode = prism.highlight(text, prism.languages[language?language:'jsx']);
 
-        const {
-            classes, language, text, withMargin,
-        } = this.props;
-
-        const hightlightedCode = prism.highlight(text, prism.languages[language?language:'jsx']);
-
-        return(
-            <div className={cx(classes.root, { [classes.margin]: withMargin })}>
+    return(
+        <div className={cx(classes.root, { [classes.margin]: withMargin })}>
               <pre>
                 <code dangerouslySetInnerHTML={{ __html: hightlightedCode }} />
               </pre>
-            </div>
-        )
-    }
+        </div>
+    )
 }
 
-export default withStyles(style)(CodeComp);
+export default CodeComp;

@@ -1,8 +1,0 @@
-// BEGIN_OF_AL_CLI_COMP
-export {default as newOneCompStyle } from './comp/newOneComp.style'
-export {default as newTwoCompStyle } from './comp/newTwoComp.style'
-// END_OF_AL_CLI_COMP
-// BEGIN_OF_AL_CLI_VIEW
-export {default as newOneViewStyle } from './view/newOneView.style'
-export {default as newTwoViewStyle } from './view/newTwoView.style'
-// END_OF_AL_CLI_VIEW
