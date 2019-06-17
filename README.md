@@ -1,4 +1,4 @@
-#openfin-react-doc@0.20.10
+#openfin-react-doc@0.31.2
 
 - Based on create-react-app@2.0.4
 - Support Babel 7
